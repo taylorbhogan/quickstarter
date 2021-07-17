@@ -1,6 +1,10 @@
-// constants
+/* ------ DEFINE ACTION TYPES AS CONSTANTS ------ */
+
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+
+
+/* ------ DEFINE ACTION CREATORS ------ */
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +15,12 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
+/* ------ DEFINE INITIAL STATE ------ */
+
 const initialState = { user: null };
+
+
+/* ------ DEFINE THUNK ACTION CREATORS ------ */
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -24,7 +33,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +49,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -82,7 +91,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -96,6 +105,9 @@ export const signUp = (username, email, password) => async (dispatch) => {
     return ['An error occurred. Please try again.']
   }
 }
+
+
+/* ------ DEFINE & EXPORT REDUCER ------ */
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
