@@ -45,6 +45,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/learn' exact={true} >
           <h1>Learn</h1>
+          <button>Start a project</button>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
