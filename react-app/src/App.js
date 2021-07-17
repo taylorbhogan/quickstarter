@@ -3,10 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import TestForm from './components/TestForm';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
+import User from './components/User/User';
 import { authenticate } from './store/session';
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
         <ProtectedRoute path='/learn' exact={true} >
           <h1>Learn</h1>
           <button>Start a project</button>
+        </ProtectedRoute>
+        <ProtectedRoute path='/testform' exact={true} >
+          <TestForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
