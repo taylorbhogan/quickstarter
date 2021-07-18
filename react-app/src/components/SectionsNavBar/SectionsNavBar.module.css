@@ -1,0 +1,15 @@
+.sectionsNavBar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 20px 0;
+  border: 1px solid var(--borderColor);
+  border-top: none;
+}
+
+.sectionLink {
+  text-decoration: none;
+  color: var(--sectionsNavBarFontColor);
+  margin: 0 18px;
+}

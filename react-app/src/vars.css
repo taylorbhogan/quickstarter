@@ -1,0 +1,7 @@
+:root {
+/* ---- COLORS ---- */
+--borderColor: rgb(232, 232, 232);
+--navBarFontColor: rgb(40, 40, 40);
+--navBarHoverColor: #037462;
+--sectionsNavBarFontColor: rgb(101, 105, 105);
+}

@@ -1,0 +1,103 @@
+@import '../../vars.css';
+
+.navBar {
+  border: 1px solid var(--borderColor);
+  display: flex;
+  flex-wrap: nowrap;
+  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 66px;
+  justify-content: space-between;
+  line-height: 21px;
+  width: auto;
+  color: var(--navBarFontColor);
+}
+
+.navBarLeft {
+  display: flex;
+  padding: 12px 0 12px 24px;
+}
+
+.discoverButton {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: inherit;
+  margin-right: 12px;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.projectLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  padding-right: 18px;
+  font-size: inherit;
+}
+
+.navBarCenter {
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.logoPlaceholder {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(79, 197, 128);
+}
+
+.navBarRight {
+  display: flex;
+  padding: 12px 24px 12px 0;
+  align-items: center;
+}
+
+.searchBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  outline: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  margin-right: 12px;
+  height: 21px;
+}
+
+.searchText {
+  cursor: pointer;
+}
+
+.searchIcon {
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.profileBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  outline: inherit;
+}
+
+.circle {
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
+  background-color: indigo;
+  border-radius: 50%;
+}
+
+.discoverButton:hover,
+.projectLink:hover,
+.searchBtn:hover {
+  color: var(--navBarHoverColor);
+}
