@@ -49,7 +49,7 @@ export const createProject = (project) => async (dispatch) => {
     const newProject = data.newProject
 
     dispatch(addProjectToStore(newProject))
-    return null;
+    return newProject;
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {

@@ -8,6 +8,8 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList/UsersList';
 import User from './components/User';
+import Project from './components/Project';
+import ProjectEdit from './components/ProjectEdit';
 import { authenticate } from './store/session';
 
 function App() {
@@ -47,9 +49,12 @@ function App() {
         <ProtectedRoute path='/learn' exact={true} >
           <Learn />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/projects/:projectId' exact={true} >
-          < />
-        </ProtectedRoute> */}
+        <ProtectedRoute path='/projects/:projectId' exact={true} >
+          <Project />
+        </ProtectedRoute>
+        <ProtectedRoute path='/projects/:projectId/edit' exact={true} >
+          <ProjectEdit />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

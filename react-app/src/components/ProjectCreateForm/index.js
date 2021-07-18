@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createProject } from '../../store/project'
 
 import Form1 from './Form1';
@@ -15,6 +16,7 @@ function ProjectCreateForm() {
   const [country, setCountry] = useState('France')
   const [blurb, setBlurb] = useState('')
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const countries = ['France', 'Vietnam', 'Libya']
   const categories = ['Art', 'Comics', 'Crafts']
@@ -37,11 +39,12 @@ function ProjectCreateForm() {
       blurb,
       country,
     }
-    const data = await dispatch(createProject(project))
-    if (data) {
-      console.log('ProjectCreateFormErrors:',data);
-      setErrors(data)
+    const createdProject = await dispatch(createProject(project))
+    if (createdProject) {
+      history.push(`/projects/${createdProject.id}/edit`);
     }
+// TODO: implement error handling.
+
   }
 
   return (

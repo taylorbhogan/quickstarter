@@ -25,6 +25,10 @@ def get_projects():
         return {'projects': [project.to_dict() for project in allProjects]}
     else: return {'something went wrong in when getting projects from the database'}
 
+@project_routes.route('/<int:id>')
+def get_project(id):
+    project = Project.query.get(id)
+    return project.to_dict()
 
 @project_routes.route('/create', methods=['POST'])
 @login_required
