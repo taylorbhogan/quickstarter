@@ -12,4 +12,29 @@
   text-decoration: none;
   color: var(--sectionsNavBarFontColor);
   margin: 0 18px;
+  display: block;
+  position: relative;
+}
+
+.sectionLink:hover {
+  color: var(--sectionsNavBarHoverColor);
+}
+
+.sectionLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.07em;
+  background-color: var(--sectionsNavBarHoverColor);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms, height 300ms;
+}
+
+.sectionLink:hover::after,
+.sectionLink:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.3em, 0);
+  height: 0.1em;
 }
