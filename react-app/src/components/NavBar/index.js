@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 
 const NavBar = () => {
   return (
@@ -10,6 +10,11 @@ const NavBar = () => {
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/learn' exact={true} activeClassName='active'>
+            Start a project
           </NavLink>
         </li>
         <li>
