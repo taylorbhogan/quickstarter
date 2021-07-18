@@ -1,0 +1,52 @@
+@import '../../vars.css';
+
+.formBackground {
+  background-color: var(--formBackgroundColor);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.formContainer {
+  border: 1px solid var(--borderColor);
+  box-sizing: border-box;
+  width: 400px;
+  background-color: white;
+  margin: 60px 0;
+  border-radius: 1px;
+  padding: 20px 30px;
+}
+
+.loginTitle {
+  margin: 6px 0 20px 0;
+  color: var(--navBarFontColor);
+  font-size: 28px;
+}
+
+.input {
+  border: 1px solid var(--borderColor);
+  box-sizing: border-box;
+  padding: 12px;
+  margin-bottom: 18px;
+  width: 100%;
+  transition: 200ms border;
+}
+
+.input:focus {
+  border: 1px solid var(--primaryButtonColor);
+  outline: none;
+}
+
+.loginBtn {
+  background-color: rgb(2, 136, 88);
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  width: 100%;
+  transition: background-color 200ms;
+}
+
+.loginBtn:hover {
+  background-color: var(--primaryButtonColorHover);
+}

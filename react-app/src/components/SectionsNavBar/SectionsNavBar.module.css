@@ -29,7 +29,7 @@
   height: 0.07em;
   background-color: var(--sectionsNavBarHoverColor);
   opacity: 0;
-  transition: opacity 300ms, transform 300ms, height 300ms;
+  transition: opacity 500ms, transform 500ms, height 500ms;
 }
 
 .sectionLink:hover::after,
