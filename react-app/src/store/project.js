@@ -6,7 +6,7 @@ const SET_PROJECTS = 'session/SET_PROJECTS';
 
 /* ------ DEFINE ACTION CREATORS ------ */
 
-const setProject = (project) => ({
+const addProjectToStore = (project) => ({
   type: ADD_PROJECT,
   project
 });
@@ -46,23 +46,9 @@ export const createProject = (project) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log('WE BACK BABY');
-    console.log('data', data);
+    const newProject = data.newProject
 
-    const projectsArray = data.projects
-    dispatch(setAllProjectsInStore(projectsArray))
-
-
-
-
-    // console.log('Response OK. console.logging in the Project Store');
-    // const data = await response.json();
-    // let projectIJustCreated;
-
-    // projectIJustCreated = data.projects[data.projects.length-1]
-    // console.log('projectIJustCreated ------>',projectIJustCreated);
-    // dispatch(setProject(data))
-
+    dispatch(addProjectToStore(newProject))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -82,7 +68,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PROJECT:
       newState = {}
-      newState.project = action.project
+      newState[action.project.id] = action.project
       return {
         ...state,
         ...newState
