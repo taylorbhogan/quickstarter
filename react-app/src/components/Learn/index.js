@@ -1,12 +1,11 @@
-import TestForm from '../TestForm';
+import ProjectCreateModal from '../ProjectCreateModal';
 
 
 function Learn() {
   return (
     <>
-      <h1>Learn</h1>
-      <button>Start a project</button>
-      <TestForm />
+      <h1>Bring your creative project to life.</h1>
+      <ProjectCreateModal />
     </>
   )
 }

@@ -25,7 +25,7 @@ function ScrollingForm() {
   }
 
   const handleSubmit = async (e) => {
-    // console.log('[[compontents/TestForm: handleSubmit]] --> [[store/project: createProject]]');
+    // console.log('[[compontents/ProjectCreateForm: handleSubmit]] --> [[store/project: createProject]]');
     e.preventDefault();
     const project = {
       category,
