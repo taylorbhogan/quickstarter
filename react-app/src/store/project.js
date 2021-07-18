@@ -91,7 +91,7 @@ export const createProject = (project) => async (dispatch) => {
   });
 
   if (response.ok) {
-    console.log('Response OK. Logged in the Project Store');
+    console.log('Response OK. console.logging in the Project Store');
   //   const data = await response.json();
   //   dispatch(setUser(data))
   //   return null;
