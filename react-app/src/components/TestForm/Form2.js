@@ -1,11 +1,17 @@
-function Form1({ changeStageButton }) {
+function Form1({ changeStageButton, blurb, setBlurb }) {
   return (
     <div>
       <form>
         <h2>Form 2</h2>
         <div>
-          <label>Description</label>
-          <input type="text" />
+          <p>Describe what you’ll be creating.</p>
+          <p>And don’t worry, you can edit this later, too.</p>
+          <textarea
+            type="text"
+            placeholder={' An album of songs based on Pablo Neruda poems.'}
+            onChange={(e) => setBlurb(e.target.value)}
+            value={blurb}
+          />
         </div>
         <div>
           <button
