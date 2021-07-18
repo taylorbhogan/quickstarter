@@ -1,14 +1,30 @@
-function Form1({ changeStageButton }) {
+import styles from './ProjectCreateForm.module.css'
+
+function Form3({ changeStageButton, handleSubmit, countries, setCountry }) {
   return (
     <div>
-      <form>
-        <h2>Form 3</h2>
+      <form
+        onSubmit={handleSubmit}
+        className={styles.form}
+      >
+        <div>1 of 3</div>
         <div>
-          <label>Select Country</label>
-          <input type="text" />
+          <h1>Finally, let’s confirm your eligibility.</h1>
+          <p>Tell us where you’re based and confirm a few other details before we proceed.</p>
+          <select
+            onChange={(e) => setCountry(e.target.value)}
+          >
+            {countries.map(country =>
+              <option
+                value={country}
+                key={country}>{country}</option>
+              )}
+          </select>
         </div>
         <div>
-          <button onClick={changeStageButton}> Save </button>
+          <button
+          type='submit'
+          > Save </button>
         </div>
         <div>
           <button
@@ -21,4 +37,4 @@ function Form1({ changeStageButton }) {
   )
 }
 
-export default Form1
+export default Form3

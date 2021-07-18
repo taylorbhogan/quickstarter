@@ -14,7 +14,7 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink to='/learn' exact={true} activeClassName='active'>
-            Learn
+            Start a project
           </NavLink>
         </li>
         <li>

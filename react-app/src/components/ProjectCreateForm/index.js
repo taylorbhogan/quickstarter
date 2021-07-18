@@ -4,8 +4,10 @@ import { createProject } from '../../store/project'
 
 import Form1 from './Form1';
 import Form2 from './Form2';
+import Form3 from './Form3';
+import styles from './ProjectCreateForm.module.css'
 
-function ScrollingForm() {
+function ProjectCreateForm() {
   const [currentStage, setCurrentStage] = useState(1)
   const [category, setCategory] = useState('Art')
   const [country, setCountry] = useState('France')
@@ -13,6 +15,8 @@ function ScrollingForm() {
   const dispatch = useDispatch();
 
   const countries = ['France', 'Vietnam', 'Libya']
+  const categories = ['Art', 'Comics', 'Crafts']
+
 
   const changeStageButton = (e) => {
     e.preventDefault()
@@ -38,11 +42,17 @@ function ScrollingForm() {
 
   return (
     <div>
-      <h1>Create your project!</h1>
+      <div className={styles.header}>
+        <div></div>
+        <div className={styles.logo}>Kickstarter</div>
+        <div className={styles.userIcon}></div>
+      </div>
+      {/* <h1>Create your project!</h1> */}
       {currentStage === 1 && (
         <Form1
           changeStageButton={changeStageButton}
           setCategory={setCategory}
+          categories={categories}
           />
           )}
       {currentStage === 2 && (
@@ -53,41 +63,15 @@ function ScrollingForm() {
         />
       )}
       {currentStage === 3 && (
-        // <Form3
-        //   changeStageButton={changeStageButton}
-        // />
-        <div>
-          <form onSubmit={handleSubmit}>
-            <h2>Form 3</h2>
-            <div>
-              <p>Finally, let’s confirm your eligibility.</p>
-              <p>Tell us where you’re based and confirm a few other details before we proceed.</p>
-              <select
-                onChange={(e) => setCountry(e.target.value)}
-              >
-                {countries.map(country =>
-                  <option
-                    value={country}
-                    key={country}>{country}</option>
-                  )}
-              </select>
-            </div>
-            <div>
-              <button
-              type='submit'
-              > Save </button>
-            </div>
-            <div>
-              <button
-                className={'back'}
-                onClick={changeStageButton}
-              > Back: Description</button>
-            </div>
-          </form>
-        </div >
+        <Form3
+          changeStageButton={changeStageButton}
+          handleSubmit={handleSubmit}
+          setCountry={setCountry}
+          countries={countries}
+        />
       )}
     </div>
   )
 }
 
-export default ScrollingForm
+export default ProjectCreateForm

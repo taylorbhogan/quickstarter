@@ -3,7 +3,6 @@ import { Modal } from '../../context/Modal'
 import ProjectCreateForm from "../ProjectCreateForm";
 
 
-
 function ProjectCreateModal(){
   const [showSpotAddModal, setShowSpotAddModal] = useState(false);
 
@@ -13,9 +12,9 @@ function ProjectCreateModal(){
         onClick={() => setShowSpotAddModal(true)}
       >Start a project</button>
       {showSpotAddModal && (
-        // <Modal onClose={() => setShowSpotAddModal(false)}>
+        <Modal onClose={() => setShowSpotAddModal(false)}>
           <ProjectCreateForm />
-        // </Modal>
+        </Modal>
       )}
     </div>
   )

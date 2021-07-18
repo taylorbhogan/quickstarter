@@ -1,14 +1,14 @@
-function Form1({ changeStageButton, setCategory }) {
+import styles from './ProjectCreateForm.module.css'
 
-  const categories = ['Art', 'Comics', 'Crafts']
+function Form1({ changeStageButton, categories, setCategory }) {
 
 
   return (
     <div>
-      <form>
-        <h2>Form 1</h2>
+      <form className={styles.form}>
+        <div>1 of 3</div>
         <div>
-          <p>First, let’s get you set up.</p>
+          <h1>First, let’s get you set up.</h1>
           <p>Pick a project category to connect with a specific community. You can always update this later.</p>
           <select
             onChange={(e) => setCategory(e.target.value)}
@@ -22,7 +22,6 @@ function Form1({ changeStageButton, setCategory }) {
         </div>
         <div>
           <button
-            // onClick={setCurrentStage(currentStage + 1)}
             className={'next'}
             onClick={changeStageButton}
           >Next: Project idea</button>
