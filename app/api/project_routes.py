@@ -15,6 +15,16 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+@project_routes.route('/')
+def get_projects():
+    """
+    retrieves all projects from db
+    """
+    allProjects = Project.query.all()
+    if allProjects:
+        return {'projects': [project.to_dict() for project in allProjects]}
+    else: return {'something went wrong in when getting projects from the database'}
+
 
 @project_routes.route('/create', methods=['POST'])
 @login_required
@@ -22,7 +32,7 @@ def create_project():
     """
     Creates a project in the database
     """
-    print('request.json',request.json)
+    # print('request.json',request.json)
     form = CreateProjectForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -32,7 +42,14 @@ def create_project():
             blurb=project['blurb'],
             country=project['country']
         )
+
         db.session.add(project)
         db.session.commit()
-        return project.to_dict()
+
+        id = project.id
+        projectFromDb = Project.query.get(id)
+        newProject = projectFromDb.to_dict()
+
+        return {'newProject': newProject}
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

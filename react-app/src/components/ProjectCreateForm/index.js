@@ -8,6 +8,8 @@ import Form3 from './Form3';
 import styles from './ProjectCreateForm.module.css'
 
 function ProjectCreateForm() {
+  const [errors, setErrors] = useState([]);
+  // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
   const [category, setCategory] = useState('Art')
   const [country, setCountry] = useState('France')
@@ -29,7 +31,6 @@ function ProjectCreateForm() {
   }
 
   const handleSubmit = async (e) => {
-    // console.log('[[compontents/ProjectCreateForm: handleSubmit]] --> [[store/project: createProject]]');
     e.preventDefault();
     const project = {
       category,
@@ -37,7 +38,10 @@ function ProjectCreateForm() {
       country,
     }
     const data = await dispatch(createProject(project))
-
+    if (data) {
+      console.log('ProjectCreateFormErrors:',data);
+      setErrors(data)
+    }
   }
 
   return (
