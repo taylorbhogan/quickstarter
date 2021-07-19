@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
 
     projects = db.relationship("Project", back_populates='creator')
     websites = db.relationship('Website', back_populates='user')
+    backings = db.relationship('Backing', back_populates='backer')
 
     @property
     def password(self):

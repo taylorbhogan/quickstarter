@@ -3,8 +3,8 @@ from .db import db
 class Category(db.Model):
     __tablename__= "categories"
 
-    id = db.Column(db.Integer,primary_key=True),
-    name = db.Column(db.String(50), nullable=True),
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=True)
 
     projects = db.relationship("Project", back_populates='category')
     sub_categories = db.relationship('SubCategory', back_populates='category')
