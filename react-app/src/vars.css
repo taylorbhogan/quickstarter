@@ -1,0 +1,12 @@
+:root {
+/* ---- COLORS ---- */
+--borderColor: rgb(232, 232, 232);
+--navBarFontColor: rgb(40, 40, 40);
+--navBarHoverColor: #037462;
+--sectionsNavBarFontColor: rgb(101, 105, 105);
+--sectionsNavBarHoverColor: #024753;
+--formBackgroundColor: rgb(247, 247, 246);
+--primaryButtonColor: rgb(2, 136, 88);
+--primaryButtonColorHover: #005838;
+--linkColor: rgb(39, 82, 255);
+}
