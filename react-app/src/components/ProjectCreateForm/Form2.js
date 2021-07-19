@@ -17,11 +17,13 @@ function Form2({ changeStageButton, blurb, setBlurb }) {
         </div>
         <div>
           <button
-            className={'next'}
+          // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
+          className={'next'}
             onClick={changeStageButton}> Next: Countries</button>
         </div>
         <div>
           <button
+          // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
             className={'back'}
             onClick={changeStageButton}
           > Back: Category</button>

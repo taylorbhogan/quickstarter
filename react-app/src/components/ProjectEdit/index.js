@@ -13,13 +13,14 @@ function Project() {
   const [project, setProject] = useState('')
   const [blurb, setBlurb] = useState(project.blurb)
   const [category, setCategory] = useState(project.category)
+  const [country, setCountry] = useState(project.country)
   const [subCategory, setSubCategory] = useState('')
   const [title, setTitle] = useState('')
   const [goal, setGoal] = useState('')
   const [imageUrl, setImageUrl] = useState('')
-  const [country, setCountry] = useState(project.country)
   const [campaignDuration, setCampaignDuration] = useState('')
 
+  // TODO: switch these to be their equivalents pulled from the db
   const categories = ['Art', 'Comics', 'Crafts']
   const subCategories = ['Stuff', 'Things']
   const countries = ['Norway', 'New Zealand', 'Mongolia']
@@ -41,8 +42,6 @@ function Project() {
     // TODO: frontend validations
     setErrors(errors)
 
-
-    //use the values set in state by the form inputs to build our payload
     const newProject = {
       ...project,
       title,
@@ -53,12 +52,12 @@ function Project() {
       imageUrl,
       campaignDuration
     }
-
+    // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
     let editedProject = await dispatch(editProject(newProject))
     console.log("editedProject------->", editedProject);
     if (editedProject) {
       history.push(`/projects/${editedProject.id}`);
-  }
+    }
   }
 
   const handleDelete = async (projectId) => {
@@ -199,6 +198,7 @@ function Project() {
             Delete
           </button>
         </div>
+        {/* the below is left over from earlier testing; it can be deleted whenever  */}
         <ul>
           <li>
             <strong>Project Id</strong> {projectId}

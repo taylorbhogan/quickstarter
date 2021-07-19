@@ -5,7 +5,7 @@ import projects from './project'
 
 const rootReducer = combineReducers({
   session,
-  projects
+  projects,
 });
 
 

@@ -33,8 +33,10 @@ def get_projects():
 @project_routes.route('/<int:id>')
 def get_project(id):
     project = Project.query.get(id)
-    return project.to_dict()
-
+    if project:
+        return project.to_dict()
+    else:
+        return {'something went wrong in when getting projects from the database'}
 
 @project_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
@@ -42,20 +44,19 @@ def delete_project(id):
     """
     Destroys a project in the database
     """
-    # projectId = request.json
     project = Project.query.get(id)
     db.session.delete(project)
     db.session.commit()
-    return {'success': 'spot has been deleted'}
+    # TODO: implement a better return statement here
+    return {'message': 'spot has been deleted'}
 
-
+# TODO: rename this route
 @project_routes.route('/create', methods=['POST'])
 @login_required
 def create_project():
     """
     Creates a project in the database
     """
-    # print('request.json',request.json)
     form = CreateProjectForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

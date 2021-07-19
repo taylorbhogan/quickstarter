@@ -41,7 +41,6 @@ export const getProjects = () => async (dispatch) => {
 
 
 export const createProject = (project) => async (dispatch) => {
-  // console.log('[[store/project: createProject]] --> api/projects');
   const response = await fetch('/api/projects/create', {
     method: 'POST',
     headers: {
@@ -67,7 +66,7 @@ export const createProject = (project) => async (dispatch) => {
     return ['An error occurred. Please try again.']
   }
 }
-
+//TODO: build the API route to handle this fetch request
 export const editProject = (newProject) => async dispatch  => {
   const response = await fetch(`/api/projects/${newProject.id}`, {
     method: 'PUT',

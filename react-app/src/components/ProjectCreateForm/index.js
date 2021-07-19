@@ -54,19 +54,18 @@ function ProjectCreateForm() {
         <div className={styles.logo}>Kickstarter</div>
         <div className={styles.userIcon}></div>
       </div>
-      {/* <h1>Create your project!</h1> */}
       {currentStage === 1 && (
         <Form1
           changeStageButton={changeStageButton}
           setCategory={setCategory}
           categories={categories}
-          />
+        />
           )}
       {currentStage === 2 && (
         <Form2
-        changeStageButton={changeStageButton}
-        setBlurb={setBlurb}
-        blurb={blurb}
+          changeStageButton={changeStageButton}
+          setBlurb={setBlurb}
+          blurb={blurb}
         />
       )}
       {currentStage === 3 && (
