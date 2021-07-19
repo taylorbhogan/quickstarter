@@ -2,6 +2,7 @@
 
 const ADD_PROJECT = 'session/ADD_PROJECT';
 const SET_PROJECTS = 'session/SET_PROJECTS';
+const REMOVE_ONE = 'session/REMOVE_ONE';
 
 
 /* ------ DEFINE ACTION CREATORS ------ */
@@ -15,6 +16,13 @@ const setAllProjectsInStore = (projects) => ({
   type: SET_PROJECTS,
   projects
 });
+
+const deleteProjectFromStore = (projectId) => ({
+  type: REMOVE_ONE,
+  projectId
+})
+
+
 
 /* ------ DEFINE INITIAL STATE ------ */
 
@@ -60,6 +68,32 @@ export const createProject = (project) => async (dispatch) => {
   }
 }
 
+export const editProject = (newProject) => async dispatch  => {
+  const response = await fetch(`/api/projects/${newProject.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(newProject)
+  });
+  if (response.ok) {
+    const newProjectData = await response.json();
+
+    dispatch(addProjectToStore(newProjectData))
+    return newProjectData
+  }
+}
+
+export const deleteProject = (projectId) => async dispatch  => {
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    const spotDeleteSuccessMessage = await response.json();
+    dispatch(deleteProjectFromStore(projectId))
+
+    return spotDeleteSuccessMessage
+  }
+  return null;
+}
 
 /* ------ DEFINE & EXPORT REDUCER ------ */
 
@@ -82,6 +116,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         ...newState
       };
+    case REMOVE_ONE:
+      newState = Object.assign({}, state)
+      delete newState[action.spotId]
+      return {
+        ...newState
+      }
     default:
       return state;
   }
