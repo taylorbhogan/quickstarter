@@ -5,7 +5,10 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 
 .formContainer {
@@ -13,9 +16,10 @@
   box-sizing: border-box;
   width: 400px;
   background-color: white;
-  margin: 60px 0;
+  margin: 60px 0 0 0;
   border-radius: 1px;
   padding: 20px 30px;
+  height: fit-content;
 }
 
 .loginTitle {
@@ -42,6 +46,7 @@
   background-color: rgb(2, 136, 88);
   border: none;
   color: white;
+  cursor: pointer;
   padding: 10px 18px;
   width: 100%;
   transition: background-color 200ms;
@@ -49,4 +54,24 @@
 
 .loginBtn:hover {
   background-color: var(--primaryButtonColorHover);
+}
+
+.signUpContainer {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 20px;
+  border: 1px solid var(--borderColor);
+  background-color: white;
+  border-top: none;
+  width: 400px;
+}
+
+.signUpLink {
+  text-decoration: none;
+  color: var(--linkColor);
+}
+
+.signUpLink:hover {
+  color: var(--navBarFontColor)
 }
