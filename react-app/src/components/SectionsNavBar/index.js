@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { NavLink } from 'react-router-dom';
 import styles from './SectionsNavBar.module.css'
 
 const SectionsNavBar = () => {
