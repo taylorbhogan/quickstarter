@@ -7,7 +7,7 @@ function Form3({ changeStageButton, handleSubmit, countries, setCountry }) {
         onSubmit={handleSubmit}
         className={styles.form}
       >
-        <div>1 of 3</div>
+        <div>3 of 3</div>
         <div>
           <h1>Finally, let’s confirm your eligibility.</h1>
           <p>Tell us where you’re based and confirm a few other details before we proceed.</p>
@@ -18,12 +18,12 @@ function Form3({ changeStageButton, handleSubmit, countries, setCountry }) {
               <option
                 value={country}
                 key={country}>{country}</option>
-              )}
+            )}
           </select>
         </div>
         <div>
           <button
-          type='submit'
+            type='submit'
           > Save </button>
         </div>
         <div>
