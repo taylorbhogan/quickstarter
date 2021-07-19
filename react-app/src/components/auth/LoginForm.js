@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
-import styles from './LoginForm.module.css'
+import styles from './AuthForms.module.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   return (
     <div className={styles.formBackground}>
-      <div className={styles.formContainer}>
+      <div className={styles.loginFormContainer}>
         <form onSubmit={onLogin}>
           <h2 className={styles.loginTitle}>Log in</h2>
           <div>
@@ -42,7 +42,6 @@ const LoginForm = () => {
             ))}
           </div>
           <div>
-            {/* <label htmlFor='email'>Email</label> */}
             <input
               name='email'
               type='text'
@@ -53,7 +52,6 @@ const LoginForm = () => {
             />
           </div>
           <div>
-            {/* <label htmlFor='password'>Password</label> */}
             <input
               name='password'
               type='password'
@@ -62,12 +60,12 @@ const LoginForm = () => {
               onChange={updatePassword}
               className={styles.input}
             />
-            <button type='submit' className={styles.loginBtn}>Login</button>
+            <button type='submit' className={styles.btn}>Login</button>
           </div>
         </form>
       </div>
-      <div className={styles.signUpContainer}>
-        <p>New to Kickstarter?
+      <div className={styles.signUpLinkContainer}>
+        <p>New to Placeholder?
           <span>
             <NavLink to='/sign-up' className={styles.signUpLink}> Sign up</NavLink>
           </span>

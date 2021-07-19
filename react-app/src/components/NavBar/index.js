@@ -22,9 +22,10 @@ const NavBar = () => {
               <i className="fas fa-search" />
             </span>
           </button>
-          <button className={styles.profileBtn}>
+          <NavLink to='/login' className={styles.logInLink}>Log in</NavLink>
+          {/* <button className={styles.profileBtn}>
             <div className={styles.circle}></div>
-          </button>
+          </button> */}
         </section>
       </nav >
       <SectionsNavBar />

@@ -67,7 +67,6 @@
   outline: inherit;
   font-size: inherit;
   font-family: inherit;
-  margin-right: 12px;
   height: 21px;
 }
 
@@ -88,6 +87,15 @@
   outline: inherit;
 }
 
+.logInLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  margin-left: 18px;
+}
+
 .circle {
   cursor: pointer;
   height: 36px;
@@ -98,6 +106,7 @@
 
 .discoverButton:hover,
 .projectLink:hover,
-.searchBtn:hover {
+.searchBtn:hover,
+.logInLink:hover {
   color: var(--navBarHoverColor);
 }
