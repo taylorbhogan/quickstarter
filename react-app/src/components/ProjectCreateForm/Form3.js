@@ -28,6 +28,7 @@ function Form3({ changeStageButton, handleSubmit, countries, setCountry }) {
         </div>
         <div>
           <button
+            // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
             className={'back'}
             onClick={changeStageButton}
           > Back: Description</button>

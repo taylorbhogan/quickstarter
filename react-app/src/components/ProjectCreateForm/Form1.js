@@ -22,6 +22,7 @@ function Form1({ changeStageButton, categories, setCategory }) {
         </div>
         <div>
           <button
+          // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
             className={'next'}
             onClick={changeStageButton}
           >Next: Project idea</button>

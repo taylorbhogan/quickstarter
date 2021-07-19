@@ -10,6 +10,7 @@ class Project(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'category': self.category,
             'blurb': self.blurb,
             'country': self.country
