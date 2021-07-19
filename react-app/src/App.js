@@ -3,10 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
+import Learn from './components/Learn';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+import UsersList from './components/UsersList/UsersList';
 import User from './components/User';
+import Project from './components/Project';
+import Discover from './components/Discover';
+import ProjectEdit from './components/ProjectEdit';
 import { authenticate } from './store/session';
 
 function App() {
@@ -42,6 +46,18 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/learn' exact={true} >
+          <Learn />
+        </ProtectedRoute>
+        <Route path ='/discover' exact={true}>
+          <Discover />
+        </Route>
+        <ProtectedRoute path='/projects/:projectId' exact={true} >
+          <Project />
+        </ProtectedRoute>
+        <ProtectedRoute path='/projects/:projectId/edit' exact={true} >
+          <ProjectEdit />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
