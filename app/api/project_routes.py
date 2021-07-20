@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, redirect
-from flask.helpers import url_for
+# from flask.helpers import url_for
 from flask_login import login_required
 from app.forms import CreateProjectForm
 from app.models import db, Project
@@ -19,6 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @project_routes.route('/')
+# @login_required
 def get_projects():
     """
     retrieves all projects from db

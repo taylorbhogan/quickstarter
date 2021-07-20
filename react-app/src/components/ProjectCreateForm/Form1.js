@@ -15,14 +15,14 @@ function Form1({ changeStageButton, categories, setCategory }) {
           >
             {categories.map(category =>
               <option
-                value={category}
-                key={category}>{category}</option>
-              )}
+                value={category.id}
+                key={category.name}>{category.name}</option>
+            )}
           </select>
         </div>
         <div>
           <button
-          // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
+            // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
             className={'next'}
             onClick={changeStageButton}
           >Next: Project idea</button>

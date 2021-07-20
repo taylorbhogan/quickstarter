@@ -7,9 +7,9 @@ import { getProjects } from '../../store/project';
 function Learn() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProjects())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getProjects())
+  // }, [dispatch])
 
   return (
     <>
@@ -24,7 +24,7 @@ function Learn() {
       </div>
       <div>
         <h2>We see Kickstarter as a home for creative minds and a wonderful platform; where people who believe, respect, and see the vision can support an idea and make it a reality.</h2>
-       <p>- DE LA SOUL</p>
+        <p>- DE LA SOUL</p>
       </div>
       <div>
         <h2>A Kickstarter project does more than raise money. It builds community around your work.</h2>
