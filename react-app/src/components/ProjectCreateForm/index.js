@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, NavLink } from 'react-router-dom';
 import { createProject } from '../../store/project'
 
 import Form1 from './Form1';
@@ -73,7 +73,7 @@ function ProjectCreateForm() {
     <div>
       <div className={styles.header}>
         <div></div>
-        <div className={styles.logo}>Kickstarter</div>
+        <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
         <div className={styles.userIcon}></div>
       </div>
       {currentStage === 1 && (
