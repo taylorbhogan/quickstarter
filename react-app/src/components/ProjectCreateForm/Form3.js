@@ -17,7 +17,7 @@ function Form3({ changeStageButton, handleSubmit, countries, setCountry }) {
             {countries.map(country =>
               <option
                 value={country.id}
-                key={country.name}>{country.name}</option>
+                key={country.id}>{country.name}</option>
             )}
           </select>
         </div>

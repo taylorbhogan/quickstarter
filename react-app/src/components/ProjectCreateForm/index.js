@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, NavLink } from 'react-router-dom';
 import { createProject } from '../../store/project'
 
 import Form1 from './Form1';
@@ -12,12 +12,12 @@ function ProjectCreateForm() {
   const [errors, setErrors] = useState([]);
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
-  // const [country, setCountry] = useState('France')
+  const [country, setCountry] = useState('')
   const [subTitle, setSubTitle] = useState('')
   const [categories, setCategories] = useState([])
   const [countries, setCountries] = useState([])
   const [category, setCategory] = useState('')
-  const [country, setCountry] = useState('')
+  const user = useSelector(state => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -29,19 +29,18 @@ function ProjectCreateForm() {
     (async () => {
       const response = await fetch(`/api/categories`);
       const cats = await response.json();
-
+      // console.log(cats.categories)
+      // cats.categories.forEach(cat => {
+      //   console.log(cat.name)
+      // })
+      const countryRes = await fetch(`/api/countries`);
+      const countriesResponse = await countryRes.json()
       setCategories(cats.categories);
       setCategory(cats.categories[0].id)
-    })();
-  }, [])
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch('/api/countries');
-      const counts = await response.json();
-
-      setCountries(counts.countries);
-      setCategory(counts.countries[0].id)
+      // console.log(countriesResponse.countries)
+      setCountries(countriesResponse.countries)
+      setCountry(countriesResponse.countries[0].id)
+      // console.log(categories)
     })();
   }, [])
 
@@ -59,14 +58,17 @@ function ProjectCreateForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const project = {
+      userId: user.id,
       category,
       subTitle,
       country,
     }
+    // console.log(project)
     const createdProject = await dispatch(createProject(project))
     if (createdProject) {
       history.push(`/projects/${createdProject.id}/edit`);
     }
+
     // TODO: implement error handling.
 
   }
@@ -75,7 +77,7 @@ function ProjectCreateForm() {
     <div>
       <div className={styles.header}>
         <div></div>
-        <div className={styles.logo}>Kickstarter</div>
+        <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
         <div className={styles.userIcon}></div>
       </div>
       {currentStage === 1 && (

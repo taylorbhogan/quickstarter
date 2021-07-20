@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function Project() {
   const [project, setProject] = useState({});
-  const { projectId }  = useParams();
+  const { projectId } = useParams();
 
   useEffect(() => {
     if (!projectId) {

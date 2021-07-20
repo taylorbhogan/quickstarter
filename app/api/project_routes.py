@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request, redirect
 # from flask.helpers import url_for
-from flask_login import login_required
-from app.forms import CreateProjectForm
+from flask_login import login_required, current_user
+from app.forms import CreateProjectForm, UpdateProjectForm
 from app.models import db, Project
+
 
 project_routes = Blueprint('projects', __name__)
 
@@ -59,15 +60,28 @@ def create_project():
     Creates a project in the database
     """
     form = CreateProjectForm()
+
     form['csrf_token'].data = request.cookies['csrf_token']
+    form['category'].data = request.json["project"]['category']
+    form['subTitle'].data = request.json["project"]['subTitle']
+    form['country'].data = request.json["project"]['country']
+
     if form.validate_on_submit():
         project = request.json['project']
+
         project = Project(
+<<<<<<< HEAD
             category_id=project['category_id'],
             sub_title=project['sub_title'],
             country_id=project['country_id']
+=======
+            user_id=project['userId'],
+            # category_id=project['category'],
+            category_id= form['category'].data,
+            sub_title=form['subTitle'].data,
+            country_id=form['country'].data
+>>>>>>> main
         )
-
         db.session.add(project)
         db.session.commit()
 
@@ -78,3 +92,50 @@ def create_project():
         return {'newProject': newProject}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@project_routes.route('/<int:id>/edit', methods=['PATCH'])
+@login_required
+def update_project(id):
+    """
+    Updates a project in the database
+    """
+    form = UpdateProjectForm()
+    # print('**********', request.json)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['category'].data = request.json['categoryId']
+    form['subTitle'].data = request.json['sub_title']
+    form['country'].data = request.json['countryId']
+
+    if form.validate_on_submit():
+
+        project = Project.query.get(id)
+        # print('******** BEFORE!!!!!!!', project.to_dict())
+
+        project.category_id = form['category'].data
+        # project['sub_title'] = form['subTitle'].data
+        project.sub_title = form['subTitle'].data
+        project.country_id = form['country'].data
+        # print('******** AFTER!!!!!!!!!!!!!!!!!!!!', project.to_dict())
+        db.session.add(project)
+        db.session.commit()
+        return project.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        # return {'hi': 'yay'}
+        # project = request.json['project']
+
+        # project = Project(
+        #     user_id=project['userId'],
+        #     # category_id=project['category'],
+        #     category_id= form['category'].data,
+        #     sub_title=form['subTitle'].data,
+        #     country_id=form['country'].data
+        # )
+
+        # id = project.id
+        # projectFromDb = Project.query.get(id)
+        # newProject = projectFromDb.to_dict()
+
+        # return {'newProject': newProject}
+
+
+

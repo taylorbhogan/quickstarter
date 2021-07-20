@@ -1,40 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editProject, deleteProject } from '../../store/project'
+import { getCountries } from '../../store/country'
+import { getCategories } from '../../store/category'
 
 
 function Project() {
-  const { projectId }  = useParams();
+  const { projectId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([])
 
   const [project, setProject] = useState('')
-  const [subTitle, setSubTitle] = useState(project.subTitle)
-  const [category, setCategory] = useState(project.category)
-  const [country, setCountry] = useState(project.country)
+  // const [subTitle, setSubTitle] = useState(project.subTitle)
+  const [subTitle, setSubTitle] = useState(project.sub_title)
+  const [categoryId, setCategoryId] = useState(project.category)
+  const [countryId, setCountryId] = useState(project.country)
   const [subCategory, setSubCategory] = useState('')
   const [title, setTitle] = useState('')
   const [goal, setGoal] = useState('')
   const [imageUrl, setImageUrl] = useState('')
   const [campaignDuration, setCampaignDuration] = useState('')
 
+  const categories = useSelector(state => Object.values(state.categories));
+  const countries = useSelector(state => Object.values(state.countries));
+  const user = useSelector(state => state.session.user);
+
   // TODO: switch these to be their equivalents pulled from the db
-  const categories = ['Art', 'Comics', 'Crafts']
+  // const categories = ['Art', 'Comics', 'Crafts']
   const subCategories = ['Stuff', 'Things']
-  const countries = ['Norway', 'New Zealand', 'Mongolia']
+  // const countries = ['Norway', 'New Zealand', 'Mongolia']
 
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
+      // console.log(project)
       setProject(project);
-      setSubTitle(project.subTitle)
-      setCategory(project.category)
+      dispatch(getCountries())
+      dispatch(getCategories())
+      setSubTitle(project.sub_title)
+      setCategoryId(project.category_id)
+      setCountryId(project.country_id)
     })();
   }, [projectId])
 
+  // HANDLE SUBMIT IS NOT YET FUNCTIONAL - IN THE WORKS
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,20 +56,23 @@ function Project() {
 
     const newProject = {
       ...project,
+      userId: user.id,
       title,
-      subTitle,
-      category,
+      sub_title: subTitle,
+      categoryId,
+      // category: categoryId,
       subCategory,
-      country,
+      countryId,
+      // country: countryId,
       imageUrl,
       campaignDuration
     }
     // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
     let editedProject = await dispatch(editProject(newProject))
-    console.log("editedProject------->", editedProject);
-    if (editedProject) {
-      history.push(`/projects/${editedProject.id}`);
-    }
+    // console.log("editedProject------->", editedProject);
+    // if (editedProject) {
+    //   history.push(`/projects/${editedProject.id}`);
+    // }
   }
 
   const handleDelete = async (projectId) => {
@@ -113,14 +128,14 @@ function Project() {
             <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
             <div>You’ll be able to change the category and subcategory even after your project is live.</div>
             <select
-              onChange={(e) => setCategory(e.target.value)}
-              value={category}
+              onChange={(e) => setCategoryId(e.target.value)}
+              value={categoryId}
             >
               {categories.map(category =>
                 <option
-                  value={category}
-                  key={category}>{category}</option>
-                )}
+                  value={category.id}
+                  key={category.id}>{category.name}</option>
+              )}
             </select>
             <select
               onChange={(e) => setSubCategory(e.target.value)}
@@ -130,21 +145,21 @@ function Project() {
                 <option
                   value={subCategory}
                   key={subCategory}>{subCategory}</option>
-                )}
+              )}
             </select>
           </div>
           <div>
             <h2>Project location</h2>
             <p>Enter the location that best describes where your project is based.</p>
             <select
-              onChange={(e) => setCountry(e.target.value)}
-              value={country}
+              onChange={(e) => setCountryId(e.target.value)}
+              value={countryId}
             >
               {countries.map(country =>
                 <option
-                  value={country}
-                  key={country}>{country}</option>
-                )}
+                  value={country.id}
+                  key={country.id}>{country.name}</option>
+              )}
             </select>
           </div>
           <div>
@@ -153,11 +168,11 @@ function Project() {
             <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
             <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
             <input
-                type="text"
-                placeholder={'enter your image url here'}
-                onChange={(e) => setImageUrl(e.target.value)}
-                value={imageUrl}
-              ></input>
+              type="text"
+              placeholder={'enter your image url here'}
+              onChange={(e) => setImageUrl(e.target.value)}
+              value={imageUrl}
+            ></input>
           </div>
           <div>
             <h2>Funding goal</h2>
