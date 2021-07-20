@@ -26,7 +26,7 @@ function Project() {
         <strong>Project Id</strong> {projectId}
       </li>
       <li>
-        <strong>Project Blurb</strong> {project.blurb}
+        <strong>Project SubTitle</strong> {project.subTitle}
       </li>
       <li>
         <strong>Project Category</strong> {project.category}

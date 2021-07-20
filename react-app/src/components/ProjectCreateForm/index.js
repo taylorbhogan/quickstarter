@@ -12,15 +12,17 @@ function ProjectCreateForm() {
   const [errors, setErrors] = useState([]);
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
-  const [country, setCountry] = useState('France')
-  const [blurb, setBlurb] = useState('')
+  // const [country, setCountry] = useState('France')
+  const [subTitle, setSubTitle] = useState('')
   const [categories, setCategories] = useState([])
+  const [countries, setCountries] = useState([])
   const [category, setCategory] = useState('')
+  const [country, setCountry] = useState('')
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const countries = ['France', 'Vietnam', 'Libya']
+  // const countries = ['France', 'Vietnam', 'Libya']
   // const categories = ['Art', 'Comics', 'Crafts']
 
   useEffect(() => {
@@ -30,6 +32,16 @@ function ProjectCreateForm() {
 
       setCategories(cats.categories);
       setCategory(cats.categories[0].id)
+    })();
+  }, [])
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch('/api/countries');
+      const counts = await response.json();
+
+      setCountries(counts.countries);
+      setCategory(counts.countries[0].id)
     })();
   }, [])
 
@@ -48,7 +60,7 @@ function ProjectCreateForm() {
     e.preventDefault();
     const project = {
       category,
-      blurb,
+      subTitle,
       country,
     }
     const createdProject = await dispatch(createProject(project))
@@ -76,8 +88,8 @@ function ProjectCreateForm() {
       {currentStage === 2 && (
         <Form2
           changeStageButton={changeStageButton}
-          setBlurb={setBlurb}
-          blurb={blurb}
+          setSubTitle={setSubTitle}
+          subTitle={subTitle}
         />
       )}
       {currentStage === 3 && (

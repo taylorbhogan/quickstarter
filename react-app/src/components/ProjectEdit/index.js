@@ -11,7 +11,7 @@ function Project() {
   const [errors, setErrors] = useState([])
 
   const [project, setProject] = useState('')
-  const [blurb, setBlurb] = useState(project.blurb)
+  const [subTitle, setSubTitle] = useState(project.subTitle)
   const [category, setCategory] = useState(project.category)
   const [country, setCountry] = useState(project.country)
   const [subCategory, setSubCategory] = useState('')
@@ -30,7 +30,7 @@ function Project() {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
       setProject(project);
-      setBlurb(project.blurb)
+      setSubTitle(project.subTitle)
       setCategory(project.category)
     })();
   }, [projectId])
@@ -45,7 +45,7 @@ function Project() {
     const newProject = {
       ...project,
       title,
-      blurb,
+      subTitle,
       category,
       subCategory,
       country,
@@ -102,8 +102,8 @@ function Project() {
               <label>Subtitle</label>
               <textarea
                 placeholder={'Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself.'}
-                onChange={(e) => setBlurb(e.target.value)}
-                value={blurb}
+                onChange={(e) => setSubTitle(e.target.value)}
+                value={subTitle}
               ></textarea>
             </div>
           </div>
@@ -204,7 +204,7 @@ function Project() {
             <strong>Project Id</strong> {projectId}
           </li>
           <li>
-            <strong>Project Blurb</strong> {project.blurb}
+            <strong>Project SubTitle</strong> {project.subTitle}
           </li>
           <li>
             <strong>Project Category</strong> {project.category}

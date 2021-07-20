@@ -1,6 +1,6 @@
 import styles from './ProjectCreateForm.module.css'
 
-function Form2({ changeStageButton, blurb, setBlurb }) {
+function Form2({ changeStageButton, subTitle, setSubTitle }) {
   return (
     <div>
       <form className={styles.form}>
@@ -11,8 +11,8 @@ function Form2({ changeStageButton, blurb, setBlurb }) {
         <textarea
           type="text"
           placeholder={' An album of songs based on Pablo Neruda poems.'}
-          onChange={(e) => setBlurb(e.target.value)}
-          value={blurb}
+          onChange={(e) => setSubTitle(e.target.value)}
+          value={subTitle}
         />
         </div>
         <div>

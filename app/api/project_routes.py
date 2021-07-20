@@ -63,9 +63,9 @@ def create_project():
     if form.validate_on_submit():
         project = request.json['project']
         project = Project(
-            category=project['category'],
-            blurb=project['blurb'],
-            country=project['country']
+            category_id=project['category_id'],
+            sub_title=project['sub_title'],
+            country_id=project['country_id']
         )
 
         db.session.add(project)

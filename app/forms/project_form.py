@@ -4,6 +4,6 @@ from wtforms.validators import DataRequired, ValidationError
 from app.models import Project
 
 class CreateProjectForm(FlaskForm):
-    category = StringField('category')
-    blurb = StringField('blurb')
-    country = StringField('country')
+    category_id = StringField('category_id')
+    sub_title = StringField('sub_title')
+    country_id = StringField('country_id')
