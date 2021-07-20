@@ -70,17 +70,11 @@ def create_project():
         project = request.json['project']
 
         project = Project(
-<<<<<<< HEAD
-            category_id=project['category_id'],
-            sub_title=project['sub_title'],
-            country_id=project['country_id']
-=======
             user_id=project['userId'],
             # category_id=project['category'],
             category_id= form['category'].data,
             sub_title=form['subTitle'].data,
             country_id=form['country'].data
->>>>>>> main
         )
         db.session.add(project)
         db.session.commit()
@@ -136,6 +130,3 @@ def update_project(id):
         # newProject = projectFromDb.to_dict()
 
         # return {'newProject': newProject}
-
-
-
