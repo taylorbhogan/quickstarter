@@ -10,15 +10,16 @@ function Form1({ changeStageButton, categories, setCategory }) {
         <div>
           <h1>First, let’s get you set up.</h1>
           <p>Pick a project category to connect with a specific community. You can always update this later.</p>
-          <select
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            {categories.map(category =>
-              <option
-                value={category.id}
-                key={category.name}>{category.name}</option>
-            )}
-          </select>
+          {categories.length > 0 &&
+            <select
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              {categories.map(category =>
+                <option
+                  value={category.id}
+                  key={category.name}>{category.name}</option>
+              )}
+            </select>}
         </div>
         <div>
           <button
@@ -28,6 +29,7 @@ function Form1({ changeStageButton, categories, setCategory }) {
           >Next: Project idea</button>
         </div>
       </form>
+
     </div >
   )
 }
