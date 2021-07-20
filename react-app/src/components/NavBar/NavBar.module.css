@@ -18,7 +18,7 @@
   padding: 12px 0 12px 24px;
 }
 
-.discoverButton {
+/* .discoverButton {
   background: none;
   color: inherit;
   border: none;
@@ -28,9 +28,9 @@
   margin-right: 12px;
   font-size: inherit;
   font-family: inherit;
-}
+} */
 
-.projectLink {
+.headerLink {
   text-decoration: none;
   color: inherit;
   display: flex;

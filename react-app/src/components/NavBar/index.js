@@ -9,8 +9,8 @@ const NavBar = () => {
     <>
       <nav className={styles.navBar}>
         <section className={styles.navBarLeft}>
-          <button className={styles.discoverButton}>Discover</button>
-          <NavLink to='/projects' exact={true} className={styles.projectLink}>Start a project</NavLink>
+          <NavLink to='/discover' exact={true} className={styles.headerLink}>Discover</NavLink>
+          <NavLink to='/learn' exact={true} className={styles.headerLink}>Start a project</NavLink>
         </section>
         <section className={styles.navBarCenter}>
           <NavLink to='/' exact={true} className={styles.logoPlaceholder}>Placeholder</NavLink>
