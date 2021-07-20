@@ -17,11 +17,12 @@ function Project() {
   const [subTitle, setSubTitle] = useState(project.sub_title)
   const [categoryId, setCategoryId] = useState(project.category)
   const [countryId, setCountryId] = useState(project.country)
-  const [subCategory, setSubCategory] = useState('')
-  const [title, setTitle] = useState('')
-  const [goal, setGoal] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  const [campaignDuration, setCampaignDuration] = useState('')
+  const [subCategory, setSubCategory] = useState('Things')
+  const [title, setTitle] = useState(project.title)
+  const [goal, setGoal] = useState(project.funding_goal)
+  const [imageUrl, setImageUrl] = useState(project.project_image_url)
+  const [campaignDuration, setCampaignDuration] = useState(project.campaign_duration)
+
 
   const categories = useSelector(state => Object.values(state.categories));
   const countries = useSelector(state => Object.values(state.countries));
@@ -40,6 +41,10 @@ function Project() {
       setProject(project);
       dispatch(getCountries())
       dispatch(getCategories())
+      setTitle(project.title)
+      setGoal(project.funding_goal)
+      setImageUrl(project.project_image_url)
+      setCampaignDuration(project.campaign_duration)
       setSubTitle(project.sub_title)
       setCategoryId(project.category_id)
       setCountryId(project.country_id)
@@ -56,23 +61,25 @@ function Project() {
 
     const newProject = {
       ...project,
-      userId: user.id,
+      user_id: user.id,
       title,
       sub_title: subTitle,
-      categoryId,
+      category_id: categoryId,
+      sub_category_id: subCategory,
+      country_id: countryId,
+      project_image_url: imageUrl,
+      campaign_duration: campaignDuration,
+      funding_goal: goal
       // category: categoryId,
-      subCategory,
-      countryId,
       // country: countryId,
-      imageUrl,
-      campaignDuration
     }
+    // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
     // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
     let editedProject = await dispatch(editProject(newProject))
-    // console.log("editedProject------->", editedProject);
-    // if (editedProject) {
-    //   history.push(`/projects/${editedProject.id}`);
-    // }
+
+    if (editedProject) {
+      history.push(`/projects/${editedProject.id}`);
+    }
   }
 
   const handleDelete = async (projectId) => {
@@ -107,18 +114,18 @@ function Project() {
             <div>
               <label>Title</label>
               <input
+                value={title}
                 type="text"
                 placeholder={'The Community Microscope Kit'}
                 onChange={(e) => setTitle(e.target.value)}
-                value={title}
               ></input>
             </div>
             <div>
               <label>Subtitle</label>
               <textarea
+                value={subTitle}
                 placeholder={'Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself.'}
                 onChange={(e) => setSubTitle(e.target.value)}
-                value={subTitle}
               ></textarea>
             </div>
           </div>
@@ -128,8 +135,8 @@ function Project() {
             <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
             <div>You’ll be able to change the category and subcategory even after your project is live.</div>
             <select
-              onChange={(e) => setCategoryId(e.target.value)}
               value={categoryId}
+              onChange={(e) => setCategoryId(e.target.value)}
             >
               {categories.map(category =>
                 <option
@@ -138,8 +145,8 @@ function Project() {
               )}
             </select>
             <select
-              onChange={(e) => setSubCategory(e.target.value)}
               value={subCategory}
+              onChange={(e) => setSubCategory(e.target.value)}
             >
               {subCategories.map(subCategory =>
                 <option
@@ -152,8 +159,8 @@ function Project() {
             <h2>Project location</h2>
             <p>Enter the location that best describes where your project is based.</p>
             <select
-              onChange={(e) => setCountryId(e.target.value)}
               value={countryId}
+              onChange={(e) => setCountryId(e.target.value)}
             >
               {countries.map(country =>
                 <option
@@ -168,10 +175,10 @@ function Project() {
             <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
             <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
             <input
+              value={imageUrl}
               type="text"
               placeholder={'enter your image url here'}
               onChange={(e) => setImageUrl(e.target.value)}
-              value={imageUrl}
             ></input>
           </div>
           <div>
@@ -181,10 +188,10 @@ function Project() {
             <div>
               <label>Goal amount</label>
               <input
+                value={goal}
                 type="text"
                 placeholder={'$50,000'}
                 onChange={(e) => setGoal(e.target.value)}
-                value={goal}
               ></input>
             </div>
           </div>
@@ -193,10 +200,10 @@ function Project() {
             <div>
               <label>Enter number of days</label>
               <input
+                value={campaignDuration}
                 type="text"
                 placeholder={'30'}
                 onChange={(e) => setCampaignDuration(e.target.value)}
-                value={campaignDuration}
               ></input>
             </div>
           </div>

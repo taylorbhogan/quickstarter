@@ -96,9 +96,13 @@ def update_project(id):
     form = UpdateProjectForm()
     # print('**********', request.json)
     form['csrf_token'].data = request.cookies['csrf_token']
-    form['category'].data = request.json['categoryId']
+    form['category'].data = request.json['category_id']
     form['subTitle'].data = request.json['sub_title']
-    form['country'].data = request.json['countryId']
+    form['country'].data = request.json['country_id']
+    form['campaign_duration'].data = request.json['campaign_duration']
+    form['funding_goal'].data = request.json['funding_goal']
+    form['project_image_url'].data = request.json['project_image_url']
+    form['title'].data = request.json['title']
 
     if form.validate_on_submit():
 
@@ -109,6 +113,11 @@ def update_project(id):
         # project['sub_title'] = form['subTitle'].data
         project.sub_title = form['subTitle'].data
         project.country_id = form['country'].data
+        project.campaign_duration = form['campaign_duration'].data
+        project.funding_goal = form['funding_goal'].data
+        project.project_image_url = form['project_image_url'].data
+        project.title = form['title'].data
+
         # print('******** AFTER!!!!!!!!!!!!!!!!!!!!', project.to_dict())
         db.session.add(project)
         db.session.commit()
