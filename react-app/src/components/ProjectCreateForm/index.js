@@ -27,13 +27,9 @@ function ProjectCreateForm() {
     (async () => {
       const response = await fetch(`/api/categories`);
       const cats = await response.json();
-      // console.log(cats.categories)
-      // cats.categories.forEach(cat => {
-      //   console.log(cat.name)
-      // })
+
       setCategories(cats.categories);
       setCategory(cats.categories[0].id)
-      // console.log(categories)
     })();
   }, [])
 
