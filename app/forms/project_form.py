@@ -12,3 +12,7 @@ class UpdateProjectForm(FlaskForm):
     category = StringField('category')
     subTitle = StringField('subTitle')
     country = StringField('country')
+    campaign_duration =StringField('campaign_duration')
+    funding_goal =StringField('funding_goal')
+    project_image_url =StringField('project_image_url')
+    title = StringField('title')
