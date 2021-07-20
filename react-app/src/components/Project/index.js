@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function Project() {
   const [project, setProject] = useState({});
-  const { projectId }  = useParams();
+  const { projectId } = useParams();
 
   useEffect(() => {
     if (!projectId) {
@@ -26,7 +26,7 @@ function Project() {
         <strong>Project Id</strong> {projectId}
       </li>
       <li>
-        <strong>Project Blurb</strong> {project.blurb}
+        <strong>Project SubTitle</strong> {project.subTitle}
       </li>
       <li>
         <strong>Project Category</strong> {project.category}
