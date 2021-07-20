@@ -1,22 +1,52 @@
+@import '../../vars.css';
+
 .header{
   display: flex;
-  width: 1300px;
+  width: 80%;
+  max-width: 1246px;
   margin: 0 auto;
-  padding-top: 40px;
+  padding: 18px 0;
   justify-content: space-between;
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .logo{
+  font-size: 24px;
+  font-family: Helvetica, sans-serif;
+  color: rgb(79, 197, 128);
+  text-decoration: none;
+  font-weight: bold;
 
 }
 
 .userIcon{
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border: 1px solid black;
+  border-radius: 15px;
+  background-color: blue;
 }
 
 .form{
   width: 500px;
   margin: 150px auto;
+}
+
+.pageNumber {
+  width: 80%;
+  max-width: 1246px;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+
+form h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form h3 {
+  font-size: 18px;
+  margin-bottom: 36px;
 }

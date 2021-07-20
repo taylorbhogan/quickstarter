@@ -5,11 +5,11 @@ function Form1({ changeStageButton, categories, setCategory }) {
 
   return (
     <div>
+      <div className={styles.pageNumber}>1 of 3</div>
       <form className={styles.form}>
-        <div>1 of 3</div>
         <div>
-          <h1>First, let’s get you set up.</h1>
-          <p>Pick a project category to connect with a specific community. You can always update this later.</p>
+          <h2>First, let’s get you set up.</h2>
+          <h3>Pick a project category to connect with a specific community. You can always update this later.</h3>
           {categories.length > 0 &&
             <select
               onChange={(e) => setCategory(e.target.value)}
