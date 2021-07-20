@@ -12,15 +12,16 @@ function ProjectCreateForm() {
   const [errors, setErrors] = useState([]);
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
-  const [country, setCountry] = useState('France')
+  const [country, setCountry] = useState('')
   const [blurb, setBlurb] = useState('')
   const [categories, setCategories] = useState([])
+  const [countries, setCountries] = useState([])
   const [category, setCategory] = useState('')
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const countries = ['France', 'Vietnam', 'Libya']
+  // const countries = ['France', 'Vietnam', 'Libya']
   // const categories = ['Art', 'Comics', 'Crafts']
 
   useEffect(() => {
@@ -31,8 +32,13 @@ function ProjectCreateForm() {
       // cats.categories.forEach(cat => {
       //   console.log(cat.name)
       // })
+      const countryRes = await fetch(`/api/countries`);
+      const countriesResponse = await countryRes.json()
       setCategories(cats.categories);
       setCategory(cats.categories[0].id)
+      // console.log(countriesResponse.countries)
+      setCountries(countriesResponse.countries)
+      setCountry(countriesResponse.countries[0].id)
       // console.log(categories)
     })();
   }, [])
