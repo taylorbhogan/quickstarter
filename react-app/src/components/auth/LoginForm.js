@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import styles from './AuthForms.module.css'
+import LoginErrorModal from './LoginErrorModal';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -40,6 +41,7 @@ const LoginForm = () => {
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
+            {/* {errors.length ? <LoginErrorModal /> : "bye"} */}
           </div>
           <div>
             <input
