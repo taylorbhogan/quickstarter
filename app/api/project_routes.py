@@ -130,6 +130,3 @@ def update_project(id):
         # newProject = projectFromDb.to_dict()
 
         # return {'newProject': newProject}
-
-
-

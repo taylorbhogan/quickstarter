@@ -22,7 +22,6 @@ function ProjectCreateForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-
   // const countries = ['France', 'Vietnam', 'Libya']
   // const categories = ['Art', 'Comics', 'Crafts']
 

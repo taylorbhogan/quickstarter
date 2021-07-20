@@ -17,4 +17,3 @@ def get_countries():
         return {'countries': [country.to_dict() for country in allCountries]}
     else:
         return {'something went wrong when getting countries from the database'}
-

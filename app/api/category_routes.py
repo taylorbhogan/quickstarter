@@ -1,7 +1,4 @@
-from flask import Blueprint, jsonify, request, redirect
-# from flask.helpers import url_for
-# from flask_login import login_required
-# from app.forms import CreateProjectForm
+from flask import Blueprint
 from app.models import db, Category
 
 category_routes = Blueprint('categories', __name__)
@@ -12,9 +9,8 @@ def get_categories():
     """
     retrieves all categories from db
     """
-    allCategories = Category.query.all()
-    if allCategories:
-        return {'categories': [category.to_dict() for category in allCategories]}
+    all_categories = Category.query.all()
+    if all_categories:
+        return {'categories': [category.to_dict() for category in all_categories]}
     else:
         return {'something went wrong when getting categories from the database'}
-
