@@ -18,7 +18,7 @@ function Discover() {
   const projectComponents = projects.map((project) => {
     return (
       <li key={project.id}>
-        <NavLink to={`/projects/${project.id}`}>{project.blurb}</NavLink>
+        <NavLink to={`/projects/${project.id}`}>{project.subTitle}</NavLink>
       </li>
     );
   });

@@ -3,10 +3,10 @@ import { Modal } from '../../context/Modal'
 import ProjectCreateForm from "../ProjectCreateForm";
 import styles from "./ProjectCreateModal.module.css"
 
-function ProjectCreateModal(){
+function ProjectCreateModal() {
   const [showSpotAddModal, setShowSpotAddModal] = useState(false);
 
-  return(
+  return (
     <div>
       <button className={styles.btn}
         onClick={() => setShowSpotAddModal(true)}
@@ -15,8 +15,9 @@ function ProjectCreateModal(){
         <Modal onClose={() => setShowSpotAddModal(false)}>
           <ProjectCreateForm />
         </Modal>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 }
 

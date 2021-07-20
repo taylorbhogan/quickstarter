@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createProject } from '../../store/project'
 
@@ -13,13 +13,15 @@ function ProjectCreateForm() {
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
   const [country, setCountry] = useState('')
-  const [blurb, setBlurb] = useState('')
+  const [subTitle, setSubTitle] = useState('')
   const [categories, setCategories] = useState([])
   const [countries, setCountries] = useState([])
   const [category, setCategory] = useState('')
+  const user = useSelector(state => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
+
 
   // const countries = ['France', 'Vietnam', 'Libya']
   // const categories = ['Art', 'Comics', 'Crafts']
@@ -57,14 +59,17 @@ function ProjectCreateForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const project = {
+      userId: user.id,
       category,
-      blurb,
+      subTitle,
       country,
     }
+    // console.log(project)
     const createdProject = await dispatch(createProject(project))
     if (createdProject) {
       history.push(`/projects/${createdProject.id}/edit`);
     }
+
     // TODO: implement error handling.
 
   }
@@ -86,8 +91,8 @@ function ProjectCreateForm() {
       {currentStage === 2 && (
         <Form2
           changeStageButton={changeStageButton}
-          setBlurb={setBlurb}
-          blurb={blurb}
+          setSubTitle={setSubTitle}
+          subTitle={subTitle}
         />
       )}
       {currentStage === 3 && (

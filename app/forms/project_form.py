@@ -5,5 +5,10 @@ from app.models import Project
 
 class CreateProjectForm(FlaskForm):
     category = StringField('category')
-    blurb = StringField('blurb')
+    subTitle = StringField('subTitle')
+    country = StringField('country')
+
+class UpdateProjectForm(FlaskForm):
+    category = StringField('category')
+    subTitle = StringField('subTitle')
     country = StringField('country')

@@ -45,10 +45,10 @@ class Project(db.Model):
             "country_id": self.country_id,
             "is_live": self.is_live,
             "created_at": self.created_at,
-            "creator": self.creator.to_dict(),
-            "category": self.category.to_dict(),
-            "sub_category": self.sub_category.to_dict(),
-            'country': self.country.to_dict(),
-            'rewards': [reward.to_dict() for reward in self.rewards],
-            'backers': [backer.to_dict() for backer in self.backers]
+            # "creator": self.creator.to_dict(),
+            # "category": self.category.to_dict(),
+            # "sub_category": self.sub_category.to_dict(),
+            # 'country': self.country.to_dict(),
+            # 'rewards': [reward.to_dict() for reward in self.rewards],
+            # 'backers': [backer.to_dict() for backer in self.backers]
         }

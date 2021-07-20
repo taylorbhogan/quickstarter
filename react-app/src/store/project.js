@@ -26,7 +26,7 @@ const deleteProjectFromStore = (projectId) => ({
 
 /* ------ DEFINE INITIAL STATE ------ */
 
-const initialState = { };
+const initialState = {};
 
 /* ------ DEFINE THUNK ACTION CREATORS ------ */
 
@@ -67,20 +67,26 @@ export const createProject = (project) => async (dispatch) => {
   }
 }
 //TODO: build the API route to handle this fetch request
-export const editProject = (newProject) => async dispatch  => {
-  const response = await fetch(`/api/projects/${newProject.id}`, {
-    method: 'PUT',
-    body: JSON.stringify(newProject)
+export const editProject = (newProject) => async dispatch => {
+  console.log(newProject)
+  const response = await fetch(`/api/projects/${newProject.id}/edit`, {
+    method: 'PATCH',
+    body: JSON.stringify(newProject),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+
   });
+
   if (response.ok) {
     const newProjectData = await response.json();
-
-    dispatch(addProjectToStore(newProjectData))
-    return newProjectData
+    console.log(newProjectData)
+    // dispatch(addProjectToStore(newProjectData))
+    // return newProjectData
   }
 }
 
-export const deleteProject = (projectId) => async dispatch  => {
+export const deleteProject = (projectId) => async dispatch => {
   const response = await fetch(`/api/projects/${projectId}`, {
     method: 'DELETE',
   });
