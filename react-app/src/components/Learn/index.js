@@ -2,7 +2,7 @@ import ProjectCreateModal from '../ProjectCreateModal';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
 import { getProjects } from '../../store/project';
-import styles from './learn.module.css';
+import styles from './Learn.module.css';
 
 function Learn() {
   const dispatch = useDispatch();
@@ -13,22 +13,41 @@ function Learn() {
 
   return (
     <>
-      <div className={styles.titleDivContainer}>
-        <div className={styles.titleDiv}>
+      <div className={styles.startContainer}>
+        <div className={styles.startTitle}>
           <h1>Bring your creative project to life.</h1>
           <ProjectCreateModal />
         </div>
       </div>
-      <div>
-        <div>De La Soul raised $600,874 to make their Grammy-winning album, And the Anonymous Nobody..., with full creative control</div>
-        <div>
-          <div>With the support of 13, 454 backers, Elena Favilli and Francesca Cavallo published Good Night Stories for Rebel Girls - and became best-selling authors.</div>
-          <div>Since raising over $300k through seven successful projects, Craighton Berman now runs his own homewares company with his partner, Emily.</div>
+      <div className={styles.featuredContainer}>
+        <div className={styles.featuredLarge}>
+          <div className={styles.captionsContainer}>
+            <span className={styles.captions}>
+              De La Soul raised $600,874 to make their Grammy-winning album, And the Anonymous Nobody..., with full creative control
+            </span>
+          </div>
+        </div>
+        <div className={styles.featuredSmallTop}>
+          <div className={styles.captionsContainer}>
+            <span className={styles.captions}>
+              With the support of 13, 454 backers, Elena Favilli and Francesca Cavallo published Good Night Stories for Rebel Girls - and became best-selling authors.
+            </span>
+          </div>
+        </div>
+        <div className={styles.featuredSmallBottom}>
+          <div className={styles.captionsContainer}>
+            <span className={styles.captions}>
+              Since raising over $300k through seven successful projects, Craighton Berman now runs his own homewares company with his partner, Emily.
+            </span>
+          </div>
         </div>
       </div>
-      <div>
-        <h2>We see Kickstarter as a home for creative minds and a wonderful platform; where people who believe, respect, and see the vision can support an idea and make it a reality.</h2>
-        <p>- DE LA SOUL</p>
+      <div className={styles.quoteContainer}>
+        <div className={styles.quotesMargin}>
+
+          <h2 className={styles.quote}><span className={styles.quotationMark}>"</span>We see Kickstarter as a home for creative minds and a wonderful platform; where people who believe, respect, and see the vision can support an idea and make it a reality.</h2>
+          <p className={styles.author}>- DE LA SOUL</p>
+        </div>
       </div>
       <div>
         <h2>A Kickstarter project does more than raise money. It builds community around your work.</h2>
