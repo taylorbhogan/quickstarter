@@ -19,6 +19,7 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
           <button
             // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
             className={'next'}
+            id={'next'}
             onClick={changeStageButton}> Next: Countries</button>
         </div>
         <div>

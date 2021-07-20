@@ -48,7 +48,7 @@ function ProjectCreateForm() {
   const changeStageButton = (e) => {
     e.preventDefault()
 
-    if (e.target.className === 'next') {
+    if (e.target.id === 'next') {
       setCurrentStage(currentStage + 1)
     } else if (e.target.className === 'back') {
       setCurrentStage(currentStage - 1)
