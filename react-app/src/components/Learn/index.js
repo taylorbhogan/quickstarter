@@ -2,7 +2,7 @@ import ProjectCreateModal from '../ProjectCreateModal';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
 import { getProjects } from '../../store/project';
-
+import styles from './learn.module.css';
 
 function Learn() {
   const dispatch = useDispatch();
@@ -13,8 +13,12 @@ function Learn() {
 
   return (
     <>
-      <h1>Bring your creative project to life.</h1>
-      <ProjectCreateModal />
+      <div className={styles.titleDivContainer}>
+        <div className={styles.titleDiv}>
+          <h1>Bring your creative project to life.</h1>
+          <ProjectCreateModal />
+        </div>
+      </div>
       <div>
         <div>De La Soul raised $600,874 to make their Grammy-winning album, And the Anonymous Nobody..., with full creative control</div>
         <div>
