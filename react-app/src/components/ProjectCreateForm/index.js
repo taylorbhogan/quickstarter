@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createProject } from '../../store/project'
@@ -12,14 +12,30 @@ function ProjectCreateForm() {
   const [errors, setErrors] = useState([]);
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
-  const [category, setCategory] = useState('Art')
   const [country, setCountry] = useState('France')
   const [blurb, setBlurb] = useState('')
+  const [categories, setCategories] = useState([])
+  const [category, setCategory] = useState('')
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   const countries = ['France', 'Vietnam', 'Libya']
-  const categories = ['Art', 'Comics', 'Crafts']
+  // const categories = ['Art', 'Comics', 'Crafts']
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`/api/categories`);
+      const cats = await response.json();
+      // console.log(cats.categories)
+      // cats.categories.forEach(cat => {
+      //   console.log(cat.name)
+      // })
+      setCategories(cats.categories);
+      setCategory(cats.categories[0].id)
+      // console.log(categories)
+    })();
+  }, [])
 
 
   const changeStageButton = (e) => {
@@ -43,7 +59,7 @@ function ProjectCreateForm() {
     if (createdProject) {
       history.push(`/projects/${createdProject.id}/edit`);
     }
-// TODO: implement error handling.
+    // TODO: implement error handling.
 
   }
 
@@ -60,7 +76,7 @@ function ProjectCreateForm() {
           setCategory={setCategory}
           categories={categories}
         />
-          )}
+      )}
       {currentStage === 2 && (
         <Form2
           changeStageButton={changeStageButton}
