@@ -49,27 +49,26 @@ function Learn() {
           <p className={styles.author}>- DE LA SOUL</p>
         </div>
       </div>
-      <div>
+
+      <div className={styles.questionsContainer}>
         <h2>A Kickstarter project does more than raise money. It builds community around your work.</h2>
+        <h3>What can I use Kickstarter to fund?</h3>
         <div>
-          <div>What can I use Kickstarter to fund?</div>
-          <div>Kickstarter is specifically for creative projects in the following categories: Art, Comics, Crafts, Dance, Design, Fashion, Film & Video, Food, Games, Journalism, Music, Photography, Publishing, Technology, and Theater. Make an album, write a book, create an immersive theater experience, score a film — you name it. Read more about our project guidelines.</div>
+          <p>Kickstarter is specifically for creative projects in the following categories: Art, Comics, Crafts, Dance, Design, Fashion, Film & Video, Food, Games, Journalism, Music, Photography, Publishing, Technology, and Theater. Make an album, write a book, create an immersive theater experience, score a film — you name it. Read more about our project guidelines.</p>
         </div>
+        <h3>Who can I get pledges from?</h3>
         <div>
-          <div>Who can I get pledges from?</div>
-          <div>Millions of people visit Kickstarter every week, but support always begins with people you know. Friends, fans, and the communities you’re a part of will likely be some of your earliest supporters, not to mention your biggest resources for spreading the word about your project.</div>
+          <p>Millions of people visit Kickstarter every week, but support always begins with people you know. Friends, fans, and the communities you’re a part of will likely be some of your earliest supporters, not to mention your biggest resources for spreading the word about your project.</p>
         </div>
+        <h3>How much work is it to run a project?</h3>
         <div>
-          <div>How much work is it to run a project?</div>
-          <div>
-            <div>Every Kickstarter project has its share of exhilarating and challenging moments, but the amount of work generally depends on the size and complexity of the project.</div>
-            <div>Expect the first few days after launch to be very busy as you spread the word to your community, answer questions from potential backers, and more. You may need to spend the last few days rallying your social networks in order to reach your funding goal.</div>
-            <div>Projects sometimes take on a life of their own, and in that case you should expect to spend more time creating and fulfilling rewards.</div>
-          </div>
-          <div>
-            <div>How do I get in touch with questions?</div>
-            <div>You can reach out with your questions through this contact form. We also recommend taking a look at our FAQs for more detailed information, along with the creator handbook for guidance on starting and running a project.</div>
-          </div>
+          <p>Every Kickstarter project has its share of exhilarating and challenging moments, but the amount of work generally depends on the size and complexity of the project.</p><br></br>
+          <p>Expect the first few days after launch to be very busy as you spread the word to your community, answer questions from potential backers, and more. You may need to spend the last few days rallying your social networks in order to reach your funding goal.</p><br></br>
+          <p>Projects sometimes take on a life of their own, and in that case you should expect to spend more time creating and fulfilling rewards.</p>
+        </div>
+        <h3>How do I get in touch with questions?</h3>
+        <div>
+          <p>You can reach out with your questions through this contact form. We also recommend taking a look at our FAQs for more detailed information, along with the creator handbook for guidance on starting and running a project.</p>
         </div>
       </div>
     </>
