@@ -1,0 +1,78 @@
+.dropdown{
+  z-index: 100;
+  /* width: 30%; */
+  /* NO WIDTH!!!!!!! because it needs to be filled with things dynamically */
+  /* height: 600px; */
+  /* NO HEIGHT!!!!!!! because it needs to be filled with things dynamically */
+  background-color: white;
+  border: 1px solid rgb(155, 158, 158);
+  position: absolute;
+  top: 78px;
+  right: 20px;
+  color: rgb(40, 40, 40);
+  /* padding: 5px 10px 10px 10px; */
+}
+
+.topFlex{
+  display: flex;
+  padding-top: 18px;
+}
+
+.yourAccount{
+  height: 200px;
+  padding-left: 24px;
+}
+
+.yourAccountText{
+  padding: 24px 36px 36px 24px;
+}
+
+.accountLinks{
+  margin: 0px 24px 36px 24px;
+}
+
+.accountLink{
+  padding: 3px 0px;
+}
+
+.projectsColumn{
+  /* margin: 20px; */
+  padding: 24px 36px 0px;
+  width: 270px;
+}
+
+.createdProjectsList{
+  padding: 36px 0px 18px;
+}
+
+.newDiv{
+  width: 270px;
+  /* height: 68px; */
+  border-top: 0.1rem solid #DCDEDD;
+  margin-top: 15px;
+  display: flex;
+  padding-top: 14px;
+}
+
+.plus{
+  height: 30px;
+  width: 60px;
+  color: rgb(65	84	244);
+  font-size: 24px;
+  text-align: center;
+  background-color: rgb(246	246	245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.new{
+  display: flex;
+  align-items: center;
+}
+
+.bottom{
+  margin: 24px 48px 0;
+
+}

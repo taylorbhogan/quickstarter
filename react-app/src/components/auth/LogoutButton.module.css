@@ -1,0 +1,10 @@
+.logoutButton{
+  background: none;
+  border: none;
+  padding: 6px 0px;
+}
+
+.logoutButtonWrapper{
+  padding: 24px 0px;
+  border-top: 0.1rem solid #DCDEDD;
+}

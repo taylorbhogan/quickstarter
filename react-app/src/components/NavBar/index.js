@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SectionsNavBar from '../SectionsNavBar';
+import DropdownOpenButton from './DropdownOpenButton';
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
@@ -22,10 +23,8 @@ const NavBar = () => {
               <i className="fas fa-search" />
             </span>
           </button>
-          <NavLink to='/login' className={styles.logInLink}>Log in</NavLink>
-          {/* <button className={styles.profileBtn}>
-            <div className={styles.circle}></div>
-          </button> */}
+          {/* <NavLink to='/login' className={styles.logInLink}>Log in</NavLink> */}
+          <DropdownOpenButton />
         </section>
       </nav >
       <SectionsNavBar />
