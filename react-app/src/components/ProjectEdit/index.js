@@ -58,7 +58,9 @@ function Project() {
       await setCampaignDuration(project.campaign_duration)
       await setSubTitle(project.sub_title)
       await setCountryId(project.country_id)
-      await setCategoryId(project.category_id)
+      if (categoryId != project.category_id) {
+        await setCategoryId(project.category_id)
+      }
       // if (categoryId != project.category_id) {
       let subCatArray = await subCategories.filter(subCat => subCat.category_id === +categoryId)
       await setCurrentSubCategories(subCatArray)
@@ -72,7 +74,8 @@ function Project() {
 
 
     })();
-  }, [categoryId])
+    // }, [categoryId])
+  }, [])
 
   // useEffect(() => {
 
@@ -81,15 +84,15 @@ function Project() {
 
   useEffect(() => {
     dispatch(getSubCategories())
-    if (categoryId != project.category_id) {
+    // if (categoryId != project.category_id) {
 
-      let subCatArray = subCategories.filter(subCat => subCat.category_id === +categoryId)
-      // subCategories.forEach(subCat => console.log(subCat))
-      setCurrentSubCategories(subCatArray)
-    }
+    let subCatArray = subCategories.filter(subCat => subCat.category_id === +categoryId)
+    // subCategories.forEach(subCat => console.log(subCat))
+    setCurrentSubCategories(subCatArray)
+    // }
     // console.log("SUBCAT", subCatArray)
 
-  }, [])
+  }, [categoryId])
   // HANDLE SUBMIT IS NOT YET FUNCTIONAL - IN THE WORKS
   const handleSubmit = async (e) => {
     e.preventDefault();
