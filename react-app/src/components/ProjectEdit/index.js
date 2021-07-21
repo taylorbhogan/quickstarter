@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editProject, deleteProject } from '../../store/project'
 import { getCountries } from '../../store/country'
 import { getCategories } from '../../store/category'
+import { getSubCategories } from '../../store/subCategory'
 
 
 function Project() {
@@ -15,7 +16,7 @@ function Project() {
   const [project, setProject] = useState('')
   // const [subTitle, setSubTitle] = useState(project.subTitle)
   const [subTitle, setSubTitle] = useState(project.sub_title)
-  const [categoryId, setCategoryId] = useState(project.category)
+  const [categoryId, setCategoryId] = useState(project.category_id)
   const [countryId, setCountryId] = useState(project.country)
   const [subCategory, setSubCategory] = useState('Things')
   const [title, setTitle] = useState(project.title)
@@ -23,14 +24,23 @@ function Project() {
   const [imageUrl, setImageUrl] = useState(project.project_image_url)
   const [campaignDuration, setCampaignDuration] = useState(project.campaign_duration)
 
-
   const categories = useSelector(state => Object.values(state.categories));
   const countries = useSelector(state => Object.values(state.countries));
   const user = useSelector(state => state.session.user);
+  const subCategories = useSelector(state => Object.values(state.subCategories));
+  // const startingSubCat = subCategories.find(subCat => subCat.category_id === +categoryId)
+  const [currentSubCategories, setCurrentSubCategories] = useState([subCategories.filter(subCat => subCat.category_id === +categoryId)])
+  // if (subCategories.length) {
+  //   let startingSubCats = subCategories.filter(subCat => subCat.category_id === +categoryId)
+  //   console.log(startingSubCats)
+  // }
+  // if (startingSubCats.length) {
 
+  //   setCurrentSubCategories(startingSubCats)
+  // }
   // TODO: switch these to be their equivalents pulled from the db
   // const categories = ['Art', 'Comics', 'Crafts']
-  const subCategories = ['Stuff', 'Things']
+  // const subCategories = ['Stuff', 'Things']
   // const countries = ['Norway', 'New Zealand', 'Mongolia']
 
   useEffect(() => {
@@ -38,19 +48,48 @@ function Project() {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
       // console.log(project)
-      setProject(project);
-      dispatch(getCountries())
-      dispatch(getCategories())
-      setTitle(project.title)
-      setGoal(project.funding_goal)
-      setImageUrl(project.project_image_url)
-      setCampaignDuration(project.campaign_duration)
-      setSubTitle(project.sub_title)
-      setCategoryId(project.category_id)
-      setCountryId(project.country_id)
-    })();
-  }, [projectId])
+      await setProject(project);
+      await dispatch(getCountries())
+      await dispatch(getCategories())
+      await dispatch(getSubCategories())
+      await setTitle(project.title)
+      await setGoal(project.funding_goal)
+      await setImageUrl(project.project_image_url)
+      await setCampaignDuration(project.campaign_duration)
+      await setSubTitle(project.sub_title)
+      await setCountryId(project.country_id)
+      await setCategoryId(project.category_id)
+      // if (categoryId != project.category_id) {
+      let subCatArray = await subCategories.filter(subCat => subCat.category_id === +categoryId)
+      await setCurrentSubCategories(subCatArray)
 
+      // }
+
+
+
+
+      // await setCurrentSubCategories(['testy'])
+
+
+    })();
+  }, [categoryId])
+
+  // useEffect(() => {
+
+  // }, [categoryId])
+
+
+  useEffect(() => {
+    dispatch(getSubCategories())
+    if (categoryId != project.category_id) {
+
+      let subCatArray = subCategories.filter(subCat => subCat.category_id === +categoryId)
+      // subCategories.forEach(subCat => console.log(subCat))
+      setCurrentSubCategories(subCatArray)
+    }
+    // console.log("SUBCAT", subCatArray)
+
+  }, [])
   // HANDLE SUBMIT IS NOT YET FUNCTIONAL - IN THE WORKS
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -148,10 +187,10 @@ function Project() {
               value={subCategory}
               onChange={(e) => setSubCategory(e.target.value)}
             >
-              {subCategories.map(subCategory =>
+              {currentSubCategories.map(subCategory =>
                 <option
-                  value={subCategory}
-                  key={subCategory}>{subCategory}</option>
+                  value={subCategory.id}
+                  key={subCategory.id}>{subCategory.name}</option>
               )}
             </select>
           </div>

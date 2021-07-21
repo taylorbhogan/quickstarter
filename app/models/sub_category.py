@@ -15,6 +15,7 @@ class SubCategory(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            'category_id': self.category_id,
             # 'category': self.category.to_dict(),
             "projects": [project.to_dict() for project in self.projects]
         }
