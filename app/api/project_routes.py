@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@project_routes.route('/')
+@project_routes.route('')
 # @login_required
 def get_projects():
     """
