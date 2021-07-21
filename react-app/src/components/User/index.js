@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import UserProjectView from './UserProjectView';
 
 function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
+
+  const projects = user.projects
+  console.log(projects);
 
   useEffect(() => {
     if (!userId) {
@@ -21,17 +25,26 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <div>
+      <div>
+        <h2>User Info</h2>
+        <ul>
+          <li>
+            <strong>User Id</strong> {userId}
+          </li>
+          <li>
+            <strong>Username</strong> {user.username}
+          </li>
+          <li>
+            <strong>Email</strong> {user.email}
+          </li>
+        </ul>
+      </div>
+      <div>
+      {projects?.map((project) => <UserProjectView key={project.id} project={project} />)}
+      </div>
+    </div>
+
   );
 }
 export default User;

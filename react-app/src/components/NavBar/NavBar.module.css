@@ -6,7 +6,7 @@
   flex-wrap: nowrap;
   font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  height: 66px;
+  height: 65px;
   justify-content: space-between;
   line-height: 21px;
   width: auto;
@@ -35,7 +35,7 @@
   color: inherit;
   display: flex;
   align-items: center;
-  margin-right: 12px;
+  /* margin-right: 12px; */
   padding-right: 18px;
   font-size: inherit;
 }
@@ -68,6 +68,7 @@
   font-size: inherit;
   font-family: inherit;
   height: 21px;
+  margin-right: 20px;
 }
 
 .searchText {
@@ -79,14 +80,6 @@
   margin-left: 6px;
 }
 
-.profileBtn {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  outline: inherit;
-}
-
 .logInLink {
   text-decoration: none;
   color: inherit;
@@ -96,13 +89,7 @@
   margin-left: 18px;
 }
 
-.circle {
-  cursor: pointer;
-  height: 36px;
-  width: 36px;
-  background-color: indigo;
-  border-radius: 50%;
-}
+
 
 .discoverButton:hover,
 .projectLink:hover,

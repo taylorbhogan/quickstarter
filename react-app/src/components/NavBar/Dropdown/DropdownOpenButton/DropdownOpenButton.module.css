@@ -1,0 +1,14 @@
+.circle {
+  cursor: pointer;
+  height: 36px;
+  width: 36px;
+  background-color: teal;
+  border-radius: 50%;
+  border: 1px solid green;
+}
+
+.accountButton{
+  background: none;
+  border: none;
+  padding: 0;
+}
