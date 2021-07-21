@@ -1,11 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SectionsNavBar from '../SectionsNavBar';
-import DropdownOpenButton from './DropdownOpenButton';
+import DropdownOpenButton from './Dropdown/DropdownOpenButton';
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
+  const user = useSelector(state => state.session.user);
+
   return (
     <>
       <nav className={styles.navBar}>
@@ -23,12 +26,15 @@ const NavBar = () => {
               <i className="fas fa-search" />
             </span>
           </button>
-          {/* <NavLink to='/login' className={styles.logInLink}>Log in</NavLink> */}
-          <DropdownOpenButton />
+          {(user ?
+            <DropdownOpenButton />
+            :
+            <NavLink to='/login' className={styles.logInLink}>Log in</NavLink>
+          )}
         </section>
       </nav >
       <SectionsNavBar />
-      <LogoutButton />
+      {/* <LogoutButton /> */}
     </>
     // <ul>
     //   <li>

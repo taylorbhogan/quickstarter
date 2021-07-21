@@ -35,6 +35,12 @@
   padding: 3px 0px;
 }
 
+.accountLink:hover{
+  cursor: pointer;
+  color: green;
+  text-decoration: underline;
+}
+
 .projectsColumn{
   /* margin: 20px; */
   padding: 24px 36px 0px;
@@ -45,14 +51,42 @@
   padding: 36px 0px 18px;
 }
 
+.newDivWrapper{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  outline: inherit;
+  font-size: inherit;
+  padding-top: 14px;
+  margin-top: 15px;
+  border-top: 0.1rem solid #DCDEDD;
+  position: relative;
+
+}
+
 .newDiv{
   width: 270px;
-  /* height: 68px; */
-  border-top: 0.1rem solid #DCDEDD;
-  margin-top: 15px;
+  height: 30px;
   display: flex;
-  padding-top: 14px;
+  transition: all .3s ease;
+  background: linear-gradient(to right, blue 50%, white 50%);
+  background-size: 200% 100%;
+  background-position:right bottom;
 }
+
+.newDiv:hover{
+  cursor: pointer;
+  background-position:left bottom;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.newDiv:hover .plus{
+  background-color: blue;
+  color: white;
+}
+
 
 .plus{
   height: 30px;
@@ -74,5 +108,4 @@
 
 .bottom{
   margin: 24px 48px 0;
-
 }

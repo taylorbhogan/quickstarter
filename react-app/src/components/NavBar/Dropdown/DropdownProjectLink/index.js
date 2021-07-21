@@ -1,6 +1,9 @@
 import styles from './DropdownProjectLink.module.css'
+import { NavLink } from 'react-router-dom';
 
-function DropdownProjectLink() {
+
+function DropdownProjectLink({project}) {
+
   return (
     <div className={styles.projectContainer}>
       <div className={styles.rectangleHolder}>
@@ -15,9 +18,11 @@ function DropdownProjectLink() {
           <div className={`${styles.rect6} ${styles.smallRect}`}></div>
         </div>
       </div>
-      <div className={styles.text}>
-        Project Example
-      </div>
+      <NavLink
+        to={`projects/${project?.id}`}
+        className={styles.text}>
+        {project?.title ? project.title : 'Your new project'}
+      </NavLink>
     </div>
   )
 }

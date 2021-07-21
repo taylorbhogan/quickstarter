@@ -4,6 +4,12 @@
   padding: 6px 0px;
 }
 
+.logoutButton:hover{
+  cursor: pointer;
+  color: green;
+  text-decoration: underline;
+}
+
 .logoutButtonWrapper{
   padding: 24px 0px;
   border-top: 0.1rem solid #DCDEDD;

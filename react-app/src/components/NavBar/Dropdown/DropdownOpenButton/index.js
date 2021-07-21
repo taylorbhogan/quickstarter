@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from './DropdownOpenButton.module.css'
-import Dropdown from "../Dropdown";
+import Dropdown from "..";
 
 function DropdownOpenButton() {
 
