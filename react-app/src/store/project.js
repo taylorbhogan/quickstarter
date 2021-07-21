@@ -81,6 +81,7 @@ export const editProject = (newProject) => async dispatch => {
   if (response.ok) {
     const newProjectData = await response.json();
     console.log(newProjectData)
+    return newProjectData
     // dispatch(addProjectToStore(newProjectData))
     // return newProjectData
   }
