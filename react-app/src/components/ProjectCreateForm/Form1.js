@@ -12,6 +12,7 @@ function Form1({ changeStageButton, categories, setCategory }) {
           <h3>Pick a project category to connect with a specific community. You can always update this later.</h3>
           {categories.length > 0 &&
             <select
+              // className={styles.select}
               onChange={(e) => setCategory(e.target.value)}
             >
               {categories.map(category =>
@@ -23,11 +24,25 @@ function Form1({ changeStageButton, categories, setCategory }) {
           <div className={styles.btnContainer}>
             <h4>You’re back. And you’re a champ.</h4>
             <button
-              // this className is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
-              className={"next"}
+              // this id is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
+              className={styles.next}
               id={"next"}
               onClick={changeStageButton}
             >Next: Project idea</button>
+          </div>
+        </div>
+        <div
+          className={styles.littleTextHolder}
+        >
+          <div
+            className={styles.littleText}
+            >
+            You're required to provide your location, age, national ID, banking and tax information, email, and mailing address to launch a project. By doing so, you also certify that the details you provide are complete and correct. This information is necessary to prevent fraud, comply with the law, and to deliver funds if you reach your funding goal.
+          </div>
+          <div
+            className={styles.littleText}
+          >
+            Please note: Your ability to edit, hide, or delete a project is limited after you launch a project.
           </div>
         </div>
       </form>
