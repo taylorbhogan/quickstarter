@@ -94,9 +94,10 @@ def update_project(id):
     Updates a project in the database
     """
     form = UpdateProjectForm()
-    # print('**********', request.json)
+    print('**********', request.json)
     form['csrf_token'].data = request.cookies['csrf_token']
     form['category'].data = request.json['category_id']
+    form['sub_category_id'].data = request.json['sub_category_id']
     form['subTitle'].data = request.json['sub_title']
     form['country'].data = request.json['country_id']
     form['campaign_duration'].data = request.json['campaign_duration']
@@ -104,13 +105,15 @@ def update_project(id):
     form['project_image_url'].data = request.json['project_image_url']
     form['title'].data = request.json['title']
 
+
     if form.validate_on_submit():
 
         project = Project.query.get(id)
         # print('******** BEFORE!!!!!!!', project.to_dict())
 
         project.category_id = form['category'].data
-        # project['sub_title'] = form['subTitle'].data
+        project.sub_category_id = form['sub_category_id'].data
+        # project['sub_title'] = form['subTitle'].data DONT USE THIS, JUST HERE FOR MEMORY. COULD POSSIBLY DELETE
         project.sub_title = form['subTitle'].data
         project.country_id = form['country'].data
         project.campaign_duration = form['campaign_duration'].data

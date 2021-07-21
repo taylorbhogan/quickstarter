@@ -18,7 +18,7 @@ function Project() {
   const [subTitle, setSubTitle] = useState(project.sub_title)
   const [categoryId, setCategoryId] = useState(project.category_id)
   const [countryId, setCountryId] = useState(project.country)
-  const [subCategory, setSubCategory] = useState('Things')
+  const [subCategory, setSubCategory] = useState(project.sub_category_id)
   const [title, setTitle] = useState(project.title)
   const [goal, setGoal] = useState(project.funding_goal)
   const [imageUrl, setImageUrl] = useState(project.project_image_url)
@@ -29,7 +29,7 @@ function Project() {
   const user = useSelector(state => state.session.user);
   const subCategories = useSelector(state => Object.values(state.subCategories));
   // const startingSubCat = subCategories.find(subCat => subCat.category_id === +categoryId)
-  const [currentSubCategories, setCurrentSubCategories] = useState([subCategories.filter(subCat => subCat.category_id === +categoryId)])
+  const [currentSubCategories, setCurrentSubCategories] = useState([subCategories.filter(subCat => subCat.id === +categoryId)])
   // if (subCategories.length) {
   //   let startingSubCats = subCategories.filter(subCat => subCat.category_id === +categoryId)
   //   console.log(startingSubCats)
@@ -58,12 +58,14 @@ function Project() {
       await setCampaignDuration(project.campaign_duration)
       await setSubTitle(project.sub_title)
       await setCountryId(project.country_id)
+      await setSubCategory(project.sub_category_id)
       if (categoryId != project.category_id) {
         await setCategoryId(project.category_id)
       }
       // if (categoryId != project.category_id) {
       let subCatArray = await subCategories.filter(subCat => subCat.category_id === +categoryId)
       await setCurrentSubCategories(subCatArray)
+
 
       // }
 
@@ -89,6 +91,15 @@ function Project() {
     let subCatArray = subCategories.filter(subCat => subCat.category_id === +categoryId)
     // subCategories.forEach(subCat => console.log(subCat))
     setCurrentSubCategories(subCatArray)
+    if (subCategories.length) {
+      let initialSubCatValue = null
+      if (project.sub_category_id) {
+        let initialSubCatValue = subCategories.find(sc => sc.id === project.sub_category_id)
+        console.log("INITIAL SUBCAT!!!", initialSubCatValue)
+      }
+      console.log("INITIAL SUBCAT!!!", initialSubCatValue)
+    }
+    // setSubCategory(initialSubCatValue.name)
     // }
     // console.log("SUBCAT", subCatArray)
 
@@ -101,21 +112,23 @@ function Project() {
     // TODO: frontend validations
     setErrors(errors)
 
+    console.log("HERE IS YOUR DODO", subCategory)
     const newProject = {
       ...project,
       user_id: user.id,
       title,
       sub_title: subTitle,
-      category_id: categoryId,
-      sub_category_id: subCategory,
+      category_id: +categoryId,
+      sub_category_id: subCategory === '' ? null : +subCategory,
       country_id: countryId,
       project_image_url: imageUrl,
-      campaign_duration: campaignDuration,
-      funding_goal: goal
+      campaign_duration: +campaignDuration,
+      funding_goal: +goal
       // category: categoryId,
       // country: countryId,
     }
-    // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
+    // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', subCategory)
+    console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
     // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
     let editedProject = await dispatch(editProject(newProject))
 
@@ -190,6 +203,10 @@ function Project() {
               value={subCategory}
               onChange={(e) => setSubCategory(e.target.value)}
             >
+              {/* the option below allows for a nullable subcat do not delete*/}
+              <option>
+
+              </option>
               {currentSubCategories.map(subCategory =>
                 <option
                   value={subCategory.id}
