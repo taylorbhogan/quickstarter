@@ -11,7 +11,7 @@ const setAllCategoriesInStore = (categories) => ({
 const initialState = {};
 
 export const getCategories = () => async (dispatch) => {
-    const response = await fetch('/api/categories')
+    const response = await fetch('/api/categories/')
     if (response.ok) {
         const data = await response.json();
         const categoriesArray = data.categories
