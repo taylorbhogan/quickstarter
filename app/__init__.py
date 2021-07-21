@@ -13,6 +13,7 @@ from .api.project_routes import project_routes
 from .api.category_routes import category_routes
 from .api.sub_category_routes import sub_category_routes
 from .api.country_routes import country_routes
+from .api.backing_routes import backing_routes
 
 from .seeds import seed_commands
 
@@ -40,6 +41,7 @@ app.register_blueprint(project_routes, url_prefix='/api/projects')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
 app.register_blueprint(sub_category_routes, url_prefix='/api/subcategories')
 app.register_blueprint(country_routes, url_prefix='/api/countries')
+app.register_blueprint(backing_routes, url_prefix='/api/backings')
 db.init_app(app)
 Migrate(app, db)
 

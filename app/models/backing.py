@@ -22,5 +22,5 @@ class Backing(db.Model):
             "reward_id": self.reward_id,
             "backer": self.backer.to_dict(),
             "project": self.project.to_dict(),
-            "reward": self.reward.to_dict(),
+            # "reward": self.reward.to_dict(),
         }
