@@ -17,3 +17,4 @@ class UpdateProjectForm(FlaskForm):
     project_image_url =StringField('project_image_url')
     title = StringField('title')
     sub_category_id = StringField('sub_category_id')
+    story = StringField('story')
