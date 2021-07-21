@@ -4,12 +4,14 @@ import session from './session'
 import projects from './project'
 import countries from './country'
 import categories from './category'
+import subCategories from './subCategory'
 
 const rootReducer = combineReducers({
   session,
   projects,
   countries,
-  categories
+  categories,
+  subCategories
 });
 
 
