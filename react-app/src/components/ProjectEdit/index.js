@@ -18,6 +18,12 @@ import { getCountries } from '../../store/country'
 import { getCategories } from '../../store/category'
 import { getSubCategories } from '../../store/subCategory'
 import ProjectEditStory from './ProjectEditStory'
+import ProjectEditRewards from './ProjectEditRewards'
+import ProjectEditPeople from './ProjectEditPeople'
+import ProjectEditPayment from './ProjectEditPayment'
+import ProjectEditPromotion from './ProjectEditPromotion'
+import styles from './ProjectEdit.module.css'
+
 
 function Project() {
     const { projectId } = useParams();
@@ -177,7 +183,7 @@ function Project() {
                     <form
                         onSubmit={handleSubmit}
                     >
-                        <div>
+                        <div className={styles.block}>
                             <h2>Project title</h2>
                             <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
                             <div>
@@ -198,7 +204,7 @@ function Project() {
                                 ></textarea>
                             </div>
                         </div>
-                        <div>
+                        <div className={styles.block}>
                             <h2>Project category</h2>
                             <div>Choose the category that most closely aligns with your project.</div>
                             <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
@@ -228,7 +234,7 @@ function Project() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className={styles.block}>
                             <h2>Project location</h2>
                             <p>Enter the location that best describes where your project is based.</p>
                             <select
@@ -242,7 +248,7 @@ function Project() {
                                 )}
                             </select>
                         </div>
-                        <div>
+                        <div className={styles.block}>
                             <h2>Project image</h2>
                             <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear on your project page, across the Kickstarter website and mobile apps, and (when shared) on social channels.</p>
                             <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
@@ -254,7 +260,7 @@ function Project() {
                                 onChange={(e) => setImageUrl(e.target.value)}
                             ></input>
                         </div>
-                        <div>
+                        <div className={styles.block}>
                             <h2>Funding goal</h2>
                             <p>Set an achievable goal that covers what you need to complete your project.</p>
                             <p>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</p>
@@ -268,7 +274,7 @@ function Project() {
                                 ></input>
                             </div>
                         </div>
-                        <div>
+                        <div className={styles.block}>
                             <h2>Campaign duration</h2>
                             <div>
                                 <label>Enter number of days</label>
@@ -299,18 +305,33 @@ function Project() {
             return (
                 <ProjectEditStory project={project} />
             )
+        } else if (currentSelectedTab === 'rewards') {
+            return (
+                <ProjectEditRewards project={project} />
+            )
+        } else if (currentSelectedTab === 'people') {
+            return (
+                <ProjectEditPeople project={project} />
+            )
+        } else if (currentSelectedTab === 'payment') {
+            return (
+                <ProjectEditPayment project={project} />
+            )
+        } else if (currentSelectedTab === 'promotion') {
+            return (
+                <ProjectEditPromotion project={project} />
+            )
         }
     }
     return (
         <div>
-            <div>
+            <div className={styles.tabMenu}>
                 <div onClick={(e) => setCurrentSelectedTab('basics')}>✍️ Basics</div>
-                <div>📊 Funding</div>
-                <div>🎁 Rewards</div>
+                <div onClick={(e) => setCurrentSelectedTab('rewards')}>🎁 Rewards</div>
                 <div onClick={(e) => setCurrentSelectedTab('story')}>📖 Story</div>
-                <div>👥 People</div>
-                <div>💰 Payment</div>
-                <div>📢 Promotion</div>
+                <div onClick={(e) => setCurrentSelectedTab('people')}>👥 People</div>
+                <div onClick={(e) => setCurrentSelectedTab('payment')}>💰 Payment</div>
+                <div onClick={(e) => setCurrentSelectedTab('promotion')}>📢 Promotion</div>
             </div>
             {dashBoardContent()}
         </div>

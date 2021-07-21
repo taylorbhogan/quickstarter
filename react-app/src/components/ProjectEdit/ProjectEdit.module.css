@@ -1,0 +1,13 @@
+.tabMenu{
+  display: flex;
+  padding: 30px;
+}
+
+.tabMenu * {
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.block{
+  margin-top: 20px
+}
