@@ -22,9 +22,6 @@ function ProjectCreateForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const countries = ['France', 'Vietnam', 'Libya']
-  // const categories = ['Art', 'Comics', 'Crafts']
-
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/categories`);
@@ -50,7 +47,7 @@ function ProjectCreateForm() {
 
     if (e.target.id === 'next') {
       setCurrentStage(currentStage + 1)
-    } else if (e.target.className === 'back') {
+    } else if (e.target.id === 'back') {
       setCurrentStage(currentStage - 1)
     }
   }
@@ -80,6 +77,9 @@ function ProjectCreateForm() {
         <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
         <div className={styles.userIcon}></div>
       </div>
+      {/* <button
+      //  onClick={}
+      >Close</button> */}
       {currentStage === 1 && (
         <Form1
           changeStageButton={changeStageButton}
@@ -100,6 +100,7 @@ function ProjectCreateForm() {
           handleSubmit={handleSubmit}
           setCountry={setCountry}
           countries={countries}
+          country={country}
         />
       )}
     </div>
