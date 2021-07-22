@@ -56,8 +56,11 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp}>
           <h2 className={styles.loginTitle}>Sign up</h2>
           <div>
-            {errors.map((error, ind) => (
+            {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
+            ))} */}
+            {errors.map((error, ind) => (
+              <div key={ind}>{error.split(': ')[1]}</div>
             ))}
           </div>
           <div>
