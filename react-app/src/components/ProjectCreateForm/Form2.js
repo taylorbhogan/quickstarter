@@ -2,6 +2,18 @@ import { NavLink } from 'react-router-dom';
 import styles from './ProjectCreateForm.module.css'
 
 function Form2({ changeStageButton, subTitle, setSubTitle }) {
+  const setPlaceholder = () => {
+    const placeHolders = [
+      'A set of handmade greeting cards and stationery.',
+      'An album of songs based on Pablo Neruda poems.',
+      'A short claymation about boba.',
+      'A novel written in three languages.',
+      'A documentary about the history of shoes.',
+    ]
+    const randomNumber = Math.floor(Math.random()*5)
+    return placeHolders[randomNumber]
+  }
+
   return (
     <div>
       <div className={styles.formContainer}>
@@ -18,16 +30,22 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
             <textarea
               type="text"
               className={styles.textarea}
-              placeholder={'An album of songs based on Pablo Neruda poems.'}
+              maxLength={'135'}
+              placeholder={setPlaceholder()}
               onChange={(e) => setSubTitle(e.target.value)}
               value={subTitle}
             />
           </div>
-          <div
-            className={styles.characterCount}
-          >
-            <span>{subTitle.length}</span>
-            <span>/135</span>
+          <div className={styles.belowTextArea}>
+            <div>
+              <div className={styles.textAreaLimitText} hidden={subTitle.length < 135}>You've hit the limit.</div>
+            </div>
+            <div className={styles.characterCount}>
+              <span
+              style={subTitle.length === 135 ? {color: 'green'} : null}
+              className={styles.subTitleLengthDiv}>{subTitle.length}</span>
+              <span>/135</span>
+            </div>
           </div>
           <div className={styles.btnContainer}>
             <button
@@ -40,6 +58,7 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
               // this id is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
               className={styles.next}
               id={'next'}
+              disabled={subTitle.length === 0}
               onClick={changeStageButton}> Next: Location</button>
           </div>
           <div

@@ -206,8 +206,8 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
               onClick={changeStageButton}
             ><span><i className="fas fa-long-arrow-alt-left"></i></span> Project idea</button>
             <button
-              disabled={!(div1True && div2True && div3True && div4True)}
-              style={!(div1True && div2True && div3True && div4True) ? { backgroundColor: "white" } : null}
+              disabled={country === '' || (!(div1True && div2True && div3True && div4True))}
+              // style={!(div1True && div2True && div3True && div4True) ? { backgroundColor: "white" } : null}
               className={styles.next}
               type='submit'
             > Continue </button>

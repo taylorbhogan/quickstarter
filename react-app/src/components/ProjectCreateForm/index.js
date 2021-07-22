@@ -33,10 +33,14 @@ function ProjectCreateForm() {
       const countryRes = await fetch(`/api/countries`);
       const countriesResponse = await countryRes.json()
       setCategories(cats.categories);
-      setCategory(cats.categories[0].id)
+      // the below setCategory was commented out to enable the disabled logic for the next button on Form1
+      // setCategory(cats.categories[0].id)
+      // the above setCategory was commented out to enable the disabled logic for the next button on Form1
       // console.log(countriesResponse.countries)
       setCountries(countriesResponse.countries)
-      setCountry(countriesResponse.countries[0].id)
+      // the below setCountry was commented out to enable the disabled logic for the next button on Form1
+      // setCountry(countriesResponse.countries[0].id)
+      // the above setCountry was commented out to enable the disabled logic for the next button on Form1
       // console.log(categories)
     })();
   }, [])
@@ -79,6 +83,7 @@ function ProjectCreateForm() {
           changeStageButton={changeStageButton}
           setCategory={setCategory}
           categories={categories}
+          category={category}
         />
       )}
       {currentStage === 2 && (
