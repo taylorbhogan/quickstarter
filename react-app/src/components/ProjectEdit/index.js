@@ -109,9 +109,7 @@ function Project() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const errors = [];
-        // TODO: frontend validations
-        setErrors(errors)
+        // const errors = [];
         setSaveProjectButtonText('Project Saved!')
         setTimeout(() => {
             setSaveProjectButtonText('Save')
@@ -136,9 +134,12 @@ function Project() {
         // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
         // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
         let editedProject = await dispatch(editProject(newProject))
-
-        if (editedProject) {
-            history.push(`/projects/${editedProject.id}`);
+            if (editedProject) {
+                setErrors(editedProject);
+            }
+            console.log("************", editedProject)
+        if (!editedProject) {
+            history.push(`/projects/${projectId}`);
         }
     }
 
@@ -166,11 +167,13 @@ function Project() {
                     <p>Make it easy for people to learn about your project.</p>
                 </div>
                 <form
-                    onSubmit={handleSubmit}
-                >
+                    onSubmit={handleSubmit}>
                     <div>
                         <h2>Project title</h2>
                         <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
+                        {errors && errors.map((error, ind) => (
+                            <div style={{color: "red"}} key={ind}>{error}</div>
+                          ))}
                         <div>
                             <label>Title</label>
                             <input

@@ -81,8 +81,16 @@ export const editProject = (newProject) => async dispatch => {
   if (response.ok) {
     const newProjectData = await response.json();
     console.log(newProjectData)
-    // dispatch(addProjectToStore(newProjectData))
+    dispatch(addProjectToStore(newProjectData))
     // return newProjectData
+  }
+  else if (response.status < 500){
+    const data = await response.json();
+    if (data.errors){
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
   }
 }
 

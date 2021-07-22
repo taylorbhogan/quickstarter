@@ -13,7 +13,7 @@ class Category(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "projects": [project.to_dict() for project in self.projects],
-            "sub_categories": [sub_category.to_dict() for sub_category in self.sub_categories]
+            # "projects": [project.to_dict() for project in self.projects],
+            # "sub_categories": [sub_category.to_dict() for sub_category in self.sub_categories]
         }
 

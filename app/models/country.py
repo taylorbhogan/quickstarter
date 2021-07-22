@@ -14,9 +14,6 @@ class Country(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'projects': [project.to_dict() for project in self.projects],
-            'rewards': [reward.to_dict() for reward in self.rewards]
+            # 'projects': [project.to_dict() for project in self.projects],
+            # 'rewards': [reward.to_dict() for reward in self.rewards]
         }
-
-
-
