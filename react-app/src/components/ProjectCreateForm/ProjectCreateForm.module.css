@@ -120,6 +120,20 @@
   border: 1px solid black;
 }
 
+.belowTextArea{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-size: 13px;
+}
+
+  /* .subTitleLengthDiv{
+    color: green;
+  } */
+.textAreaLimitText{
+  color: green;
+}
+
 .next {
   background: none;
   color: inherit;
@@ -139,6 +153,11 @@
 .next:hover {
   background-color: black;
   cursor: pointer;
+}
+
+.next:disabled {
+  cursor: not-allowed;
+  opacity: .1;
 }
 
 .back {
@@ -207,7 +226,6 @@
 .characterCount{
   display: flex;
   justify-content: flex-end;
-  margin-top: 14px;
   font-size: 14px;
   color: #656969;
 }

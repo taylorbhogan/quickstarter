@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 import styles from './ProjectCreateForm.module.css';
 
-function Form1({ changeStageButton, categories, setCategory }) {
+function Form1({ changeStageButton, category, categories, setCategory }) {
   return (
     <div>
       <div className={styles.formContainer}>
@@ -37,6 +37,7 @@ function Form1({ changeStageButton, categories, setCategory }) {
               <button
                 // this id is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
                 className={styles.next}
+                disabled={category === ''}
                 id={"next"}
                 onClick={changeStageButton}
               >Next: Project idea</button>
