@@ -5,13 +5,15 @@ import projects from './project'
 import countries from './country'
 import categories from './category'
 import subCategories from './subCategory'
+import rewards from "./reward"
 
 const rootReducer = combineReducers({
   session,
   projects,
   countries,
   categories,
-  subCategories
+  subCategories,
+  rewards
 });
 
 
