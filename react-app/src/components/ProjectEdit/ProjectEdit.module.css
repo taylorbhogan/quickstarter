@@ -1,3 +1,23 @@
+.dashBoardContentAndMenu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.topMenu{
+  display: flex;
+  justify-content: space-between;
+}
+
+.topLeft{
+  display: flex;
+}
+
+.topRight{
+  display: flex;
+}
+
 .tabMenu{
   display: flex;
   padding: 30px;
@@ -10,4 +30,156 @@
 
 .block{
   margin-top: 20px
+}
+
+.saveButton{
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10.5px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  background-color: rgb(2, 136, 88);
+  border: 1px solid rgb(2, 136, 88);
+}
+
+.cancelButton{
+  border: none;
+  color: rgb(34, 34, 34);
+  padding: 10.5px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(209, 209, 209);
+}
+
+
+/* ///////////////////STYLES FOR EDIT PAGES GO HERE/////////////////////////////////////////// */
+/* ///////////////////                             /////////////////////////////////////////// */
+/* ///////////////////        REWARDS               /////////////////////////////////////////// */
+
+h1{
+  font-size: 28px;
+  font-weight: 400;
+  color: rgb(40, 40, 40);
+  margin-bottom: 12px;
+  text-align: center;
+}
+h2{
+  font-size: 18px;
+  font-weight: 400;
+  color: #656969;
+  text-align: center;
+}
+
+.headerContainer{
+  padding: 72px 0px 66px;
+}
+
+.contentContainer{
+  padding: 0 72px;
+}
+.rewardsMenu{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(220, 222, 221);
+  margin-bottom: 20px;
+}
+
+.addOnsDiv{
+  display: flex;
+}
+
+.rewardsMenuHeader{
+  padding-bottom: 12px;
+}
+
+.rewardsContainerTopContent{
+  display: flex;
+  justify-content: space-between;
+}
+.rewardsContainerBottomContent{
+  display: flex;
+}
+
+.textDivs{
+  width: 60%;
+}
+
+.infoDiv{
+  margin: 24px 0;
+}
+.learnMore{
+  margin-top: 18px;
+}
+.newRewardButton {
+border: none;
+color: rgb(255, 255, 255);
+padding: 10.5px 18px;
+box-sizing: border-box;
+font-size: 14px;
+font-weight: 400;
+text-align: center;
+background-color: rgb(2, 136, 88);
+border: 1px solid rgb(2, 136, 88);
+}
+.saveRewardButton {
+border: none;
+color: rgb(255, 255, 255);
+padding: 10.5px 18px;
+box-sizing: border-box;
+font-size: 14px;
+font-weight: 400;
+text-align: center;
+background-color: rgb(2, 136, 88);
+border: 1px solid rgb(2, 136, 88);
+}
+
+
+
+.rewardPreviewRectangleContainer{
+  background-color: #FBFBFA;
+  /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
+  height: 344px;
+  width: 300px;
+  /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
+  padding: 24px;
+}
+
+.rewardAmountPreview{
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+.rewardsTitlePreview{
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.rewardsDescriptionPreview{
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.rewardsPreviewHeader{
+  font-size: 10px;
+}
+
+.rewardsPreviewDisplay{
+  margin-bottom: 24px;
+}
+
+/* ///////////////////        PEOPLE               /////////////////////////////////////////// */
+
+.profileContainer{
+  display: flex;
+}
+
+.profileRectangle{
+    /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
+    height: 344px;
+    width: 300px;
+    /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
+    border: 1px solid rgb(232, 232, 232);
 }
