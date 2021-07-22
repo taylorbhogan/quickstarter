@@ -110,6 +110,7 @@ def update_project(id):
     form['title'].data = request.json['title']
     form['story'].data = request.json['story']
 
+    # print('YOURE HITTING THIS NOW',form['campaign_duration'].data)
 
     if form.validate_on_submit():
 
@@ -126,8 +127,8 @@ def update_project(id):
         project.project_image_url = form['project_image_url'].data
         project.title = form['title'].data
         project.story = form['story'].data
-
         # print('******** AFTER!!!!!!!!!!!!!!!!!!!!', project.to_dict())
+
         db.session.add(project)
         db.session.commit()
         return project.to_dict()

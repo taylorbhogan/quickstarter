@@ -19,9 +19,10 @@ function Project() {
     (async () => {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
+
       setProject(project);
     })();
-  }, [projectId, project]);
+  }, [projectId, amount]);
 
   if (!project) {
     return null;
@@ -35,21 +36,21 @@ function Project() {
 
     } else {
 
-    const backing = {
-      amount: +amount,
-      user_id: user.id,
-      project_id: +projectId,
-    // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
-      reward_id: e.target.id === '' ? null : +e.target.id
-    }
+      const backing = {
+        amount: +amount,
+        user_id: user.id,
+        project_id: +projectId,
+        // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
+        reward_id: e.target.id === '' ? null : +e.target.id
+      }
 
-    const data = await dispatch(createBacking(backing))
-    const createdBacking = data.newBacking
-    setAmount(0)
-    console.log('1234----responseFromStore-------->',createdBacking);
-    // if (createdBacking){
-    //   do stuff
-    // }
+      const data = await dispatch(createBacking(backing))
+      const createdBacking = data.newBacking
+      setAmount(0)
+      console.log('1234----responseFromStore-------->', createdBacking);
+      // if (createdBacking){
+      //   do stuff
+      // }
     }
   }
 

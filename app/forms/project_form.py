@@ -6,7 +6,10 @@ from app.models import Project
 
 def campaign_duration_validator(form, field):
     campaign_duration = field.data
-    if campaign_duration > 60:
+    print("CURENTLY CHECKING",campaign_duration is None, campaign_duration == None, campaign_duration is None)
+    if campaign_duration is None:
+        campaign_duration = None
+    elif campaign_duration > 60:
         raise ValidationError(
             'Campaign duration has to be within 60 days')
     elif campaign_duration == 0:
@@ -35,6 +38,7 @@ class UpdateProjectForm(FlaskForm):
     subTitle = StringField('subTitle',  validators=[DataRequired(), Length(max=135, message='Subtitle must be under 135 characters')])
     country = StringField('country', validators=[DataRequired()])
     campaign_duration = StringField('campaign_duration', validators=[campaign_duration_validator])
+    # campaign_duration = StringField('campaign_duration', validators=[Length(max=60, min =1, message='Campaign duration has to be within 60 days and greater than 0')])
     funding_goal = StringField('funding_goal')
     project_image_url = StringField('project_image_url')
     title = StringField('title',validators=[Length(max=60, message='Title must be under 60 characters')])
