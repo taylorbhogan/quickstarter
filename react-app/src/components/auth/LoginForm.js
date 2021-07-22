@@ -38,10 +38,10 @@ const LoginForm = () => {
         <form onSubmit={onLogin}>
           <h2 className={styles.loginTitle}>Log in</h2>
           <div>
-            {errors.map((error, ind) => (
+            {errors.length > 0 && 'The email address and password you entered do not match.'}
+            {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
-            ))}
-            {/* {errors.length ? <LoginErrorModal /> : "bye"} */}
+            ))} */}
           </div>
           <div>
             <input
