@@ -129,9 +129,8 @@ function Project() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const errors = [];
-        // TODO: frontend validations
-        setErrors(errors)
+        // const errors = [];
+
         // console.log("HERE IS YOUR DODO", subCategory)
         const newProject = {
             ...project,
@@ -152,14 +151,17 @@ function Project() {
         console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
         // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
         let editedProject = await dispatch(editProject(newProject))
+            if (editedProject) {
+                setErrors(editedProject);
+            }
+            // console.log("************", editedProject)
+        if (!editedProject) {
+             setSaveProjectButtonText('Project Saved!')
+        setTimeout(() => {
+            setSaveProjectButtonText('Save')
 
-        if (editedProject) {
-            setSaveProjectButtonText('Project Saved!')
-            setTimeout(() => {
-                setSaveProjectButtonText('Save')
-
-            }, 2000)
-            history.push(`/projects/${editedProject.id}`);
+        }, 2000)
+        history.push(`/projects/${projectId}`);
         }
     }
 
@@ -181,11 +183,13 @@ function Project() {
                         <p>Make it easy for people to learn about your project.</p>
                     </div>
                     <form
-                        onSubmit={handleSubmit}
-                    >
+                        onSubmit={handleSubmit}>
                         <div className={styles.block}>
-                            <h2>Project title</h2>
-                            <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
+                        <h2>Project title</h2>
+                        <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
+                        {errors && errors.map((error, ind) => (
+                            <div style={{color: "red"}} key={ind}>{error}</div>
+                          ))}
                             <div>
                                 <label>Title</label>
                                 <input

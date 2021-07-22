@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, EqualTo
 from app.models import User
 
 
@@ -20,10 +20,9 @@ def password_matches(form, field):
     if not user:
         raise ValidationError('No such user exists.')
     if not user.check_password(password):
-        raise ValidationError('Password was incorrect.')
+        raise ValidationError('Password and/or email was incorrect.')
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[
-                           DataRequired(), password_matches])
+    email = StringField('email', validators=[DataRequired(),  Email(message='Please provide an valid email', check_deliverability=True), user_exists])
+    password = StringField('password', validators=[DataRequired(), password_matches])

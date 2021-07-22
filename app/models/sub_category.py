@@ -17,6 +17,6 @@ class SubCategory(db.Model):
             "name": self.name,
             'category_id': self.category_id,
             # 'category': self.category.to_dict(),
-            "projects": [project.to_dict() for project in self.projects]
+            # "projects": [project.to_dict() for project in self.projects]
         }
 
