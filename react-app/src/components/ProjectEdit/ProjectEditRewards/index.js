@@ -1,13 +1,43 @@
 import styles from "../ProjectEdit.module.css";
 import { useState, useEffect } from "react";
-import { createProjectReward } from "../../../store/reward"
-import { useDispatch } from 'react-redux'
+import { createProjectReward } from "../../../store/reward";
+import { useDispatch } from "react-redux";
 
-function ProjectEditRewards({project, rewards}) {
-  const dispatch = useDispatch()
+function ProjectEditRewards({ project, rewards }) {
+  const dispatch = useDispatch();
   const [rewardTitle, setRewardTitle] = useState("");
   const [rewardPrice, setRewardPrice] = useState(1);
   const [rewardDescription, setRewardDescription] = useState("");
+  const [todaysYearMonth, setTodaysYearMonth] = useState("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [pickStartDate, setPickStartDate] = useState(false)
+  // const [estimatedDelivery, setEstimatedDelivery] = useState("")
+
+  useEffect(() => {
+    const getTodaysDate = () => {
+      const todaysDate = new Date();
+      let [month, year] = [todaysDate.getMonth(), todaysDate.getFullYear()];
+      if (month < 10) {
+        return `${year}-0${month + 1}`;
+      } else {
+        return `${year}-${month + 1}`;
+      }
+    };
+    setTodaysYearMonth(getTodaysDate());
+    console.log(getTodaysDate());
+  }, []);
+
+  const setNoLimit = e => {
+     setStartDate(null)
+     setEndDate(null)
+     console.log(startDate, endDate)
+     setPickStartDate(false)
+  }
+
+  const togglePickStartDate = e => {
+    setPickStartDate(true)
+  }
 
   const handleRewardSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +47,7 @@ function ProjectEditRewards({project, rewards}) {
       description: rewardDescription,
       estimated_delivery: "2020-06-25",
     };
-     dispatch(createProjectReward(project,newReward))
+    //  dispatch(createProjectReward(project,newReward))
   };
 
   return (
@@ -88,6 +118,7 @@ function ProjectEditRewards({project, rewards}) {
                 </div>
                 <div>
                   <label>Estimated delivery</label>
+                  <input type="month" min={todaysYearMonth}></input>
                   <p>
                     Give yourself plenty of time. It's better to deliver to
                     backers ahead of schedule than behind.
@@ -98,10 +129,25 @@ function ProjectEditRewards({project, rewards}) {
                   <label>Shipping</label>
                 </div>
                 <div>
-                  <label>Project quantity</label>
+                  <label>Reward quantity</label>
+                  <input type="number"></input>
                 </div>
                 <div>
                   <label>Time limit</label>
+                  <div>
+                    <label>No limit</label>
+                    <input type="radio" value="" checked={!pickStartDate ? true : false}
+                    onClick={setNoLimit}
+                    ></input>
+                    <br></br>
+                    <label>Specify Start and End</label>
+                    <input type="radio" value="" checked={pickStartDate ? true : false}
+                    onClick={togglePickStartDate}
+                    ></input>
+                    {pickStartDate &&
+                    <input type="month" min={todaysYearMonth}></input>
+                    }
+                  </div>
                 </div>
                 <button
                   className={styles.saveRewardButton}
