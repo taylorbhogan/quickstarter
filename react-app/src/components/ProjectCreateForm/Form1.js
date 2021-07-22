@@ -1,14 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import Dropdown from '../Dropdown';
 import styles from './ProjectCreateForm.module.css';
 
 function Form1({ changeStageButton, categories, setCategory }) {
-
-
   return (
     <div>
       <div className={styles.formContainer}>
         <div className={styles.header}>
-          <div></div>
+          <div className={styles.invisibleDiv}></div>
           <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
           <div className={styles.userIcon}></div>
         </div>
@@ -17,7 +16,12 @@ function Form1({ changeStageButton, categories, setCategory }) {
           <div className={styles.formContents}>
             <h2>First, let’s get you set up.</h2>
             <h3>Pick a project category to connect with a specific community. You can always update this later.</h3>
-            {categories.length > 0 &&
+            <Dropdown
+              placeholder='Select a category'
+              items={categories && categories.map(category => category)}
+              setFunction={setCategory}
+            />
+            {/* {categories.length > 0 &&
               <select
                 // className={styles.select}
                 onChange={(e) => setCategory(e.target.value)}
@@ -27,7 +31,7 @@ function Form1({ changeStageButton, categories, setCategory }) {
                     value={category.id}
                     key={category.name}>{category.name}</option>
                 )}
-              </select>}
+              </select>} */}
             <div className={styles.btnContainer}>
               <h4>You’re back. And you’re a champ.</h4>
               <button

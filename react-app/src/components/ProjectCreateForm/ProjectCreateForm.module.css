@@ -27,6 +27,13 @@
   background-color: blue;
 }
 
+.invisibleDiv {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  display: transparent;
+}
+
 .formContainer {
   position: fixed;
   background-color: white;
