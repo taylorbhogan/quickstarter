@@ -17,7 +17,7 @@ const NavBar = () => {
           <NavLink to='/learn' exact={true} className={styles.headerLink}>Start a project</NavLink>
         </section>
         <section className={styles.navBarCenter}>
-          <NavLink to='/' exact={true} className={styles.logoPlaceholder}>Placeholder</NavLink>
+          <NavLink to='/' exact={true} className={styles.logoPlaceholder}>QUICKSTARTER</NavLink>
         </section>
         <section className={styles.navBarRight}>
           <button className={styles.searchBtn}>

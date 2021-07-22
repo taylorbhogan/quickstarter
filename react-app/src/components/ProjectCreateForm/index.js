@@ -67,16 +67,10 @@ function ProjectCreateForm() {
     }
 
     // TODO: implement error handling.
-
   }
 
   return (
     <div>
-      <div className={styles.header}>
-        <div></div>
-        <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
-        <div className={styles.userIcon}></div>
-      </div>
       {/* <button
       //  onClick={}
       >Close</button> */}

@@ -48,9 +48,11 @@
 
 .logoPlaceholder {
   text-decoration: none;
-  font-size: 24px;
+  font-size: 30px;
+  letter-spacing: 1px;
   font-weight: bold;
-  color: rgb(79, 197, 128);
+  font-family: 'Modak', cursive;
+  color: rgb(84, 212, 137);
 }
 
 .navBarRight {
