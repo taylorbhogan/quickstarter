@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, redirect
 # from flask.helpers import url_for
 from flask_login import login_required, current_user
 from app.forms import CreateProjectForm, UpdateProjectForm
-from app.models import db, Project
+from app.models import db, Project, Reward
 
 
 project_routes = Blueprint('projects', __name__)
@@ -149,3 +149,35 @@ def update_project(id):
         # newProject = projectFromDb.to_dict()
 
         # return {'newProject': newProject}
+
+
+@project_routes.route('/<int:id>/rewards')
+def get_project_rewards(id):
+    rewards = Reward.query.filter(Reward.project_id == id).all()
+    print("******************", rewards)
+
+    return {
+        "rewards" : [reward.to_dict() for reward in rewards]
+    }
+
+@project_routes.route('/<int:id>/rewards', methods=['POST'])
+def create_project_reward(id):
+    # rewards = Reward.query.filter(Reward.project_id == id).all()
+    print("******************", request.json)
+    newReward = Reward(
+        title = request.json["newReward"]["title"],
+        price = request.json["newReward"]["price"],
+        description = request.json["newReward"]["description"],
+        estimated_delivery = request.json["newReward"]["estimated_delivery"],
+        project_id = id,
+        quantity = None,
+        start_date = None,
+        end_date = None,
+        # quantity = request.json["newReward"]["quantity"],
+        # started_at = request.json["newReward"]["started_at"],
+        # end_at = request.json["newReward"]["end_at"],
+    )
+    db.session.add(newReward)
+    db.session.commit()
+
+    return newReward.to_dict()

@@ -5,6 +5,7 @@ import { editProject, deleteProject } from '../../store/project'
 import { getCountries } from '../../store/country'
 import { getCategories } from '../../store/category'
 import { getSubCategories } from '../../store/subCategory'
+import { getProjectRewards} from '../../store/reward'
 import ProjectEditStory from './ProjectEditStory'
 import ProjectEditRewards from './ProjectEditRewards'
 import ProjectEditPeople from './ProjectEditPeople'
@@ -36,6 +37,7 @@ function Project() {
     const countries = useSelector(state => Object.values(state.countries));
     const user = useSelector(state => state.session.user);
     const subCategories = useSelector(state => Object.values(state.subCategories));
+    const rewardsForProject = useSelector(state => Object.values(state.rewards))
     // const startingSubCat = subCategories.find(subCat => subCat.category_id === +categoryId)
     const [currentSubCategories, setCurrentSubCategories] = useState([subCategories.filter(subCat => subCat.id === +categoryId)])
     // if (subCategories.length) {
@@ -56,6 +58,7 @@ function Project() {
             await dispatch(getCountries())
             await dispatch(getCategories())
             await dispatch(getSubCategories())
+            await dispatch(getProjectRewards(project))
             await setTitle(project.title)
             await setGoal(project.funding_goal)
             await setImageUrl(project.project_image_url)
@@ -63,7 +66,7 @@ function Project() {
             await setSubTitle(project.sub_title)
             await setCountryId(project.country_id)
             await setSubCategory(project.sub_category_id)
-            if (categoryId != project.category_id) {
+            if (categoryId !== project.category_id) {
                 await setCategoryId(project.category_id)
             }
             // if (categoryId != project.category_id) {
@@ -279,7 +282,8 @@ function Project() {
             )
         } else if (currentSelectedTab === 'rewards') {
             return (
-                <ProjectEditRewards project={project} />
+                <ProjectEditRewards project={project}
+                rewards = {rewardsForProject} />
             )
         } else if (currentSelectedTab === 'people') {
             return (

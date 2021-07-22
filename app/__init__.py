@@ -14,7 +14,7 @@ from .api.category_routes import category_routes
 from .api.sub_category_routes import sub_category_routes
 from .api.country_routes import country_routes
 from .api.backing_routes import backing_routes
-
+from .api.reward_routes import reward_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -39,6 +39,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(project_routes, url_prefix='/api/projects')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
+app.register_blueprint(reward_routes, url_prefix='/api/rewards')
 app.register_blueprint(sub_category_routes, url_prefix='/api/subcategories')
 app.register_blueprint(country_routes, url_prefix='/api/countries')
 app.register_blueprint(backing_routes, url_prefix='/api/backings')
@@ -81,6 +82,3 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
-
-
-
