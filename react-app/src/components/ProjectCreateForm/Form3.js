@@ -1,6 +1,7 @@
 import styles from './ProjectCreateForm.module.css'
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Dropdown from '../Dropdown';
 
 function Form3({ changeStageButton, handleSubmit, country, countries, setCountry }) {
   const [div1True, setDiv1True] = useState(false)
@@ -58,7 +59,12 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
           <div className={styles.formContents}>
             <h2>Finally, let’s confirm your eligibility.</h2>
             <h3>Tell us where you’re based and confirm a few other details before we proceed.</h3>
-            <select
+            <Dropdown
+              placeholder="Select your country"
+              items={countries}
+              setFunction={setCountry}
+            />
+            {/* <select
               onChange={(e) => setCountry(e.target.value)}
             >
               {countries.map(country =>
@@ -66,7 +72,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
                   value={country.id}
                   key={country.id}>{country.name}</option>
               )}
-            </select>
+            </select> */}
             <div
               className={styles.linkWrapper}
             >

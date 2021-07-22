@@ -25,7 +25,7 @@ function Dropdown({ placeholder, items, setFunction }) {
       <div
         className={styles.header}
         onClick={() => toggle(!open)}
-        style={open ? { border: '1px solid black' } : { border: 'none' }}
+        style={open ? { border: '1px solid black' } : null}
       >
         <div>
           <p>{!selection ? placeholder : selection.name}</p>

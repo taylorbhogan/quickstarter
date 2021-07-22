@@ -18,7 +18,7 @@ function Form1({ changeStageButton, categories, setCategory }) {
             <h3>Pick a project category to connect with a specific community. You can always update this later.</h3>
             <Dropdown
               placeholder='Select a category'
-              items={categories && categories.map(category => category)}
+              items={categories}
               setFunction={setCategory}
             />
             {/* {categories.length > 0 &&

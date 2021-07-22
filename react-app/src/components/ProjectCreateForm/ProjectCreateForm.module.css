@@ -16,7 +16,6 @@
   color: rgb(79, 197, 128);
   text-decoration: none;
   font-weight: bold;
-
 }
 
 .userIcon{
@@ -45,7 +44,7 @@
 }
 
 .form{
-  width: 60%;
+  width: 50%;
   margin: 150px auto;
   max-width: 600px;
 }
@@ -76,6 +75,7 @@
   margin-bottom: 36px;
   color: rgb(102, 102, 102);
   text-align: center;
+  font-weight: lighter;
 }
 
 .form h4 {
@@ -91,6 +91,10 @@
   justify-content: space-between;
   width: 100%;
   padding: 10px;
+}
+
+.btnContainer h4 {
+  font-weight: lighter;
 }
 
 .textarea{
