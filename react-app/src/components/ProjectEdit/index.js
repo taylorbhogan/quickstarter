@@ -141,7 +141,7 @@ function Project() {
             sub_category_id: subCategory === '' ? null : +subCategory,
             country_id: countryId,
             project_image_url: imageUrl,
-            campaign_duration: +campaignDuration,
+            campaign_duration: campaignDuration === '' || campaignDuration === null ? null : +campaignDuration,
             funding_goal: +goal,
 
             // category: categoryId,
@@ -151,17 +151,17 @@ function Project() {
         console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
         // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
         let editedProject = await dispatch(editProject(newProject))
-            if (editedProject) {
-                setErrors(editedProject);
-            }
-            // console.log("************", editedProject)
+        if (editedProject) {
+            setErrors(editedProject);
+        }
+        // console.log("************", editedProject)
         if (!editedProject) {
-             setSaveProjectButtonText('Project Saved!')
-        setTimeout(() => {
-            setSaveProjectButtonText('Save')
+            setSaveProjectButtonText('Project Saved!')
+            setTimeout(() => {
+                setSaveProjectButtonText('Save')
 
-        }, 2000)
-        history.push(`/projects/${projectId}`);
+            }, 2000)
+            history.push(`/projects/${projectId}`);
         }
     }
 
@@ -185,11 +185,11 @@ function Project() {
                     <form
                         onSubmit={handleSubmit}>
                         <div className={styles.block}>
-                        <h2>Project title</h2>
-                        <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
-                        {errors && errors.map((error, ind) => (
-                            <div style={{color: "red"}} key={ind}>{error}</div>
-                          ))}
+                            <h2>Project title</h2>
+                            <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
+                            {errors && errors.map((error, ind) => (
+                                <div style={{ color: "red" }} key={ind}>{error}</div>
+                            ))}
                             <div>
                                 <label>Title</label>
                                 <input
