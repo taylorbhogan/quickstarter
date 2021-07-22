@@ -29,30 +29,47 @@ def add_backing():
     form['project_id'].data = request.json['backing']['project_id']
     form['reward_id'].data = request.json['backing']['reward_id']
     form['amount'].data = request.json['backing']['amount']
+
+    filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data)).all()
+    # print("HERE ARE THE THINGS", type(form['project_id'].data),type(form['user_id'].data) )
+    # print(form['user_id'].data)
+    # print('************************************** BACK', filteredBackings[0].id)
+
     if form.validate_on_submit():
 
         # currentProjectsBackings = Backing.query.filter(Backing.user_id == form['user_id'].data)
         # print("*******CURRENT PROJECT BACKINGS WHERE USER ID MATCHES", currentProjectsBackings)
-        backing = Backing(
-            user_id = form['user_id'].data,
-            project_id = form['project_id'].data,
-            reward_id = form['reward_id'].data,
-            amount = form['amount'].data,
-        )
-        db.session.add(backing)
-        db.session.commit()
+        if(len(filteredBackings) > 0):
+            filteredBackings[0].amount += form['amount'].data
+            db.session.add(filteredBackings[0])
+            db.session.commit()
+            proj_to_update = Project.query.get(form['project_id'].data)
+            
+            proj_to_update.current_funding += form['amount'].data
+            db.session.add(proj_to_update)
+            db.session.commit()
 
-        id = backing.id
-        backingFromDb = Backing.query.get(id)
-        newBacking = backingFromDb.to_dict()
+            return {"newBacking": filteredBackings[0].to_dict()}
+        else:
+            backing = Backing(
+                user_id = form['user_id'].data,
+                project_id = form['project_id'].data,
+                reward_id = form['reward_id'].data,
+                amount = form['amount'].data,
+            )
+            db.session.add(backing)
+            db.session.commit()
+            id = backing.id
+            backingFromDb = Backing.query.get(id)
+            newBacking = backingFromDb.to_dict()
 
-        amountToAddToFunding = newBacking['amount']
-        projectToUpdate = Project.query.get(newBacking['project_id'])
-        projectToUpdate.current_funding += amountToAddToFunding
-        db.session.add(projectToUpdate)
-        db.session.commit()
+            amountToAddToFunding = newBacking['amount']
+            projectToUpdate = Project.query.get(newBacking['project_id'])
+            projectToUpdate.current_funding += amountToAddToFunding
+            db.session.add(projectToUpdate)
+            db.session.commit()
 
 
-        return {'newBacking': newBacking}
+            return {'newBacking': newBacking}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -110,7 +110,7 @@ def update_project(id):
     form['title'].data = request.json['title']
     form['story'].data = request.json['story']
 
-    print('YOURE HITTING THIS NOW',form['campaign_duration'].data)
+    # print('YOURE HITTING THIS NOW',form['campaign_duration'].data)
 
     if form.validate_on_submit():
 
