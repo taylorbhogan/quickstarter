@@ -15,7 +15,6 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-
 @backing_routes.route('', methods=['POST'])
 def add_backing():
     """
@@ -31,6 +30,9 @@ def add_backing():
     form['reward_id'].data = request.json['backing']['reward_id']
     form['amount'].data = request.json['backing']['amount']
     if form.validate_on_submit():
+
+        # currentProjectsBackings = Backing.query.filter(Backing.user_id == form['user_id'].data)
+        # print("*******CURRENT PROJECT BACKINGS WHERE USER ID MATCHES", currentProjectsBackings)
         backing = Backing(
             user_id = form['user_id'].data,
             project_id = form['project_id'].data,
