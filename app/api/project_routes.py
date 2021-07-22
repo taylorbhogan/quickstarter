@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@project_routes.route('/')
+@project_routes.route('')
 # @login_required
 def get_projects():
     """
@@ -95,6 +95,10 @@ def update_project(id):
     """
     form = UpdateProjectForm()
     print('**********', request.json)
+
+    if (request.json['sub_category_id'] == 0):
+        request.json['sub_category_id'] = None;
+
     form['csrf_token'].data = request.cookies['csrf_token']
     form['category'].data = request.json['category_id']
     form['sub_category_id'].data = request.json['sub_category_id']
@@ -104,6 +108,7 @@ def update_project(id):
     form['funding_goal'].data = request.json['funding_goal']
     form['project_image_url'].data = request.json['project_image_url']
     form['title'].data = request.json['title']
+    form['story'].data = request.json['story']
 
 
     if form.validate_on_submit():
@@ -120,6 +125,7 @@ def update_project(id):
         project.funding_goal = form['funding_goal'].data
         project.project_image_url = form['project_image_url'].data
         project.title = form['title'].data
+        project.story = form['story'].data
 
         # print('******** AFTER!!!!!!!!!!!!!!!!!!!!', project.to_dict())
         db.session.add(project)

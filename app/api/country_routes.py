@@ -7,7 +7,7 @@ from app.models import db, Country
 country_routes = Blueprint('countries', __name__)
 
 
-@country_routes.route('/')
+@country_routes.route('')
 def get_countries():
     """
     retrieves all categories from db
