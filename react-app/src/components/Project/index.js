@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { createBacking } from '../../store/backing'
+import ProjectTopView from './ProjectTopView';
 
 function Project() {
   const [project, setProject] = useState({});
@@ -56,23 +57,10 @@ function Project() {
 
   return (
     <div>
-      <ul>
-        <li>
-          <strong>Project Id</strong> {projectId}
-        </li>
-        <li>
-          <strong>Project SubTitle</strong> {project.subTitle}
-        </li>
-        <li>
-          <strong>Project Category</strong> {project.category}
-        </li>
-        <li>
-          <strong>Project Country</strong> {project.country}
-        </li>
-        <li>
-          <strong>Project Funding</strong> {project.current_funding}
-        </li>
-      </ul>
+      <ProjectTopView
+        project={project}
+      />
+
       <form>
         <label>Want to back this project?</label>
         <input
