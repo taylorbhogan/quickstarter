@@ -1,15 +1,3 @@
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
-// THIS IS THE TEST FILE
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +20,6 @@ function Project() {
     const [errors, setErrors] = useState([])
 
     const [project, setProject] = useState('')
-    // const [subTitle, setSubTitle] = useState(project.subTitle)
     const [subTitle, setSubTitle] = useState(project.sub_title)
     const [categoryId, setCategoryId] = useState(project.category_id)
     const [countryId, setCountryId] = useState(project.country)
@@ -56,13 +43,9 @@ function Project() {
     //   console.log(startingSubCats)
     // }
     // if (startingSubCats.length) {
-
     //   setCurrentSubCategories(startingSubCats)
     // }
-    // TODO: switch these to be their equivalents pulled from the db
-    // const categories = ['Art', 'Comics', 'Crafts']
-    // const subCategories = ['Stuff', 'Things']
-    // const countries = ['Norway', 'New Zealand', 'Mongolia']
+
 
     useEffect(() => {
         (async () => {
@@ -86,24 +69,13 @@ function Project() {
             // if (categoryId != project.category_id) {
             let subCatArray = await subCategories.filter(subCat => subCat.category_id === +categoryId)
             await setCurrentSubCategories(subCatArray)
-
-
             // }
-
-
-
-
             // await setCurrentSubCategories(['testy'])
-
-
         })();
         // }, [categoryId])
     }, [])
-
     // useEffect(() => {
-
     // }, [categoryId])
-
 
     useEffect(() => {
         dispatch(getSubCategories())
@@ -120,12 +92,8 @@ function Project() {
             }
             console.log("INITIAL SUBCAT!!!", initialSubCatValue)
         }
-        // setSubCategory(initialSubCatValue.name)
-        // }
-        // console.log("SUBCAT", subCatArray)
-
     }, [categoryId])
-    // HANDLE SUBMIT IS NOT YET FUNCTIONAL - IN THE WORKS
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -180,12 +148,12 @@ function Project() {
 
                     <div>
                         <h1>Start with the basics</h1>
-                        <p>Make it easy for people to learn about your project.</p>
+                        <h2>Make it easy for people to learn about your project.</h2>
                     </div>
                     <form
                         onSubmit={handleSubmit}>
                         <div className={styles.block}>
-                            <h2>Project title</h2>
+                            <h3>Project title</h3>
                             <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
                             {errors && errors.map((error, ind) => (
                                 <div style={{ color: "red" }} key={ind}>{error}</div>
@@ -209,7 +177,7 @@ function Project() {
                             </div>
                         </div>
                         <div className={styles.block}>
-                            <h2>Project category</h2>
+                            <h3>Project category</h3>
                             <div>Choose the category that most closely aligns with your project.</div>
                             <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
                             <div>You’ll be able to change the category and subcategory even after your project is live.</div>
@@ -239,7 +207,7 @@ function Project() {
                             </select>
                         </div>
                         <div className={styles.block}>
-                            <h2>Project location</h2>
+                            <h3>Project location</h3>
                             <p>Enter the location that best describes where your project is based.</p>
                             <select
                                 value={countryId}
@@ -253,7 +221,7 @@ function Project() {
                             </select>
                         </div>
                         <div className={styles.block}>
-                            <h2>Project image</h2>
+                            <h3>Project image</h3>
                             <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear on your project page, across the Kickstarter website and mobile apps, and (when shared) on social channels.</p>
                             <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
                             <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
@@ -265,7 +233,7 @@ function Project() {
                             ></input>
                         </div>
                         <div className={styles.block}>
-                            <h2>Funding goal</h2>
+                            <h3>Funding goal</h3>
                             <p>Set an achievable goal that covers what you need to complete your project.</p>
                             <p>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</p>
                             <div>
@@ -279,7 +247,7 @@ function Project() {
                             </div>
                         </div>
                         <div className={styles.block}>
-                            <h2>Campaign duration</h2>
+                            <h3>Campaign duration</h3>
                             <div>
                                 <label>Enter number of days</label>
                                 <input
@@ -328,14 +296,34 @@ function Project() {
         }
     }
     return (
-        <div>
-            <div className={styles.tabMenu}>
-                <div onClick={(e) => setCurrentSelectedTab('basics')}>✍️ Basics</div>
-                <div onClick={(e) => setCurrentSelectedTab('rewards')}>🎁 Rewards</div>
-                <div onClick={(e) => setCurrentSelectedTab('story')}>📖 Story</div>
-                <div onClick={(e) => setCurrentSelectedTab('people')}>👥 People</div>
-                <div onClick={(e) => setCurrentSelectedTab('payment')}>💰 Payment</div>
-                <div onClick={(e) => setCurrentSelectedTab('promotion')}>📢 Promotion</div>
+        <div className={styles.dashBoardContentAndMenu}>
+            <div className={styles.wholeMenu}>
+                <div className={styles.topMenu}>
+                    <div className={styles.topLeft}>
+                        <div className={styles.logoDiv}>
+                            QUICKSTARTER
+                        </div>
+                        <div className={styles.backButtonDiv}>
+                            <button><span><i className="fas fa-long-arrow-alt-left"></i></span> Category</button>
+                        </div>
+                    </div>
+                    <div className={styles.topRight}>
+                        <div className={styles.cancelButtonDiv}>
+                            <button className={styles.cancelButton}>Cancel</button>
+                        </div>
+                        <div className={styles.saveButtonDiv}>
+                            <button className={styles.saveButton}>Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.tabMenu}>
+                    <div onClick={(e) => setCurrentSelectedTab('basics')}>✍️ Basics</div>
+                    <div onClick={(e) => setCurrentSelectedTab('rewards')}>🎁 Rewards</div>
+                    <div onClick={(e) => setCurrentSelectedTab('story')}>📖 Story</div>
+                    <div onClick={(e) => setCurrentSelectedTab('people')}>👥 People</div>
+                    <div onClick={(e) => setCurrentSelectedTab('payment')}>💰 Payment</div>
+                    <div onClick={(e) => setCurrentSelectedTab('promotion')}>📢 Promotion</div>
+                </div>
             </div>
             {dashBoardContent()}
         </div>
