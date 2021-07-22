@@ -35,9 +35,22 @@ function ProjectEditRewards({ project, rewards }) {
      setPickStartDate(false)
   }
 
-  const togglePickStartDate = e => {
-    setPickStartDate(true)
+  const togglePickStartDate = e => setPickStartDate(true)
+
+
+  const handleStartDateChange = e => {
+    setStartDate(e.target.value)
+    // if (endDate) {
+    //   console.log("this is end date", endDate)
+    //   console.log("this is start date", startDate)
+
+      // setEndDate(null)
+      // console.log("this is end date", endDate)
+      // console.log("this is start date", startDate)
+    // }
+
   }
+
 
   const handleRewardSubmit = (e) => {
     e.preventDefault();
@@ -135,18 +148,32 @@ function ProjectEditRewards({ project, rewards }) {
                 <div>
                   <label>Time limit</label>
                   <div>
-                    <label>No limit</label>
-                    <input type="radio" value="" checked={!pickStartDate ? true : false}
-                    onClick={setNoLimit}
+                      <label>No limit</label>
+                      <input type="radio" value="" checked={!pickStartDate ? true : false}
+                      onClick={setNoLimit}
                     ></input>
                     <br></br>
-                    <label>Specify Start and End</label>
-                    <input type="radio" value="" checked={pickStartDate ? true : false}
-                    onClick={togglePickStartDate}
+                      <label>Specify Start and End</label>
+                      <input type="radio" value="" checked={pickStartDate ? true : false}
+                      onClick={togglePickStartDate}
                     ></input>
                     {pickStartDate &&
-                    <input type="month" min={todaysYearMonth}></input>
+                      <div>
+                      <label>Choose Start Date</label>
+                      <input type="month" min={todaysYearMonth}
+                      onChange={handleStartDateChange }
+                      ></input>
+                      </div>
                     }
+                    {startDate &&
+                      <div>
+                      <label>Choose End Date</label>
+                      <input type="month" min={startDate} 
+                      onChange={e => setEndDate(e.target.value)}
+                      ></input>
+                      </div>
+                    }
+
                   </div>
                 </div>
                 <button
