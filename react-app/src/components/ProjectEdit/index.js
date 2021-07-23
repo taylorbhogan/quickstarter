@@ -89,7 +89,17 @@ function Project() {
 
             if (errors.length) {
                 setGoLiveErrors(errors)
+            } else {
+                let projectToGoLive = {
+                    ...project,
+                    is_live: true
+                }
+                let projectAfterGoLive = await dispatch(editProject(projectToGoLive))
+                console.log("*DID THIS GO LIVE? SHOULD BE YES*", projectAfterGoLive)
+                history.push(`/projects/${projectToGoLive.id}`)
             }
+
+
 
         })();
 

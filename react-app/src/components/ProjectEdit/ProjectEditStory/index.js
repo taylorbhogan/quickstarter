@@ -59,6 +59,7 @@ function ProjectEditStory({ project }) {
             // }, 2000)
             history.push(`/projects/${editedProject.id}`);
         }
+        history.go(0);
 
 
 
