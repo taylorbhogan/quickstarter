@@ -18,7 +18,7 @@ const Home = () => {
     <>
       <Featured projects={projects} />
       <Mission />
-      <Slides projects={projects} />
+      <Slides projects={projects} title="FRESH FAVORITES" />
     </>
   )
 };
