@@ -57,7 +57,7 @@ def add_backing():
         #     filteredBackings = []
 
         if(len(filteredBackings) > 0):
-            print("DID YOU HIT THIS?!?!?!?!?!?!??!?!?!")
+            # print("DID YOU HIT THIS?!?!?!?!?!?!??!?!?!")
             filteredBackings[0].amount += form['amount'].data
             db.session.add(filteredBackings[0])
             db.session.commit()
