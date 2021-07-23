@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects } from '../../store/project';
+import Featured from '../ViewComponents/Featured';
+import styles from './Home.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -11,11 +13,9 @@ const Home = () => {
   }, [dispatch])
 
   return (
-    <>
-      <h1>Hello from new home</h1>
-      {console.log(projects)}
-      <h2>{projects.length > 0 && projects.map(project => project.title)}</h2>
-    </>
+    <div className={styles.container}>
+      <Featured projects={projects} />
+    </div>
   )
 
 };

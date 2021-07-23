@@ -1,0 +1,8 @@
+.container {
+  background-color: pink;
+  height: 500px;
+  width: 100%;
+  max-width: 1246px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
