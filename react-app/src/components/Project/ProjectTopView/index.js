@@ -16,7 +16,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
             <div className={styles.belowShowCaseDiv}>
               <div>
                 <span className={styles.belowShowCaseIcon}></span>
-                <span className={styles.belowShowCaseText}>I don't know what this part is</span>
+                <span className={styles.belowShowCaseText}>Project we love</span>
               </div>
               <div>
                 <span className={styles.belowShowCaseIcon}><i className="far fa-compass"></i></span>
