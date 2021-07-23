@@ -15,7 +15,7 @@ export const getProjectRewards = (project) => async (dispatch) => {
 
     // if (response.ok) {
         const data = await response.json()
-        console.log("******this is data*******",data)
+        // console.log("******this is data*******",data)
     //     const rewardsArray = data.rewards
     //     dispatch(setSingleProjectRewardsInStore(rewardsArray))
     // }
@@ -23,7 +23,7 @@ export const getProjectRewards = (project) => async (dispatch) => {
 
 
 export const createProjectReward = (project, newReward) => async (dispatch) => {
-  console.log(project, newReward, "****")
+  // console.log(project, newReward, "****")
   const response = await fetch(`/api/projects/${project.id}/rewards`, {
     method: 'POST',
     headers: {
