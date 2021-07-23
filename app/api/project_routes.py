@@ -164,18 +164,25 @@ def get_project_rewards(id):
 def create_project_reward(id):
     # rewards = Reward.query.filter(Reward.project_id == id).all()
     print("******************", request.json)
+    if (request.json["newReward"]["estimated_delivery"]):
+        request.json["newReward"]["estimated_delivery"] = request.json["newReward"]["estimated_delivery"] + '-01'
+    if (request.json["newReward"]["start_date"]):
+        request.json["newReward"]["start_date"] = request.json["newReward"]["start_date"] + '-01'
+    if(request.json["newReward"]["end_date"]):
+        request.json["newReward"]["end_date"] = request.json["newReward"]["end_date"] + '-01'
+        
     newReward = Reward(
         title = request.json["newReward"]["title"],
         price = request.json["newReward"]["price"],
         description = request.json["newReward"]["description"],
         estimated_delivery = request.json["newReward"]["estimated_delivery"],
         project_id = id,
-        quantity = None,
-        start_date = None,
-        end_date = None,
-        # quantity = request.json["newReward"]["quantity"],
-        # started_at = request.json["newReward"]["started_at"],
-        # end_at = request.json["newReward"]["end_at"],
+        quantity = request.json["newReward"]["quantity"],
+        start_date = request.json["newReward"]["start_date"],
+        end_date = request.json["newReward"]["end_date"],
+        # quantity = None,
+        # start_date = None,
+        # end_date = None,
     )
     db.session.add(newReward)
     db.session.commit()
