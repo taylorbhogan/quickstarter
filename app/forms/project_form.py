@@ -1,19 +1,30 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, ValidationError, InputRequired, Length
+from wtforms.validators import DataRequired, ValidationError, InputRequired, Length, NumberRange
 from app.models import Project
 
 
 def campaign_duration_validator(form, field):
     campaign_duration = field.data
-    print("CURENTLY CHECKING",campaign_duration is None, campaign_duration == None, campaign_duration is None)
     if campaign_duration is None:
         campaign_duration = None
     elif campaign_duration > 60:
         raise ValidationError(
             'Campaign duration has to be within 60 days')
-    elif campaign_duration == 0:
+    elif campaign_duration <= 0:
         campaign_duration = None
+
+def funding_goal_validator(form, field):
+    funding_goal = field.data
+    print("CURENTLY CHECKING^^^^^^^^^^^^^^^^^^^^^^^^^^^^", funding_goal)
+    if funding_goal is None:
+        return
+    if funding_goal <= 0:
+        # funding_goal = None
+        raise ValidationError(
+            'Funding goal must be greater than or equal to $1'
+        )
+
 # def test_validator(form, field):
 #     if field.data is not None:
 #         return NumberRange(
@@ -39,7 +50,8 @@ class UpdateProjectForm(FlaskForm):
     country = StringField('country', validators=[DataRequired()])
     campaign_duration = StringField('campaign_duration', validators=[campaign_duration_validator])
     # campaign_duration = StringField('campaign_duration', validators=[Length(max=60, min =1, message='Campaign duration has to be within 60 days and greater than 0')])
-    funding_goal = StringField('funding_goal')
+    # funding_goal = StringField('funding_goal', validators=[NumberRange(min=1, message='Funding Goal must be greater than or equal to $1')])
+    funding_goal = StringField('funding_goal', validators=[funding_goal_validator])
     project_image_url = StringField('project_image_url')
     title = StringField('title',validators=[Length(max=60, message='Title must be under 60 characters')])
     sub_category_id = StringField('sub_category_id')
