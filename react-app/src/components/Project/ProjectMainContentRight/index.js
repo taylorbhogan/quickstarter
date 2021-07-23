@@ -1,6 +1,6 @@
 import styles from './ProjectMainContentRight.module.css'
 
-function ProjectMainContentRight({addABacking, amount, setAmount, project}) {
+function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
   return (
     <div>
       <form>
@@ -12,7 +12,7 @@ function ProjectMainContentRight({addABacking, amount, setAmount, project}) {
         ></input>
         <button
           type='submit'
-          // id={10101}
+          // id={17}
           // id='hello'
           // DEFAULT BACKING DOES NOT GET AN ID; REWARDS DO
           onClick={addABacking}
