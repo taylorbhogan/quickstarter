@@ -1,7 +1,7 @@
 import ProjectBuyReward from '../ProjectBuyReward'
 import styles from './ProjectMainContentRight.module.css'
 
-function ProjectMainContentRight({addABacking, amount, setAmount, project}) {
+function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
   return (
     <div className={styles.outside}>
       <div>

@@ -154,7 +154,8 @@ def update_project(id):
 @project_routes.route('/<int:id>/rewards')
 def get_project_rewards(id):
     rewards = Reward.query.filter(Reward.project_id == id).all()
-    print("******************", rewards)
+    # print("******************", rewards)
+    # print("******************",[reward.to_dict() for reward in rewards])
 
     return {
         "rewards" : [reward.to_dict() for reward in rewards]
@@ -170,7 +171,7 @@ def create_project_reward(id):
         request.json["newReward"]["start_date"] = request.json["newReward"]["start_date"] + '-01'
     if(request.json["newReward"]["end_date"]):
         request.json["newReward"]["end_date"] = request.json["newReward"]["end_date"] + '-01'
-        
+
     newReward = Reward(
         title = request.json["newReward"]["title"],
         price = request.json["newReward"]["price"],

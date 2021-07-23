@@ -13,11 +13,13 @@ const Home = () => {
   }, [dispatch])
 
   return (
-    <div className={styles.container}>
-      <Featured projects={projects} />
-    </div>
+    <>
+      <div className={styles.container}>
+        <Featured projects={projects} />
+      </div>
+      <div className={styles.border}></div>
+    </>
   )
-
 };
 
 export default Home;

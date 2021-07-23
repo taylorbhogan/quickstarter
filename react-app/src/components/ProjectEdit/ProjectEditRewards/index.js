@@ -1,7 +1,8 @@
 import styles from "../ProjectEdit.module.css";
 import { useState, useEffect } from "react";
-import { createProjectReward } from "../../../store/reward";
-import { useDispatch } from "react-redux";
+import { createProjectReward, deleteProjectReward } from "../../../store/reward";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjectRewards } from '../../../store/reward'
 
 function ProjectEditRewards({ project, rewards }) {
   const dispatch = useDispatch();
@@ -14,7 +15,11 @@ function ProjectEditRewards({ project, rewards }) {
   const [pickStartDate, setPickStartDate] = useState(false)
   const [rewardEstimatedDelivery, setRewardEstimatedDelivery] = useState('')
   const [rewardQuantity, setRewardQuantity] = useState(null)
+  const [showCreateRewardForm, setShowCreateRewardForm] = useState(false)
   // const [estimatedDelivery, setEstimatedDelivery] = useState("")
+
+  // console.log('*** your rewards!!**', rewards)
+  const rewardsForProject = useSelector(state => Object.values(state.rewards))
 
   useEffect(() => {
     const getTodaysDate = () => {
@@ -27,7 +32,9 @@ function ProjectEditRewards({ project, rewards }) {
       }
     };
     setTodaysYearMonth(getTodaysDate());
-    console.log(getTodaysDate());
+
+
+    // console.log(getTodaysDate());
   }, []);
 
   const setNoLimit = e => {
@@ -42,34 +49,49 @@ function ProjectEditRewards({ project, rewards }) {
 
   const handleStartDateChange = e => {
     setStartDate(e.target.value)
-    setEndDate(null)
-
-    // if (endDate) {
-    //   console.log("this is end date", endDate)
-    //   console.log("this is start date", startDate)
+    // setEndDate(null)
+    setEndDate('')
 
     // setEndDate(null)
     // console.log("this is end date", endDate)
     // console.log("this is start date", startDate)
-    // }
+
+  }
+  const handleDeleteReward = async (e) => {
+    e.preventDefault()
+
+    await dispatch(deleteProjectReward(+e.target.id))
+    await dispatch(getProjectRewards(project))
 
   }
 
+  const toggleCreateRewardForm = (e) => {
+    e.preventDefault()
+    setShowCreateRewardForm(!showCreateRewardForm)
+  }
 
-  const handleRewardSubmit = (e) => {
+  const handleRewardSubmit = async (e) => {
     e.preventDefault();
     const newReward = {
       title: rewardTitle,
       price: rewardPrice,
       description: rewardDescription,
-      estimated_delivery: rewardEstimatedDelivery,
+      estimated_delivery: rewardEstimatedDelivery === '' ? null : rewardEstimatedDelivery,
       project_id: project.id,
       quantity: rewardQuantity === '' ? null : +rewardQuantity,
-      start_date: startDate,
-      end_date: endDate
+      start_date: startDate === '' ? null : startDate,
+      end_date: endDate === '' ? null : endDate
     };
-    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
-    dispatch(createProjectReward(project, newReward))
+    // console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
+    await dispatch(createProjectReward(project, newReward))
+    await dispatch(getProjectRewards(project))
+    setRewardTitle('')
+    setRewardPrice(1)
+    setRewardDescription('')
+    setRewardEstimatedDelivery('')
+    setRewardQuantity('')
+    setStartDate(null)
+    setEndDate(null)
 
 
 
@@ -111,124 +133,158 @@ function ProjectEditRewards({ project, rewards }) {
               </div>
             </div>
             <div className={styles.newRewardButtonDiv}>
-              <button className={styles.newRewardButton}>+ New reward</button>
+              <button onClick={toggleCreateRewardForm} className={styles.newRewardButton}>+ New reward</button>
             </div>
           </div>
           <div className={styles.rewardsContainerBottomContent}>
-            <div className={styles.formDiv}>
-              <form>
-                <div>
-                  <label>Title</label>
-                  <input
-                    placeholder={"Signed limited-edition"}
-                    value={rewardTitle}
-                    onChange={(e) => setRewardTitle(e.target.value)}
-                  ></input>
+            {showCreateRewardForm &&
+              <>
+                <div className={styles.formDiv}>
+                  <form>
+                    <div>
+                      <label>Title</label>
+                      <input
+                        placeholder={"Signed limited-edition"}
+                        value={rewardTitle}
+                        onChange={(e) => setRewardTitle(e.target.value)}
+                      ></input>
+                    </div>
+                    <div>
+                      <label>Price</label>
+                      <input
+                        type="number"
+                        value={rewardPrice}
+                        onChange={(e) => setRewardPrice(e.target.value)}
+                      ></input>
+                    </div>
+                    <div>
+                      <label>Description</label>
+                      <textarea
+                        placeholder={"Get an early copy - hot off the presses!"}
+                        value={rewardDescription}
+                        onChange={(e) => setRewardDescription(e.target.value)}
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label>Estimated delivery</label>
+                      <input type="month" min={todaysYearMonth} value={rewardEstimatedDelivery} onChange={e => setRewardEstimatedDelivery(e.target.value)}></input>
+                      <p>
+                        Give yourself plenty of time. It's better to deliver to
+                        backers ahead of schedule than behind.
+                      </p>
+                      <div>Date inputs go here</div>
+                    </div>
+                    <div>
+                      <label>Shipping</label>
+                    </div>
+                    <div>
+                      <label>Reward quantity</label>
+                      <input type="number" value={rewardQuantity} onChange={e => setRewardQuantity(e.target.value)}></input>
+                    </div>
+                    <div>
+                      <label>Time limit</label>
+                      <div>
+                        <label>No limit</label>
+                        <input type="radio" value="" checked={!pickStartDate ? true : false}
+                          onChange={setNoLimit}
+                        ></input>
+                        <br></br>
+                        <label>Specify Start and End</label>
+                        <input type="radio" value="" checked={pickStartDate ? true : false}
+                          onChange={togglePickStartDate}
+                        ></input>
+                        {pickStartDate &&
+                          <div>
+                            <label>Choose Start Date</label>
+                            <input type="month" min={todaysYearMonth}
+                              onChange={handleStartDateChange}
+
+                            ></input>
+                          </div>
+                        }
+                        {startDate &&
+                          <div>
+                            <label>Choose End Date</label>
+                            <input type="month" min={startDate} value={endDate}
+                              onChange={e => setEndDate(e.target.value)}
+                            ></input>
+                          </div>
+                        }
+
+                      </div>
+                    </div>
+                    <button
+                      className={styles.saveRewardButton}
+                      onClick={handleRewardSubmit}
+                    >
+                      Save reward
+                    </button>
+                    <button className={styles.cancelRewardButton}>Cancel</button>
+                  </form>
                 </div>
-                <div>
-                  <label>Amount</label>
-                  <input
-                    type="number"
-                    value={rewardPrice}
-                    onChange={(e) => setRewardPrice(e.target.value)}
-                  ></input>
-                </div>
-                <div>
-                  <label>Description</label>
-                  <textarea
-                    placeholder={"Get an early copy - hot off the presses!"}
-                    value={rewardDescription}
-                    onChange={(e) => setRewardDescription(e.target.value)}
-                  ></textarea>
-                </div>
-                <div>
-                  <label>Estimated delivery</label>
-                  <input type="month" min={todaysYearMonth} value={rewardEstimatedDelivery} onChange={e => setRewardEstimatedDelivery(e.target.value)}></input>
-                  <p>
-                    Give yourself plenty of time. It's better to deliver to
-                    backers ahead of schedule than behind.
-                  </p>
-                  <div>Date inputs go here</div>
-                </div>
-                <div>
-                  <label>Shipping</label>
-                </div>
-                <div>
-                  <label>Reward quantity</label>
-                  <input type="number" value={rewardQuantity} onChange={e => setRewardQuantity(e.target.value)}></input>
-                </div>
-                <div>
-                  <label>Time limit</label>
+
+                <div className={styles.previewDiv}>
+                  <div>Reward preview</div>
                   <div>
-                    <label>No limit</label>
-                    <input type="radio" value="" checked={!pickStartDate ? true : false}
-                      onChange={setNoLimit}
-                    ></input>
-                    <br></br>
-                    <label>Specify Start and End</label>
-                    <input type="radio" value="" checked={pickStartDate ? true : false}
-                      onChange={togglePickStartDate}
-                    ></input>
-                    {pickStartDate &&
-                      <div>
-                        <label>Choose Start Date</label>
-                        <input type="month" min={todaysYearMonth}
-                          onChange={handleStartDateChange}
-
-                        ></input>
-                      </div>
-                    }
-                    {startDate &&
-                      <div>
-                        <label>Choose End Date</label>
-                        <input type="month" min={startDate} value={endDate}
-                          onChange={e => setEndDate(e.target.value)}
-                        ></input>
-                      </div>
-                    }
-
+                    Get a glimpse of how this reward will look on your project page.
+                  </div>
+                  <div className={styles.rewardPreviewRectangleContainer}>
+                    <div className={styles.rewardAmountPreview}>Pledge or more</div>
+                    <div className={styles.rewardsTitlePreview}></div>
+                    <div className={styles.rewardsDescriptionPreview}></div>
+                    <div className={styles.rewardsPreviewHeader}>
+                      ESTIMATED DELIVERY:
+                    </div>
+                    <div
+                      className={`${styles.rewardsEstimatedDeliveryPreview} ${styles.rewardsPreviewDisplay}`}
+                    ></div>
+                    <div className={styles.rewardsPreviewHeader}>SHIPS TO</div>
+                    <div
+                      className={`${styles.rewardsShipsToPreview} ${styles.rewardsPreviewDisplay}`}
+                    ></div>
+                    <div className={styles.rewardsPreviewHeader}>
+                      REWARD QUANTITY
+                    </div>
+                    <div
+                      className={`${styles.rewardsQuantityPreview} ${styles.rewardsPreviewDisplay}`}
+                    ></div>
                   </div>
                 </div>
-                <button
-                  className={styles.saveRewardButton}
-                  onClick={handleRewardSubmit}
-                >
-                  Save reward
-                </button>
-                <button className={styles.cancelRewardButton}>Cancel</button>
-              </form>
-            </div>
-            <div className={styles.previewDiv}>
-              <div>Reward preview</div>
-              <div>
-                Get a glimpse of how this reward will look on your project page.
-              </div>
-              <div className={styles.rewardPreviewRectangleContainer}>
-                <div className={styles.rewardAmountPreview}>Pledge or more</div>
-                <div className={styles.rewardsTitlePreview}></div>
-                <div className={styles.rewardsDescriptionPreview}></div>
-                <div className={styles.rewardsPreviewHeader}>
-                  ESTIMATED DELIVERY:
-                </div>
-                <div
-                  className={`${styles.rewardsEstimatedDeliveryPreview} ${styles.rewardsPreviewDisplay}`}
-                ></div>
-                <div className={styles.rewardsPreviewHeader}>SHIPS TO</div>
-                <div
-                  className={`${styles.rewardsShipsToPreview} ${styles.rewardsPreviewDisplay}`}
-                ></div>
-                <div className={styles.rewardsPreviewHeader}>
-                  REWARD QUANTITY
-                </div>
-                <div
-                  className={`${styles.rewardsQuantityPreview} ${styles.rewardsPreviewDisplay}`}
-                ></div>
-              </div>
-            </div>
+              </>
+            }
           </div>
         </div>
       </div>
-    </div>
+      <div>
+        <h1>Current Rewards:</h1>
+        {rewards.map(reward => (
+          <div key={reward.id}>
+            <div>
+              {reward.title}
+            </div>
+            <div>
+              Description: {reward.description}
+            </div>
+            <div>
+              Price: {reward.price}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              {reward.quantity ? `Remaining inventory: ${reward.quantity}` : "In stock"}
+            </div>
+            <div>
+              {reward.backers.length > 0 ? `Number of purchases: ${reward.backers.length}` : 'Nobody has purchased this reward yet'}
+            </div>
+            <button id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
+          </div>
+        ))}
+      </div>
+    </div >
   );
 }
 

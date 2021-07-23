@@ -29,7 +29,8 @@ class Reward(db.Model):
             'project_id': self.project_id,
             'start_date': self.start_date,
             'end_date': self.end_date,
-            'ships_to': [country.to_dict() for country in self.ships_to],
-            'project': self.project.to_dict()
+            "backers": [backer.to_dict() for backer in self.backers]
+            # 'ships_to': [country.to_dict() for country in self.ships_to],
+            # 'project': self.project.to_dict()
         }
 

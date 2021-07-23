@@ -87,9 +87,9 @@ export const editProject = (newProject) => async dispatch => {
     dispatch(addProjectToStore(newProjectData))
     // return newProjectData
   }
-  else if (response.status < 500){
+  else if (response.status < 500) {
     const data = await response.json();
-    if (data.errors){
+    if (data.errors) {
       return data.errors;
     }
   } else {
@@ -134,7 +134,7 @@ export default function reducer(state = initialState, action) {
       };
     case REMOVE_ONE:
       newState = Object.assign({}, state)
-      delete newState[action.spotId]
+      delete newState[action.projectId]
       return {
         ...newState
       }
