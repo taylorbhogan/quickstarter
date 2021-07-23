@@ -1,4 +1,36 @@
+.menuWrapper{
+  border-top: 1px solid rgb(209, 209, 209);
+  border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+
 .flexBox{
   display: flex;
   justify-content: space-between;
+}
+
+.linkContainer{
+  display: flex;
+}
+
+.stickyMenuLink{
+  padding: 20px 5px;
+  margin: 0px 18px;
+}
+
+.btn {
+  background-color: rgb(2, 136, 88);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 12px 24px;
+  height: 46px;
+  width: 140px;
+  font-size: 14px;
+  transition: background-color 200ms;
+  margin-bottom: 18px;
+}
+
+.btn:hover {
+  background-color: var(--primaryButtonColorHover);
 }

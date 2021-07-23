@@ -4,44 +4,65 @@ function ProjectTopView({project, numberOfBackers, categories}){
   return (
     <div className={styles.allProjectTopViewContentWrapper}>
     <div className={styles.allProjectTopViewContent}>
-        <div>
+        <div className={styles.headerWrapper}>
           <h1>{project.title}</h1>
           <h2>{project.sub_title}</h2>
         </div>
-          <div className={styles.topFlexContainer}>
-            <div className={styles.mediaShowcaseContainer}>
-              <div className={styles.mediaShowcaseWrapper}>
-                <div className={styles.mediaShowcase}></div>
+        <div className={styles.topFlexContainer}>
+          <div className={styles.mediaShowcaseContainer}>
+            <div className={styles.mediaShowcaseWrapper}>
+              <div className={styles.mediaShowcase}></div>
+            </div>
+            <div className={styles.belowShowCaseDiv}>
+              <div>
+                <span className={styles.belowShowCaseIcon}></span>
+                <span className={styles.belowShowCaseText}>I don't know what this part is</span>
               </div>
               <div>
-                <div>I don't know what this part is</div>
-                <div>{categories[project.category_id]?.name}</div>
-                <div>{project.country}</div>
+                <span className={styles.belowShowCaseIcon}><i className="far fa-compass"></i></span>
+                <span className={styles.belowShowCaseText}>{categories[project.category_id]?.name}</span>
+              </div>
+              <div>
+                <span className={styles.belowShowCaseIcon}></span>
+                <span className={styles.belowShowCaseText}>{project.country}</span>
               </div>
             </div>
-            <div className={styles.projectInfoWrapper}>
-              <div className={styles.projectInfo}>
-                <section>
-                  <div className={styles.projectInfoFlexColumn}>
-                    <div>
-                      <div className={styles.currentFunding}>{project.current_funding}</div>
-                      <div className={styles.subtext}>pledged of {project.funding_goal} goal</div>
-                    </div>
-                    <div>
-                      <div>{numberOfBackers}</div>
-                      <div className={styles.subtext}>backers</div>
-                    </div>
-                    <div>
-                      <div>****</div>
-                      <div className={styles.subtext}>days to go</div>
-                    </div>
-                  </div>
-                  <button>Back this project</button>
-                  <div>All or nothing. This project will only be funded if it reaches its goal by **insert deadline here**.</div>
-                </section>
-            </div>
-            </div>
           </div>
+          <div className={styles.projectInfoWrapper}>
+            <div className={styles.projectInfo}>
+              <section>
+                <div className={styles.projectInfoFlexColumn}>
+                  <div className={styles.progressBar}></div>
+                  <div className={styles.projectInfoFlexColumnRow}>
+                    <div className={styles.currentFunding}>{project.current_funding}</div>
+                    <div className={styles.subtext}>pledged of {project.funding_goal} goal</div>
+                  </div>
+                  <div className={styles.projectInfoFlexColumnRow}>
+                    <div className={styles.bigGrey}>{numberOfBackers}</div>
+                    <div className={styles.subtext}>backers</div>
+                  </div>
+                  <div className={styles.projectInfoFlexColumnRow}>
+                    <div className={styles.bigGrey}>****</div>
+                    <div className={styles.subtext}>days to go</div>
+                  </div>
+                </div>
+                <button className={styles.btn}>Back this project</button>
+                <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by **insert deadline here**.</div>
+              </section>
+          </div>
+          </div>
+        </div>
+        <div className={styles.pinkContainer}>
+          <div className={styles.pinkContainerDiv}>
+            <div className={styles.pinkContainerText}>Kickstarter connects creators with backers to fund projects.</div>
+          </div>
+          <div className={styles.pinkContainerDiv}>
+            <div className={styles.pinkContainerText}>Rewards aren’t guaranteed, but creators must regularly update backers.</div>
+          </div>
+          <div className={styles.pinkContainerDiv}>
+            <div className={styles.pinkContainerText}>You’re only charged if the project meets its funding goal by the campaign deadline.</div>
+          </div>
+        </div>
       </div>
     </div>
   )

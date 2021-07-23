@@ -1,10 +1,6 @@
 @import "../../../vars.css";
 
 
-.outside{
-  width: 20%;
-}
-
 .support{
   font-size: 21px;
   margin-bottom: 42px;
@@ -53,7 +49,6 @@
 .amountInput{
   padding: 10px 10px 10px 54px;
   border: 1px solid rgb(220, 222, 221);
-  width: 80%;
 }
 
 .believe{

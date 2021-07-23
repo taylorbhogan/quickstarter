@@ -1,5 +1,6 @@
 .projectMainContent{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 48px 18px 48px 60px;
 }
