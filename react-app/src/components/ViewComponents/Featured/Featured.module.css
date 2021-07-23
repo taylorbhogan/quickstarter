@@ -19,7 +19,7 @@
 .progressBar {
   height: 12px;
   width: 100%;
-  background-color: gray;
+  background-color: rgb(214, 214, 214);
 }
 
 .progress {
