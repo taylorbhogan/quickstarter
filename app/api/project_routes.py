@@ -159,6 +159,9 @@ def get_project_rewards(id):
     # print("******************", rewards)
     # print("******************",[reward.to_dict() for reward in rewards])
 
+
+    # start_date and end_date = None
+
     toDictedRewards = [reward.to_dict() for reward in rewards]
     # print("******", rewards)
 
@@ -166,16 +169,24 @@ def get_project_rewards(id):
     todaysDate = datetime.now().strftime("%Y-%m")
 
     #rewardsThatStartInTheFuture IS A LIST OF ONLY REWARDS STARTING IN THE FUTURE
-    rewardsThatStartInTheFuture = [reward for reward in toDictedRewards if todaysDate < reward['start_date'].strftime("%Y-%m")]
+    testList = [reward for reward in toDictedRewards]
+
+    # rewardsThatStartInTheFuture = [reward for reward in toDictedRewards if todaysDate < reward['start_date'].strftime("%Y-%m")]
+    rewardsThatStartInTheFuture = [reward for reward in toDictedRewards if reward['start_date'] if todaysDate < reward['start_date'].strftime("%Y-%m")]
+
+
+    # for reward in rewardsThatStartInTheFuture:
+    #     print("$$$$",reward)
+
 
     #expiredRewards IS A LIST OF ONLY REWARDS THAT ARE BEYOND THE END DATE - EXPIRED
-    expiredRewards = [reward for reward in toDictedRewards if todaysDate >= reward['end_date'].strftime("%Y-%m")]
+    expiredRewards = [reward for reward in toDictedRewards if reward['end_date'] if todaysDate >= reward['end_date'].strftime("%Y-%m")]
 
     #soldOutRewards THIS IS A LIST OF SOLD OUT REWARDS - QUANTITY is 0
     soldOutRewards = [reward for reward in toDictedRewards if reward['quantity'] == 0]
 
     #currentlyActiveRewards THIS IS A LIST OF REWARDS THAT ARE NOT SOLD OUT, NOT EXPIRED, AND CURRENTLY ACTIVE -- CURRENTLY ACTIVE REWARDS
-    currentlyActiveRewards = [reward for reward in toDictedRewards if reward['quantity'] > 0 and todaysDate < reward['end_date'].strftime("%Y-%m") and todaysDate >= reward['start_date'].strftime("%Y-%m")]
+    currentlyActiveRewards = [reward for reward in toDictedRewards if reward['start_date'] if reward['quantity'] > 0 and todaysDate < reward['end_date'].strftime("%Y-%m") and todaysDate >= reward['start_date'].strftime("%Y-%m")]
 
 
 
@@ -191,7 +202,7 @@ def get_project_rewards(id):
     # print('&&&&&&&', rewardList[0]['start_date'].strftime("%Y-%m"))
 
     # print('THIS IS THE DATE COMPARISON', todaysDate > rewardList[0]['start_date'].strftime("%Y-%m-%d"))
-
+    # print("*******", len(currentlyActiveRewards))
 
     return {
         "rewards" : [reward.to_dict() for reward in rewards],
