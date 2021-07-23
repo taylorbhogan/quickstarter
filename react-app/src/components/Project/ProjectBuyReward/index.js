@@ -1,38 +1,40 @@
 import styles from './ProjectBuyReward.module.css'
 
-function ProjectBuyReward({addABacking, amount, setAmount, project}) {
+function ProjectBuyReward({addABacking, reward, project}) {
+
+  // this object is just an example
+  reward = {
+    price: '$10',
+    title: 'Smokey Skull w nostrils',
+    description: 'Want to impress your frinds or customers? This is the one you want! Get just enough smoke in your glass for flavor and watch as the skull exhales.',
+    id: 1,
+    estimated_delivery: 'Oct 2021'
+  }
+
   return (
       <div>
-        <div className={styles.support}>Support</div>
-        <form className={styles.noRewardForm}>
-          <div className={styles.flexbox}>
-            <div className={styles.pledge}>Pledge without a reward</div>
-            <div>
-            <div className={styles.inputDiv}>
-                <div className={styles.dollahBillsRapper}>
-                  <div className={styles.dollahBills}>$</div>
-                </div>
-                <input
-                  className={styles.amountInput}
-                  type='number'
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                ></input>
+        <form className={styles.rewardForm}>
+          <div className={styles.flexboxColumn}>
+            <div className={styles.price}>Pledge {reward.price} or more</div>
+            <div className={styles.title}>{reward.title}</div>
+            <div className={styles.description}>{reward.description}</div>
+            <div className={styles.flexbox}>
+              <div>
+                <div className={styles.littleHeader}>ESTIMATED DELIVERY</div>
+                <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div>
+              </div>
+              <div>
+                <div className={styles.littleHeader}>SHIPS TO</div>
+                <div className={styles.shipsTo}>Anywhere in the world</div>
               </div>
             </div>
-            <div className={styles.believe}>
-              <div className={styles.backIt}>Back it because you believe in it.</div>
-              <div className={styles.support}>Support the project for no reward, just because it speaks to you.</div>
-            </div>
+          </div>
             <button
               type='submit'
               className={styles.btn}
-              // id={10101}
-              // id='hello'
-              // DEFAULT BACKING DOES NOT GET AN ID; REWARDS DO
+              id={reward.id}
               onClick={addABacking}
-            >Continue</button>
-          </div>
+              >Continue</button>
         </form>
       </div>
   )

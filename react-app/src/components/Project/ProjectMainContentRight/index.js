@@ -37,7 +37,7 @@ function ProjectMainContentRight({addABacking, amount, setAmount, project}) {
           </div>
         </form>
       </div>
-      {/* <ProjectBuyReward /> */}
+      <ProjectBuyReward />
     </div>
   )
 }

@@ -1,12 +1,14 @@
 .menuWrapper{
   border-top: 1px solid rgb(209, 209, 209);
   border-bottom: 1px solid rgb(209, 209, 209);
+  margin: 0 60px;
 }
 
 
 .flexBox{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .linkContainer{
@@ -23,12 +25,10 @@
   border: none;
   color: white;
   cursor: pointer;
-  padding: 12px 24px;
   height: 46px;
   width: 140px;
   font-size: 14px;
   transition: background-color 200ms;
-  margin-bottom: 18px;
 }
 
 .btn:hover {

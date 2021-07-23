@@ -1,73 +1,44 @@
 @import "../../../vars.css";
 
-
-.support{
-  font-size: 21px;
-  margin-bottom: 42px;
-}
-
-.noRewardForm{
+.rewardForm{
   border: 1px solid rgb(155 158 158);
   padding: 18px;
   margin-bottom: 20px;
 }
 
-.flexbox{
+.flexboxColumn{
   display: flex;
   flex-direction: column;
 }
+.flexbox{
+  display: flex;
+}
 
-.pledge{
+.price{
   font-size: 18px;
   color: #282828;
   margin-bottom: 16px;
 }
 
-.inputDiv{
-  position: relative;
-  margin-bottom: 16px;
-}
-
-.dollahBillsRapper{
-  position: absolute;
-  top: 0;
-  border-right: 1px solid rgb(220, 222, 221);
-  height: 100%;
-  width: 40px;
-  margin: auto;
-}
-
-.dollahBills{
-  font-size: 12px;
-  color: rgb(110 110 110);
-  top: 12px;
-  position: absolute;
-  text-align: center;
-  width: 40px;
-}
-
-.amountInput{
-  padding: 10px 10px 10px 54px;
-  border: 1px solid rgb(220, 222, 221);
-}
-
-.believe{
-  background-color: rgb(227	232	248);
-  padding: 18px;
-  margin-bottom: 16px;
-}
-
-.backIt{
+.title{
   font-size: 14px;
   margin-bottom: 12px;
   color: #222222;
 }
 
-.support{
+.description{
   font-size: 14px;
   color: #222222;
+  margin-bottom: 12px;
 
 }
+
+.littleHeader{
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+
+
 
 .btn {
   background-color: rgb(2, 136, 88);
@@ -79,6 +50,14 @@
   width: 100%;
   font-size: 16px;
   transition: background-color 200ms;
+  margin-top: 20px;
+}
+
+.estimatedDelivery{
+  font-size: 12px;
+}
+.shipsTo{
+  font-size: 12px;
 }
 
 .btn:hover {

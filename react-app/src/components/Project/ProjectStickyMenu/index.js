@@ -7,10 +7,10 @@ function ProjectStickyMenu(){
         <div className={styles.navComponent}>
           <div className={styles.linkContainer}>
             <div className={styles.stickyMenuLink}>Campaign</div>
-            {/* <div className={styles.stickyMenuLink}>FAQ</div>
+            <div className={styles.stickyMenuLink}>FAQ</div>
             <div className={styles.stickyMenuLink}>Updates</div>
             <div className={styles.stickyMenuLink}>Comments</div>
-            <div className={styles.stickyMenuLink}>Community</div> */}
+            <div className={styles.stickyMenuLink}>Community</div>
           </div>
         </div>
         <button className={styles.btn}>Back this project</button>

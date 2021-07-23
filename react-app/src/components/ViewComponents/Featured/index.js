@@ -8,7 +8,7 @@ const Featured = ({ projects }) => {
     <div className={styles.container}>
       <div className={styles.featured}>
         <h3>FEATURED PRODUCT</h3>
-        <img src={project?.project_image_url}></img>
+        <img alt='featured product' src={project?.project_image_url}></img>
       </div>
       <div className={styles.recommended}></div>
     </div>
