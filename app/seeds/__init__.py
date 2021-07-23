@@ -4,6 +4,7 @@ from .countries import seed_countries, undo_countries
 from .categories import seed_categories, undo_categories
 from .sub_categories import seed_sub_categories, undo_sub_categories
 from .projects import seed_projects, undo_projects
+from .rewards import seed_rewards, undo_rewards
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -18,6 +19,7 @@ def seed():
     seed_categories()
     seed_sub_categories()
     seed_projects()
+    seed_rewards()
     # Add other seed functions here
 
 
@@ -29,4 +31,5 @@ def undo():
     undo_categories()
     undo_sub_categories()
     undo_projects()
+    undo_rewards()
     # Add other undo functions here
