@@ -1,7 +1,8 @@
 import styles from "../ProjectEdit.module.css";
 import { useState, useEffect } from "react";
-import { createProjectReward } from "../../../store/reward";
-import { useDispatch } from "react-redux";
+import { createProjectReward, deleteProjectReward } from "../../../store/reward";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjectRewards } from '../../../store/reward'
 
 function ProjectEditRewards({ project, rewards }) {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ function ProjectEditRewards({ project, rewards }) {
   const [rewardQuantity, setRewardQuantity] = useState(null)
   // const [estimatedDelivery, setEstimatedDelivery] = useState("")
 
+  // console.log('*** your rewards!!**', rewards)
+  const rewardsForProject = useSelector(state => Object.values(state.rewards))
+
   useEffect(() => {
     const getTodaysDate = () => {
       const todaysDate = new Date();
@@ -27,7 +31,9 @@ function ProjectEditRewards({ project, rewards }) {
       }
     };
     setTodaysYearMonth(getTodaysDate());
-    console.log(getTodaysDate());
+
+
+    // console.log(getTodaysDate());
   }, []);
 
   const setNoLimit = e => {
@@ -42,34 +48,44 @@ function ProjectEditRewards({ project, rewards }) {
 
   const handleStartDateChange = e => {
     setStartDate(e.target.value)
-    setEndDate(null)
-
-    // if (endDate) {
-    //   console.log("this is end date", endDate)
-    //   console.log("this is start date", startDate)
+    // setEndDate(null)
+    setEndDate('')
 
     // setEndDate(null)
     // console.log("this is end date", endDate)
     // console.log("this is start date", startDate)
-    // }
+
+  }
+  const handleDeleteReward = async (e) => {
+    e.preventDefault()
+
+    await dispatch(deleteProjectReward(+e.target.id))
+    await dispatch(getProjectRewards(project))
 
   }
 
-
-  const handleRewardSubmit = (e) => {
+  const handleRewardSubmit = async (e) => {
     e.preventDefault();
     const newReward = {
       title: rewardTitle,
       price: rewardPrice,
       description: rewardDescription,
-      estimated_delivery: rewardEstimatedDelivery,
+      estimated_delivery: rewardEstimatedDelivery === '' ? null : rewardEstimatedDelivery,
       project_id: project.id,
       quantity: rewardQuantity === '' ? null : +rewardQuantity,
-      start_date: startDate,
-      end_date: endDate
+      start_date: startDate === '' ? null : startDate,
+      end_date: endDate === '' ? null : endDate
     };
-    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
-    dispatch(createProjectReward(project, newReward))
+    // console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
+    await dispatch(createProjectReward(project, newReward))
+    await dispatch(getProjectRewards(project))
+    setRewardTitle('')
+    setRewardPrice(1)
+    setRewardDescription('')
+    setRewardEstimatedDelivery('')
+    setRewardQuantity('')
+    setStartDate(null)
+    setEndDate(null)
 
 
 
@@ -227,6 +243,32 @@ function ProjectEditRewards({ project, rewards }) {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <h1>Current Rewards:</h1>
+        {rewards.map(reward => (
+          <div key={reward.id}>
+            <div>
+              {reward.title}
+            </div>
+            <div>
+              Description: {reward.description}
+            </div>
+            <div>
+              Price: {reward.price}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              {reward.quantity ? `Remaining inventory: ${reward.quantity}` : "In stock"}
+            </div>
+            <button id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
+          </div>
+        ))}
       </div>
     </div>
   );
