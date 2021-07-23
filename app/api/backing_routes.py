@@ -39,18 +39,33 @@ def add_backing():
     form['amount'].data = request.json['backing']['amount']
 
     # testIng = Backing.query.filter((Backing.reward_id == None)).all()
-    # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',testIng)
+    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',request.json['backing']['reward_id'])
 
-    filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data), (Backing.reward_id == None)).all()
+    # filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data)).all()
+    # if not request.json['backing']['reward_id']:
+    #     filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data), (Backing.reward_id == None)).all()
+    #     print('************************************** BACK', filteredBackings)
     # print("HERE ARE THE THINGS", type(form['project_id'].data),type(form['user_id'].data) )
     # print(form['user_id'].data)
-    print('************************************** BACK', filteredBackings)
+
+    if not request.json['backing']['reward_id']:
+        filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data), (Backing.reward_id == None)).all()
+        print('************************************** BACK', filteredBackings)
+    elif request.json['backing']['reward_id']:
+        # filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data), (Backing.reward_id == None)).all()
+        filteredBackings = []
+
+
 
     if form.validate_on_submit():
 
         # currentProjectsBackings = Backing.query.filter(Backing.user_id == form['user_id'].data)
         # print("*******CURRENT PROJECT BACKINGS WHERE USER ID MATCHES", currentProjectsBackings)
+        # if not filteredBackings:
+        #     filteredBackings = []
+
         if(len(filteredBackings) > 0):
+            # print("DID YOU HIT THIS?!?!?!?!?!?!??!?!?!")
             filteredBackings[0].amount += form['amount'].data
             db.session.add(filteredBackings[0])
             db.session.commit()

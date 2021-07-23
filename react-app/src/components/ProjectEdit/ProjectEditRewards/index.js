@@ -1,13 +1,60 @@
 import styles from "../ProjectEdit.module.css";
 import { useState, useEffect } from "react";
-import { createProjectReward } from "../../../store/reward"
-import { useDispatch } from 'react-redux'
+import { createProjectReward } from "../../../store/reward";
+import { useDispatch } from "react-redux";
 
-function ProjectEditRewards({project, rewards}) {
-  const dispatch = useDispatch()
+function ProjectEditRewards({ project, rewards }) {
+  const dispatch = useDispatch();
   const [rewardTitle, setRewardTitle] = useState("");
   const [rewardPrice, setRewardPrice] = useState(1);
   const [rewardDescription, setRewardDescription] = useState("");
+  const [todaysYearMonth, setTodaysYearMonth] = useState("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [pickStartDate, setPickStartDate] = useState(false)
+  const [rewardEstimatedDelivery, setRewardEstimatedDelivery] = useState('')
+  const [rewardQuantity, setRewardQuantity] = useState(null)
+  // const [estimatedDelivery, setEstimatedDelivery] = useState("")
+
+  useEffect(() => {
+    const getTodaysDate = () => {
+      const todaysDate = new Date();
+      let [month, year] = [todaysDate.getMonth(), todaysDate.getFullYear()];
+      if (month < 10) {
+        return `${year}-0${month + 1}`;
+      } else {
+        return `${year}-${month + 1}`;
+      }
+    };
+    setTodaysYearMonth(getTodaysDate());
+    console.log(getTodaysDate());
+  }, []);
+
+  const setNoLimit = e => {
+    setStartDate(null)
+    setEndDate(null)
+
+    setPickStartDate(false)
+  }
+
+  const togglePickStartDate = e => setPickStartDate(true)
+
+
+  const handleStartDateChange = e => {
+    setStartDate(e.target.value)
+    setEndDate(null)
+
+    // if (endDate) {
+    //   console.log("this is end date", endDate)
+    //   console.log("this is start date", startDate)
+
+    // setEndDate(null)
+    // console.log("this is end date", endDate)
+    // console.log("this is start date", startDate)
+    // }
+
+  }
+
 
   const handleRewardSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +62,17 @@ function ProjectEditRewards({project, rewards}) {
       title: rewardTitle,
       price: rewardPrice,
       description: rewardDescription,
-      estimated_delivery: "2020-06-25",
+      estimated_delivery: rewardEstimatedDelivery,
+      project_id: project.id,
+      quantity: rewardQuantity === '' ? null : +rewardQuantity,
+      start_date: startDate,
+      end_date: endDate
     };
-     dispatch(createProjectReward(project,newReward))
+    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
+    dispatch(createProjectReward(project, newReward))
+
+
+
   };
 
   return (
@@ -88,6 +143,7 @@ function ProjectEditRewards({project, rewards}) {
                 </div>
                 <div>
                   <label>Estimated delivery</label>
+                  <input type="month" min={todaysYearMonth} value={rewardEstimatedDelivery} onChange={e => setRewardEstimatedDelivery(e.target.value)}></input>
                   <p>
                     Give yourself plenty of time. It's better to deliver to
                     backers ahead of schedule than behind.
@@ -98,10 +154,40 @@ function ProjectEditRewards({project, rewards}) {
                   <label>Shipping</label>
                 </div>
                 <div>
-                  <label>Project quantity</label>
+                  <label>Reward quantity</label>
+                  <input type="number" value={rewardQuantity} onChange={e => setRewardQuantity(e.target.value)}></input>
                 </div>
                 <div>
                   <label>Time limit</label>
+                  <div>
+                    <label>No limit</label>
+                    <input type="radio" value="" checked={!pickStartDate ? true : false}
+                      onChange={setNoLimit}
+                    ></input>
+                    <br></br>
+                    <label>Specify Start and End</label>
+                    <input type="radio" value="" checked={pickStartDate ? true : false}
+                      onChange={togglePickStartDate}
+                    ></input>
+                    {pickStartDate &&
+                      <div>
+                        <label>Choose Start Date</label>
+                        <input type="month" min={todaysYearMonth}
+                          onChange={handleStartDateChange}
+
+                        ></input>
+                      </div>
+                    }
+                    {startDate &&
+                      <div>
+                        <label>Choose End Date</label>
+                        <input type="month" min={startDate} value={endDate}
+                          onChange={e => setEndDate(e.target.value)}
+                        ></input>
+                      </div>
+                    }
+
+                  </div>
                 </div>
                 <button
                   className={styles.saveRewardButton}
@@ -122,7 +208,7 @@ function ProjectEditRewards({project, rewards}) {
                 <div className={styles.rewardsTitlePreview}></div>
                 <div className={styles.rewardsDescriptionPreview}></div>
                 <div className={styles.rewardsPreviewHeader}>
-                  ESTIMATED DELIVERY
+                  ESTIMATED DELIVERY:
                 </div>
                 <div
                   className={`${styles.rewardsEstimatedDeliveryPreview} ${styles.rewardsPreviewDisplay}`}
