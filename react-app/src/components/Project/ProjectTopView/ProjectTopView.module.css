@@ -10,13 +10,19 @@
   width: 100%;
   max-width: 1246px;
 }
+
 .topFlexContainer{
   display: flex;
   width: 100%;
+  justify-content: space-around;
 }
 
 .mediaShowcaseContainer{
-  width: 60%;
+  width: 50%;
+
+}
+.mediaShowcaseWrapper{
+  padding: 0 18px;
 
 }
 
@@ -25,6 +31,23 @@
   border: 1px solid black;
 }
 
-.projectInfo{
-  width: 40%;
+.projectInfoWrapper{
+  padding: 0 18px;
+  width: 30%;
+
+}
+
+.projectInfoFlexColumn{
+  margin-bottom: 30px;
+}
+
+.currentFunding{
+  color: rgb(0, 158, 116);
+  font-size: 28px;
+
+}
+
+.subtext{
+  color: rgb(101, 105, 105);
+  font-size: 14px;
 }
