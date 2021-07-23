@@ -283,7 +283,7 @@ function Project() {
         } else if (currentSelectedTab === 'rewards') {
             return (
                 <ProjectEditRewards project={project}
-                rewards = {rewardsForProject} />
+                rewards={rewardsForProject} />
             )
         } else if (currentSelectedTab === 'people') {
             return (
