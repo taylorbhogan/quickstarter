@@ -1,3 +1,19 @@
+.margin {
+  height: 100%;
+  width: 100%;
+  max-width: 1246px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+}
+
+.border {
+  border-bottom: 1px solid rgb(232, 232, 232);
+  height: 1px;
+  width: 100%;
+  max-width: none;
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -29,6 +45,7 @@
 
 .featuredImage {
   width: 100%;
+  padding-top: 18px;
 }
 
 .projectTitle {
@@ -64,15 +81,11 @@
 }
 
 .recommended {
-  padding-bottom: 18px;
+  padding: 18px 0;
   height: 90px;
   width: 100%;
   border-bottom: 1px solid rgb(232, 232, 232);
   display: flex;
-}
-
-.recommendedContainer > .recommended ~ .recommended{
-  padding-top: 18px;
 }
 
 .recommendedDetails {
