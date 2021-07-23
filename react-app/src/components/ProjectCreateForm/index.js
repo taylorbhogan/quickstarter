@@ -26,22 +26,17 @@ function ProjectCreateForm({ setShowSpotAddModal }) {
     (async () => {
       const response = await fetch(`/api/categories`);
       const cats = await response.json();
-      // console.log(cats.categories)
-      // cats.categories.forEach(cat => {
-      //   console.log(cat.name)
-      // })
+      setCategories(cats.categories);
+
       const countryRes = await fetch(`/api/countries`);
       const countriesResponse = await countryRes.json()
-      setCategories(cats.categories);
-      // the below setCategory was commented out to enable the disabled logic for the next button on Form1
-      // setCategory(cats.categories[0].id)
-      // the above setCategory was commented out to enable the disabled logic for the next button on Form1
-      // console.log(countriesResponse.countries)
       setCountries(countriesResponse.countries)
-      // the below setCountry was commented out to enable the disabled logic for the next button on Form1
+      //    the below setCategory was commented out to enable the disabled logic for the next button on Form1
+      // setCategory(cats.categories[0].id)
+      //    the above setCategory was commented out to enable the disabled logic for the next button on Form1
+      //    the below setCountry was commented out to enable the disabled logic for the next button on Form1
       // setCountry(countriesResponse.countries[0].id)
-      // the above setCountry was commented out to enable the disabled logic for the next button on Form1
-      // console.log(categories)
+      //    the above setCountry was commented out to enable the disabled logic for the next button on Form1
     })();
   }, [])
 

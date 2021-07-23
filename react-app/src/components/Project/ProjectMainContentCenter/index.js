@@ -4,6 +4,7 @@ function ProjectMainContentCenter({project}){
   return(
     <div className={styles.wrapper}>
       <div className={styles.storyDiv}>
+        <div className={styles.storyHeader}>Story</div>
         <div>This is where we will render the Story</div>
         {/* <div>{project.story}</div> */}
         <div

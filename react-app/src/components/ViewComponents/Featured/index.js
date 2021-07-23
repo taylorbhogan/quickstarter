@@ -45,6 +45,7 @@ const Featured = ({ projects }) => {
         <img
           src={featured?.project_image_url}
           className={styles.featuredImage}
+          alt='featured product'
         />
         <div className={styles.progressBar}>
           <div
@@ -67,6 +68,7 @@ const Featured = ({ projects }) => {
                 <img
                   src={project?.project_image_url}
                   className={styles.recommendedImage}
+                  alt='recommended product'
                 />
                 <div>
                   <h3 className={styles.recommendedTitle}>{project.title}</h3>
@@ -102,7 +104,8 @@ const Featured = ({ projects }) => {
                 <img
                   src={project?.project_image_url}
                   className={styles.recommendedImage}
-                />
+                  alt='recommended project'
+                  />
                 <div>
                   <h3 className={styles.recommendedTitle}>{project.title}</h3>
                   <p className={styles.recommendedFunded}>
@@ -137,7 +140,8 @@ const Featured = ({ projects }) => {
                 <img
                   src={project?.project_image_url}
                   className={styles.recommendedImage}
-                />
+                  alt='recommended project'
+                  />
                 <div>
                   <h3 className={styles.recommendedTitle}>{project.title}</h3>
                   <p className={styles.recommendedFunded}>

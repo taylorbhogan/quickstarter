@@ -1,10 +1,22 @@
 import styles from './ProjectBottomContent.module.css'
+import ProjectPreview from '../ProjectPreview'
+
 
 function ProjectBottomContent() {
   return (
-    <div
-      className={styles.convenienceDiv}
-    >This is where we will render a display of 4 different projects</div>
+    <div className={styles.projectBottomContentContainer}>
+      <div>
+        <div>WE ALSO RECOMMEND</div>
+        <div>{'Discover more >'}</div>
+      </div>
+      <div className={styles.projectPreviewContainer}>
+        <ProjectPreview />
+        <ProjectPreview />
+        <ProjectPreview />
+        <ProjectPreview />
+
+      </div>
+    </div>
   )
 }
 

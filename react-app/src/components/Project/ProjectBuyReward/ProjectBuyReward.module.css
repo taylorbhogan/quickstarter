@@ -1,0 +1,65 @@
+@import "../../../vars.css";
+
+.rewardForm{
+  border: 1px solid rgb(155 158 158);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.flexboxColumn{
+  display: flex;
+  flex-direction: column;
+}
+.flexbox{
+  display: flex;
+}
+
+.price{
+  font-size: 18px;
+  color: #282828;
+  margin-bottom: 16px;
+}
+
+.title{
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #222222;
+}
+
+.description{
+  font-size: 14px;
+  color: #222222;
+  margin-bottom: 12px;
+
+}
+
+.littleHeader{
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+
+
+
+.btn {
+  background-color: rgb(2, 136, 88);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 12px 24px;
+  height: 46px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 200ms;
+  margin-top: 20px;
+}
+
+.estimatedDelivery{
+  font-size: 12px;
+}
+.shipsTo{
+  font-size: 12px;
+}
+
+.btn:hover {
+  background-color: var(--primaryButtonColorHover);
+}

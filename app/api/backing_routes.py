@@ -16,12 +16,15 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @backing_routes.route('/<int:id>')
-def get_backings():
+def get_backings(id):
     """
     get the # of backers for a project
     """
-    allBackingsForThisProject = Backing.query.filter((Backing.id == id)).all()
-    numberOfBackers = len(allBackingsForThisProject)
+    projectBackings = Backing.query.filter((Backing.project_id == id)).all()
+    numberOfBackers = len(projectBackings)
+    return {'numberOfBackers': numberOfBackers}
+
+
 
 @backing_routes.route('', methods=['POST'])
 def add_backing():
