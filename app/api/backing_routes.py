@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Backing, Project
+from app.models import db, Backing, Project, Reward
 from app.forms import BackingForm
 
 backing_routes = Blueprint('backings', __name__)
@@ -29,7 +29,7 @@ def add_backing():
     Adds a backing to the db
     """
     # data = request.json(backing)
-    print('----------request.data------>',request.data)
+    # print('----------request.data------>',request.data)
     form = BackingForm()
     # Get the csrf_token from the request cookie and put it into the form manually so validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -39,7 +39,7 @@ def add_backing():
     form['amount'].data = request.json['backing']['amount']
 
     # testIng = Backing.query.filter((Backing.reward_id == None)).all()
-    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',request.json['backing']['reward_id'])
+    # print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&',request.json['backing']['reward_id'])
 
     # filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data)).all()
     # if not request.json['backing']['reward_id']:
@@ -50,9 +50,8 @@ def add_backing():
 
     if not request.json['backing']['reward_id']:
         filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data), (Backing.reward_id == None)).all()
-        print('************************************** BACK', filteredBackings)
+        # print('************************************** BACK', filteredBackings)
     elif request.json['backing']['reward_id']:
-        # filteredBackings = Backing.query.filter((Backing.user_id == form['user_id'].data), (Backing.project_id == form['project_id'].data), (Backing.reward_id == None)).all()
         filteredBackings = []
 
 
@@ -77,25 +76,42 @@ def add_backing():
 
             return {"newBacking": filteredBackings[0].to_dict()}
         else:
-            backing = Backing(
-                user_id = form['user_id'].data,
-                project_id = form['project_id'].data,
-                reward_id = form['reward_id'].data,
-                amount = form['amount'].data,
-            )
-            db.session.add(backing)
-            db.session.commit()
-            id = backing.id
-            backingFromDb = Backing.query.get(id)
-            newBacking = backingFromDb.to_dict()
+            if form['reward_id'].data:
+                particularReward = Reward.query.get(form['reward_id'].data)
+            else:
+                particularReward = Reward(price=0)
 
-            amountToAddToFunding = newBacking['amount']
-            projectToUpdate = Project.query.get(newBacking['project_id'])
-            projectToUpdate.current_funding += amountToAddToFunding
-            db.session.add(projectToUpdate)
-            db.session.commit()
+            # print('PARTY REWAR', particularReward)
+            if form['amount'].data >= particularReward.price:
+                backing = Backing(
+                    user_id = form['user_id'].data,
+                    project_id = form['project_id'].data,
+                    reward_id = form['reward_id'].data,
+                    amount = form['amount'].data,
+                )
+                if form['reward_id'].data:
+                    if particularReward.quantity > 0:
+                        particularReward.quantity -= 1
+                        db.session.add(particularReward)
+                        db.session.commit()
+                    else:
+                        return {'Failed': "Reward item is no longer in stock"}
+
+                db.session.add(backing)
+                db.session.commit()
+                id = backing.id
+                backingFromDb = Backing.query.get(id)
+                newBacking = backingFromDb.to_dict()
+
+                amountToAddToFunding = newBacking['amount']
+                projectToUpdate = Project.query.get(newBacking['project_id'])
+                projectToUpdate.current_funding += amountToAddToFunding
+                db.session.add(projectToUpdate)
+                db.session.commit()
 
 
-            return {'newBacking': newBacking}
+                return {'newBacking': newBacking}
+            else:
+                return {'Backing failed': "Backing amount must be greater than or equal to the reward price."}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
