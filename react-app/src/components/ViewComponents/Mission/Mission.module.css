@@ -36,6 +36,7 @@
 .image {
   width: 100%;
   margin-top: -60px;
+  cursor: pointer;
 }
 
 .right {
@@ -48,6 +49,7 @@
 .content {
   padding-left: 18px;
   border-left: 6px solid green;
+  cursor: pointer;
 }
 
 .title {
@@ -65,6 +67,7 @@
 
 .linkContainer {
   padding-top: 24px;
+  cursor: pointer;
 }
 
 .link {
