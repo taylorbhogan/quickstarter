@@ -150,7 +150,7 @@ function ProjectEditRewards({ project, rewards }) {
                       ></input>
                     </div>
                     <div>
-                      <label>Amount</label>
+                      <label>Price</label>
                       <input
                         type="number"
                         value={rewardPrice}
