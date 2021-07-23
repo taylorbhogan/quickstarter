@@ -1,3 +1,19 @@
+@import "../../../vars.css";
+
+h1{
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+h2{
+  font-size: 18px;
+  padding-bottom: 6px;
+}
+
+.headerWrapper{
+  margin: 36px;
+}
+
 .allProjectTopViewContentWrapper{
   display: flex;
   flex-direction: column;
@@ -10,21 +26,101 @@
   width: 100%;
   max-width: 1246px;
 }
+
 .topFlexContainer{
   display: flex;
   width: 100%;
+  justify-content: space-around;
 }
 
 .mediaShowcaseContainer{
-  width: 60%;
+  width: 50%;
+
+}
+.mediaShowcaseWrapper{
+  padding: 0 18px;
 
 }
 
 .mediaShowcase{
-  height: 460px;
+  height: 300px;
   border: 1px solid black;
 }
 
-.projectInfo{
-  width: 40%;
+.projectInfoWrapper{
+  padding: 0 18px;
+  width: 30%;
+
+}
+
+.projectInfoFlexColumn{
+  margin-bottom: 30px;
+}
+
+.projectInfoFlexColumnRow{
+  margin-bottom: 24px;
+}
+
+.currentFunding{
+  color: rgb(0, 158, 116);
+  font-size: 28px;
+
+}
+
+.bigGrey{
+  font-size: 28px;
+  color: rgb(101, 105, 105)
+}
+
+.subtext{
+  color: rgb(101, 105, 105);
+  font-size: 14px;
+}
+
+.btn {
+  background-color: rgb(2, 136, 88);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 12px 24px;
+  height: 46px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 200ms;
+  margin-bottom: 18px;
+}
+
+.btn:hover {
+  background-color: var(--primaryButtonColorHover);
+}
+
+.allOrNothing{
+  color: rgb(40, 40, 40);
+  font-size: 12px;
+}
+
+.belowShowCaseDiv{
+  display: flex;
+}
+
+.belowShowCaseText{
+  color: rgb(40, 40, 40);
+  font-size: 12px;
+
+}
+
+.pinkContainer{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(255, 242, 236);
+  margin-top: 36px;
+  padding-top: 36px;
+  padding-bottom: 72px;
+}
+
+.pinkContainerDiv{
+  width: 30%;
+}
+.pinkContainerText{
+  width: 80%;
 }

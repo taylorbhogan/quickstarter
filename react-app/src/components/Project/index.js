@@ -15,7 +15,8 @@ import styles from './Project.module.css'
 function Project() {
   const [project, setProject] = useState({});
   const [amount, setAmount] = useState(0);
-  const [backers, setBackers] = useState(0);
+  const [numberOfBackers, setNumberOfBackers] = useState(0);
+  const [categories, setCategories] = useState([]);
   const { projectId } = useParams();
   const dispatch = useDispatch();
 
@@ -24,12 +25,16 @@ function Project() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`/api/backers/${projectId}`);
-      const backers = await response.json();
+      const backingResponse = await fetch(`/api/backings/${projectId}`);
+      const backingData = await backingResponse.json();
+      setNumberOfBackers(backingData.numberOfBackers);
 
-      setBackers(backers);
+      const categoryResponse = await fetch(`/api/categories`);
+      const categoryData = await categoryResponse.json();
+      setCategories(categoryData.categories)
+
     })();
-  }, [])
+  }, [projectId])
 
 
   useEffect(() => {
@@ -82,6 +87,8 @@ function Project() {
     <div>
       <ProjectTopView
         project={project}
+        numberOfBackers={numberOfBackers}
+        categories={categories}
       />
       <ProjectStickyMenu />
       <div className={styles.projectMainContent}>

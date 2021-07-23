@@ -2,16 +2,18 @@ import styles from './ProjectStickyMenu.module.css'
 
 function ProjectStickyMenu(){
   return(
-    <div>
+    <div className={styles.menuWrapper}>
       <div className={styles.flexBox}>
         <div className={styles.navComponent}>
-          <div>Campaign</div>
-          {/* <div>FAQ</div>
-          <div>Updates</div>
-          <div>Comments</div>
-          <div>Community</div> */}
+          <div className={styles.linkContainer}>
+            <div className={styles.stickyMenuLink}>Campaign</div>
+            <div className={styles.stickyMenuLink}>FAQ</div>
+            <div className={styles.stickyMenuLink}>Updates</div>
+            <div className={styles.stickyMenuLink}>Comments</div>
+            <div className={styles.stickyMenuLink}>Community</div>
+          </div>
         </div>
-        <button>Back this project</button>
+        <button className={styles.btn}>Back this project</button>
       </div>
     </div>
   )

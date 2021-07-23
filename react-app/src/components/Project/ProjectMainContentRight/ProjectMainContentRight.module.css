@@ -1,0 +1,91 @@
+@import "../../../vars.css";
+
+
+.outside{
+  width: 20%;
+}
+
+.support{
+  font-size: 21px;
+  margin-bottom: 42px;
+}
+
+.noRewardForm{
+  border: 1px solid rgb(155 158 158);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.flexbox{
+  display: flex;
+  flex-direction: column;
+}
+
+.pledge{
+  font-size: 18px;
+  color: #282828;
+  margin-bottom: 16px;
+}
+
+.inputDiv{
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.dollahBillsRapper{
+  position: absolute;
+  top: 0;
+  border-right: 1px solid rgb(220, 222, 221);
+  height: 100%;
+  width: 40px;
+  margin: auto;
+}
+
+.dollahBills{
+  font-size: 12px;
+  color: rgb(110 110 110);
+  top: 12px;
+  position: absolute;
+  text-align: center;
+  width: 40px;
+}
+
+.amountInput{
+  padding: 10px 10px 10px 54px;
+  border: 1px solid rgb(220, 222, 221);
+  width: 80%;
+}
+
+.believe{
+  background-color: rgb(227	232	248);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.backIt{
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #222222;
+}
+
+.support{
+  font-size: 14px;
+  color: #222222;
+
+}
+
+.btn {
+  background-color: rgb(2, 136, 88);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 12px 24px;
+  height: 46px;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 200ms;
+}
+
+.btn:hover {
+  background-color: var(--primaryButtonColorHover);
+}
