@@ -1,3 +1,15 @@
-.convenienceDiv{
+.projectBottomContentContainer{
   margin-top: 50px;
+  margin-bottom: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.projectPreviewContainer{
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
