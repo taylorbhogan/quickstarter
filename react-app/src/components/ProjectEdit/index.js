@@ -5,7 +5,7 @@ import { editProject, deleteProject } from '../../store/project'
 import { getCountries } from '../../store/country'
 import { getCategories } from '../../store/category'
 import { getSubCategories } from '../../store/subCategory'
-import { getProjectRewards} from '../../store/reward'
+import { getProjectRewards } from '../../store/reward'
 import ProjectEditStory from './ProjectEditStory'
 import ProjectEditRewards from './ProjectEditRewards'
 import ProjectEditPeople from './ProjectEditPeople'
@@ -40,6 +40,7 @@ function Project() {
     const rewardsForProject = useSelector(state => Object.values(state.rewards))
     // const startingSubCat = subCategories.find(subCat => subCat.category_id === +categoryId)
     const [currentSubCategories, setCurrentSubCategories] = useState([subCategories.filter(subCat => subCat.id === +categoryId)])
+    const [goLiveErrors, setGoLiveErrors] = useState([])
     // if (subCategories.length) {
     //   let startingSubCats = subCategories.filter(subCat => subCat.category_id === +categoryId)
     //   console.log(startingSubCats)
@@ -47,6 +48,74 @@ function Project() {
     // if (startingSubCats.length) {
     //   setCurrentSubCategories(startingSubCats)
     // }
+
+    // useEffect(()=>{
+    //     title
+    //     goal
+    //     campaignDuration
+    //     st
+    // })
+
+    const handleGoLiveButton = async (e) => {
+        // e.preventDefault()
+
+        (async () => {
+            const response = await fetch(`/api/projects/${projectId}`);
+            const project = await response.json();
+            console.log("THIS IS WHAT YOU GOT:", project)
+
+
+            // await setProject(project)
+            let errors = []
+            if (!project.title) {
+                errors.push('Project must have a title to go live')
+            }
+            if (!project.sub_title) {
+                errors.push('Project must have a sub title to go live')
+            }
+            if (!project.story) {
+                errors.push('Project must have a story to go live')
+            }
+
+            if (!project.funding_goal) {
+                errors.push('Project must have a funding goal to go live')
+            }
+            if (!project.project_image_url) {
+                errors.push('Project must have an image to go live')
+            }
+            if (!project.campaign_duration) {
+                errors.push('Project must have a valid campaign duration to go live')
+            }
+
+            if (errors.length) {
+                setGoLiveErrors(errors)
+            }
+
+        })();
+
+
+
+    }
+
+    const handlingChangingCampaignDuration = (e) => {
+        if (+e.target.value < 0) {
+            e.target.value = project.campaign_duration
+        }
+
+        setCampaignDuration(e.target.value)
+        // console.log('string:', e.target.value)
+        // console.log('num:' + e.target.value)
+        // console.log(typeof +e.target.value)
+        // console.log(typeof +e.target.value.length)
+        // console.log(+e.target.value < 0)
+        // if (+e.target.value < 0) {
+        //     console.log('hello')
+        // }
+        // if (+campaignDuration < 0) {
+        //     setCampaignDuration('')
+        // }
+
+    }
 
 
     useEffect(() => {
@@ -91,9 +160,9 @@ function Project() {
             let initialSubCatValue = null
             if (project.sub_category_id) {
                 let initialSubCatValue = subCategories.find(sc => sc.id === project.sub_category_id)
-                console.log("INITIAL SUBCAT!!!", initialSubCatValue)
+                // console.log("INITIAL SUBCAT!!!", initialSubCatValue)
             }
-            console.log("INITIAL SUBCAT!!!", initialSubCatValue)
+            // console.log("INITIAL SUBCAT!!!", initialSubCatValue)
         }
     }, [categoryId])
 
@@ -101,8 +170,8 @@ function Project() {
         e.preventDefault();
 
         // const errors = [];
-
         // console.log("HERE IS YOUR DODO", subCategory)
+
         const newProject = {
             ...project,
             user_id: user.id,
@@ -112,14 +181,18 @@ function Project() {
             sub_category_id: subCategory === '' ? null : +subCategory,
             country_id: countryId,
             project_image_url: imageUrl,
-            campaign_duration: campaignDuration === '' || campaignDuration === null ? null : +campaignDuration,
-            funding_goal: +goal,
+            campaign_duration: campaignDuration === '' || campaignDuration === null || campaignDuration < 0 ? null : +campaignDuration,
+            funding_goal: goal === '' || goal === null || goal <= 0 ? 0 : +goal,
 
             // category: categoryId,
             // country: countryId,
         }
+
+
+
+
         // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', subCategory)
-        console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
+        // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
         // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
         let editedProject = await dispatch(editProject(newProject))
         if (editedProject) {
@@ -132,14 +205,17 @@ function Project() {
                 setSaveProjectButtonText('Save')
 
             }, 2000)
-            history.push(`/projects/${projectId}`);
+            // let updatedProj = await dispatch(getProjectRewards(project))
+            // await setProject(updatedProj)
+            // history.push(`/projects/${projectId}`);
+            history.go(0);
         }
     }
 
     const handleDelete = async (projectId) => {
         const deletedProject = await dispatch(deleteProject(projectId))
         if (deletedProject) {
-            history.push(`/discover`);
+            history.push(`/ discover`);
         }
     }
 
@@ -257,7 +333,8 @@ function Project() {
                                     value={campaignDuration}
                                     type="text"
                                     placeholder={'30'}
-                                    onChange={(e) => setCampaignDuration(e.target.value)}
+                                    // onChange={(e) => setCampaignDuration(e.target.value)}
+                                    onChange={handlingChangingCampaignDuration}
                                 ></input>
                             </div>
                         </div>
@@ -283,7 +360,7 @@ function Project() {
         } else if (currentSelectedTab === 'rewards') {
             return (
                 <ProjectEditRewards project={project}
-                rewards={rewardsForProject} />
+                    rewards={rewardsForProject} />
             )
         } else if (currentSelectedTab === 'people') {
             return (
@@ -316,9 +393,16 @@ function Project() {
                             <button className={styles.cancelButton}>Cancel</button>
                         </div>
                         <div className={styles.saveButtonDiv}>
-                            <button className={styles.saveButton}>Save</button>
+                            <button onClick={handleGoLiveButton} className={styles.saveButton}>Save</button>
                         </div>
                     </div>
+                </div>
+                <div>
+                    {goLiveErrors && goLiveErrors.map(error => (
+                        <div key={error}>
+                            {error}
+                        </div>
+                    ))}
                 </div>
                 <div className={styles.tabMenu}>
                     <div onClick={(e) => setCurrentSelectedTab('basics')}>✍️ Basics</div>

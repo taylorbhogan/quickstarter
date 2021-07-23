@@ -34,7 +34,7 @@ function ProjectEditStory({ project }) {
 
         const updatedProject = {
             ...project,
-            story: storyInnerHTML
+            story: storyInnerHTML === '<p><br></p>' ? null : storyInnerHTML
             // user_id: user.id,
             // title,
             // sub_title: subTitle,
