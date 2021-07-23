@@ -3,6 +3,7 @@ from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.forms import CreateProjectForm, UpdateProjectForm
 from app.models import db, Project, Reward
+from datetime import datetime
 
 
 project_routes = Blueprint('projects', __name__)
@@ -158,8 +159,46 @@ def get_project_rewards(id):
     # print("******************", rewards)
     # print("******************",[reward.to_dict() for reward in rewards])
 
+    toDictedRewards = [reward.to_dict() for reward in rewards]
+    # print("******", rewards)
+
+    #GET TODAYS DATE
+    todaysDate = datetime.now().strftime("%Y-%m")
+
+    #rewardsThatStartInTheFuture IS A LIST OF ONLY REWARDS STARTING IN THE FUTURE
+    rewardsThatStartInTheFuture = [reward for reward in toDictedRewards if todaysDate < reward['start_date'].strftime("%Y-%m")]
+
+    #expiredRewards IS A LIST OF ONLY REWARDS THAT ARE BEYOND THE END DATE - EXPIRED
+    expiredRewards = [reward for reward in toDictedRewards if todaysDate >= reward['end_date'].strftime("%Y-%m")]
+
+    #soldOutRewards THIS IS A LIST OF SOLD OUT REWARDS - QUANTITY is 0
+    soldOutRewards = [reward for reward in toDictedRewards if reward['quantity'] == 0]
+
+    #currentlyActiveRewards THIS IS A LIST OF REWARDS THAT ARE NOT SOLD OUT, NOT EXPIRED, AND CURRENTLY ACTIVE -- CURRENTLY ACTIVE REWARDS
+    currentlyActiveRewards = [reward for reward in toDictedRewards if reward['quantity'] > 0 and todaysDate < reward['end_date'].strftime("%Y-%m") and todaysDate >= reward['start_date'].strftime("%Y-%m")]
+
+
+
+    # print('***', len(currentlyActiveRewards))
+
+    # expiredRewards = []
+
+
+    # print("*********************************", todaysDate)
+
+    # print("*********************************", [reward.to_dict() for reward in rewards])
+    # rewardList = [reward.to_dict() for reward in rewards]
+    # print('&&&&&&&', rewardList[0]['start_date'].strftime("%Y-%m"))
+
+    # print('THIS IS THE DATE COMPARISON', todaysDate > rewardList[0]['start_date'].strftime("%Y-%m-%d"))
+
+
     return {
-        "rewards" : [reward.to_dict() for reward in rewards]
+        "rewards" : [reward.to_dict() for reward in rewards],
+        "expiredRewards": expiredRewards,
+        'futureRewards': rewardsThatStartInTheFuture,
+        'soldOutRewards': soldOutRewards,
+        'activeRewards': currentlyActiveRewards
     }
 
 @project_routes.route('/<int:id>/rewards', methods=['POST'])
