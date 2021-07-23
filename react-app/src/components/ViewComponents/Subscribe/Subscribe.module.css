@@ -1,0 +1,26 @@
+.margin {
+  height: 100%;
+  width: 100%;
+  max-width: 1246px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+}
+
+.border {
+  border-bottom: 1px solid rgb(232, 232, 232);
+  height: 1px;
+  width: 100%;
+  max-width: none;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 28px;
+}
