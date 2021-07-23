@@ -1,21 +1,143 @@
 .container {
-  background-color: green;
   width: 100%;
-  height: 400px;
   display: flex;
 }
 
-.featured {
-  background-color: blue;
+.left {
   width: 50%;
   padding: 30px 60px 0 0;
   margin-top: 24px;
+  border-right: 1px solid rgb(232, 232, 232);
+}
+
+.title {
+  margin-bottom: 18px;
+  font-size: 13px;
+  color: rgb(101, 105, 105);
+}
+
+.progressBar {
+  height: 12px;
+  width: 100%;
+  background-color: gray;
+}
+
+.progress {
+  height: 12px;
+  background-color: green;
+}
+
+.featuredImage {
+  width: 100%;
+}
+
+.projectTitle {
+  padding: 18px 0 12px 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.projectSubTitle {
+  padding-bottom: 24px;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: 26px;
+}
+
+.projectCreator {
+  color: #656969;
+  font-size: 12px;
+}
+
+.right {
+  width: 50%;
+  height: 100%;
+  padding: 30px 0 0 60px;
+  margin-top: 24px;
+}
+
+.recommendedContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .recommended {
-  background-color: lime;
-  width: 50%;
-  height: 300px;
-  padding: 30px 0 0 60px;
-  margin-top: 24px;
+  padding-bottom: 18px;
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid rgb(232, 232, 232);
+  display: flex;
+}
+
+.recommendedContainer > .recommended ~ .recommended{
+  padding-top: 18px;
+}
+
+.recommendedDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendedImage {
+  height: 100%;
+  padding-right: 24px;
+}
+
+.recommendedTitle {
+  font-size: 14px;
+  font-weight: lighter;
+  margin-bottom: 6px;
+}
+
+.recommendedFunded {
+  color: rgb(3, 115, 98);
+  font-size: 12px;
+  padding-bottom: 4px;
+}
+
+.pageButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 26px;
+  font-size: 16px;
+  color: rgb(0, 59, 255);
+}
+
+.pageButton {
+  margin-left: 18px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.pageArrow {
+  margin-left: 18px;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 4px 7px;
+  border-radius: 50%;
+  font-weight: lighter;
+}
+
+.pageArrow:hover {
+  border: 1px solid blue;
+}
+
+.pageArrowOff {
+  margin-left: 18px;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 4px 7px;
+  border-radius: 50%;
+  font-weight: lighter;
+  color: rgb(206, 206, 206);
+}
+
+.pageButtonSelected {
+  margin-left: 18px;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(0, 59, 255);
+  padding: 4px;
 }
