@@ -22,7 +22,7 @@ function ProjectCreateModal() {
       >Start a project</button>
       {showSpotAddModal && (
         <Modal onClose={() => setShowSpotAddModal(false)}>
-          <ProjectCreateForm />
+          <ProjectCreateForm setShowSpotAddModal={setShowSpotAddModal} />
         </Modal>
       )
       }
