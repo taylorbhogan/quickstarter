@@ -2,16 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { createBacking } from '../../store/backing'
+import { getProjects } from '../../store/project';
 import ProjectTopView from './ProjectTopView';
+import ProjectStickyMenu from './ProjectStickyMenu';
+import ProjectMainContentCenter from './ProjectMainContentCenter';
+import ProjectBottomContent from './ProjectBottomContent';
+import ProjectMainContentLeft from './ProjectMainContentLeft';
+import ProjectMainContentRight from './ProjectMainContentRight';
+import styles from './Project.module.css'
+
 
 function Project() {
   const [project, setProject] = useState({});
   const [amount, setAmount] = useState(0);
+  const [backers, setBackers] = useState(0);
   const { projectId } = useParams();
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.session.user);
 
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`/api/backers/${projectId}`);
+      const backers = await response.json();
+
+      setBackers(backers);
+    })();
+  }, [])
+
+
+  useEffect(() => {
+    dispatch(getProjects())
+  }, [dispatch])
 
   useEffect(() => {
     if (!projectId) {
@@ -60,22 +83,18 @@ function Project() {
       <ProjectTopView
         project={project}
       />
-
-      <form>
-        <label>Want to back this project?</label>
-        <input
-          type='number'
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        ></input>
-        <button
-          type='submit'
-          // id={11}
-          // id='hello'
-          // DEFAULT BACKING DOES NOT GET AN ID; REWARDS DO
-          onClick={addABacking}
-        >Add a backing</button>
-      </form>
+      <ProjectStickyMenu />
+      <div className={styles.projectMainContent}>
+        <ProjectMainContentLeft project={project}/>
+        <ProjectMainContentCenter project={project}/>
+        <ProjectMainContentRight
+          addABacking={addABacking}
+          amount={amount}
+          setAmount={setAmount}
+          project={project}
+        />
+      </div>
+      <ProjectBottomContent />
     </div>
   );
 }
