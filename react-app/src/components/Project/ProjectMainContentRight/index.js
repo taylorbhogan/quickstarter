@@ -84,6 +84,30 @@ function ProjectMainContentRight({ addABacking, amount, user, projectId, setAmou
           projectId={projectId}
           amount={amount}
         />)))}
+      {(expiredRewards.map(reward => (
+        <ProjectBuyReward
+          disable={true}
+          stylesFromParent={styles}
+          reward={reward}
+          addABacking={addABacking}
+          key={reward.id}
+          setAmount={setAmount}
+          user={user}
+          projectId={projectId}
+          amount={amount}
+        />)))}
+      {(soldOutRewards.map(reward => (
+        <ProjectBuyReward
+          disable={true}
+          stylesFromParent={styles}
+          reward={reward}
+          addABacking={addABacking}
+          key={reward.id}
+          setAmount={setAmount}
+          user={user}
+          projectId={projectId}
+          amount={amount}
+        />)))}
     </div>
   )
 }
