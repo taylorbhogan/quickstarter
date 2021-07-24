@@ -24,6 +24,18 @@ def get_backings(id):
     numberOfBackers = len(projectBackings)
     return {'numberOfBackers': numberOfBackers}
 
+@backing_routes.route('/users/<int:id>')
+def get_user_backings(id):
+    """
+    get the projects backed by this user
+    """
+    user_backings = Backing.query.filter((Backing.user_id == id)).all()
+    projects = Project.query.all()
+
+    return {
+        'user_backed_projects': [projects[backing.project_id].to_dict() for backing in user_backings]
+        }
+
 
 
 @backing_routes.route('', methods=['POST'])

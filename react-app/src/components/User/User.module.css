@@ -1,0 +1,135 @@
+.topColumnFlex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(247, 247, 249);
+}
+
+.visibilityText{
+  font-size: 14px;
+}
+
+.headsUpDiv{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin-top: 20px;
+  padding: 0 18px;
+  background-color: #FFFFFF;
+  height: 72px;
+  box-shadow: 0 4px 10px 0 rgba(22,22,22,0.08);
+}
+
+.btn {
+  background-color: rgb(2, 136, 88);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 14px 18px;
+  width: 20%;
+  min-width: 230px;
+  transition: background-color 200ms;
+}
+
+.btn:hover {
+  background-color: var(--primaryButtonColorHover);
+}
+
+
+.dummyAvatar{
+  height: 150px;
+  width: 150px;
+  border: 1px solid black;
+  border-radius: 75px;
+  margin: 50px 0 15px;
+}
+
+.userInfoDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.usernameDiv{
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.userInfo{
+  font: 13px;
+  color: #80809E;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.bottomColumnFlex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.showUser{
+  margin-top: 30px;
+  padding: 0 60px 30px;
+  width: 65%;
+  font-size: 14px;
+  color: rgb(101, 105, 105);
+}
+
+.showUserInnerDiv{
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 18px;
+}
+
+.showUserInnerDivHeader{
+  margin-bottom: 10px;
+  padding: 0 24px 0 24px;
+  font-weight: 600;
+  width: 15%;
+}
+
+.showUserInnerDivText{
+  margin-bottom: 20px;
+}
+
+#websites{
+  border-top: 1px solid rgb(241, 238, 234);
+  padding: 40px 0;
+  margin-top: 28px;
+}
+
+.setShowBackedProjectsButton{
+  background: none;
+  border: none;
+  color: rgb(128, 128, 158);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 10px 0 0 0;
+  margin-right: 40px;
+  transition: background-color 200ms;
+}
+
+.aboutOrBacked{
+  border-bottom: 1px solid rgb(241, 238, 234);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 0 0;
+}
+
+.slideProjectDiv{
+  width: 90%;
+  display: flex;
+  margin: 60px 0 60px 0;
+}
+
+.greenBar{
+  background-color: green;
+  height: 4px;
+  width: 100%;
+  margin-top: 20px;
+}
