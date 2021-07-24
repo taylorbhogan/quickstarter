@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { createBacking } from '../../../store/backing'
 import { useDispatch } from 'react-redux'
 
-function ProjectBuyReward({ addABacking, amount, user, projectId, reward, project, setAmount, stylesFromParent }) {
+function ProjectBuyReward({ addABacking, amount, disable, user, projectId, reward, project, setAmount, stylesFromParent }) {
 
   const [rewardAmount, setRewardAmount] = useState(0)
   const dispatch = useDispatch()
@@ -24,6 +24,16 @@ function ProjectBuyReward({ addABacking, amount, user, projectId, reward, projec
   //   setAmount(rewardAmount)
 
   // }
+  const formatDate = (dateObj) => {
+    let date = new Date(dateObj)
+
+    let [month, year] = [date.getMonth(), date.getFullYear()];
+    if (month < 10) {
+      return `${year}-${month + 1}`;
+    } else {
+      return `${year}-${month + 1}`;
+    }
+  };
 
   const addARewardBacking = async (e) => {
     e.preventDefault()
@@ -46,7 +56,7 @@ function ProjectBuyReward({ addABacking, amount, user, projectId, reward, projec
         reward_id: e.target.id === '' ? null : +e.target.id
       }
 
-      console.log('***************', backing)
+      // console.log('***************', backing)
       const data = await dispatch(createBacking(backing))
       // const createdBacking = data.newBacking
       setRewardAmount(0)
@@ -68,7 +78,8 @@ function ProjectBuyReward({ addABacking, amount, user, projectId, reward, projec
           <div className={styles.flexbox}>
             <div>
               <div className={styles.littleHeader}>ESTIMATED DELIVERY</div>
-              <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div>
+              {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
+              <div className={styles.estimatedDelivery}>{formatDate(reward.estimated_delivery)}</div>
             </div>
             <div>
               <div className={styles.littleHeader}>SHIPS TO</div>
@@ -77,30 +88,34 @@ function ProjectBuyReward({ addABacking, amount, user, projectId, reward, projec
           </div>
         </div>
         <div className={stylesFromParent.inputDiv}>
-          <div>
-            <div className={stylesFromParent.dollahBillsRapper}>
-              <div className={stylesFromParent.dollahBills}>$</div>
+          {!disable &&
+            <div>
+              <div className={stylesFromParent.dollahBillsRapper}>
+                <div className={stylesFromParent.dollahBills}>$</div>
+              </div>
+              <input
+                className={stylesFromParent.amountInput}
+                type='number'
+                //com
+                value={rewardAmount}
+                onChange={e => setRewardAmount(e.target.value)}
+              // onChange={(e) => setRewardAmount(e.target.value)}
+              // onChange={(e) => setAmount(rewardAmount)}
+              ></input>
             </div>
-            <input
-              className={stylesFromParent.amountInput}
-              type='number'
-              //com
-              value={rewardAmount}
-              onChange={e => setRewardAmount(e.target.value)}
-            // onChange={(e) => setRewardAmount(e.target.value)}
-            // onChange={(e) => setAmount(rewardAmount)}
-            ></input>
-          </div>
+          }
         </div>
-        <button
-          type='submit'
-          className={styles.btn}
-          id={reward.id}
-          // onClick={handleOnClick}
-          // onClick={addABacking}
-          // onChange={addABacking}
-          onClick={addARewardBacking}
-        >Continue</button>
+        {!disable &&
+          <button
+            type='submit'
+            className={styles.btn}
+            id={reward.id}
+            // onClick={handleOnClick}
+            // onClick={addABacking}
+            // onChange={addABacking}
+            onClick={addARewardBacking}
+          >Continue</button>
+        }
       </form>
     </div>
   )
