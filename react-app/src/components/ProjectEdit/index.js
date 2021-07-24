@@ -262,13 +262,13 @@ function Project() {
                                     </div>
                                     <div>
                                         <div>
-                                        <label>Subtitle</label>
-                                        <textarea
-                                            className={styles.formInput}
-                                            value={subTitle}
-                                            placeholder={'Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself.'}
-                                            onChange={(e) => setSubTitle(e.target.value)}
-                                        ></textarea>
+                                            <label>Subtitle</label>
+                                            <textarea
+                                                className={styles.formInput}
+                                                value={subTitle}
+                                                placeholder={'Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself.'}
+                                                onChange={(e) => setSubTitle(e.target.value)}
+                                            ></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -287,27 +287,27 @@ function Project() {
                                         className={styles.formInput}
                                         value={categoryId}
                                         onChange={(e) => setCategoryId(e.target.value)}
-                                        >
+                                    >
                                         {categories.map(category =>
                                             <option
-                                            value={category.id}
-                                            key={category.id}>{category.name}</option>
-                                            )}
+                                                value={category.id}
+                                                key={category.id}>{category.name}</option>
+                                        )}
                                     </select>
                                     <select
                                         className={styles.formInput}
                                         value={subCategory}
                                         onChange={(e) => setSubCategory(e.target.value)}
-                                        >
+                                    >
                                         {/* the option below allows for a nullable subcat do not delete*/}
                                         <option>
 
                                         </option>
                                         {currentSubCategories.map(subCategory =>
                                             <option
-                                            value={subCategory.id}
-                                            key={subCategory.id}>{subCategory.name}</option>
-                                            )}
+                                                value={subCategory.id}
+                                                key={subCategory.id}>{subCategory.name}</option>
+                                        )}
                                     </select>
                                 </div>
                             </div>
@@ -323,12 +323,12 @@ function Project() {
                                         className={styles.formInput}
                                         value={countryId}
                                         onChange={(e) => setCountryId(e.target.value)}
-                                        >
+                                    >
                                         {countries.map(country =>
                                             <option
-                                            value={country.id}
-                                            key={country.id}>{country.name}</option>
-                                            )}
+                                                value={country.id}
+                                                key={country.id}>{country.name}</option>
+                                        )}
                                     </select>
 
                                 </div>
@@ -349,7 +349,7 @@ function Project() {
                                         type="text"
                                         placeholder={'enter your image url here'}
                                         onChange={(e) => setImageUrl(e.target.value)}
-                                        ></input>
+                                    ></input>
                                 </div>
                             </div>
                         </div>
@@ -368,7 +368,7 @@ function Project() {
                                         type="text"
                                         placeholder={'$50,000'}
                                         onChange={(e) => setGoal(e.target.value)}
-                                        ></input>
+                                    ></input>
                                 </div>
                             </div>
                         </div>
