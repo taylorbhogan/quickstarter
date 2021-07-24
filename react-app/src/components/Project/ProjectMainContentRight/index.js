@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react'
 import ProjectBuyReward from '../ProjectBuyReward'
 import styles from './ProjectMainContentRight.module.css'
 
-function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
-  const [ rewards, setRewards ] = useState([])
-  const [ activeRewards, setActiveRewards ] = useState([])
-  const [ expiredRewards, setExpiredRewards ] = useState([])
-  const [ futureRewards, setFutureRewards ] = useState([])
-  const [ soldOutRewards, setSoldOutRewards ] = useState([])
+function ProjectMainContentRight({ addABacking, amount, user, projectId, setAmount, project }) {
+  const [rewards, setRewards] = useState([])
+  const [activeRewards, setActiveRewards] = useState([])
+  const [expiredRewards, setExpiredRewards] = useState([])
+  const [futureRewards, setFutureRewards] = useState([])
+  const [soldOutRewards, setSoldOutRewards] = useState([])
+
 
 
 
@@ -16,7 +17,7 @@ function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
     (async () => {
       const rewardsResponse = await fetch(`/api/projects/${project.id}/rewards`)
       const rewardsData = await rewardsResponse.json()
-      console.log('rewardsData------------------>',rewardsData);
+      console.log('rewardsData------------------>', rewardsData);
       setRewards(rewardsData.rewards)
       setActiveRewards(rewardsData.activeRewards)
       setExpiredRewards(rewardsData.expiredRewards)
@@ -42,9 +43,9 @@ function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
                   type='number'
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  ></input>
+                ></input>
               </div>
-              </div>
+            </div>
             <div className={styles.believe}>
               <div className={styles.backIt}>Back it because you believe in it.</div>
               <div className={styles.support}>Support the project for no reward, just because it speaks to you.</div>
@@ -62,9 +63,14 @@ function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
       </div>
       {(activeRewards.map(reward => (
         <ProjectBuyReward
+          stylesFromParent={styles}
           reward={reward}
           addABacking={addABacking}
           key={reward.id}
+          setAmount={setAmount}
+          user={user}
+          projectId={projectId}
+          amount={amount}
         />)))}
     </div>
   )

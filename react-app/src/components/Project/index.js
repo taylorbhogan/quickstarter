@@ -23,6 +23,7 @@ function Project() {
   const user = useSelector(state => state.session.user);
 
 
+
   useEffect(() => {
     (async () => {
       const backingResponse = await fetch(`/api/backings/${projectId}`);
@@ -65,6 +66,8 @@ function Project() {
 
     } else {
 
+      console.log("PROJ ID", projectId)
+      console.log("PROJ ID +", +projectId)
       const backing = {
         amount: +amount,
         user_id: user.id,
@@ -92,13 +95,16 @@ function Project() {
       />
       <ProjectStickyMenu />
       <div className={styles.projectMainContent}>
-        <ProjectMainContentLeft project={project}/>
-        <ProjectMainContentCenter project={project}/>
+        <ProjectMainContentLeft project={project} />
+        <ProjectMainContentCenter project={project} />
         <ProjectMainContentRight
           addABacking={addABacking}
           amount={amount}
           setAmount={setAmount}
           project={project}
+          user={user}
+          projectId={projectId}
+
         />
       </div>
       <ProjectBottomContent />
