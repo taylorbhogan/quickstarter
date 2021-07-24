@@ -63,3 +63,7 @@ class UpdateProjectForm(FlaskForm):
     title = StringField('title',validators=[Length(max=60, message='Title must be under 60 characters')])
     sub_category_id = StringField('sub_category_id')
     story = StringField('story')
+
+class CreateProjectRewardForm(FlaskForm):
+    estimated_delivery = StringField('estimated_delivery', validators=[DataRequired(message="You must enter an estimated delivery date")])
+    # price =

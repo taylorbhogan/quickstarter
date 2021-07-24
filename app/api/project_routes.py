@@ -193,7 +193,7 @@ def get_project_rewards(id):
             else:
                 return False
         elif reward['start_date'] is None:
-            if reward['quantity'] > 0:
+            if reward['quantity'] is None or reward['quantity'] > 0:
                 return True
             else:
                 return False
@@ -238,6 +238,7 @@ def create_project_reward(id):
     if(request.json["newReward"]["end_date"]):
         request.json["newReward"]["end_date"] = request.json["newReward"]["end_date"] + '-01'
 
+    print("@@@@@@@@@@@@@",request.json["newReward"]["price"])
     newReward = Reward(
         title = request.json["newReward"]["title"],
         price = request.json["newReward"]["price"],

@@ -46,15 +46,28 @@ function ProjectEditRewards({ project, rewards }) {
 
   const togglePickStartDate = e => setPickStartDate(true)
 
+  const handleQuantityChange = e => {
+    if (+e.target.value < 0) {
+      e.target.value = 1
+    }
+
+    setRewardQuantity(e.target.value)
+  }
+
+  const handlePriceChange = e => {
+    if (+e.target.value < 0) {
+      e.target.value = 1
+    }
+
+    setRewardPrice(e.target.value)
+  }
+
 
   const handleStartDateChange = e => {
     setStartDate(e.target.value)
     // setEndDate(null)
     setEndDate('')
 
-    // setEndDate(null)
-    // console.log("this is end date", endDate)
-    // console.log("this is start date", startDate)
 
   }
   const handleDeleteReward = async (e) => {
@@ -74,7 +87,7 @@ function ProjectEditRewards({ project, rewards }) {
     e.preventDefault();
     const newReward = {
       title: rewardTitle,
-      price: rewardPrice,
+      price: +rewardPrice,
       description: rewardDescription,
       estimated_delivery: rewardEstimatedDelivery === '' ? null : rewardEstimatedDelivery,
       project_id: project.id,
@@ -82,7 +95,8 @@ function ProjectEditRewards({ project, rewards }) {
       start_date: startDate === '' ? null : startDate,
       end_date: endDate === '' ? null : endDate
     };
-    // console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
+    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward.price)
+    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", typeof newReward.price)
     await dispatch(createProjectReward(project, newReward))
     await dispatch(getProjectRewards(project))
     setRewardTitle('')
@@ -154,7 +168,8 @@ function ProjectEditRewards({ project, rewards }) {
                       <input
                         type="number"
                         value={rewardPrice}
-                        onChange={(e) => setRewardPrice(e.target.value)}
+                        // onChange={(e) => setRewardPrice(e.target.value)}
+                        onChange={handlePriceChange}
                       ></input>
                     </div>
                     <div>
@@ -179,7 +194,10 @@ function ProjectEditRewards({ project, rewards }) {
                     </div>
                     <div>
                       <label>Reward quantity</label>
-                      <input type="number" value={rewardQuantity} onChange={e => setRewardQuantity(e.target.value)}></input>
+                      <input type="number" value={rewardQuantity}
+                        // onChange={e => setRewardQuantity(e.target.value)}
+                        onChange={handleQuantityChange}
+                      ></input>
                     </div>
                     <div>
                       <label>Time limit</label>
