@@ -45,24 +45,24 @@ function Learn() {
       <div className={styles.quoteContainer}>
         <div className={styles.quotesMargin}>
 
-          <h2 className={styles.quote}><span className={styles.quotationMark}>"</span>We see Kickstarter as a home for creative minds and a wonderful platform; where people who believe, respect, and see the vision can support an idea and make it a reality.</h2>
+          <h2 className={styles.quote}><span className={styles.quotationMark}>"</span>We see Quickstarter as a home for creative minds and a wonderful platform; where people who believe, respect, and see the vision can support an idea and make it a reality.</h2>
           <p className={styles.author}>- DE LA SOUL</p>
         </div>
       </div>
 
       <div className={styles.questionsContainer}>
-        <h2>A Kickstarter project does more than raise money. It builds community around your work.</h2>
-        <h3>What can I use Kickstarter to fund?</h3>
+        <h2>A Quickstarter project does more than raise money. It builds community around your work.</h2>
+        <h3>What can I use Quickstarter to fund?</h3>
         <div>
-          <p>Kickstarter is specifically for creative projects in the following categories: Art, Comics, Crafts, Dance, Design, Fashion, Film & Video, Food, Games, Journalism, Music, Photography, Publishing, Technology, and Theater. Make an album, write a book, create an immersive theater experience, score a film — you name it. Read more about our project guidelines.</p>
+          <p>Quickstarter is specifically for creative projects in the following categories: Art, Comics, Crafts, Dance, Design, Fashion, Film & Video, Food, Games, Journalism, Music, Photography, Publishing, Technology, and Theater. Make an album, write a book, create an immersive theater experience, score a film — you name it. Read more about our project guidelines.</p>
         </div>
         <h3>Who can I get pledges from?</h3>
         <div>
-          <p>Millions of people visit Kickstarter every week, but support always begins with people you know. Friends, fans, and the communities you’re a part of will likely be some of your earliest supporters, not to mention your biggest resources for spreading the word about your project.</p>
+          <p>Millions of people visit Quickstarter every week, but support always begins with people you know. Friends, fans, and the communities you’re a part of will likely be some of your earliest supporters, not to mention your biggest resources for spreading the word about your project.</p>
         </div>
         <h3>How much work is it to run a project?</h3>
         <div>
-          <p>Every Kickstarter project has its share of exhilarating and challenging moments, but the amount of work generally depends on the size and complexity of the project.</p><br></br>
+          <p>Every Quickstarter project has its share of exhilarating and challenging moments, but the amount of work generally depends on the size and complexity of the project.</p><br></br>
           <p>Expect the first few days after launch to be very busy as you spread the word to your community, answer questions from potential backers, and more. You may need to spend the last few days rallying your social networks in order to reach your funding goal.</p><br></br>
           <p>Projects sometimes take on a life of their own, and in that case you should expect to spend more time creating and fulfilling rewards.</p>
         </div>

@@ -19,7 +19,7 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <div></div>
-          <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
+          <NavLink to='/' exact className={styles.logo}>QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>
         <div className={styles.pageNumber}>2 of 3</div>

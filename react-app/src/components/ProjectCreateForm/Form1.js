@@ -8,7 +8,7 @@ function Form1({ changeStageButton, category, categories, setCategory }) {
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <div className={styles.invisibleDiv}></div>
-          <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
+          <NavLink to='/' exact className={styles.logo}>QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>
         <div className={styles.pageNumber}>1 of 3</div>
