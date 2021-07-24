@@ -61,7 +61,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
         </div>
         <div className={styles.pinkContainer}>
           <div className={styles.pinkContainerDiv}>
-            <div className={styles.pinkContainerText}>Kickstarter connects creators with backers to fund projects.</div>
+            <div className={styles.pinkContainerText}>Quickstarter connects creators with backers to fund projects.</div>
           </div>
           <div className={styles.pinkContainerDiv}>
             <div className={styles.pinkContainerText}>Rewards aren’t guaranteed, but creators must regularly update backers.</div>

@@ -67,7 +67,7 @@ const LoginForm = () => {
         </form>
       </div>
       <div className={styles.signUpLinkContainer}>
-        <p>New to Placeholder?
+        <p>New to Quickstarter?
           <span>
             <NavLink to='/sign-up' className={styles.signUpLink}> Sign up</NavLink>
           </span>

@@ -48,7 +48,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <div></div>
-          <NavLink to='/' exact className={styles.logo}>Placeholder</NavLink>
+          <NavLink to='/' exact className={styles.logo}>QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>
         <div className={styles.pageNumber}>3 of 3</div>
@@ -77,14 +77,12 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
               className={styles.linkWrapper}
             >
               <div>
-                <a href='https://help.kickstarter.com/hc/en-us/articles/115005128014'>
-                  <div>
+                  <div className={styles.whatIfDiv}>
                     <span>
                       <i className="far fa-question-circle"></i>
                     </span>
                     <span> What if my country isn’t listed?</span>
                   </div>
-                </a>
               </div>
             </div>
 
@@ -194,7 +192,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
               }
               <span
                 className={styles.toggleDivText}
-              >I can verify a government issued ID.
+              >I have a debit and/or credit card.
               </span>
             </div>
           </div>
