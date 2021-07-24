@@ -185,12 +185,27 @@ def get_project_rewards(id):
     #soldOutRewards THIS IS A LIST OF SOLD OUT REWARDS - QUANTITY is 0
     soldOutRewards = [reward for reward in toDictedRewards if reward['quantity'] == 0]
 
+
+    def currentlyActiveFilter(reward):
+        if reward['start_date']:
+            if reward['quantity'] > 0 and todaysDate < reward['end_date'].strftime("%Y-%m") and todaysDate >= reward['start_date'].strftime("%Y-%m"):
+                return True
+            else:
+                return False
+        elif reward['start_date'] is None:
+            if reward['quantity'] > 0:
+                return True
+            else:
+                return False
+
+
+    currentlyActiveRewards = list(filter(currentlyActiveFilter, toDictedRewards))
     #currentlyActiveRewards THIS IS A LIST OF REWARDS THAT ARE NOT SOLD OUT, NOT EXPIRED, AND CURRENTLY ACTIVE -- CURRENTLY ACTIVE REWARDS
-    currentlyActiveRewards = [reward for reward in toDictedRewards if reward['start_date'] if reward['quantity'] > 0 and todaysDate < reward['end_date'].strftime("%Y-%m") and todaysDate >= reward['start_date'].strftime("%Y-%m")]
 
 
-
+    # currentlyActiveRewards = [reward for reward in toDictedRewards if reward['start_date'] if reward['quantity'] > 0 and todaysDate < reward['end_date'].strftime("%Y-%m") and todaysDate >= reward['start_date'].strftime("%Y-%m")]
     # print('***', len(currentlyActiveRewards))
+    # print('***', currentlyActiveRewards)
 
     # expiredRewards = []
 
@@ -209,7 +224,7 @@ def get_project_rewards(id):
         "expiredRewards": expiredRewards,
         'futureRewards': rewardsThatStartInTheFuture,
         'soldOutRewards': soldOutRewards,
-        'activeRewards': currentlyActiveRewards
+        # 'activeRewards': currentlyActiveRewards
     }
 
 @project_routes.route('/<int:id>/rewards', methods=['POST'])
