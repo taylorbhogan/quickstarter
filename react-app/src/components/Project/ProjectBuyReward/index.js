@@ -3,13 +3,13 @@ import styles from './ProjectBuyReward.module.css'
 function ProjectBuyReward({addABacking, reward, project}) {
 
   // this object is just an example
-  reward = {
-    price: '$10',
-    title: 'Smokey Skull w nostrils',
-    description: 'Want to impress your frinds or customers? This is the one you want! Get just enough smoke in your glass for flavor and watch as the skull exhales.',
-    id: 1,
-    estimated_delivery: 'Oct 2021'
-  }
+  // reward = {
+  //   price: '$10',
+  //   title: 'Smokey Skull w nostrils',
+  //   description: 'Want to impress your frinds or customers? This is the one you want! Get just enough smoke in your glass for flavor and watch as the skull exhales.',
+  //   id: 1,
+  //   estimated_delivery: 'Oct 2021'
+  // }
 
   return (
       <div>

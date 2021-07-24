@@ -224,7 +224,7 @@ def get_project_rewards(id):
         "expiredRewards": expiredRewards,
         'futureRewards': rewardsThatStartInTheFuture,
         'soldOutRewards': soldOutRewards,
-        # 'activeRewards': currentlyActiveRewards
+        'activeRewards': currentlyActiveRewards
     }
 
 @project_routes.route('/<int:id>/rewards', methods=['POST'])

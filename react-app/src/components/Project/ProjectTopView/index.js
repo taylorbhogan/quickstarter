@@ -42,7 +42,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
                   <div className={styles.progressBar}></div>
                   <div className={styles.projectInfoFlexColumnRow}>
                     <div className={styles.currentFunding}>{currentFundingFormatter.format(project.current_funding)}</div>
-                    <div className={styles.subtext}>pledged of {project.funding_goal} goal</div>
+                    <div className={styles.subtext}>pledged of {currentFundingFormatter.format(project.funding_goal)} goal</div>
                   </div>
                   <div className={styles.projectInfoFlexColumnRow}>
                     <div className={styles.bigGrey}>{numberOfBackers}</div>
