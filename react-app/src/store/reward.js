@@ -40,9 +40,11 @@ export const createProjectReward = (project, newReward) => async (dispatch) => {
     }),
   });
 
-  // if (response.ok) {
-  const data = await response.json();
-  // console.log(data)
+
+    const data = await response.json();
+    // console.log(data)
+    return data
+
   //   const newProjectReward = data.newProject
 
   //   dispatch(addProjectToStore(newProject))

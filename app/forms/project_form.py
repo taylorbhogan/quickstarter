@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, ValidationError, InputRequired, Length, NumberRange
 from app.models import Project
 
@@ -25,11 +25,22 @@ def funding_goal_validator(form, field):
             'Funding goal must be greater than or equal to $1'
         )
 
+# not yet in use
 def is_live_validator(form, field):
     is_live = field.data
     if is_live:
         raise ValidationError(
             'Sorry, you cannot edit your project if it is already live'
+        )
+
+
+def quantity_validator(form, field):
+    quantity=field.data
+    if quantity is None:
+        return
+    if quantity < 1 or quantity > 1000000:
+        raise ValidationError(
+            "Quantity must be between 1 - 1000000. If unlimited supply, leave field empty or enter 0"
         )
 
 # def test_validator(form, field):
@@ -65,5 +76,9 @@ class UpdateProjectForm(FlaskForm):
     story = StringField('story')
 
 class CreateProjectRewardForm(FlaskForm):
-    estimated_delivery = StringField('estimated_delivery', validators=[DataRequired(message="You must enter an estimated delivery date")])
-    # price =
+    estimated_delivery = StringField('estimated_delivery', validators= [DataRequired(message='You must enter an estimated delivery date')])
+    price = IntegerField("price", validators = [DataRequired(message="Price cannot be empty"), NumberRange(min=1, max=1000000000, message="Price has a minimum of $1 (and a maximum of $1 billion)")])
+    description = StringField('description', validators= [DataRequired('Description cannot be empty'), Length(max=1000, message='Description cannot be longer than 1000 characters')])
+    title = StringField('title', validators= [DataRequired('Title cannot be empty'), Length(max=60, message='Title cannot be longer than 60 characters')])
+    quantity = IntegerField("quantity", validators = [quantity_validator])
+
