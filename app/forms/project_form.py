@@ -25,6 +25,13 @@ def funding_goal_validator(form, field):
             'Funding goal must be greater than or equal to $1'
         )
 
+def is_live_validator(form, field):
+    is_live = field.data
+    if is_live:
+        raise ValidationError(
+            'Sorry, you cannot edit your project if it is already live'
+        )
+
 # def test_validator(form, field):
 #     if field.data is not None:
 #         return NumberRange(
