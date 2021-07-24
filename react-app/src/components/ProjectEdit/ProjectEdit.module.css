@@ -28,8 +28,35 @@
   cursor: pointer;
 }
 
+.blockWrapper{
+  width: 100%;
+  border-top: 1px solid rgb(209, 209, 209);
+  padding: 48px 0;
+  display: flex;
+  justify-content: center;
+
+}
+
 .block{
-  margin-top: 20px
+  width: 75%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blockLeft{
+  width: 25%;
+}
+
+.blockRight{
+  width: 50%;
+}
+
+.formInput{
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border: 1px solid rgb(232, 232, 232);
 }
 
 .saveButton{
@@ -55,6 +82,8 @@
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(209, 209, 209);
 }
+
+
 
 
 /* ///////////////////STYLES FOR EDIT PAGES GO HERE/////////////////////////////////////////// */
