@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  min-height: 38px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.header {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.17);
+  display: flex;
+  justify-content: space-between;
+  cursor: not-allowed;
+  width: 100%;
+  padding: 12px 18px;
+  transform: translateY(0);
+  transition: border 300ms, transform 300ms;
+  font-size: 14px;
+  font-weight: lighter;
+  color: rgb(101, 105, 105);
+}
+
+.header:hover {
+  border: 1px solid black;
+  transform: translateY(-1px)
+}
+
+/* .optionsContainer {
+  width: 50%;
+  box-sizing: border-box;
+  background-color: white;
+  max-width: 600px;
+  margin-top: 70px;
+  position: absolute;
+  height: 285px;
+  overflow-y: scroll;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 6px;
+} */
+
+/* .list {
+  padding: 0;
+  margin: 0;
+} */
+
+/* .list button {
+  background-color: white;
+  font-size: 18px;
+  padding: 15px 20px 15px 20px;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  transition: background-color 200ms;
+  font-weight: lighter;
+} */
+/*
+.list button:hover,
+.list button:focus {
+  cursor: pointer;
+  background-color: rgb(232, 232, 232);
+} */
+
+/* .checkbox {
+  margin-left: 12px;
+  color: rgb(0, 138, 100);
+} */

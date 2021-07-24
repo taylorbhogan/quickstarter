@@ -12,6 +12,7 @@ import Project from './components/Project';
 import Discover from './components/Discover';
 import ProjectEdit from './components/ProjectEdit';
 import Home from './components/Home';
+import Footer from './components/Footer'
 import { authenticate } from './store/session';
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
           <ProjectEdit />
         </ProtectedRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
