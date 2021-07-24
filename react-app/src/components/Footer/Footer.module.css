@@ -1,0 +1,86 @@
+.sectionsNavBar{
+  display: flex;
+  padding-left: 60px;
+}
+
+.sectionLink{
+  padding-right: 20px;
+}
+
+.categoriesMenu{
+  border-top: 1px solid rgb(40, 40, 40);
+  border-bottom: 1px solid rgb(220, 222, 221);
+  padding: 24px 0;
+  margin-bottom: 48px;
+}
+
+.littleWider{
+  width: 20%;
+
+}
+
+.wider{
+  width: 30%;
+}
+
+.linksContainer{
+  display: flex;
+  justify-content: center;
+  padding: 0 60px
+}
+
+.linkSection{
+  width: 20%;
+}
+.linksHeader{
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #282828;
+  font-weight: 600;
+}
+
+.links{
+  font-size: 14px;
+  margin-bottom: 7px;
+  color: #282828;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.links:hover{
+  color: green;
+  text-decoration: underline;
+}
+
+.graphicLinksContainer{
+  border-bottom: 2px solid rgb(220, 222, 221);
+  padding: 48px 60px 48px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.graphicRight{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+  min-width: 600px;
+}
+
+.logo{
+  height: 18px;
+  width: 18px;
+}
+
+.bottomLinksWrapper{
+  padding: 24px 0;
+}
+
+.bottomLinks{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 60px;
+  width: 70%;
+  color: #282828;
+  font-size: 13px;
+}
