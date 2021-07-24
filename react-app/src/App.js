@@ -12,7 +12,8 @@ import Project from './components/Project';
 import Discover from './components/Discover';
 import ProjectEdit from './components/ProjectEdit';
 import Home from './components/Home';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import Section from './components/Section';
 import { authenticate } from './store/session';
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
+        </Route>
+        <Route path='/sections/:id' exact={true}>
+          <Section />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
