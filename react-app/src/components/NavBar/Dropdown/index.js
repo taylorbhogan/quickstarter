@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import { useHistory, NavLink } from 'react-router-dom';
 import LogoutButton from '../../auth/LogoutButton';
@@ -6,10 +7,25 @@ import DropdownProjectLink from './DropdownProjectLink';
 
 function Dropdown() {
   const history = useHistory();
+  const [backings, setBackings] = useState([])
+
 
   const user = useSelector(state => state.session.user)
+  const userId = user.id
   const userProjects = user.projects
   console.log('userProjects',userProjects)
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    (async () => {
+      const backingsResponse = await fetch(`/api/backings/users/${userId}`)
+      const backingsData = await backingsResponse.json();
+      setBackings(backingsData.user_backed_projects)
+    })();
+  }, [userId]);
+
 
   const newProjectTime = () => {
     history.push('/learn');
@@ -44,22 +60,13 @@ function Dropdown() {
         <section className={styles.projectsColumn}>
             <h2 className={styles.createdProjectsText}>BACKED PROJECTS</h2>
             <div className={styles.createdProjectsList}>
-{/* ************************************************************************************************ */}
-{/* ************************************************************************************************ */}
-{/* ************************************************************************************************ */}
-            {/* WHEN YOU REPLACE THESE WITH REAL LINKS */}
-              <DropdownProjectLink />
-              <DropdownProjectLink />
-            {/* you should be able to remove the ? s from the NavLink in DropdownProjectLink */}
+              {backings.map((project) => <DropdownProjectLink key={project.id} project={project} />)}
             </div>
         </section>
         <section className={styles.projectsColumn}>
             <h2 className={styles.createdProjectsText}>CREATED PROJECTS</h2>
             <div className={styles.createdProjectsList}>
-            {userProjects.map((project) => <DropdownProjectLink key={project.id} project={project} />)}
-              {/* <DropdownProjectLink />
-              <DropdownProjectLink />
-              <DropdownProjectLink /> */}
+              {userProjects.map((project) => <DropdownProjectLink key={project.id} project={project} />)}
             </div>
             <button
               className={styles.newDivWrapper}

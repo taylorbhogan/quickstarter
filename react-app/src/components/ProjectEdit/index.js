@@ -234,118 +234,161 @@ function Project() {
         if (currentSelectedTab === 'basics') {
             return (
                 <div>
-
                     <div>
                         <h1>Start with the basics</h1>
                         <h2>Make it easy for people to learn about your project.</h2>
                     </div>
                     <form
                         onSubmit={handleSubmit}>
-                        <div className={styles.block}>
-                            <h3>Project title</h3>
-                            <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
-                            {errors && errors.map((error, ind) => (
-                                <div style={{ color: "red" }} key={ind}>{error}</div>
-                            ))}
-                            <div>
-                                <label>Title</label>
-                                <input
-                                    value={title}
-                                    type="text"
-                                    placeholder={'The Community Microscope Kit'}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                ></input>
-                            </div>
-                            <div>
-                                <label>Subtitle</label>
-                                <textarea
-                                    value={subTitle}
-                                    placeholder={'Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself.'}
-                                    onChange={(e) => setSubTitle(e.target.value)}
-                                ></textarea>
+                        <div className={styles.blockWrapper}>
+                            <div className={styles.block}>
+                                <div className={styles.blockLeft}>
+                                    <h3>Project title</h3>
+                                    <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
+                                    {errors && errors.map((error, ind) => (
+                                        <div style={{ color: "red" }} key={ind}>{error}</div>
+                                    ))}
+                                </div>
+                                <div className={styles.blockRight}>
+                                    <div>
+                                        <label>Title</label>
+                                        <input
+                                            className={styles.formInput}
+                                            value={title}
+                                            type="text"
+                                            placeholder={'The Community Microscope Kit'}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                        ></input>
+                                    </div>
+                                    <div>
+                                        <div>
+                                        <label>Subtitle</label>
+                                        <textarea
+                                            className={styles.formInput}
+                                            value={subTitle}
+                                            placeholder={'Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself.'}
+                                            onChange={(e) => setSubTitle(e.target.value)}
+                                        ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className={styles.block}>
-                            <h3>Project category</h3>
-                            <div>Choose the category that most closely aligns with your project.</div>
-                            <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
-                            <div>You’ll be able to change the category and subcategory even after your project is live.</div>
-                            <select
-                                value={categoryId}
-                                onChange={(e) => setCategoryId(e.target.value)}
-                            >
-                                {categories.map(category =>
-                                    <option
-                                        value={category.id}
-                                        key={category.id}>{category.name}</option>
-                                )}
-                            </select>
-                            <select
-                                value={subCategory}
-                                onChange={(e) => setSubCategory(e.target.value)}
-                            >
-                                {/* the option below allows for a nullable subcat do not delete*/}
-                                <option>
+                        <div className={styles.blockWrapper}>
+                            <div className={styles.block}>
+                                <div className={styles.blockLeft}>
+                                    <h3>Project category</h3>
+                                    <div>Choose the category that most closely aligns with your project.</div>
+                                    <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
+                                    <div>You’ll be able to change the category and subcategory even after your project is live.</div>
+                                </div>
+                                <div className={styles.blockRight}>
+                                    <select
+                                        className={styles.formInput}
+                                        value={categoryId}
+                                        onChange={(e) => setCategoryId(e.target.value)}
+                                        >
+                                        {categories.map(category =>
+                                            <option
+                                            value={category.id}
+                                            key={category.id}>{category.name}</option>
+                                            )}
+                                    </select>
+                                    <select
+                                        className={styles.formInput}
+                                        value={subCategory}
+                                        onChange={(e) => setSubCategory(e.target.value)}
+                                        >
+                                        {/* the option below allows for a nullable subcat do not delete*/}
+                                        <option>
 
-                                </option>
-                                {currentSubCategories.map(subCategory =>
-                                    <option
-                                        value={subCategory.id}
-                                        key={subCategory.id}>{subCategory.name}</option>
-                                )}
-                            </select>
-                        </div>
-                        <div className={styles.block}>
-                            <h3>Project location</h3>
-                            <p>Enter the location that best describes where your project is based.</p>
-                            <select
-                                value={countryId}
-                                onChange={(e) => setCountryId(e.target.value)}
-                            >
-                                {countries.map(country =>
-                                    <option
-                                        value={country.id}
-                                        key={country.id}>{country.name}</option>
-                                )}
-                            </select>
-                        </div>
-                        <div className={styles.block}>
-                            <h3>Project image</h3>
-                            <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear on your project page, across the Kickstarter website and mobile apps, and (when shared) on social channels.</p>
-                            <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
-                            <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
-                            <input
-                                value={imageUrl}
-                                type="text"
-                                placeholder={'enter your image url here'}
-                                onChange={(e) => setImageUrl(e.target.value)}
-                            ></input>
-                        </div>
-                        <div className={styles.block}>
-                            <h3>Funding goal</h3>
-                            <p>Set an achievable goal that covers what you need to complete your project.</p>
-                            <p>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</p>
-                            <div>
-                                <label>Goal amount</label>
-                                <input
-                                    value={goal}
-                                    type="text"
-                                    placeholder={'$50,000'}
-                                    onChange={(e) => setGoal(e.target.value)}
-                                ></input>
+                                        </option>
+                                        {currentSubCategories.map(subCategory =>
+                                            <option
+                                            value={subCategory.id}
+                                            key={subCategory.id}>{subCategory.name}</option>
+                                            )}
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div className={styles.block}>
-                            <h3>Campaign duration</h3>
-                            <div>
-                                <label>Enter number of days</label>
-                                <input
-                                    value={campaignDuration}
-                                    type="text"
-                                    placeholder={'30'}
-                                    // onChange={(e) => setCampaignDuration(e.target.value)}
-                                    onChange={handlingChangingCampaignDuration}
-                                ></input>
+                        <div className={styles.blockWrapper}>
+                            <div className={styles.block}>
+                                <div className={styles.blockLeft}>
+                                    <h3>Project location</h3>
+                                    <p>Enter the location that best describes where your project is based.</p>
+                                </div>
+                                <div className={styles.blockRight}>
+                                    <select
+                                        className={styles.formInput}
+                                        value={countryId}
+                                        onChange={(e) => setCountryId(e.target.value)}
+                                        >
+                                        {countries.map(country =>
+                                            <option
+                                            value={country.id}
+                                            key={country.id}>{country.name}</option>
+                                            )}
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.blockWrapper}>
+                            <div className={styles.block}>
+                                <div className={styles.blockLeft}>
+                                    <h3>Project image</h3>
+                                    <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear on your project page, across the Kickstarter website and mobile apps, and (when shared) on social channels.</p>
+                                    <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
+                                    <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Kickstarter homepage and newsletter features.</p>
+                                </div>
+                                <div className={styles.blockRight}>
+                                    <input
+                                        className={styles.formInput}
+                                        value={imageUrl}
+                                        type="text"
+                                        placeholder={'enter your image url here'}
+                                        onChange={(e) => setImageUrl(e.target.value)}
+                                        ></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.blockWrapper}>
+                            <div className={styles.block}>
+                                <div className={styles.blockLeft}>
+                                    <h3>Funding goal</h3>
+                                    <p>Set an achievable goal that covers what you need to complete your project.</p>
+                                    <p>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</p>
+                                </div>
+                                <div className={styles.blockRight}>
+                                    <label>Goal amount</label>
+                                    <input
+                                        className={styles.formInput}
+                                        value={goal}
+                                        type="text"
+                                        placeholder={'$50,000'}
+                                        onChange={(e) => setGoal(e.target.value)}
+                                        ></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.blockWrapper}>
+                            <div className={styles.block}>
+                                <div className={styles.blockLeft}>
+                                    <h3>Campaign duration</h3>
+                                    <p>Set a time limit for your campaign. You won’t be able to change this after you launch.</p>
+                                </div>
+                                <div className={styles.blockRight}>
+                                    <label>Enter number of days</label>
+                                    <input
+                                        className={styles.formInput}
+                                        value={campaignDuration}
+                                        type="text"
+                                        placeholder={'30'}
+                                        // onChange={(e) => setCampaignDuration(e.target.value)}
+                                        onChange={handlingChangingCampaignDuration}
+                                    ></input>
+                                </div>
                             </div>
                         </div>
                         <div>

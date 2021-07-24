@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Slides.module.css';
 
-const SildeProject = ({ project }) => {
+const SlideProject = ({ project }) => {
   const [highlight, setHighlight] = useState(false);
 
   const calculateProgressLimit = (project) => {
@@ -39,4 +39,4 @@ const SildeProject = ({ project }) => {
 
 };
 
-export default SildeProject;
+export default SlideProject;
