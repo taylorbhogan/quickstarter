@@ -16,6 +16,8 @@ function ProjectEditRewards({ project, rewards }) {
   const [rewardEstimatedDelivery, setRewardEstimatedDelivery] = useState('')
   const [rewardQuantity, setRewardQuantity] = useState(null)
   const [showCreateRewardForm, setShowCreateRewardForm] = useState(false)
+
+  const [errors, setErrors] = useState([])
   // const [estimatedDelivery, setEstimatedDelivery] = useState("")
 
   // console.log('*** your rewards!!**', rewards)
@@ -91,13 +93,23 @@ function ProjectEditRewards({ project, rewards }) {
       description: rewardDescription,
       estimated_delivery: rewardEstimatedDelivery === '' ? null : rewardEstimatedDelivery,
       project_id: project.id,
-      quantity: rewardQuantity === '' ? null : +rewardQuantity,
+      quantity: rewardQuantity === '' || +rewardQuantity === 0 ? null : +rewardQuantity,
       start_date: startDate === '' ? null : startDate,
       end_date: endDate === '' ? null : endDate
     };
-    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward.price)
+    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
     console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", typeof newReward.price)
-    await dispatch(createProjectReward(project, newReward))
+    let result = await dispatch(createProjectReward(project, newReward))
+
+    if (result.errors) {
+
+      setErrors(result.errors)
+
+    } else {
+
+    }
+
+    // console.log("HERE IS YOUR RESULT", result)
     await dispatch(getProjectRewards(project))
     setRewardTitle('')
     setRewardPrice(1)
@@ -154,6 +166,9 @@ function ProjectEditRewards({ project, rewards }) {
             {showCreateRewardForm &&
               <>
                 <div className={styles.formDiv}>
+                  {errors && errors.map(error => (
+                    <div style={{ color: "red" }} key={error}>{error}</div>
+                  ))}
                   <form>
                     <div>
                       <label>Title</label>

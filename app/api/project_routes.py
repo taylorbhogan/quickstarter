@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, redirect
 # from flask.helpers import url_for
 from flask_login import login_required, current_user
-from app.forms import CreateProjectForm, UpdateProjectForm
+from app.forms import CreateProjectForm, UpdateProjectForm, CreateProjectRewardForm
 from app.models import db, Project, Reward
 from datetime import datetime
 
@@ -238,21 +238,39 @@ def create_project_reward(id):
     if(request.json["newReward"]["end_date"]):
         request.json["newReward"]["end_date"] = request.json["newReward"]["end_date"] + '-01'
 
-    print("@@@@@@@@@@@@@",request.json["newReward"]["price"])
-    newReward = Reward(
-        title = request.json["newReward"]["title"],
-        price = request.json["newReward"]["price"],
-        description = request.json["newReward"]["description"],
-        estimated_delivery = request.json["newReward"]["estimated_delivery"],
-        project_id = id,
-        quantity = request.json["newReward"]["quantity"],
-        start_date = request.json["newReward"]["start_date"],
-        end_date = request.json["newReward"]["end_date"],
-        # quantity = None,
-        # start_date = None,
-        # end_date = None,
-    )
-    db.session.add(newReward)
-    db.session.commit()
 
-    return newReward.to_dict()
+    form = CreateProjectRewardForm()
+
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['estimated_delivery'].data = request.json["newReward"]["estimated_delivery"]
+    form["price"].data = request.json["newReward"]["price"]
+    form["description"].data = request.json["newReward"]["description"]
+    form["title"].data = request.json["newReward"]["title"]
+    form["quantity"].data = request.json["newReward"]["quantity"]
+
+    print("!!!!!!!!!!!!!!!!!!!!!!", form.data)
+    # form['sub_category_id'].data = request.json['sub_category_id']
+    if form.validate_on_submit():
+
+        print("@@@@@@@@@@@@@",request.json["newReward"]["price"])
+        newReward = Reward(
+            title = request.json["newReward"]["title"],
+            price = request.json["newReward"]["price"],
+            description = request.json["newReward"]["description"],
+            estimated_delivery = form['estimated_delivery'].data,
+            project_id = id,
+            quantity = request.json["newReward"]["quantity"],
+            start_date = request.json["newReward"]["start_date"],
+            end_date = request.json["newReward"]["end_date"],
+            # quantity = None,
+            # start_date = None,
+            # end_date = None,
+        )
+        db.session.add(newReward)
+        db.session.commit()
+
+        return newReward.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# return {'errors': validation_errors_to_error_messages(form.errors)}, 401
