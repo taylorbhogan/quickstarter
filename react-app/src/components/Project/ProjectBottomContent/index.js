@@ -1,21 +1,14 @@
-import styles from './ProjectBottomContent.module.css'
-import ProjectPreview from '../ProjectPreview'
+import { useSelector } from 'react-redux';
 
+import Slides from '../../ViewComponents/Slides';
+import styles from './ProjectBottomContent.module.css'
 
 function ProjectBottomContent() {
+  const projects = useSelector(state => Object.values(state.projects));
+
   return (
     <div className={styles.projectBottomContentContainer}>
-      <div>
-        <div>WE ALSO RECOMMEND</div>
-        <div>{'Discover more >'}</div>
-      </div>
-      <div className={styles.projectPreviewContainer}>
-        <ProjectPreview />
-        <ProjectPreview />
-        <ProjectPreview />
-        <ProjectPreview />
-
-      </div>
+      <Slides projects={projects} title='WE ALSO RECOMMEND'/>
     </div>
   )
 }
