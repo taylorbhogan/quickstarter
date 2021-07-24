@@ -1,12 +1,21 @@
-import styles from './ProjectBuyReward.module.css'
-import { useState } from 'react'
-import { createBacking } from '../../../store/backing'
-import { useDispatch } from 'react-redux'
+import styles from "./ProjectBuyReward.module.css";
+import { useState } from "react";
+import { createBacking } from "../../../store/backing";
+import { useDispatch } from "react-redux";
 
-function ProjectBuyReward({ addABacking, amount, disable, user, projectId, reward, project, setAmount, stylesFromParent }) {
-
-  const [rewardAmount, setRewardAmount] = useState(0)
-  const dispatch = useDispatch()
+function ProjectBuyReward({
+  addABacking,
+  amount,
+  disable,
+  user,
+  projectId,
+  reward,
+  project,
+  setAmount,
+  stylesFromParent,
+}) {
+  const [rewardAmount, setRewardAmount] = useState(0);
+  const dispatch = useDispatch();
   // this object is just an example
   // reward = {
   //   price: '$10',
@@ -25,27 +34,23 @@ function ProjectBuyReward({ addABacking, amount, disable, user, projectId, rewar
 
   // }
   const formatDate = (dateObj) => {
-    let date = new Date(dateObj)
+    let date = new Date(dateObj);
 
     let [month, year] = [date.getMonth(), date.getFullYear()];
     if (month < 10) {
-      return `${year}-${month + 1}`;
-    } else {
-      return `${year}-${month + 1}`;
+      return `${month + 1}-${year}`;
     }
   };
 
   const addARewardBacking = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // setRewardAmount(e.target.value)
     // setAmount(rewardAmount)
 
     if (rewardAmount <= 0) {
-      setRewardAmount(0)
-
+      setRewardAmount(0);
     } else {
-
       // console.log("PROJ ID", projectId)
       // console.log("PROJ ID +", +projectId)
       const backing = {
@@ -53,20 +58,20 @@ function ProjectBuyReward({ addABacking, amount, disable, user, projectId, rewar
         user_id: user.id,
         project_id: +projectId,
         // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
-        reward_id: e.target.id === '' ? null : +e.target.id
-      }
+        reward_id: e.target.id === "" ? null : +e.target.id,
+      };
 
       // console.log('***************', backing)
-      const data = await dispatch(createBacking(backing))
+      const data = await dispatch(createBacking(backing));
       // const createdBacking = data.newBacking
-      setRewardAmount(0)
+      setRewardAmount(0);
 
       // console.log('1234----responseFromStore-------->', data.newBacking);
       // if (createdBacking){
       //   do stuff
       // }
     }
-  }
+  };
 
   return (
     <div>
@@ -79,7 +84,9 @@ function ProjectBuyReward({ addABacking, amount, disable, user, projectId, rewar
             <div>
               <div className={styles.littleHeader}>ESTIMATED DELIVERY</div>
               {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
-              <div className={styles.estimatedDelivery}>{formatDate(reward.estimated_delivery)}</div>
+              <div className={styles.estimatedDelivery}>
+                {formatDate(reward.estimated_delivery)}
+              </div>
             </div>
             <div>
               <div className={styles.littleHeader}>SHIPS TO</div>
@@ -88,37 +95,39 @@ function ProjectBuyReward({ addABacking, amount, disable, user, projectId, rewar
           </div>
         </div>
         <div className={stylesFromParent.inputDiv}>
-          {!disable &&
+          {!disable && (
             <div>
               <div className={stylesFromParent.dollahBillsRapper}>
                 <div className={stylesFromParent.dollahBills}>$</div>
               </div>
               <input
                 className={stylesFromParent.amountInput}
-                type='number'
+                type="number"
                 //com
                 value={rewardAmount}
-                onChange={e => setRewardAmount(e.target.value)}
-              // onChange={(e) => setRewardAmount(e.target.value)}
-              // onChange={(e) => setAmount(rewardAmount)}
+                onChange={(e) => setRewardAmount(e.target.value)}
+                // onChange={(e) => setRewardAmount(e.target.value)}
+                // onChange={(e) => setAmount(rewardAmount)}
               ></input>
             </div>
-          }
+          )}
         </div>
-        {!disable &&
+        {!disable && (
           <button
-            type='submit'
+            type="submit"
             className={styles.btn}
             id={reward.id}
             // onClick={handleOnClick}
             // onClick={addABacking}
             // onChange={addABacking}
             onClick={addARewardBacking}
-          >Continue</button>
-        }
+          >
+            Continue
+          </button>
+        )}
       </form>
     </div>
-  )
+  );
 }
 
-export default ProjectBuyReward
+export default ProjectBuyReward;
