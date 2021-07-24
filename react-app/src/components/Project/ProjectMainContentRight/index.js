@@ -1,7 +1,30 @@
+import { useEffect, useState } from 'react'
+
 import ProjectBuyReward from '../ProjectBuyReward'
 import styles from './ProjectMainContentRight.module.css'
 
 function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
+  const [ rewards, setRewards ] = useState([])
+  const [ activeRewards, setActiveRewards ] = useState([])
+  const [ expiredRewards, setExpiredRewards ] = useState([])
+  const [ futureRewards, setFutureRewards ] = useState([])
+  const [ soldOutRewards, setSoldOutRewards ] = useState([])
+
+
+
+  useEffect(() => {
+    (async () => {
+      const rewardsResponse = await fetch(`/api/projects/${project.id}/rewards`)
+      const rewardsData = await rewardsResponse.json()
+      console.log('rewardsData------------------>',rewardsData);
+      setRewards(rewardsData.rewards)
+      setActiveRewards(rewardsData.activeRewards)
+      setExpiredRewards(rewardsData.expiredRewards)
+      setFutureRewards(rewardsData.futureRewards)
+      setSoldOutRewards(rewardsData.soldOutRewards)
+    })();
+  }, [project.id])
+
   return (
     <div className={styles.outside}>
       <div>
@@ -37,7 +60,12 @@ function ProjectMainContentRight({ addABacking, amount, setAmount, project }) {
           </div>
         </form>
       </div>
-      <ProjectBuyReward />
+      {(activeRewards.map(reward => (
+        <ProjectBuyReward
+          reward={reward}
+          addABacking={addABacking}
+          key={reward.id}
+        />)))}
     </div>
   )
 }
