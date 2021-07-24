@@ -8,7 +8,7 @@ const Slides = ({ projects, title }) => {
     const result = [];
 
     for (let i = 0; i < 20; i++) {
-      result.push(projects[0]);
+      result.push(projects[i]);
     }
 
     return result;
