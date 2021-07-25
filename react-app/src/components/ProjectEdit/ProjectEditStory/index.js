@@ -10,7 +10,6 @@ import 'react-quill/dist/quill.snow.css';
 // Quill.register('modules/imageDrop', ImageDrop);
 import storyStyles from './ProjectEditStory.module.css'
 
-
 function ProjectEditStory({ project }) {
 
     const [storyInnerHTML, setStoryInnerHTML] = useState(project.story)
@@ -73,7 +72,7 @@ function ProjectEditStory({ project }) {
     // let quillObj;
 
     return (
-        <div>
+        <div className={storyStyles.storyContainer}>
             <div>
                 <div className={storyStyles.title}>Enter your story</div>
             </div>
@@ -125,7 +124,12 @@ function ProjectEditStory({ project }) {
                 id="txtDescription"
             /> */}
             {/* <textarea></textarea> */}
-            <button onClick={handleStorySubmit}>Save Story</button>
+            <div className={storyStyles.saveStoryButtonWrapper}>
+                <button
+                    className={storyStyles.saveStoryButton}
+                    onClick={handleStorySubmit}>Save Story
+                </button>
+            </div>
         </div>
     )
 }
