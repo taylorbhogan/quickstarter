@@ -403,13 +403,14 @@ function Project({ everyProject }) {
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div className={styles.bottomSaveButtonWrapper}>
                             <button
+                                className={styles.bottomSaveButton}
                                 type="submit"
                             >{saveProjectButtonText}</button>
                         </div>
                     </form>
-                    <div>
+                    <div className={styles.deleteButtonWrapper}>
                         <button
                             onClick={() => handleDelete(projectId)}
                             className={styles.deleteButton}
