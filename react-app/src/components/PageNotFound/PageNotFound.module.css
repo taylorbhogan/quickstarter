@@ -1,0 +1,83 @@
+
+.bigBucket{
+  display: flex;
+  justify-content: center ;
+  margin-top: 90px;
+}
+
+.left{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  width: 43%;
+
+}
+
+.header{
+  font-size: 48px;
+  margin-bottom: 5px;
+}
+
+.blurb{
+  margin: 20px 0 18px;
+  font-size: 15px;
+  padding-right: 220px;
+  line-height: 1.5rem;
+}
+
+.imageDiv{
+  border: 1px solid black;
+  height: 600px;
+  width: 500px;
+}
+
+.logoPlaceholder{
+  text-decoration: none;
+  font-size: 27px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-family: 'Modak', cursive;
+  color: black;
+  margin-bottom: 160px;
+}
+
+.buttons{
+  margin-top: 40px;
+}
+
+.cta{
+  margin: 20px 0 18px;
+  font-size: 13px;
+}
+
+.buttonBlack{
+  background-color: black;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 14px 18px;
+  width: 20%;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.buttonWhite{
+  background-color: white;
+  border: none;
+  box-shadow: inset 0px 0px 0px 1px #dcdedd;
+  color: black;
+  cursor: pointer;
+  padding: 14px 18px;
+  width: 20%;
+  font-size: 14px;
+
+}
+
+.cta{
+  cursor: not-allowed;
+
+}
+.cta:hover{
+  color: green;
+  text-decoration: underline;
+}
