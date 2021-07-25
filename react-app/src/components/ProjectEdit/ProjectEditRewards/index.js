@@ -358,11 +358,39 @@ function ProjectEditRewards({ project, rewards }) {
           </div>
         </div>
       </div>
-      <div>
-        <h1>Current Rewards:</h1>
-        {rewards.map(reward => (
-          <div key={reward.id}>
-            <div>
+
+      <div className={rewardStyles.blockWrapperRewards}>
+        <div className={rewardStyles.flexColumnCenter}>
+          <div className={rewardStyles.blockWrapperStatus}>
+            <h1>Current Rewards:</h1>
+          </div>
+          {rewards.map(reward => (
+            <div key={reward.id}>
+              <form style={{ width: '448px', backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
+                <div className={rewardStyles.flexbox}>
+                  <div className={prevStyles.price}>Pledge ${reward.price} or more</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.title}>{reward.title}</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.description}>{reward.description}</div>
+                  <div className={rewardStyles.flexbox}>
+                    <div className={rewardStyles.previewSeperator}>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>ESTIMATED DELIVERY</div>
+                      {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
+                      <div className={prevStyles.estimatedDelivery}>
+                        {formatDate(reward.estimated_delivery)}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
+                      {rewardQuantity > 0 ? (
+                        <div className={prevStyles.shipsTo}>{reward.quantity}</div>
+
+                      ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
+                    </div>
+                  </div>
+                </div>
+                <button className={rewardStyles.cancelButton} id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
+              </form>
+              {/* <div>
               {reward.title}
             </div>
             <div>
@@ -382,10 +410,10 @@ function ProjectEditRewards({ project, rewards }) {
             </div>
             <div>
               {reward.backers.length > 0 ? `Number of purchases: ${reward.backers.length}` : 'Nobody has purchased this reward yet'}
+            </div> */}
             </div>
-            <button id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div >
   );
