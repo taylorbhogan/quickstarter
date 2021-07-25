@@ -66,7 +66,7 @@ function Dropdown() {
         <section className={styles.projectsColumn}>
             <h2 className={styles.createdProjectsText}>CREATED PROJECTS</h2>
             <div className={styles.createdProjectsList}>
-              {userProjects.map((project) => <DropdownProjectLink key={project.id} project={project} />)}
+              {userProjects.map((project) => <DropdownProjectLink key={project.id} project={project} createdProject={true} />)}
             </div>
             <button
               className={styles.newDivWrapper}
