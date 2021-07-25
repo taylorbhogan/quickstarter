@@ -185,35 +185,39 @@ function ProjectEditRewards({ project, rewards }) {
                   ))}
                   <form className={rewardStyles.rewardForm}>
                     <div>
-                      <div>
-                        <label>Title</label>
-                      </div>
-                      <input
-                        className={rewardStyles.inputField}
-                        placeholder={"Signed limited-edition"}
-                        value={rewardTitle}
-                        onChange={(e) => setRewardTitle(e.target.value)}
-                      ></input>
-                    </div>
-                    <div>
-                      <label>Amount</label>
-                    </div>
-                    <div className={rewardStyles.inputDiv}>
-                      <div>
-                        <div className={rewardStyles.dollahBillsRapper}>
-                          <div className={rewardStyles.dollahBills}>$</div>
+                      <div className={rewardStyles.blockWrapper}>
+                        <div>
+                          <label>Title</label>
                         </div>
                         <input
-                          type="number"
-                          value={rewardPrice}
-                          className={rewardStyles.amountInput}
-                          // onChange={(e) => setRewardPrice(e.target.value)}
-                          onChange={handlePriceChange}
+                          className={rewardStyles.inputField}
+                          placeholder={"Signed limited-edition"}
+                          value={rewardTitle}
+                          onChange={(e) => setRewardTitle(e.target.value)}
                         ></input>
                       </div>
                     </div>
+                    <div className={rewardStyles.blockWrapper}>
+                      <div>
+                        <label>Amount</label>
+                      </div>
+                      <div className={rewardStyles.inputDiv}>
+                        <div>
+                          <div className={rewardStyles.dollahBillsRapper}>
+                            <div className={rewardStyles.dollahBills}>$</div>
+                          </div>
+                          <input
+                            type="number"
+                            value={rewardPrice}
+                            className={rewardStyles.amountInput}
+                            // onChange={(e) => setRewardPrice(e.target.value)}
+                            onChange={handlePriceChange}
+                          ></input>
+                        </div>
+                      </div>
+                    </div>
 
-                    <div>
+                    <div className={rewardStyles.blockWrapper}>
                       <div>
                         <label>Description</label>
                       </div>
@@ -224,7 +228,7 @@ function ProjectEditRewards({ project, rewards }) {
                         onChange={(e) => setRewardDescription(e.target.value)}
                       ></textarea>
                     </div>
-                    <div>
+                    <div className={rewardStyles.blockWrapper}>
                       <div>
                         <label>Estimated delivery</label>
                       </div>
@@ -235,19 +239,20 @@ function ProjectEditRewards({ project, rewards }) {
                         </small>
                       </div>
                       <input className={rewardStyles.dateInputField} type="month" min={todaysYearMonth} value={rewardEstimatedDelivery} onChange={e => setRewardEstimatedDelivery(e.target.value)}></input>
-                      <div>Date inputs go here</div>
                     </div>
-                    <div>
+                    {/* <div>
                       <label>Shipping</label>
-                    </div>
+                    </div> */}
                     <div>
-                      <div>
-                        <label>Reward quantity</label>
+                      <div className={rewardStyles.blockWrapper}>
+                        <div>
+                          <label>Reward quantity</label>
+                        </div>
+                        <input className={rewardStyles.inputField} type="number" value={rewardQuantity}
+                          // onChange={e => setRewardQuantity(e.target.value)}
+                          onChange={handleQuantityChange}
+                        ></input>
                       </div>
-                      <input className={rewardStyles.inputField} type="number" value={rewardQuantity}
-                        // onChange={e => setRewardQuantity(e.target.value)}
-                        onChange={handleQuantityChange}
-                      ></input>
                     </div>
                     <div>
                       <label>Time limit</label>
@@ -283,13 +288,15 @@ function ProjectEditRewards({ project, rewards }) {
 
                       </div>
                     </div>
-                    <button
-                      className={rewardStyles.saveRewardButton}
-                      onClick={handleRewardSubmit}
-                    >
-                      Save reward
-                    </button>
-                    <button className={rewardStyles.cancelButton}>Cancel</button>
+                    <div className={rewardStyles.blockWrapper}>
+                      <button
+                        className={rewardStyles.saveRewardButton}
+                        onClick={handleRewardSubmit}
+                      >
+                        Save reward
+                      </button>
+                      <button className={rewardStyles.cancelButton}>Cancel</button>
+                    </div>
                   </form>
                 </div>
 
