@@ -6,6 +6,7 @@ import { sections, filterProjectsBySection } from './sectionsData';
 import Header from '../ViewComponents/Header';
 import Featured from '../ViewComponents/Featured';
 import Explore from '../ViewComponents/Explore';
+import Subscribe from '../ViewComponents/Subscribe';
 
 const Section = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,10 @@ const Section = () => {
     <>
       <Header section={section} />
       <Featured projects={filteredProjects.length > 0 ? filteredProjects : projects} />
-      <Explore projects={filteredProjects.length > 0 ? filteredProjects : projects} />
+      <Subscribe title={section.subscribeTitle} subtitle={section.subscribeSubtitle} />
+      <Explore
+        projects={filteredProjects.length > 0 ? filteredProjects : projects}
+        section={section} />
     </>
   )
 };
