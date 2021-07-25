@@ -147,7 +147,41 @@
 }
 
 
+@media screen and (max-width: 650px) {
 
+  /* .dashBoardContentAndMenu{
+    background-color: aliceblue;
+  } */
+
+  /* .wholeMenu{
+    padding-left: 10px;
+  } */
+
+  .tabDiv {
+   /* background-color: aliceblue; */
+   padding: 10px;
+  }
+
+  .cancelButton{
+    font-size: 14px;
+    font-weight: 200;
+    width: 100%;
+    text-justify: center;
+  }
+
+  .topRight {
+   padding: 0 20px 0 20px;
+  }
+
+  .saveButton, .cancelButton{
+    margin-right: 10px;
+    font-size: 10px;
+  }
+
+  
+
+
+}
 
 
 
