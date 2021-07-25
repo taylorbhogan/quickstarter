@@ -58,7 +58,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          {/* <SectionsNavBar /> */}
+          <SectionsNavBar />
           <Home />
         </Route>
         <ProtectedRoute path='/learn' exact={true} >
