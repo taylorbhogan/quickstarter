@@ -79,7 +79,7 @@ function ProjectCreateForm({ setShowProjectAddModal }) {
           setCategory={setCategory}
           categories={categories}
           category={category}
-          setShowSpotAddModal={setShowSpotAddModal}
+          setShowProjectAddModal={setShowProjectAddModal}
         />
       )}
       {currentStage === 2 && (
@@ -87,7 +87,7 @@ function ProjectCreateForm({ setShowProjectAddModal }) {
           changeStageButton={changeStageButton}
           setSubTitle={setSubTitle}
           subTitle={subTitle}
-          setShowSpotAddModal={setShowSpotAddModal}
+          setShowProjectAddModal={setShowProjectAddModal}
         />
       )}
       {currentStage === 3 && (

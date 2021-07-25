@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 import styles from './ProjectCreateForm.module.css';
 
-function Form1({ changeStageButton, category, categories, setCategory, setShowSpotAddModal }) {
+function Form1({ changeStageButton, category, categories, setCategory, setShowProjectAddModal }) {
   return (
     <div>
       <div className={styles.formContainer}>
@@ -10,7 +10,7 @@ function Form1({ changeStageButton, category, categories, setCategory, setShowSp
           <div className={styles.invisibleDiv}></div>
           <span
             className={styles.logo}
-            onClick={() => setShowSpotAddModal(false)}
+            onClick={() => setShowProjectAddModal(false)}
           >QUICKSTARTER</span>
           <div className={styles.userIcon}></div>
         </div>
