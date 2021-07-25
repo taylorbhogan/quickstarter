@@ -40,45 +40,65 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       {/* <SectionsNavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
+          <NavBar />
           <LoginForm />
+          <Footer />
         </Route>
         <Route path='/sections/:id' exact={true}>
+          <NavBar />
           <Section />
+          <Footer />
         </Route>
         <Route path='/sign-up' exact={true}>
+          <NavBar />
           <SignUpForm />
+          <Footer />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
+          <NavBar />
           <UsersList />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
+          <NavBar />
           <User />
+          <Footer />
         </ProtectedRoute>
         <Route path='/' exact={true} >
+          <NavBar />
           <SectionsNavBar />
           <Home />
+          <Footer />
         </Route>
         <ProtectedRoute path='/learn' exact={true} >
+          <NavBar />
           <Learn />
+          <Footer />
         </ProtectedRoute>
         <Route path='/discover' exact={true}>
+          <NavBar />
           <Discover />
+          <Footer />
         </Route>
         <ProtectedRoute path='/projects/:projectId' exact={true}>
+          <NavBar />
           <Project everyProject={everyProject} />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/projects/:projectId/edit' exact={true}>
+          <NavBar />
           <ProjectEdit everyProject={everyProject} />
+          <Footer />
         </ProtectedRoute>
         <Route>
           <PageNotFound />
         </Route>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
