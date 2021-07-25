@@ -108,3 +108,31 @@
 .logInLink:hover {
   color: var(--navBarFontColor)
 }
+
+.btnContainer {
+  display: flex;
+}
+
+.demoBtn {
+  padding: 10px 18px;
+  width: 100%;
+  background-color: rgb(39, 82, 255);
+  color: white;
+  margin-left: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms;
+}
+
+.demoBtn:hover {
+  background-color: rgb(24, 50, 155);
+}
+
+.errorsContainer {
+  padding: 10px 20px;
+  background-color: rgb(253, 0, 59);
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  line-height: 24px;
+}

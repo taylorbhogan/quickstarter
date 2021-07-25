@@ -40,7 +40,6 @@ function ProjectCreateForm({ setShowProjectAddModal }) {
     })();
   }, [])
 
-
   const changeStageButton = (e) => {
     e.preventDefault()
 
@@ -80,6 +79,7 @@ function ProjectCreateForm({ setShowProjectAddModal }) {
           setCategory={setCategory}
           categories={categories}
           category={category}
+          setShowSpotAddModal={setShowSpotAddModal}
         />
       )}
       {currentStage === 2 && (
@@ -87,6 +87,7 @@ function ProjectCreateForm({ setShowProjectAddModal }) {
           changeStageButton={changeStageButton}
           setSubTitle={setSubTitle}
           subTitle={subTitle}
+          setShowSpotAddModal={setShowSpotAddModal}
         />
       )}
       {currentStage === 3 && (
