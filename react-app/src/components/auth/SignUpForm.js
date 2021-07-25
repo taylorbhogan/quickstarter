@@ -21,11 +21,11 @@ const SignUpForm = () => {
     e.preventDefault();
     if (password !== repeatPassword) {
       setErrors([
-        ': please make sure your passwords match!'
+        ': Please make sure your passwords match.'
       ])
     } else if (email !== repeatEmail) {
       setErrors([
-        ': please make sure your emails match!'
+        ': Please make sure your emails match.'
       ])
     } else {
       const data = await dispatch(signUp(username, email, password, repeatPassword));
@@ -75,14 +75,17 @@ const SignUpForm = () => {
       <div className={styles.signUpFormContainer}>
         <form onSubmit={onSignUp}>
           <h2 className={styles.loginTitle}>Sign up</h2>
-          <div>
-            {/* {errors.map((error, ind) => (
+          {errors.length > 0 && (
+            <div className={styles.errorsContainer}>
+              {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))} */}
-            {errors.map((error, ind) => (
-              <div key={ind}>{error.split(': ')[1]}</div>
-            ))}
-          </div>
+              {errors[0].includes("This field is required.") ? (<div>All fields are required.</div>) : errors.map((error, ind) => (
+                <div key={ind}>
+                  {error.split(': ')[1]}</div>
+              ))}
+            </div>
+          )}
           <div>
             <input
               type='text'

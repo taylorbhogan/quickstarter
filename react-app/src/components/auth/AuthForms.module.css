@@ -127,3 +127,12 @@
 .demoBtn:hover {
   background-color: rgb(24, 50, 155);
 }
+
+.errorsContainer {
+  padding: 10px 20px;
+  background-color: rgb(253, 0, 59);
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  line-height: 24px;
+}
