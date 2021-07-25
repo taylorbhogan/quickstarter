@@ -73,7 +73,7 @@ function App() {
         </ProtectedRoute>
         <Route>
           <h1>Page Not Found</h1>
-          <h2>Sorry! That URL path does not exist. Try again!</h2>
+          <h2>Sorry, that URL path does not exist. Try again!</h2>
         </Route>
       </Switch>
       <Footer />
