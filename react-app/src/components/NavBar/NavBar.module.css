@@ -95,11 +95,19 @@
   margin-left: 18px;
 }
 
-
-
 .discoverButton:hover,
 .projectLink:hover,
 .searchBtn:hover,
-.logInLink:hover {
+.logInLink:hover,
+.demoBtn:hover {
   color: var(--navBarHoverColor);
+}
+
+.demoBtn {
+  background-color: white;
+  border: none;
+  font-size: 14px;
+  padding: 0;
+  margin-bottom: 1px;
+  color: var(--navBarFontColor)
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { login } from '../../store/session';
 import styles from './AuthForms.module.css'
 
 const SignUpForm = () => {
@@ -18,11 +19,11 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password !== repeatPassword){
+    if (password !== repeatPassword) {
       setErrors([
         ': please make sure your passwords match!'
       ])
-    } else if (email !== repeatEmail){
+    } else if (email !== repeatEmail) {
       setErrors([
         ': please make sure your emails match!'
       ])
@@ -57,6 +58,10 @@ const SignUpForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
+
+  const handleDemoLogin = async (email, password) => {
+    await dispatch(login(email, password))
+  };
 
   return (
     <div className={styles.formBackground}>
@@ -134,7 +139,14 @@ const SignUpForm = () => {
               ></input>
             )}
           </div>
-          <button type='submit' className={styles.btn}>Create account</button>
+          <div className={styles.btnContainer}>
+            <button type='submit' className={styles.btn}>Create account</button>
+            <button
+              type='button'
+              className={styles.demoBtn}
+              onClick={() => handleDemoLogin("marnie@aa.io", "password")}
+            >Demo</button>
+          </div>
         </form>
       </div>
     </div>

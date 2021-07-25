@@ -32,6 +32,10 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const handleDemoLogin = async (email, password) => {
+    await dispatch(login(email, password))
+  };
+
   return (
     <div className={styles.formBackground}>
       <div className={styles.loginFormContainer}>
@@ -62,7 +66,14 @@ const LoginForm = () => {
               onChange={updatePassword}
               className={styles.input}
             />
-            <button type='submit' className={styles.btn}>Login</button>
+            <div className={styles.btnContainer}>
+              <button type='submit' className={styles.btn}>Login</button>
+              <button
+                type='button'
+                className={styles.demoBtn}
+                onClick={() => handleDemoLogin("marnie@aa.io", "password")}
+              >Demo</button>
+            </div>
           </div>
         </form>
       </div>
