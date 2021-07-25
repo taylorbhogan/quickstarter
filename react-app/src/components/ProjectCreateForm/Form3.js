@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 
-function Form3({ changeStageButton, handleSubmit, country, countries, setCountry, setShowSpotAddModal }) {
+function Form3({ changeStageButton, handleSubmit, country, countries, setCountry, setShowProjectAddModal }) {
   const [div1True, setDiv1True] = useState(false)
   const [div2True, setDiv2True] = useState(false)
   const [div3True, setDiv3True] = useState(false)
@@ -51,7 +51,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
           <NavLink
             to='/' exact
             className={styles.logo}
-            onClick={() => setShowSpotAddModal(false)}
+            onClick={() => setShowProjectAddModal(false)}
           >QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>

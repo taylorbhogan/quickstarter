@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ProjectCreateForm.module.css'
 
-function Form2({ changeStageButton, subTitle, setSubTitle, setShowSpotAddModal }) {
+function Form2({ changeStageButton, subTitle, setSubTitle, setShowProjectAddModal }) {
   const setPlaceholder = () => {
     const placeHolders = [
       'A set of handmade greeting cards and stationery.',
@@ -22,7 +22,7 @@ function Form2({ changeStageButton, subTitle, setSubTitle, setShowSpotAddModal }
           <NavLink
             to='/' exact
             className={styles.logo}
-            onClick={() => setShowSpotAddModal(false)}
+            onClick={() => setShowProjectAddModal(false)}
           >QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>
