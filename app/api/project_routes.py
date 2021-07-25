@@ -51,7 +51,7 @@ def delete_project(id):
     db.session.delete(project)
     db.session.commit()
     # TODO: implement a better return statement here
-    return {'message': 'spot has been deleted'}
+    return {'message': 'project has been deleted'}
 
 # TODO: rename this route
 @project_routes.route('/create', methods=['POST'])

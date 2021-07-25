@@ -7,6 +7,7 @@ import Header from '../ViewComponents/Header';
 import Featured from '../ViewComponents/Featured';
 import Explore from '../ViewComponents/Explore';
 import Subscribe from '../ViewComponents/Subscribe';
+import SectionsNavBar from '../SectionsNavBar';
 
 const Section = () => {
   const dispatch = useDispatch();
@@ -24,8 +25,9 @@ const Section = () => {
 
   return (
     <>
-      <Header section={section} />
       <Featured projects={filteredProjects.length > 0 ? filteredProjects : projects} />
+      <SectionsNavBar />
+      <Header section={section} />
       <Subscribe title={section.subscribeTitle} subtitle={section.subscribeSubtitle} />
       <Explore
         projects={filteredProjects.length > 0 ? filteredProjects : projects}

@@ -103,10 +103,10 @@ export const deleteProject = (projectId) => async dispatch => {
   });
 
   if (response.ok) {
-    const spotDeleteSuccessMessage = await response.json();
+    const projectDeleteSuccessMessage = await response.json();
     dispatch(deleteProjectFromStore(projectId))
 
-    return spotDeleteSuccessMessage
+    return projectDeleteSuccessMessage
   }
   return null;
 }

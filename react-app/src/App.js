@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 import Section from './components/Section';
 import { authenticate } from './store/session';
 import { getProjects } from './store/project'
-
+import SectionsNavBar from './components/SectionsNavBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +40,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      {/* <SectionsNavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -57,6 +58,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
+          <SectionsNavBar />
           <Home />
         </Route>
         <ProtectedRoute path='/learn' exact={true} >
