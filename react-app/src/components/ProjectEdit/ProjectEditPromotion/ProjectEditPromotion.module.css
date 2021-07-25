@@ -26,3 +26,27 @@
   line-height: 24px;
   margin-top: 6px;
 }
+
+.blockWrapper{
+  width: 100%;
+  border-top: 1px solid rgb(209, 209, 209);
+  padding: 48px 0;
+  display: flex;
+  justify-content: center;
+
+}
+.block{
+  width: 74%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.standIn{
+  width: 700px;
+  height: 120px;
+  background-color: rgb(210 210 210);
+}
+
+.infoContainer{
+  width: 30%;
+}
