@@ -15,8 +15,8 @@
 
 .navBarLeft {
   display: flex;
-  padding: 12px 0 12px 24px;
-  width: 180px;
+  padding: 12px 0 12px 18px;
+  width: 300px;
 }
 
 /* .discoverButton {
@@ -34,15 +34,26 @@
 .headerLink {
   text-decoration: none;
   color: inherit;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   /* margin-right: 12px; */
   padding-right: 18px;
   font-size: inherit;
+  width: 500px;
+}
+
+.experimentToAlignLinks{
+  display: flex;
+  align-items: flex-start;
+  padding-top: 11px;
+}
+
+.headerLink:hover{
+  color: green;
 }
 
 .navBarCenter {
-  width: 200px;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,7 +73,7 @@
   padding: 12px 24px 12px 0;
   align-items: center;
   justify-content: flex-end;
-  width: 180px;
+  width: 300px;
 }
 
 .searchBtn {
