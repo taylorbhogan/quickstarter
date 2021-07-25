@@ -30,6 +30,7 @@ function ProjectCreateForm({ setShowProjectAddModal }) {
 
       const countryRes = await fetch(`/api/countries`);
       const countriesResponse = await countryRes.json()
+      console.log('---------------------851---------------------',countriesResponse.countries);
       setCountries(countriesResponse.countries)
       //    the below setCategory was commented out to enable the disabled logic for the next button on Form1
       // setCategory(cats.categories[0].id)
