@@ -198,6 +198,7 @@
 .bottomSaveButton{
   position: absolute;
   left: 83%;
+  top: -30px;
   border: none;
   color: rgb(255, 255, 255);
   padding: 13px 18px 13px 18px;
@@ -208,10 +209,25 @@
   background-color: rgb(2, 136, 88);
   border: 1px solid rgb(2, 136, 88);
 }
-.deleteButtonWrapper{
+.bottomDeleteButtonWrapper{
   margin-bottom: 80px;
+  position: relative;
 }
 
+.bottomDeleteButton{
+  border: none;
+  position: absolute;
+  left: 75%;
+  top: -30px;
+  color: rgb(34, 34, 34);
+  padding: 13px 18px 13px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  /* background-color: rgb(255, 255, 255); */
+  /* border: 1px solid rgb(209, 209, 209); */
+}
 
 /* ///////////////////STYLES FOR EDIT PAGES GO HERE/////////////////////////////////////////// */
 /* ///////////////////                             /////////////////////////////////////////// */

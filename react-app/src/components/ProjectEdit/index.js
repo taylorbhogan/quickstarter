@@ -410,10 +410,10 @@ function Project({ everyProject }) {
                             >{saveProjectButtonText}</button>
                         </div>
                     </form>
-                    <div className={styles.deleteButtonWrapper}>
+                    <div className={styles.bottomDeleteButtonWrapper}>
                         <button
                             onClick={() => handleDelete(projectId)}
-                            className={styles.deleteButton}
+                            className={styles.bottomDeleteButton}
                         >
                             Delete
                         </button>
