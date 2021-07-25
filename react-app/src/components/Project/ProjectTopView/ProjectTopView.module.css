@@ -30,7 +30,7 @@ h2{
 .topFlexContainer{
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .mediaShowcaseContainer{
@@ -39,14 +39,16 @@ h2{
 }
 .mediaShowcaseWrapper{
   padding: 0 18px;
-
 }
 
 .mediaShowcase{
-  height: 300px;
-  border: 1px solid black;
+  width: 800px;
 }
 
+
+.image{
+  width: 100%;
+}
 .projectInfoWrapper{
   padding: 0 18px;
   width: 30%;
@@ -55,6 +57,18 @@ h2{
 
 .projectInfoFlexColumn{
   margin-bottom: 30px;
+}
+
+.progressBar{
+  height: 6px;
+  width: 100%;
+  background-color: rgb(214, 214, 214);
+  margin-bottom: 18px;
+}
+
+.progress {
+  height: 6px;
+  background-color: green;
 }
 
 .projectInfoFlexColumnRow{

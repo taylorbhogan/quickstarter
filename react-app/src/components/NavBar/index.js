@@ -33,7 +33,7 @@ const NavBar = () => {
           )}
         </section>
       </nav >
-      <SectionsNavBar />
+      {/* <SectionsNavBar /> */}
       {/* <LogoutButton /> */}
     </>
   );
