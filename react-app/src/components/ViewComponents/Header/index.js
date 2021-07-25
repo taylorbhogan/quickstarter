@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Section.module.css';
+import styles from './Header.module.css';
 
-const SectionHeader = ({ section }) => {
+const Header = ({ section }) => {
   return (
     <>
       <div className={styles.margin}>
@@ -23,4 +23,4 @@ const SectionHeader = ({ section }) => {
   );
 };
 
-export default SectionHeader;
+export default Header;

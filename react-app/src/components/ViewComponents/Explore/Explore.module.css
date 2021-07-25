@@ -1,0 +1,16 @@
+.margin {
+  height: 100%;
+  width: 100%;
+  max-width: 1246px;
+  margin: 54px auto;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+  background-color: rgb(255, 249, 246);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  padding: 60px;
+  background-color: rgb(255, 249, 246);
+}

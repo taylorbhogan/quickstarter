@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjects } from '../../store/project';
 import { sections, filterProjectsBySection } from './sectionsData';
-import SectionHeader from './SectionHeader';
+import Header from '../ViewComponents/Header';
 import Featured from '../ViewComponents/Featured';
-import styles from './Section.module.css';
+import Explore from '../ViewComponents/Explore';
 
 const Section = () => {
   const dispatch = useDispatch();
@@ -23,8 +23,9 @@ const Section = () => {
 
   return (
     <>
-      <SectionHeader section={section} />
-      {filteredProjects.length > 0 && <Featured projects={filteredProjects} />}
+      <Header section={section} />
+      <Featured projects={filteredProjects.length > 0 ? filteredProjects : projects} />
+      <Explore projects={filteredProjects.length > 0 ? filteredProjects : projects} />
     </>
   )
 };

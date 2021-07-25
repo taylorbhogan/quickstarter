@@ -19,7 +19,7 @@ const SlideProject = ({ project }) => {
       onMouseOver={() => setHighlight(true)}
       onMouseOut={() => setHighlight(false)}
     >
-      <Link to={`projects/${project.id}`}>
+      <Link to={`/projects/${project?.id}`}>
         <img src={project?.project_image_url} className={styles.image} alt="Project image" />
         <div className={styles.progressBar}>
           <div
