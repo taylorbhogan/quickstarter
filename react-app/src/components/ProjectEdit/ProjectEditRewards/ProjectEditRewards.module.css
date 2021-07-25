@@ -1,0 +1,121 @@
+.rewardForm {
+width: 800px;
+display: flex;
+flex-direction: column;
+/* height: 2620px; */
+}
+
+.inputField {
+height: 42px;
+width: 735px;
+}
+
+.dollahBills{
+    font-size: 12px;
+    color: rgb(110 110 110);
+    top: 12px;
+    position: absolute;
+    text-align: center;
+    width: 40px;
+  }
+
+
+  .inputDiv{
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .dollahBillsRapper{
+    position: absolute;
+    top: 0;
+    /* border-right: 1px solid rgb(220, 222, 221); */
+    height: 100%;
+    width: 40px;
+    margin: auto;
+  }
+
+  .amountInput{
+    padding: 10px 10px 10px 54px;
+    /* border: 1px solid rgb(220, 222, 221); */
+    width: 675.3px;
+  }
+
+  .textarea{
+    width: 745px;
+    height: 80px;
+    padding: 12px;
+    font-size: 16px;
+    outline: none;
+    /* border: 1px solid rgb(232, 232, 232); */
+    transition: border 200ms;
+    box-sizing: border-box;
+  }
+
+  .dateInputField {
+    height: 42px;
+    width: 735px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+
+.optionSelectorContainer {
+    height: 42px;
+    width: 741px;
+    display:flex;
+    align-items: center;
+    border: 1px solid;
+    /* justify-content: center; */
+}
+
+.greenBubble{
+    width: 50px;
+    height: 20px;
+
+}
+
+.noLimitLabel {
+    width: 741px;
+    height: 42px;
+    display:flex;
+    align-items: center;
+}
+
+.saveRewardButton {
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10.5px 18px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    background-color: rgb(2, 136, 88);
+    border: 1px solid rgb(2, 136, 88);
+    width: 168px;
+}
+
+.cancelButton{
+        border: none;
+        color: rgb(34, 34, 34);
+        padding: 10.5px 18px;
+        box-sizing: border-box;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        width: 168px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(209, 209, 209);
+}
+
+.previewSeperator{
+/* margin-left: 8px; */
+margin-right: 8px;
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: column;
+
+}
+

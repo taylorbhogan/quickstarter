@@ -17,7 +17,7 @@ function ProjectMainContentRight({ addABacking, amount, user, projectId, setAmou
     (async () => {
       const rewardsResponse = await fetch(`/api/projects/${project.id}/rewards`)
       const rewardsData = await rewardsResponse.json()
-      console.log('rewardsData------------------>', rewardsData);
+      // console.log('rewardsData------------------>', rewardsData);
       setRewards(rewardsData.rewards)
       setActiveRewards(rewardsData.activeRewards)
       setExpiredRewards(rewardsData.expiredRewards)
