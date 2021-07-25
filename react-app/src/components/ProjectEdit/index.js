@@ -240,7 +240,7 @@ function Project({ everyProject }) {
     const dashBoardContent = () => {
         if (currentSelectedTab === 'basics') {
             return (
-                <div>
+                <div className={styles.oneHundred}>
                     <div>
                         <h1 className={styles.title}>Start with the basics</h1>
                         <h2 className={styles.subtitle}>Make it easy for people to learn about your project.</h2>
@@ -256,9 +256,9 @@ function Project({ everyProject }) {
                                         <div style={{ color: "red" }} key={ind}>{error}</div>
                                     ))}
                                 </div>
-                                <div className={styles.blockRight}>
+                                <div className={styles.blockRightTitle}>
                                     <div>
-                                        <label>Title</label>
+                                        <label className={styles.label}>Title</label>
                                         <input
                                             className={styles.formInput}
                                             value={title}
@@ -269,7 +269,7 @@ function Project({ everyProject }) {
                                     </div>
                                     <div>
                                         <div>
-                                            <label>Subtitle</label>
+                                            <label className={styles.label}>Subtitle</label>
                                             <textarea
                                                 className={styles.formInput}
                                                 value={subTitle}
@@ -277,6 +277,11 @@ function Project({ everyProject }) {
                                                 onChange={(e) => setSubTitle(e.target.value)}
                                             ></textarea>
                                         </div>
+                                    </div>
+                                    <div className={styles.impression}>
+                                        <span><i class="fas fa-lightbulb"></i></span>
+                                        <span>  Give backers the best first impression of your project with great titles. </span>
+                                        <span className={styles.learnMore}>Learn more...</span>
                                     </div>
                                 </div>
                             </div>
@@ -368,7 +373,7 @@ function Project({ everyProject }) {
                                     <div className={styles.mainInputSubHeader}>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</div>
                                 </div>
                                 <div className={styles.blockRight}>
-                                    <label>Goal amount</label>
+                                    <label className={styles.label}>Goal amount</label>
                                     <input
                                         className={styles.formInput}
                                         value={goal}
@@ -386,7 +391,7 @@ function Project({ everyProject }) {
                                     <div className={styles.mainInputSubHeader}>Set a time limit for your campaign. You won’t be able to change this after you launch.</div>
                                 </div>
                                 <div className={styles.blockRight}>
-                                    <label>Enter number of days</label>
+                                    <label className={styles.label}>Enter number of days</label>
                                     <input
                                         className={styles.formInput}
                                         value={campaignDuration}
@@ -407,6 +412,7 @@ function Project({ everyProject }) {
                     <div>
                         <button
                             onClick={() => handleDelete(projectId)}
+                            className={styles.deleteButton}
                         >
                             Delete
                         </button>

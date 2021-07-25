@@ -1,3 +1,10 @@
+.label{
+  font-size: 14px;
+  font-weight: 350;
+  color: #282828;
+  line-height: 24px;
+}
+
 .dashBoardContentAndMenu{
   display: flex;
   flex-direction: column;
@@ -82,7 +89,9 @@
   padding-top: 6px;
 }
 
-
+.oneHundred{
+  width: 100%;
+}
 
 .blockWrapper{
   width: 100%;
@@ -94,8 +103,8 @@
 }
 
 .block{
-  width: 75%;
-  margin-top: 20px;
+  width: 74%;
+  /* margin-top: 20px; */
   display: flex;
   justify-content: space-between;
 }
@@ -107,6 +116,7 @@
 .mainInputHeader{
   font-size: 18px;
   color: #282828;
+  font-weight: 300;
 }
 
 .mainInputSubHeader{
@@ -116,8 +126,30 @@
   margin-top: 6px;
 }
 
+.blockRightTitle{
+  width: 57%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .blockRight{
-  width: 50%;
+  width: 57%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.impression{
+  color: #037362;
+  font-size: 13px;
+  cursor: not-allowed;
+}
+
+.learnMore{
+  text-decoration: underline;
 }
 
 .formInput{
@@ -169,7 +201,7 @@
 
 .title {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 300;
   color: rgb(40, 40, 40);
   margin-top: 70px;
   margin-bottom: 25px;
@@ -177,7 +209,7 @@
 }
 .subtitle {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   color: #656969;
   text-align: center;
   margin-bottom: 70px;

@@ -17,6 +17,8 @@
 .mainInputHeader{
   font-size: 18px;
   color: #282828;
+  font-weight: 300;
+
 }
 
 .mainInputSubHeader{
@@ -25,4 +27,3 @@
   line-height: 24px;
   margin-top: 6px;
 }
-
