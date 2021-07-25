@@ -121,6 +121,7 @@ function ProjectEditRewards({ project, rewards }) {
 
     } else {
       setErrors([])
+      setShowCreateRewardForm(false)
     }
 
     // console.log("HERE IS YOUR RESULT", result)
@@ -305,10 +306,10 @@ function ProjectEditRewards({ project, rewards }) {
                   <div>
                     Get a glimpse of how this reward will look on your project page.
                   </div>
-                  <div>
+                  <div style={{ position: "sticky", top: "20px" }} >
                     <form style={{ backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
                       <div className={rewardStyles.flexbox}>
-                        <div className={prevStyles.price}>Pledge {rewardPrice} or more</div>
+                        <div className={prevStyles.price}>Pledge ${rewardPrice} or more</div>
                         <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.title}>{rewardTitle}</div>
                         <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.description}>{rewardDescription}</div>
                         <div className={rewardStyles.flexbox}>
