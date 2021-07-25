@@ -61,7 +61,7 @@ function ProjectMainContentRight({ addABacking, amount, user, projectId, setAmou
           </div>
         </form>
       </div>
-      {(activeRewards.map(reward => (
+      {(activeRewards?.map(reward => (
         <ProjectBuyReward
           stylesFromParent={styles}
           reward={reward}
@@ -72,19 +72,7 @@ function ProjectMainContentRight({ addABacking, amount, user, projectId, setAmou
           projectId={projectId}
           amount={amount}
         />)))}
-      {(futureRewards.map(reward => (
-        <ProjectBuyReward
-          disable={true}
-          stylesFromParent={styles}
-          reward={reward}
-          addABacking={addABacking}
-          key={reward.id}
-          setAmount={setAmount}
-          user={user}
-          projectId={projectId}
-          amount={amount}
-        />)))}
-      {(expiredRewards.map(reward => (
+      {(futureRewards?.map(reward => (
         <ProjectBuyReward
           disable={true}
           stylesFromParent={styles}
@@ -96,7 +84,19 @@ function ProjectMainContentRight({ addABacking, amount, user, projectId, setAmou
           projectId={projectId}
           amount={amount}
         />)))}
-      {(soldOutRewards.map(reward => (
+      {(expiredRewards?.map(reward => (
+        <ProjectBuyReward
+          disable={true}
+          stylesFromParent={styles}
+          reward={reward}
+          addABacking={addABacking}
+          key={reward.id}
+          setAmount={setAmount}
+          user={user}
+          projectId={projectId}
+          amount={amount}
+        />)))}
+      {(soldOutRewards?.map(reward => (
         <ProjectBuyReward
           disable={true}
           stylesFromParent={styles}

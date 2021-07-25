@@ -8,6 +8,14 @@ function ProjectTopView({project, numberOfBackers, categories}){
     maximumFractionDigits: 0,
   })
 
+  const calculateProgressLimit = (project) => {
+    const percentage = (project.current_funding / project.funding_goal) * 100;
+    if (percentage > 100) {
+      return '100%';
+    }
+    return `${percentage.toFixed()}%`;
+  }
+
   return (
     <div className={styles.allProjectTopViewContentWrapper}>
     <div className={styles.allProjectTopViewContent}>
@@ -18,7 +26,9 @@ function ProjectTopView({project, numberOfBackers, categories}){
         <div className={styles.topFlexContainer}>
           <div className={styles.mediaShowcaseContainer}>
             <div className={styles.mediaShowcaseWrapper}>
-              <div className={styles.mediaShowcase}></div>
+              <div className={styles.mediaShowcase}>
+                <img src={project?.project_image_url} className={styles.image} alt='the media showcase for this project'/>
+              </div>
             </div>
             <div className={styles.belowShowCaseDiv}>
               <div>
@@ -39,7 +49,13 @@ function ProjectTopView({project, numberOfBackers, categories}){
             <div className={styles.projectInfo}>
               <section>
                 <div className={styles.projectInfoFlexColumn}>
-                  <div className={styles.progressBar}></div>
+                  <div className={styles.progressBar}>
+                    <div
+                      className={styles.progress}
+                      style={{ width: `${project && calculateProgressLimit(project)}` }}
+                      >
+                    </div>
+                  </div>
                   <div className={styles.projectInfoFlexColumnRow}>
                     <div className={styles.currentFunding}>{currentFundingFormatter.format(project.current_funding)}</div>
                     <div className={styles.subtext}>pledged of {currentFundingFormatter.format(project.funding_goal)} goal</div>

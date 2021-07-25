@@ -8,7 +8,7 @@ import Form2 from './Form2';
 import Form3 from './Form3';
 import styles from './ProjectCreateForm.module.css'
 
-function ProjectCreateForm({ setShowSpotAddModal }) {
+function ProjectCreateForm({ setShowProjectAddModal }) {
   const [errors, setErrors] = useState([]);
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
@@ -61,7 +61,7 @@ function ProjectCreateForm({ setShowSpotAddModal }) {
     // console.log(project)
     const createdProject = await dispatch(createProject(project))
     if (createdProject) {
-      setShowSpotAddModal(false);
+      setShowProjectAddModal(false);
       history.push(`/projects/${createdProject.id}/edit`);
     }
 
@@ -97,7 +97,7 @@ function ProjectCreateForm({ setShowSpotAddModal }) {
           setCountry={setCountry}
           countries={countries}
           country={country}
-          setShowSpotAddModal={setShowSpotAddModal}
+          setShowProjectAddModal={setShowProjectAddModal}
         />
       )}
     </div>

@@ -20,7 +20,7 @@ const SlideProject = ({ project }) => {
       onMouseOut={() => setHighlight(false)}
     >
       <Link to={`/projects/${project?.id}`}>
-        <img src={project?.project_image_url} className={styles.image} alt="Project image" />
+        <img src={project?.project_image_url} className={styles.image} alt="Project showcase" />
         <div className={styles.progressBar}>
           <div
             className={styles.progress}
