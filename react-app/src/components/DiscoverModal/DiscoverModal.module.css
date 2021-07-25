@@ -1,0 +1,24 @@
+@import "../../vars.css";
+
+.buttonWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn {
+  background: none;
+  border: none;
+  text-decoration: none;
+  color: inherit;
+  /* display: flex; */
+  /* align-items: center; */
+  padding-right: 16px;
+  font-size: 14px;
+  cursor: pointer;
+
+}
+
+.btn:hover {
+  color: green;
+}

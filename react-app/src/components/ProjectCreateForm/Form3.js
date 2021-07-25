@@ -9,6 +9,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
   const [div3True, setDiv3True] = useState(false)
   const [div4True, setDiv4True] = useState(false)
   const [lastClicked, setLastClicked] = useState(0)
+  const [countryName, setCountryName] = useState('')
 
   const handleClick = (int) => {
     if (int === 1) {
@@ -67,6 +68,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
               placeholder="Select your country"
               items={countries}
               setFunction={setCountry}
+              otherSetFunction={setCountryName}
             />
             {/* <select
               onChange={(e) => setCountry(e.target.value)}
@@ -144,7 +146,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
               }
               <span
                 className={styles.toggleDivText}
-              >I can verify an address and bank account in {country}.
+              >I can verify an address and bank account in {countryName}.
               </span>
             </div>
             <div

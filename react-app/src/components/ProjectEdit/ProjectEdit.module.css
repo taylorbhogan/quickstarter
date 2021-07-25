@@ -2,31 +2,87 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
 
+.wholeMenu{
+  width: 100%;
+  position: relative;
 }
 
 .topMenu{
+  top: -55px;
+  height: 55px;
+  position: absolute;
   display: flex;
   justify-content: space-between;
+  width: 99%;
+  background-color: white;
 }
 
 .topLeft{
   display: flex;
+  align-items: center;
+}
+
+.logoDiv {
+  margin-left: 25px;
+  text-decoration: none;
+  font-size: 26px;
+  letter-spacing: .5px;
+  font-weight: bold;
+  font-family: 'Modak', cursive;
+  color: rgb(84, 212, 137);
+}
+
+.backButton{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 25px;
+  outline: inherit;
+  font-size: inherit;
+  color: rgb(101, 105, 105);
+  font-size: 14px;
 }
 
 .topRight{
   display: flex;
+  justify-content: space-between;
+  width: 21%;
+}
+
+.tabMenuWrapper{
+  display: flex;
+  justify-content: center;
+  /* padding: 30px; */
+  border-top: 1px solid rgb(209, 209, 209);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.17);
+  width: 100%;
 }
 
 .tabMenu{
   display: flex;
-  padding: 30px;
+  justify-content: space-evenly;
+  width: 60%;
+  height: 85px;
 }
 
-.tabMenu * {
-  padding-left: 20px;
+.tabDiv{
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
 }
+
+.tabDiv div {
+  padding-top: 6px;
+}
+
+
 
 .blockWrapper{
   width: 100%;
@@ -59,29 +115,38 @@
   border: 1px solid rgb(232, 232, 232);
 }
 
+.buttonDiv{
+  width: 48%;
+  height: 100%;
+}
+
 .saveButton{
   border: none;
   color: rgb(255, 255, 255);
-  padding: 10.5px 18px;
+  padding: 13px 18px 13px 18px;
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 400;
   text-align: center;
   background-color: rgb(2, 136, 88);
   border: 1px solid rgb(2, 136, 88);
+  width: 100%;
 }
 
 .cancelButton{
   border: none;
   color: rgb(34, 34, 34);
-  padding: 10.5px 18px;
+  padding: 13px 18px 13px 18px;
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 400;
   text-align: center;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(209, 209, 209);
+  width: 100%;
 }
+
+
 
 
 

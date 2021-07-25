@@ -445,14 +445,16 @@ function Project({ everyProject }) {
                             QUICKSTARTER
                         </div>
                         <div className={styles.backButtonDiv}>
-                            <button><span><i className="fas fa-long-arrow-alt-left"></i></span> Category</button>
+                            <button className={styles.backButton}>
+                                <span><i className="fas fa-long-arrow-alt-left"></i></span> Category
+                            </button>
                         </div>
                     </div>
                     <div className={styles.topRight}>
-                        <div className={styles.cancelButtonDiv}>
+                        <div className={styles.buttonDiv}>
                             <button className={styles.cancelButton}>Cancel</button>
                         </div>
-                        <div className={styles.saveButtonDiv}>
+                        <div className={styles.buttonDiv}>
                             <button onClick={handleGoLiveButton} className={styles.saveButton}>Save</button>
                         </div>
                     </div>
@@ -464,13 +466,45 @@ function Project({ everyProject }) {
                         </div>
                     ))}
                 </div>
-                <div className={styles.tabMenu}>
-                    <div onClick={(e) => setCurrentSelectedTab('basics')}>✍️ Basics</div>
-                    <div onClick={(e) => setCurrentSelectedTab('rewards')}>🎁 Rewards</div>
-                    <div onClick={(e) => setCurrentSelectedTab('story')}>📖 Story</div>
-                    <div onClick={(e) => setCurrentSelectedTab('people')}>👥 People</div>
-                    <div onClick={(e) => setCurrentSelectedTab('payment')}>💰 Payment</div>
-                    <div onClick={(e) => setCurrentSelectedTab('promotion')}>📢 Promotion</div>
+                <div className={styles.tabMenuWrapper}>
+                    <div className={styles.tabMenu}>
+                        <div
+                            className={styles.tabDiv}
+                            onClick={(e) => setCurrentSelectedTab('basics')}>
+                            <div>✍️</div>
+                            <div>Basics</div>
+                        </div>
+                        <div
+                            className={styles.tabDiv}
+                            onClick={(e) => setCurrentSelectedTab('rewards')}>
+                            <div>🎁</div>
+                            <div>Rewards</div>
+                        </div>
+                        <div
+                            className={styles.tabDiv}
+                            onClick={(e) => setCurrentSelectedTab('story')}>
+                            <div>📖</div>
+                            <div> Story</div>
+                        </div>
+                        <div
+                            className={styles.tabDiv}
+                            onClick={(e) => setCurrentSelectedTab('people')}>
+                            <div>👥</div>
+                            <div>People</div>
+                        </div>
+                        <div
+                            className={styles.tabDiv}
+                            onClick={(e) => setCurrentSelectedTab('payment')}>
+                            <div>💰</div>
+                            <div>Payment</div>
+                        </div>
+                        <div
+                            className={styles.tabDiv}
+                            onClick={(e) => setCurrentSelectedTab('promotion')}>
+                            <div>📢</div>
+                            <div>Promotion</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {dashBoardContent()}

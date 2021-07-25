@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import styles from './Dropdown.module.css';
 
-function Dropdown({ placeholder, items, setFunction }) {
+function Dropdown({ placeholder, items, setFunction, otherSetFunction }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState();
   const toggle = () => setOpen(!open);
@@ -11,6 +11,9 @@ function Dropdown({ placeholder, items, setFunction }) {
   function handleOnClick(item) {
     setSelection(item);
     setFunction(item.id);
+    if (otherSetFunction !== undefined){
+      otherSetFunction(item.name)
+    }
     toggle();
   }
 

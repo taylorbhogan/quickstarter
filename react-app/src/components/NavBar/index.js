@@ -6,6 +6,7 @@ import SectionsNavBar from '../SectionsNavBar';
 import DropdownOpenButton from './Dropdown/DropdownOpenButton';
 import { login } from '../../store/session';
 import styles from './NavBar.module.css'
+import DiscoverModal from '../DiscoverModal';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,13 @@ const NavBar = () => {
     <>
       <nav className={styles.navBar}>
         <section className={styles.navBarLeft}>
-          <NavLink to='/discover' exact={true} className={styles.headerLink}>Discover</NavLink>
+          <div className={styles.experimentToAlignLinks}>
+          <DiscoverModal />
+          {/* <NavLink to='/discover' exact={true} className={styles.headerLink}>Discover</NavLink> */}
           <NavLink to='/learn' exact={true} className={styles.headerLink}>Start a project</NavLink>
+
+          </div>
+
         </section>
         <section className={styles.navBarCenter}>
           <NavLink to='/' exact={true} className={styles.logoPlaceholder}>QUICKSTARTER</NavLink>
