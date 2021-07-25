@@ -12,7 +12,7 @@
 
 .topMenu{
   top: -55px;
-  height: 60px;
+  height: 55px;
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -53,15 +53,36 @@
   width: 21%;
 }
 
-.tabMenu{
+.tabMenuWrapper{
   display: flex;
-  padding: 30px;
+  justify-content: center;
+  /* padding: 30px; */
+  border-top: 1px solid rgb(209, 209, 209);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.17);
+  width: 100%;
 }
 
-.tabMenu * {
-  padding-left: 20px;
-  cursor: pointer;
+.tabMenu{
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  height: 85px;
 }
+
+.tabDiv{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+
+.tabDiv div {
+  padding-top: 6px;
+}
+
+
 
 .blockWrapper{
   width: 100%;
