@@ -104,6 +104,18 @@
   width: 25%;
 }
 
+.mainInputHeader{
+  font-size: 18px;
+  color: #282828;
+}
+
+.mainInputSubHeader{
+  font-size: 14px;
+  color: #656969;
+  line-height: 24px;
+  margin-top: 6px;
+}
+
 .blockRight{
   width: 50%;
 }

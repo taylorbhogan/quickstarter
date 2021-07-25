@@ -16,8 +16,8 @@ function ProjectEditPeople() {
       <div className={styles.contentContainer}>
         <div className={styles.profileContainer}>
           <div className={styles.profileInfo}>
-            <div>Your profile</div>
-            <div>This will appear on your project page and must include your name, photo, and biography.</div>
+            <div className={peopleStyles.mainInputHeader}>Your profile</div>
+            <div className={peopleStyles.mainInputSubHeader}>This will appear on your project page and must include your name, photo, and biography.</div>
           </div>
           <div className={styles.profileRectangle}>
             <div>

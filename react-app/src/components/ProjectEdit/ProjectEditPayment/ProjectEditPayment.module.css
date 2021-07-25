@@ -13,3 +13,16 @@
   text-align: center;
   margin-bottom: 70px;
 }
+
+.mainInputHeader{
+  font-size: 18px;
+  color: #282828;
+}
+
+.mainInputSubHeader{
+  font-size: 14px;
+  color: #656969;
+  line-height: 24px;
+  margin-top: 6px;
+}
+
