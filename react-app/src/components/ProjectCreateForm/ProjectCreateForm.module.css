@@ -21,11 +21,22 @@
   cursor: pointer;
 }
 
-.userIcon{
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  background-color: blue;
+.closeButton{
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(220, 220, 220);
+  color: rgb(70, 70, 70);
+  border: 1px solid white;
+
+}
+.closeButton:hover{
+  transform: translateY(-1px);
+  border: 1px solid black;
 }
 
 .invisibleDiv {

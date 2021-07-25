@@ -159,7 +159,8 @@
   font-size: 28px;
   font-weight: 400;
   color: rgb(40, 40, 40);
-  margin-bottom: 12px;
+  margin-top: 70px;
+  margin-bottom: 25px;
   text-align: center;
 }
 .subtitle {
@@ -167,6 +168,7 @@
   font-weight: 400;
   color: #656969;
   text-align: center;
+  margin-bottom: 70px;
 }
 
 .headerContainer{

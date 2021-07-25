@@ -1,9 +1,11 @@
+import paymentStyles from './ProjectEditPayment.module.css'
+
 function ProjectEditPayment() {
   return (
     <div>
       <div>
-        <h1>Confirm your identity and link a bank account</h1>
-        <h2>Provide additional details about yourself and where funds should be sent, if your project is successfully funded.</h2>
+        <div className={paymentStyles.title}>Confirm your identity and link a bank account</div>
+        <div className={paymentStyles.subTitle}>Provide additional details about yourself and where funds should be sent, if your project is successfully funded.</div>
       </div>
       <div>
         <section>

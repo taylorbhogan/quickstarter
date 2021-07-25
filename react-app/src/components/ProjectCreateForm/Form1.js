@@ -11,8 +11,10 @@ function Form1({ changeStageButton, category, categories, setCategory, setShowPr
           <span
             className={styles.logo}
             onClick={() => setShowProjectAddModal(false)}
-          >QUICKSTARTER</span>
-          <div className={styles.userIcon}></div>
+            >QUICKSTARTER</span>
+          <div
+          onClick={() => setShowProjectAddModal(false)}
+          className={styles.closeButton}><span><i className="fas fa-long-arrow-alt-left"></i></span></div>
         </div>
         <div className={styles.pageNumber}>1 of 3</div>
         <form className={styles.form}>

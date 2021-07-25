@@ -1,4 +1,5 @@
 import styles from '../ProjectEdit.module.css'
+import peopleStyles from './ProjectEditPeople.module.css'
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
@@ -9,8 +10,8 @@ function ProjectEditPeople() {
   return (
     <div>
       <div>
-        <h1>Introduce yourself</h1>
-        <h2>Give backers an idea of who you are, and add collaborators if you work with a team.</h2>
+        <div className={peopleStyles.title}>Introduce yourself</div>
+        <div className={peopleStyles.subTitle}>Give backers an idea of who you are, and add collaborators if you work with a team.</div>
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.profileContainer}>
