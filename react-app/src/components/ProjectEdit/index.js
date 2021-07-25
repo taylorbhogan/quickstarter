@@ -30,6 +30,7 @@ function Project({ everyProject }) {
     const [imageUrl, setImageUrl] = useState(project.project_image_url)
     const [campaignDuration, setCampaignDuration] = useState(project.campaign_duration)
     const [saveProjectButtonText, setSaveProjectButtonText] = useState('Save')
+    const [deleteProjectButtonText, setDeleteProjectButtonText] = useState('Delete')
 
     const [currentSelectedTab, setCurrentSelectedTab] = useState('basics')
 
@@ -250,7 +251,7 @@ function Project({ everyProject }) {
                         <div className={styles.blockWrapper}>
                             <div className={styles.block}>
                                 <div className={styles.blockLeft}>
-                                    <h3>Project title</h3>
+                                    <h3 className={styles.projectEditH3}>Project title</h3>
                                     <div>Write a clear, brief title that helps people quickly understand the gist of your project.</div>
                                     {errors && errors.map((error, ind) => (
                                         <div style={{ color: "red" }} key={ind}>{error}</div>
@@ -258,7 +259,7 @@ function Project({ everyProject }) {
                                 </div>
                                 <div className={styles.blockRight}>
                                     <div>
-                                        <label>Title</label>
+                                        <div className={styles.inputLabels}><label >Title</label></div>
                                         <input
                                             className={styles.formInput}
                                             value={title}
@@ -267,9 +268,10 @@ function Project({ everyProject }) {
                                             onChange={(e) => setTitle(e.target.value)}
                                         ></input>
                                     </div>
+                                    <br/>
                                     <div>
                                         <div>
-                                            <label>Subtitle</label>
+                                            <div className={styles.inputLabels}><label>Subtitle</label></div>
                                             <textarea
                                                 className={styles.formInput}
                                                 value={subTitle}
@@ -284,12 +286,14 @@ function Project({ everyProject }) {
                         <div className={styles.blockWrapper}>
                             <div className={styles.block}>
                                 <div className={styles.blockLeft}>
-                                    <h3>Project category</h3>
+                                    <h3 className={styles.projectEditH3}>Project category</h3>
                                     <div>Choose the category that most closely aligns with your project.</div>
                                     <div>Think of where backers may look to find it. Reach a more specific community by also choosing a subcategory.</div>
                                     <div>You’ll be able to change the category and subcategory even after your project is live.</div>
                                 </div>
                                 <div className={styles.blockRight}>
+                                    <div>
+                                    <div className={styles.inputLabels}><label>Select a Category</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={categoryId}
@@ -301,6 +305,9 @@ function Project({ everyProject }) {
                                                 key={category.id}>{category.name}</option>
                                         )}
                                     </select>
+                                    </div>
+                                    <br/>
+                                    <div className={styles.inputLabels}><label>Select a Sub-Category</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={subCategory}
@@ -322,10 +329,11 @@ function Project({ everyProject }) {
                         <div className={styles.blockWrapper}>
                             <div className={styles.block}>
                                 <div className={styles.blockLeft}>
-                                    <h3>Project location</h3>
+                                    <h3 className={styles.projectEditH3}>Project location</h3>
                                     <p>Enter the location that best describes where your project is based.</p>
                                 </div>
                                 <div className={styles.blockRight}>
+                                <div className={styles.inputLabels}><label>Select a Location</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={countryId}
@@ -344,12 +352,15 @@ function Project({ everyProject }) {
                         <div className={styles.blockWrapper}>
                             <div className={styles.block}>
                                 <div className={styles.blockLeft}>
-                                    <h3>Project image</h3>
+                                    <h3 className={styles.projectEditH3}>Project image</h3>
                                     <p>Add an image that clearly represents your project. Choose one that looks good at different sizes—it’ll appear on your project page, across the Quickstarter website and mobile apps, and (when shared) on social channels.</p>
+                                    <br/>
                                     <p>Your image should be at least 1024x576 pixels. It will be cropped to a 16:9 ratio.</p>
+                                    <br/>
                                     <p>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Quickstarter homepage and newsletter features.</p>
                                 </div>
                                 <div className={styles.blockRight}>
+                                    <div className={styles.inputLabels}><label>Image</label></div>
                                     <input
                                         className={styles.formInput}
                                         value={imageUrl}
@@ -363,12 +374,12 @@ function Project({ everyProject }) {
                         <div className={styles.blockWrapper}>
                             <div className={styles.block}>
                                 <div className={styles.blockLeft}>
-                                    <h3>Funding goal</h3>
+                                    <h3 className={styles.projectEditH3}>Funding goal</h3>
                                     <p>Set an achievable goal that covers what you need to complete your project.</p>
                                     <p>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</p>
                                 </div>
                                 <div className={styles.blockRight}>
-                                    <label>Goal amount</label>
+                                    <div className={styles.inputLabels}><label>Goal amount</label></div>
                                     <input
                                         className={styles.formInput}
                                         value={goal}
@@ -382,11 +393,11 @@ function Project({ everyProject }) {
                         <div className={styles.blockWrapper}>
                             <div className={styles.block}>
                                 <div className={styles.blockLeft}>
-                                    <h3>Campaign duration</h3>
+                                    <h3 className={styles.projectEditH3}>Campaign duration</h3>
                                     <p>Set a time limit for your campaign. You won’t be able to change this after you launch.</p>
                                 </div>
                                 <div className={styles.blockRight}>
-                                    <label>Enter number of days</label>
+                                    <div className={styles.inputLabels}><label>Enter number of days</label></div>
                                     <input
                                         className={styles.formInput}
                                         value={campaignDuration}
@@ -399,16 +410,16 @@ function Project({ everyProject }) {
                             </div>
                         </div>
                         <div>
-                            <button
+                            <button className={styles.saveProjectButton}
                                 type="submit"
                             >{saveProjectButtonText}</button>
                         </div>
                     </form>
                     <div>
-                        <button
+                        <button className={styles.deleteProjectButton}
                             onClick={() => handleDelete(projectId)}
                         >
-                            Delete
+                            {deleteProjectButtonText}
                         </button>
                     </div>
                 </div>
