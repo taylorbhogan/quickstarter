@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const FeaturedProject = ({ projects }) => {
   const [highlight, setHighlight] = useState(false);
 
-  const featured = projects[54];
+  const featured = projects[0];
 
   const calculateProgressLimit = (project) => {
     const percentage = (project.current_funding / project.funding_goal) * 100;

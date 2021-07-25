@@ -14,7 +14,7 @@ import ProjectEditPromotion from './ProjectEditPromotion'
 import styles from './ProjectEdit.module.css'
 
 
-function Project() {
+function Project({ everyProject }) {
     const { projectId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -55,6 +55,9 @@ function Project() {
     //     campaignDuration
     //     st
     // })
+    if (!everyProject[projectId]) {
+        history.push('/')
+    }
 
     const handleGoLiveButton = async (e) => {
         // e.preventDefault()
@@ -133,7 +136,11 @@ function Project() {
             const response = await fetch(`/api/projects/${projectId}`);
             const project = await response.json();
             // console.log(project)
+
             await setProject(project);
+            if (user.id != project.user_id) {
+                history.push(`/projects/${projectId}`)
+            }
             await dispatch(getCountries())
             await dispatch(getCategories())
             await dispatch(getSubCategories())
