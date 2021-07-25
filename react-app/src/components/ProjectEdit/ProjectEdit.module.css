@@ -90,14 +90,14 @@
 /* ///////////////////                             /////////////////////////////////////////// */
 /* ///////////////////        REWARDS               /////////////////////////////////////////// */
 
-h1{
+.title {
   font-size: 28px;
   font-weight: 400;
   color: rgb(40, 40, 40);
   margin-bottom: 12px;
   text-align: center;
 }
-h2{
+.subtitle {
   font-size: 18px;
   font-weight: 400;
   color: #656969;
