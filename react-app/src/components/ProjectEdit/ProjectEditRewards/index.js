@@ -1,8 +1,12 @@
 import styles from "../ProjectEdit.module.css";
+import rewardStyles from "./ProjectEditRewards.module.css";
+import prevStyles from '../../Project/ProjectBuyReward/ProjectBuyReward.module.css'
+
 import { useState, useEffect } from "react";
 import { createProjectReward, deleteProjectReward } from "../../../store/reward";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectRewards } from '../../../store/reward'
+import ProjectBuyReward from '../../Project/ProjectBuyReward'
 
 function ProjectEditRewards({ project, rewards }) {
   const dispatch = useDispatch();
@@ -47,6 +51,16 @@ function ProjectEditRewards({ project, rewards }) {
   }
 
   const togglePickStartDate = e => setPickStartDate(true)
+
+  const formatDate = (dateObj) => {
+    let date = new Date(dateObj);
+
+    let [month, year] = [date.getMonth(), date.getFullYear()];
+    if (month < 10) {
+      return `${month + 1}-${year}`;
+    }
+  };
+
 
   const handleQuantityChange = e => {
     if (+e.target.value < 0) {
@@ -97,8 +111,8 @@ function ProjectEditRewards({ project, rewards }) {
       start_date: startDate === '' ? null : startDate,
       end_date: endDate === '' ? null : endDate
     };
-    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
-    console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", typeof newReward.price)
+    // console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", newReward)
+    // console.log("THIS IS WHAT YOU'll BE SENDING BACK TO THE DB", typeof newReward.price)
     let result = await dispatch(createProjectReward(project, newReward))
 
     if (result.errors) {
@@ -106,7 +120,7 @@ function ProjectEditRewards({ project, rewards }) {
       setErrors(result.errors)
 
     } else {
-
+      setErrors([])
     }
 
     // console.log("HERE IS YOUR RESULT", result)
@@ -169,47 +183,68 @@ function ProjectEditRewards({ project, rewards }) {
                   {errors && errors.map(error => (
                     <div style={{ color: "red" }} key={error}>{error}</div>
                   ))}
-                  <form>
+                  <form className={rewardStyles.rewardForm}>
                     <div>
-                      <label>Title</label>
+                      <div>
+                        <label>Title</label>
+                      </div>
                       <input
+                        className={rewardStyles.inputField}
                         placeholder={"Signed limited-edition"}
                         value={rewardTitle}
                         onChange={(e) => setRewardTitle(e.target.value)}
                       ></input>
                     </div>
                     <div>
-                      <label>Price</label>
-                      <input
-                        type="number"
-                        value={rewardPrice}
-                        // onChange={(e) => setRewardPrice(e.target.value)}
-                        onChange={handlePriceChange}
-                      ></input>
+                      <label>Amount</label>
                     </div>
+                    <div className={rewardStyles.inputDiv}>
+                      <div>
+                        <div className={rewardStyles.dollahBillsRapper}>
+                          <div className={rewardStyles.dollahBills}>$</div>
+                        </div>
+                        <input
+                          type="number"
+                          value={rewardPrice}
+                          className={rewardStyles.amountInput}
+                          // onChange={(e) => setRewardPrice(e.target.value)}
+                          onChange={handlePriceChange}
+                        ></input>
+                      </div>
+                    </div>
+
                     <div>
-                      <label>Description</label>
+                      <div>
+                        <label>Description</label>
+                      </div>
                       <textarea
+                        className={rewardStyles.textarea}
                         placeholder={"Get an early copy - hot off the presses!"}
                         value={rewardDescription}
                         onChange={(e) => setRewardDescription(e.target.value)}
                       ></textarea>
                     </div>
                     <div>
-                      <label>Estimated delivery</label>
-                      <input type="month" min={todaysYearMonth} value={rewardEstimatedDelivery} onChange={e => setRewardEstimatedDelivery(e.target.value)}></input>
-                      <p>
-                        Give yourself plenty of time. It's better to deliver to
-                        backers ahead of schedule than behind.
-                      </p>
+                      <div>
+                        <label>Estimated delivery</label>
+                      </div>
+                      <div>
+                        <small>
+                          Give yourself plenty of time. It's better to deliver to
+                          backers ahead of schedule than behind.
+                        </small>
+                      </div>
+                      <input className={rewardStyles.dateInputField} type="month" min={todaysYearMonth} value={rewardEstimatedDelivery} onChange={e => setRewardEstimatedDelivery(e.target.value)}></input>
                       <div>Date inputs go here</div>
                     </div>
                     <div>
                       <label>Shipping</label>
                     </div>
                     <div>
-                      <label>Reward quantity</label>
-                      <input type="number" value={rewardQuantity}
+                      <div>
+                        <label>Reward quantity</label>
+                      </div>
+                      <input className={rewardStyles.inputField} type="number" value={rewardQuantity}
                         // onChange={e => setRewardQuantity(e.target.value)}
                         onChange={handleQuantityChange}
                       ></input>
@@ -217,28 +252,30 @@ function ProjectEditRewards({ project, rewards }) {
                     <div>
                       <label>Time limit</label>
                       <div>
-                        <label>No limit</label>
-                        <input type="radio" value="" checked={!pickStartDate ? true : false}
-                          onChange={setNoLimit}
-                        ></input>
-                        <br></br>
-                        <label>Specify Start and End</label>
-                        <input type="radio" value="" checked={pickStartDate ? true : false}
-                          onChange={togglePickStartDate}
-                        ></input>
+                        <div className={rewardStyles.optionSelectorContainer}>
+                          <input className={rewardStyles.greenBubble} id="noLimit" type="radio" value="" checked={!pickStartDate ? true : false}
+                            onChange={setNoLimit}
+                          ></input>
+                          <label className={rewardStyles.noLimitLabel} htmlFor='noLimit'>No limit</label>
+                        </div>
+                        <div className={rewardStyles.optionSelectorContainer}>
+                          <input className={rewardStyles.greenBubble} id='chooseDate' type="radio" value="" checked={pickStartDate ? true : false}
+                            onChange={togglePickStartDate}
+                          ></input>
+                          <label htmlFor='chooseDate' className={rewardStyles.noLimitLabel}>Specify Start and End</label>
+                        </div>
                         {pickStartDate &&
                           <div>
                             <label>Choose Start Date</label>
-                            <input type="month" min={todaysYearMonth}
+                            <input className={rewardStyles.dateInputField} type="month" min={todaysYearMonth}
                               onChange={handleStartDateChange}
-
                             ></input>
                           </div>
                         }
                         {startDate &&
                           <div>
                             <label>Choose End Date</label>
-                            <input type="month" min={startDate} value={endDate}
+                            <input className={rewardStyles.dateInputField} type="month" min={startDate} value={endDate}
                               onChange={e => setEndDate(e.target.value)}
                             ></input>
                           </div>
@@ -247,12 +284,12 @@ function ProjectEditRewards({ project, rewards }) {
                       </div>
                     </div>
                     <button
-                      className={styles.saveRewardButton}
+                      className={rewardStyles.saveRewardButton}
                       onClick={handleRewardSubmit}
                     >
                       Save reward
                     </button>
-                    <button className={styles.cancelRewardButton}>Cancel</button>
+                    <button className={rewardStyles.cancelButton}>Cancel</button>
                   </form>
                 </div>
 
@@ -261,7 +298,32 @@ function ProjectEditRewards({ project, rewards }) {
                   <div>
                     Get a glimpse of how this reward will look on your project page.
                   </div>
-                  <div className={styles.rewardPreviewRectangleContainer}>
+                  <div>
+                    <form style={{ backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
+                      <div className={rewardStyles.flexbox}>
+                        <div className={prevStyles.price}>Pledge {rewardPrice} or more</div>
+                        <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.title}>{rewardTitle}</div>
+                        <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.description}>{rewardDescription}</div>
+                        <div className={rewardStyles.flexbox}>
+                          <div className={rewardStyles.previewSeperator}>
+                            <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>ESTIMATED DELIVERY</div>
+                            {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
+                            <div className={prevStyles.estimatedDelivery}>
+                              {rewardEstimatedDelivery}
+                            </div>
+                          </div>
+                          <div>
+                            <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
+                            {rewardQuantity > 0 ? (
+                              <div className={prevStyles.shipsTo}>{rewardQuantity}</div>
+
+                            ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  {/* <div className={styles.rewardPreviewRectangleContainer}>
                     <div className={styles.rewardAmountPreview}>Pledge or more</div>
                     <div className={styles.rewardsTitlePreview}></div>
                     <div className={styles.rewardsDescriptionPreview}></div>
@@ -281,7 +343,7 @@ function ProjectEditRewards({ project, rewards }) {
                     <div
                       className={`${styles.rewardsQuantityPreview} ${styles.rewardsPreviewDisplay}`}
                     ></div>
-                  </div>
+                  </div> */}
                 </div>
               </>
             }
