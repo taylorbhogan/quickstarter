@@ -18,14 +18,12 @@
   letter-spacing: 1px;
   font-family: 'Modak', cursive;
   color: rgb(84, 212, 137);
+  cursor: pointer;
 }
-
-
 
 .userIcon{
   width: 30px;
   height: 30px;
-  border: 1px solid black;
   border-radius: 15px;
   background-color: blue;
 }

@@ -2,13 +2,16 @@ import { NavLink } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 import styles from './ProjectCreateForm.module.css';
 
-function Form1({ changeStageButton, category, categories, setCategory }) {
+function Form1({ changeStageButton, category, categories, setCategory, setShowProjectAddModal }) {
   return (
     <div>
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <div className={styles.invisibleDiv}></div>
-          <NavLink to='/' exact className={styles.logo}>QUICKSTARTER</NavLink>
+          <span
+            className={styles.logo}
+            onClick={() => setShowProjectAddModal(false)}
+          >QUICKSTARTER</span>
           <div className={styles.userIcon}></div>
         </div>
         <div className={styles.pageNumber}>1 of 3</div>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Dropdown from '../Dropdown';
 
-function Form3({ changeStageButton, handleSubmit, country, countries, setCountry }) {
+function Form3({ changeStageButton, handleSubmit, country, countries, setCountry, setShowProjectAddModal }) {
   const [div1True, setDiv1True] = useState(false)
   const [div2True, setDiv2True] = useState(false)
   const [div3True, setDiv3True] = useState(false)
@@ -49,7 +49,11 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <div></div>
-          <NavLink to='/' exact className={styles.logo}>QUICKSTARTER</NavLink>
+          <NavLink
+            to='/' exact
+            className={styles.logo}
+            onClick={() => setShowProjectAddModal(false)}
+          >QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>
         <div className={styles.pageNumber}>3 of 3</div>
@@ -79,12 +83,12 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
               className={styles.linkWrapper}
             >
               <div>
-                  <div className={styles.whatIfDiv}>
-                    <span>
-                      <i className="far fa-question-circle"></i>
-                    </span>
-                    <span> What if my country isn’t listed?</span>
-                  </div>
+                <div className={styles.whatIfDiv}>
+                  <span>
+                    <i className="far fa-question-circle"></i>
+                  </span>
+                  <span> What if my country isn’t listed?</span>
+                </div>
               </div>
             </div>
 

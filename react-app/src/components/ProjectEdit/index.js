@@ -242,8 +242,8 @@ function Project({ everyProject }) {
             return (
                 <div>
                     <div>
-                        <h1>Start with the basics</h1>
-                        <h2>Make it easy for people to learn about your project.</h2>
+                        <h1 className={styles.title}>Start with the basics</h1>
+                        <h2 className={styles.subtitle}>Make it easy for people to learn about your project.</h2>
                     </div>
                     <form
                         onSubmit={handleSubmit}>

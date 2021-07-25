@@ -32,17 +32,23 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const handleDemoLogin = async (email, password) => {
+    await dispatch(login(email, password))
+  };
+
   return (
     <div className={styles.formBackground}>
       <div className={styles.loginFormContainer}>
         <form onSubmit={onLogin}>
           <h2 className={styles.loginTitle}>Log in</h2>
-          <div>
-            {errors.length > 0 && 'The email address and password you entered do not match.'}
-            {/* {errors.map((error, ind) => (
+          {errors.length > 0 && (
+            <div className={styles.errorsContainer}>
+              {errors.length > 0 && 'The email address and password you entered do not match.'}
+              {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))} */}
-          </div>
+            </div>
+          )}
           <div>
             <input
               name='email'
@@ -62,7 +68,14 @@ const LoginForm = () => {
               onChange={updatePassword}
               className={styles.input}
             />
-            <button type='submit' className={styles.btn}>Login</button>
+            <div className={styles.btnContainer}>
+              <button type='submit' className={styles.btn}>Login</button>
+              <button
+                type='button'
+                className={styles.demoBtn}
+                onClick={() => handleDemoLogin("marnie@aa.io", "password")}
+              >Demo</button>
+            </div>
           </div>
         </form>
       </div>

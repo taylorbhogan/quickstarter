@@ -1,13 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SectionsNavBar from '../SectionsNavBar';
 import DropdownOpenButton from './Dropdown/DropdownOpenButton';
+import { login } from '../../store/session';
 import styles from './NavBar.module.css'
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
+
+  const handleDemoLogin = async (email, password) => {
+    await dispatch(login(email, password))
+  };
 
   return (
     <>
@@ -20,21 +26,27 @@ const NavBar = () => {
           <NavLink to='/' exact={true} className={styles.logoPlaceholder}>QUICKSTARTER</NavLink>
         </section>
         <section className={styles.navBarRight}>
-          <button className={styles.searchBtn}>
+          {/* <button className={styles.searchBtn}>
             <span className={styles.searchText}>Search</span>
             <span className={styles.searchIcon}>
               <i className="fas fa-search" />
             </span>
-          </button>
+          </button> */}
           {(user ?
             <DropdownOpenButton />
             :
-            <NavLink to='/login' className={styles.logInLink}>Log in</NavLink>
+            (<>
+              <button
+                type='button'
+                className={styles.demoBtn}
+                onClick={() => handleDemoLogin("marnie@aa.io", "password")}
+              >Demo</button>
+              <NavLink to='/login' className={styles.logInLink}>Log in</NavLink>
+            </>)
           )}
         </section>
       </nav >
-      {/* <SectionsNavBar /> */}
-      {/* <LogoutButton /> */}
+      <SectionsNavBar />
     </>
   );
 }

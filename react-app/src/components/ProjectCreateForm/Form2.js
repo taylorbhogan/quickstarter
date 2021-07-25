@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ProjectCreateForm.module.css'
 
-function Form2({ changeStageButton, subTitle, setSubTitle }) {
+function Form2({ changeStageButton, subTitle, setSubTitle, setShowProjectAddModal }) {
   const setPlaceholder = () => {
     const placeHolders = [
       'A set of handmade greeting cards and stationery.',
@@ -10,7 +10,7 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
       'A novel written in three languages.',
       'A documentary about the history of shoes.',
     ]
-    const randomNumber = Math.floor(Math.random()*5)
+    const randomNumber = Math.floor(Math.random() * 5)
     return placeHolders[randomNumber]
   }
 
@@ -19,7 +19,11 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
       <div className={styles.formContainer}>
         <div className={styles.header}>
           <div></div>
-          <NavLink to='/' exact className={styles.logo}>QUICKSTARTER</NavLink>
+          <NavLink
+            to='/' exact
+            className={styles.logo}
+            onClick={() => setShowProjectAddModal(false)}
+          >QUICKSTARTER</NavLink>
           <div className={styles.userIcon}></div>
         </div>
         <div className={styles.pageNumber}>2 of 3</div>
@@ -42,8 +46,8 @@ function Form2({ changeStageButton, subTitle, setSubTitle }) {
             </div>
             <div className={styles.characterCount}>
               <span
-              style={subTitle.length === 135 ? {color: 'green'} : null}
-              className={styles.subTitleLengthDiv}>{subTitle.length}</span>
+                style={subTitle.length === 135 ? { color: 'green' } : null}
+                className={styles.subTitleLengthDiv}>{subTitle.length}</span>
               <span>/135</span>
             </div>
           </div>

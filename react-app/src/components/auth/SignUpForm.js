@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import { login } from '../../store/session';
 import styles from './AuthForms.module.css'
 
 const SignUpForm = () => {
@@ -18,13 +19,13 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password !== repeatPassword){
+    if (password !== repeatPassword) {
       setErrors([
-        ': please make sure your passwords match!'
+        ': Please make sure your passwords match.'
       ])
-    } else if (email !== repeatEmail){
+    } else if (email !== repeatEmail) {
       setErrors([
-        ': please make sure your emails match!'
+        ': Please make sure your emails match.'
       ])
     } else {
       const data = await dispatch(signUp(username, email, password, repeatPassword));
@@ -58,6 +59,10 @@ const SignUpForm = () => {
     return <Redirect to='/' />;
   }
 
+  const handleDemoLogin = async (email, password) => {
+    await dispatch(login(email, password))
+  };
+
   return (
     <div className={styles.formBackground}>
       <div className={styles.logInLinkContainer}>
@@ -70,14 +75,17 @@ const SignUpForm = () => {
       <div className={styles.signUpFormContainer}>
         <form onSubmit={onSignUp}>
           <h2 className={styles.loginTitle}>Sign up</h2>
-          <div>
-            {/* {errors.map((error, ind) => (
+          {errors.length > 0 && (
+            <div className={styles.errorsContainer}>
+              {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))} */}
-            {errors.map((error, ind) => (
-              <div key={ind}>{error.split(': ')[1]}</div>
-            ))}
-          </div>
+              {errors[0].includes("This field is required.") ? (<div>All fields are required.</div>) : errors.map((error, ind) => (
+                <div key={ind}>
+                  {error.split(': ')[1]}</div>
+              ))}
+            </div>
+          )}
           <div>
             <input
               type='text'
@@ -134,7 +142,14 @@ const SignUpForm = () => {
               ></input>
             )}
           </div>
-          <button type='submit' className={styles.btn}>Create account</button>
+          <div className={styles.btnContainer}>
+            <button type='submit' className={styles.btn}>Create account</button>
+            <button
+              type='button'
+              className={styles.demoBtn}
+              onClick={() => handleDemoLogin("marnie@aa.io", "password")}
+            >Demo</button>
+          </div>
         </form>
       </div>
     </div>

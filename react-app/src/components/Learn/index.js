@@ -1,7 +1,5 @@
 import ProjectCreateModal from '../ProjectCreateModal';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react'
-import { getProjects } from '../../store/project';
 import styles from './Learn.module.css';
 
 function Learn() {
