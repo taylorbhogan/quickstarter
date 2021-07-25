@@ -1,6 +1,7 @@
 import styles from './Footer.module.css'
 import { NavLink } from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { sections } from '../Section/sectionsData'
 
 function Footer() {
 
@@ -8,30 +9,11 @@ function Footer() {
     <div>
       <div className={styles.categoriesMenu}>
         <ul className={styles.sectionsNavBar}>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Arts</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Comics & Illustrations</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Design & Tech</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Film</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Food & Craft</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Games</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Music</NavLink>
-          </li>
-          <li>
-            <NavLink to='/section' className={styles.sectionLink}>Publishing</NavLink>
-          </li>
+        {sections.map(section => (
+        <li>
+          <NavLink to={`/sections/${section.id}`} className={styles.sectionLink}>{section.name}</NavLink>
+        </li>
+      ))}
         </ul>
       </div>
       <div>

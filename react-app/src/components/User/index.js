@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import UserProjectView from './UserProjectView';
 import SlideProject from '../ViewComponents/Slides/SlideProject';
 import styles from './User.module.css'
+import SmallUserImage from './SmallUserImage';
+import LargeUserImage from './LargeUserImage';
 
 function User() {
   const [user, setUser] = useState({});
@@ -41,11 +43,16 @@ function User() {
           <button className={styles.btn}>Manage your privacy settings</button>
         </div>
         <div className={styles.avatarDiv}>
-          <div className={styles.dummyAvatar}></div>
+          <div className={styles.dummyAvatar}>
+            <LargeUserImage />
+          </div>
         </div>
         <div className={styles.userInfoDiv}>
           <div className={styles.usernameDiv}>{user.username}</div>
-          <div className={styles.userInfo}><span>Backed {backings.length} projects · Joined Jul 2021</span></div>
+          <div className={styles.userInfo}>
+            {backings.length === 1 && <span>Backed {backings.length} project · Joined Jul 2021</span>}
+            {backings.length > 1 && <span>Backed {backings.length} projects · Joined Jul 2021</span>}
+            </div>
         </div>
       </div>
       <div className={styles.bottomColumnFlex}>

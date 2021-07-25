@@ -17,6 +17,7 @@ import Section from './components/Section';
 import { authenticate } from './store/session';
 import { getProjects } from './store/project'
 import SectionsNavBar from './components/SectionsNavBar';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,7 +59,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          {/* <SectionsNavBar /> */}
+          <SectionsNavBar />
           <Home />
         </Route>
         <ProtectedRoute path='/learn' exact={true} >
@@ -74,8 +75,7 @@ function App() {
           <ProjectEdit everyProject={everyProject} />
         </ProtectedRoute>
         <Route>
-          <h1>Page Not Found</h1>
-          <h2>Sorry, that URL path does not exist. Try again!</h2>
+          <PageNotFound />
         </Route>
       </Switch>
       <Footer />

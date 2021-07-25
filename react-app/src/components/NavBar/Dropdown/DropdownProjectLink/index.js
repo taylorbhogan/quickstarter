@@ -1,23 +1,16 @@
 import styles from './DropdownProjectLink.module.css'
 import { NavLink } from 'react-router-dom';
+import PlaceholderImage from './PlaceholderImage';
 
-
-function DropdownProjectLink({project}) {
+function DropdownProjectLink({project, createdProject}) {
 
   return (
     <div className={styles.projectContainer}>
-      <div className={styles.rectangleHolder}>
-        <div className={styles.rectRow}>
-          <div className={`${styles.rect1} ${styles.bigRect}`}></div>
-          <div className={`${styles.rect2} ${styles.bigRect}`}></div>
-          <div className={`${styles.rect3} ${styles.bigRect}`}></div>
-        </div>
-        <div className={styles.rectRow}>
-          <div className={`${styles.rect4} ${styles.smallRect}`}></div>
-          <div className={`${styles.rect5} ${styles.smallRect}`}></div>
-          <div className={`${styles.rect6} ${styles.smallRect}`}></div>
-        </div>
-      </div>
+      {(
+        createdProject ?
+        <PlaceholderImage /> :
+        <img src={project?.project_image_url} className={styles.image} alt='project showcase'/>
+      )}
       <NavLink
         to={`projects/${project?.id}`}
         className={styles.text}>

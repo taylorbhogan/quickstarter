@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from './DropdownOpenButton.module.css'
 import Dropdown from "..";
+import SmallUserImage from "../../../User/SmallUserImage";
 
 function DropdownOpenButton() {
 
@@ -26,10 +27,10 @@ function DropdownOpenButton() {
   return (
     <div>
       <button className={styles.accountButton} onClick={openMenu}>
-        <div className={styles.circle}></div>
+        <SmallUserImage />
       </button>
       {showMenu && (
-          <Dropdown />
+        <Dropdown />
       )}
     </div>
   )
