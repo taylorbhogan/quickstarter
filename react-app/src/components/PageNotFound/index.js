@@ -1,24 +1,25 @@
 import styles from './PageNotFound.module.css'
-import { NavLink } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useHistory, NavLink } from 'react-router-dom'
 
 function PageNotFound() {
+  const history = useHistory()
 
-  // useEffect(()=>{
-  //   const randomNumber = Math.floor(Math.random() * 100)
-  // },[])
+  const handleClick = () => {
+    const randomNumber = Math.floor(Math.random() * 100)
+    history.push(`/projects/${randomNumber}`)
+  }
 
   return (
     <div className={styles.bigBucket}>
       <div className={styles.left}>
-        <div className={styles.logoPlaceholder}>QUICKSTARTER</div>
+        <NavLink to='/' exact={true}>
+          <div className={styles.logoPlaceholder}>QUICKSTARTER</div>
+        </NavLink>
         <div>
           <div className={styles.header}>Back it up!</div>
           <div className={styles.blurb}>We can’t find this page, but we can show you a new creative project you can help bring to life.</div>
           <div className={styles.buttons}>
-            {/* <NavLink to={`/projects/${randomNumber}`} exact={true}> */}
-              <button className={styles.buttonBlack}>Take a chance</button>
-            {/* </NavLink> */}
+            <button onClick={handleClick} className={styles.buttonBlack}>Take a chance</button>
             <NavLink to='/' exact={true}>
               <button className={styles.buttonWhite}>Take me home</button>
             </NavLink>

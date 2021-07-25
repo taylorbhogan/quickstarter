@@ -45,10 +45,6 @@
   margin-top: 40px;
 }
 
-.cta{
-  margin: 20px 0 18px;
-  font-size: 13px;
-}
 
 .buttonBlack{
   background-color: black;
@@ -74,10 +70,12 @@
 }
 
 .cta{
+  margin: 20px 0 18px;
+  font-size: 13px;
   cursor: not-allowed;
-
+  text-decoration: underline;
 }
+
 .cta:hover{
   color: green;
-  text-decoration: underline;
 }
