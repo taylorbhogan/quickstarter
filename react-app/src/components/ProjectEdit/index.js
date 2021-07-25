@@ -445,14 +445,16 @@ function Project({ everyProject }) {
                             QUICKSTARTER
                         </div>
                         <div className={styles.backButtonDiv}>
-                            <button><span><i className="fas fa-long-arrow-alt-left"></i></span> Category</button>
+                            <button className={styles.backButton}>
+                                <span><i className="fas fa-long-arrow-alt-left"></i></span> Category
+                            </button>
                         </div>
                     </div>
                     <div className={styles.topRight}>
-                        <div className={styles.cancelButtonDiv}>
+                        <div className={styles.buttonDiv}>
                             <button className={styles.cancelButton}>Cancel</button>
                         </div>
-                        <div className={styles.saveButtonDiv}>
+                        <div className={styles.buttonDiv}>
                             <button onClick={handleGoLiveButton} className={styles.saveButton}>Save</button>
                         </div>
                     </div>
