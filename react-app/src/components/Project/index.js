@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { createBacking } from '../../store/backing'
 import { getProjects } from '../../store/project';
 import ProjectTopView from './ProjectTopView';
@@ -12,18 +12,21 @@ import ProjectMainContentRight from './ProjectMainContentRight';
 import styles from './Project.module.css'
 
 
-function Project() {
+function Project({ everyProject }) {
   const [project, setProject] = useState({});
   const [amount, setAmount] = useState(0);
   const [numberOfBackers, setNumberOfBackers] = useState(0);
   const [categories, setCategories] = useState([]);
   const { projectId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const user = useSelector(state => state.session.user);
 
 
-
+  if (!everyProject[projectId]) {
+    history.push('/')
+  }
   useEffect(() => {
     (async () => {
       const backingResponse = await fetch(`/api/backings/${projectId}`);
@@ -40,6 +43,7 @@ function Project() {
 
   useEffect(() => {
     dispatch(getProjects())
+
   }, [dispatch])
 
   useEffect(() => {
@@ -55,7 +59,7 @@ function Project() {
   }, [projectId, amount]);
 
   if (!project) {
-    return null;
+    return null
   }
 
   const addABacking = async (e) => {
@@ -79,7 +83,7 @@ function Project() {
       const data = await dispatch(createBacking(backing))
       const createdBacking = data.newBacking
       setAmount(0)
-      console.log('1234----responseFromStore-------->', createdBacking);
+      // console.log('1234----responseFromStore-------->', createdBacking);
       // if (createdBacking){
       //   do stuff
       // }

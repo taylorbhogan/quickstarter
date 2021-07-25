@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import Learn from './components/Learn';
@@ -15,14 +15,20 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Section from './components/Section';
 import { authenticate } from './store/session';
+import { getProjects } from './store/project'
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
+  const everyProject = useSelector(state => state.projects);
+
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getProjects())
+
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -59,12 +65,16 @@ function App() {
         <Route path='/discover' exact={true}>
           <Discover />
         </Route>
-        <ProtectedRoute path='/projects/:projectId' exact={true} >
-          <Project />
+        <ProtectedRoute path='/projects/:projectId' exact={true}>
+          <Project everyProject={everyProject} />
         </ProtectedRoute>
-        <ProtectedRoute path='/projects/:projectId/edit' exact={true} >
-          <ProjectEdit />
+        <ProtectedRoute path='/projects/:projectId/edit' exact={true}>
+          <ProjectEdit everyProject={everyProject} />
         </ProtectedRoute>
+        <Route>
+          <h1>Page Not Found</h1>
+          <h2>Sorry! That URL path does not exist. Try again!</h2>
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>
