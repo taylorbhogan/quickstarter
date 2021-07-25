@@ -34,12 +34,10 @@ function ProjectBuyReward({
 
   // }
   const formatDate = (dateObj) => {
-    let date = new Date(dateObj);
+    let readyDate = new Date(dateObj);
+    const date = new Intl.DateTimeFormat('en-US', {month: "short", year: 'numeric'}).format(readyDate)
 
-    let [month, year] = [date.getMonth(), date.getFullYear()];
-    if (month < 10) {
-      return `${month + 1}-${year}`;
-    }
+    return date
   };
 
   const addARewardBacking = async (e) => {

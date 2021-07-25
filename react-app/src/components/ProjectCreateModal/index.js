@@ -4,7 +4,7 @@ import ProjectCreateForm from "../ProjectCreateForm";
 import styles from "./ProjectCreateModal.module.css"
 
 function ProjectCreateModal() {
-  const [showSpotAddModal, setShowSpotAddModal] = useState(false);
+  const [showProjectAddModal, setShowProjectAddModal] = useState(false);
 
   /*
     This useEffect prevents scrolling of the pages behind
@@ -12,17 +12,17 @@ function ProjectCreateModal() {
   */
   useEffect(() => {
     const body = document.querySelector('body');
-    body.style.overflow = showSpotAddModal ? 'hidden' : 'auto';
-  }, [showSpotAddModal])
+    body.style.overflow = showProjectAddModal ? 'hidden' : 'auto';
+  }, [showProjectAddModal])
 
   return (
     <div>
       <button className={styles.btn}
-        onClick={() => setShowSpotAddModal(true)}
+        onClick={() => setShowProjectAddModal(true)}
       >Start a project</button>
-      {showSpotAddModal && (
-        <Modal onClose={() => setShowSpotAddModal(false)}>
-          <ProjectCreateForm setShowSpotAddModal={setShowSpotAddModal} />
+      {showProjectAddModal && (
+        <Modal onClose={() => setShowProjectAddModal(false)}>
+          <ProjectCreateForm setShowProjectAddModal={setShowProjectAddModal} />
         </Modal>
       )
       }
