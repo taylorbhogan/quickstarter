@@ -29,7 +29,7 @@ const Recommended3 = ({ projects, openThird, setOpenFirst, setOpenSecond, setOpe
           <h3 className={styles.title}>RECOMMENDED FOR YOU</h3>
           <div className={styles.recommendedContainer}>
             {projects.length > 0 && getRecommendedProjects(projects, 3).map(project => (
-              <NavLink className={styles.linkWrapper} to={`projects/${project.id}`}>
+              <NavLink className={styles.linkWrapper} to={`/projects/${project.id}`}>
                 <RecommendedProject project={project} />
               </NavLink>
             ))}
