@@ -4,12 +4,14 @@ import prevStyles from '../../Project/ProjectBuyReward/ProjectBuyReward.module.c
 
 import { useState, useEffect } from "react";
 import { createProjectReward, deleteProjectReward } from "../../../store/reward";
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectRewards } from '../../../store/reward'
 import ProjectBuyReward from '../../Project/ProjectBuyReward'
 
-function ProjectEditRewards({ project, rewards }) {
+function ProjectEditRewards({ project }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [rewardTitle, setRewardTitle] = useState("");
   const [rewardPrice, setRewardPrice] = useState(1);
   const [rewardDescription, setRewardDescription] = useState("");
@@ -20,12 +22,21 @@ function ProjectEditRewards({ project, rewards }) {
   const [rewardEstimatedDelivery, setRewardEstimatedDelivery] = useState('')
   const [rewardQuantity, setRewardQuantity] = useState(null)
   const [showCreateRewardForm, setShowCreateRewardForm] = useState(false)
+  const [activeRewards, setActiveRewards] = useState([])
+  const [expiredRewards, setExpiredRewards] = useState([])
+  const [futureRewards, setFutureRewards] = useState([])
+  const [soldOutRewards, setSoldOutRewards] = useState([])
+  const [triggerRerender, setTriggerRerender] = useState(false)
+  const [allRewards, setAllRewards] = useState([])
 
   const [errors, setErrors] = useState([])
   // const [estimatedDelivery, setEstimatedDelivery] = useState("")
 
   // console.log('*** your rewards!!**', rewards)
-  const rewardsForProject = useSelector(state => Object.values(state.rewards))
+
+  const rewardsForProject = useSelector(state => state.rewards)
+
+  console.log("REWARDSFORPROJE", rewardsForProject)
 
   useEffect(() => {
     const getTodaysDate = () => {
@@ -39,9 +50,21 @@ function ProjectEditRewards({ project, rewards }) {
     };
     setTodaysYearMonth(getTodaysDate());
 
-
     // console.log(getTodaysDate());
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      const rewardsResponse = await fetch(`/api/projects/${project.id}/rewards`)
+      const rewardsData = await rewardsResponse.json()
+      // console.log('rewardsData------------------>', rewardsData);
+      setAllRewards(rewardsData.rewards)
+      setActiveRewards(rewardsData.activeRewards)
+      setExpiredRewards(rewardsData.expiredRewards)
+      setFutureRewards(rewardsData.futureRewards)
+      setSoldOutRewards(rewardsData.soldOutRewards)
+    })();
+  }, [rewardsForProject])
 
   const setNoLimit = e => {
     setStartDate(null)
@@ -92,6 +115,7 @@ function ProjectEditRewards({ project, rewards }) {
     await dispatch(deleteProjectReward(+e.target.id))
     await dispatch(getProjectRewards(project))
 
+
   }
 
   const toggleCreateRewardForm = (e) => {
@@ -122,10 +146,12 @@ function ProjectEditRewards({ project, rewards }) {
     } else {
       setErrors([])
       setShowCreateRewardForm(false)
+
     }
 
     // console.log("HERE IS YOUR RESULT", result)
     await dispatch(getProjectRewards(project))
+
     setRewardTitle('')
     setRewardPrice(1)
     setRewardDescription('')
@@ -135,8 +161,14 @@ function ProjectEditRewards({ project, rewards }) {
     setEndDate(null)
 
 
+    setTriggerRerender(!triggerRerender)
+    // history.go(0)
 
   };
+
+  useEffect(() => {
+    //cheesy way to force rerender
+  }, [triggerRerender])
 
   return (
     <div>
@@ -364,7 +396,175 @@ function ProjectEditRewards({ project, rewards }) {
           <div className={rewardStyles.blockWrapperStatus}>
             <h1>Current Rewards:</h1>
           </div>
-          {rewards.map(reward => (
+          {activeRewards.map(reward => (
+            <div key={reward.id}>
+              <form style={{ width: '448px', backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
+                <div className={rewardStyles.flexbox}>
+                  <div className={prevStyles.price}>Pledge ${reward.price} or more</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.title}>{reward.title}</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.description}>{reward.description}</div>
+                  <div className={rewardStyles.flexbox}>
+                    <div className={rewardStyles.previewSeperator}>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>ESTIMATED DELIVERY</div>
+                      {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
+                      <div className={prevStyles.estimatedDelivery}>
+                        {formatDate(reward.estimated_delivery)}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
+                      {rewardQuantity > 0 ? (
+                        <div className={prevStyles.shipsTo}>{reward.quantity}</div>
+
+                      ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
+                    </div>
+                  </div>
+                </div>
+                <button className={rewardStyles.cancelButton} id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
+              </form>
+              {/* <div>
+              {reward.title}
+            </div>
+            <div>
+              Description: {reward.description}
+            </div>
+            <div>
+              Price: {reward.price}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              {reward.quantity ? `Remaining inventory: ${reward.quantity}` : "In stock"}
+            </div>
+            <div>
+              {reward.backers.length > 0 ? `Number of purchases: ${reward.backers.length}` : 'Nobody has purchased this reward yet'}
+            </div> */}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={rewardStyles.blockWrapperRewards}>
+        <div className={rewardStyles.flexColumnCenter}>
+          <div className={rewardStyles.blockWrapperStatus}>
+            <h1>Upcoming Rewards:</h1>
+          </div>
+          {futureRewards.map(reward => (
+            <div key={reward.id}>
+              <form style={{ width: '448px', backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
+                <div className={rewardStyles.flexbox}>
+                  <div className={prevStyles.price}>Pledge ${reward.price} or more</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.title}>{reward.title}</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.description}>{reward.description}</div>
+                  <div className={rewardStyles.flexbox}>
+                    <div className={rewardStyles.previewSeperator}>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>ESTIMATED DELIVERY</div>
+                      {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
+                      <div className={prevStyles.estimatedDelivery}>
+                        {formatDate(reward.estimated_delivery)}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
+                      {rewardQuantity > 0 ? (
+                        <div className={prevStyles.shipsTo}>{reward.quantity}</div>
+
+                      ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
+                    </div>
+                  </div>
+                </div>
+                <button className={rewardStyles.cancelButton} id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
+              </form>
+              {/* <div>
+              {reward.title}
+            </div>
+            <div>
+              Description: {reward.description}
+            </div>
+            <div>
+              Price: {reward.price}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              {reward.quantity ? `Remaining inventory: ${reward.quantity}` : "In stock"}
+            </div>
+            <div>
+              {reward.backers.length > 0 ? `Number of purchases: ${reward.backers.length}` : 'Nobody has purchased this reward yet'}
+            </div> */}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={rewardStyles.blockWrapperRewards}>
+        <div className={rewardStyles.flexColumnCenter}>
+          <div className={rewardStyles.blockWrapperStatus}>
+            <h1>Sold out Rewards:</h1>
+          </div>
+          {soldOutRewards.map(reward => (
+            <div key={reward.id}>
+              <form style={{ width: '448px', backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
+                <div className={rewardStyles.flexbox}>
+                  <div className={prevStyles.price}>Pledge ${reward.price} or more</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.title}>{reward.title}</div>
+                  <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.description}>{reward.description}</div>
+                  <div className={rewardStyles.flexbox}>
+                    <div className={rewardStyles.previewSeperator}>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>ESTIMATED DELIVERY</div>
+                      {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
+                      <div className={prevStyles.estimatedDelivery}>
+                        {formatDate(reward.estimated_delivery)}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
+                      {rewardQuantity > 0 ? (
+                        <div className={prevStyles.shipsTo}>{reward.quantity}</div>
+
+                      ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
+                    </div>
+                  </div>
+                </div>
+                <button className={rewardStyles.cancelButton} id={reward.id} onClick={handleDeleteReward}>Delete Reward</button>
+              </form>
+              {/* <div>
+              {reward.title}
+            </div>
+            <div>
+              Description: {reward.description}
+            </div>
+            <div>
+              Price: {reward.price}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              estimated_delivery: {reward.estimated_delivery}
+            </div>
+            <div>
+              {reward.quantity ? `Remaining inventory: ${reward.quantity}` : "In stock"}
+            </div>
+            <div>
+              {reward.backers.length > 0 ? `Number of purchases: ${reward.backers.length}` : 'Nobody has purchased this reward yet'}
+            </div> */}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={rewardStyles.blockWrapperRewards}>
+        <div className={rewardStyles.flexColumnCenter}>
+          <div className={rewardStyles.blockWrapperStatus}>
+            <h1>Expired Rewards:</h1>
+          </div>
+          {expiredRewards.map(reward => (
             <div key={reward.id}>
               <form style={{ width: '448px', backgroundColor: '#FBFBFA' }} className={prevStyles.rewardForm}>
                 <div className={rewardStyles.flexbox}>

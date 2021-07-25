@@ -1,5 +1,6 @@
 const SET_REWARDS = 'rewards/SET_REWARDS'
 const REMOVE_ONE_REWARD = 'rewards/REMOVE_ONE_REWARD'
+const ADD_REWARD = 'rewards/ADD_REWARD'
 
 
 const setSingleProjectRewardsInStore = (rewards) => ({
@@ -12,6 +13,11 @@ const deleteRewardFromStore = (rewardId) => ({
   rewardId
 })
 
+
+const addRewardToStore = (reward) => ({
+  type: ADD_REWARD,
+  reward
+})
 
 const initialState = {};
 
@@ -41,9 +47,12 @@ export const createProjectReward = (project, newReward) => async (dispatch) => {
   });
 
 
-    const data = await response.json();
-    // console.log(data)
-    return data
+  const data = await response.json();
+  if (data.description) {
+    dispatch(addRewardToStore(data))
+  }
+
+  return data
 
   //   const newProjectReward = data.newProject
 
@@ -87,6 +96,17 @@ export default function reducer(state = initialState, action) {
       newState = Object.assign({}, state)
       delete newState[action.rewardId]
       return {
+        ...newState
+      }
+    case ADD_REWARD:
+      newState = {}
+      console.log("HERE IS YOUR ACTION.REWARD.ID", action.reward.id)
+      newState[action.reward.id] = action.reward
+      console.log(newState[action.reward.id])
+      console.log(newState)
+      console.log(state)
+      return {
+        ...state,
         ...newState
       }
     default:
