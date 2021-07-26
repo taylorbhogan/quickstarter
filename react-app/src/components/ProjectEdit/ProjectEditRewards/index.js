@@ -36,7 +36,7 @@ function ProjectEditRewards({ project }) {
 
   const rewardsForProject = useSelector(state => state.rewards)
 
-  console.log("REWARDSFORPROJE", rewardsForProject)
+  // console.log("REWARDSFORPROJE", rewardsForProject)
 
   useEffect(() => {
     const getTodaysDate = () => {
@@ -173,11 +173,11 @@ function ProjectEditRewards({ project }) {
   return (
     <div>
       <div className={styles.headerContainer}>
-        <h1 className={styles.editPageHeader}>Add your rewards</h1>
-        <h2>
+        <div className={rewardStyles.title}>Add your rewards</div>
+        <div className={rewardStyles.subTitle}>
           Offer simple, meaningful ways to bring backers closer to your project
           and celebrate it coming to life.
-        </h2>
+        </div>
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.rewardsContainer}>

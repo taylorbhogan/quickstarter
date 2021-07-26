@@ -1,17 +1,26 @@
 @import "../../../vars.css";
 
-h1{
+
+.titleDiv{
   font-size: 24px;
+  color: #282828;
   margin-bottom: 6px;
+  text-align: center;
 }
 
-h2{
+.subTitleDiv{
   font-size: 18px;
+  padding-top: 14px;
   padding-bottom: 6px;
+  text-align: center;
 }
+
 
 .headerWrapper{
   margin: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .allProjectTopViewContentWrapper{
@@ -115,12 +124,16 @@ h2{
 
 .belowShowCaseDiv{
   display: flex;
+  align-items: center;
+  padding: 5px 0;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .belowShowCaseText{
   color: rgb(40, 40, 40);
   font-size: 12px;
-
+  margin-right: 7px;
 }
 
 .pinkContainer{

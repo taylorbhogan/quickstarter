@@ -97,7 +97,10 @@ function Project({ everyProject }) {
         numberOfBackers={numberOfBackers}
         categories={categories}
       />
-      <ProjectStickyMenu />
+      <ProjectStickyMenu
+        user={user}
+        project={project}
+      />
       <div className={styles.projectMainContent}>
         <ProjectMainContentLeft project={project} />
         <ProjectMainContentCenter project={project} />

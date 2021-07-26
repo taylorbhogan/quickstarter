@@ -1,7 +1,9 @@
 import styles from './ProjectStickyMenu.module.css'
+import { NavLink } from 'react-router-dom'
 
-function ProjectStickyMenu() {
-  return (
+
+function ProjectStickyMenu({user, project}){
+  return(
     <div className={styles.menuWrapper}>
       <a name='backings' />
       <div className={styles.flexBox}>
@@ -14,7 +16,14 @@ function ProjectStickyMenu() {
             <div className={styles.stickyMenuLink}>Community</div>
           </div>
         </div>
-        <button className={styles.btn}>Back this project</button>
+        {((project.user_id === user.id) &&
+          <NavLink
+            to={`/projects/${project.id}/edit`} exact={true}
+            >
+            <button className={styles.btn}>Edit project</button>
+          </NavLink>
+          )}
+        {/* <button className={styles.btn}>Back this project</button> */}
       </div>
     </div>
   )

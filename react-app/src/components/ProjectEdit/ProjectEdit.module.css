@@ -1,3 +1,10 @@
+.label{
+  font-size: 14px;
+  font-weight: 350;
+  color: #282828;
+  line-height: 24px;
+}
+
 .dashBoardContentAndMenu{
   display: flex;
   flex-direction: column;
@@ -82,7 +89,9 @@
   padding-top: 6px;
 }
 
-
+.oneHundred{
+  width: 100%;
+}
 
 .blockWrapper{
   width: 100%;
@@ -94,8 +103,8 @@
 }
 
 .block{
-  width: 75%;
-  margin-top: 20px;
+  width: 74%;
+  /* margin-top: 20px; */
   display: flex;
   justify-content: space-between;
 }
@@ -104,8 +113,43 @@
   width: 25%;
 }
 
+.mainInputHeader{
+  font-size: 18px;
+  color: #282828;
+  font-weight: 300;
+}
+
+.mainInputSubHeader{
+  font-size: 14px;
+  color: #656969;
+  line-height: 24px;
+  margin-top: 6px;
+}
+
+.blockRightTitle{
+  width: 57%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .blockRight{
-  width: 50%;
+  width: 57%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.impression{
+  color: #037362;
+  font-size: 13px;
+  cursor: not-allowed;
+}
+
+.learnMore{
+  text-decoration: underline;
 }
 
 .formInput{
@@ -187,6 +231,28 @@
 }
 
 
+.bottomSaveButtonWrapper{
+  position: relative;
+}
+
+.bottomSaveButton{
+  position: absolute;
+  left: 83%;
+  top: -30px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 13px 18px 13px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  background-color: rgb(2, 136, 88);
+  border: 1px solid rgb(2, 136, 88);
+}
+.bottomDeleteButtonWrapper{
+  margin-bottom: 80px;
+  position: relative;
+}
 /*////\\\\ FOR RESIZING THE WINDOW SCREEN ////\\\\
 //////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
@@ -202,7 +268,7 @@
 
   .tabDiv {
    /* background-color: aliceblue; */
-   padding: 10px;
+    padding: 10px;
   }
 
   .cancelButton{
@@ -213,7 +279,7 @@
   }
 
   .topRight {
-   padding: 0 20px 0 20px;
+    padding: 0 20px 0 20px;
   }
 
   .saveButton, .cancelButton{
@@ -228,10 +294,22 @@
     border: 1px solid black;
   }
 
-
 }
 
-
+.bottomDeleteButton{
+  border: none;
+  position: absolute;
+  left: 75%;
+  top: -30px;
+  color: rgb(34, 34, 34);
+  padding: 13px 18px 13px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  /* background-color: rgb(255, 255, 255); */
+  /* border: 1px solid rgb(209, 209, 209); */
+}
 
 /* ///////////////////STYLES FOR EDIT PAGES GO HERE/////////////////////////////////////////// */
 /* ///////////////////                             /////////////////////////////////////////// */
@@ -239,17 +317,18 @@
 
 .title {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 300;
   color: rgb(40, 40, 40);
-  margin-bottom: 12px;
-  margin-top: 12px;
+  margin-top: 70px;
+  margin-bottom: 25px;
   text-align: center;
 }
 .subtitle {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   color: #656969;
   text-align: center;
+  margin-bottom: 70px;
 }
 
 .headerContainer{
@@ -351,12 +430,4 @@ border: 1px solid rgb(2, 136, 88);
 
 .profileContainer{
   display: flex;
-}
-
-.profileRectangle{
-    /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
-    height: 344px;
-    width: 300px;
-    /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
-    border: 1px solid rgb(232, 232, 232);
 }
