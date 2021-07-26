@@ -32,7 +32,7 @@ const SlideProject = ({ project }) => {
           style={highlight ? { color: 'green', textDecoration: 'underline' } : null}
         >{project?.title}</h3>
         <p className={styles.subTitle}>{project?.sub_title}</p>
-        <p className={styles.creator}>{`By ${project?.user_id}`}</p>
+        <p className={styles.creator}>{`By ${project?.creator}`}</p>
       </Link>
     </div>
   )
