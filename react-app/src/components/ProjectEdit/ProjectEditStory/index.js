@@ -3,12 +3,12 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editProject, deleteProject } from '../../../store/project'
 
+
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
 // import { ImageDrop } from 'quill-image-drop-module';
 // Quill.register('modules/imageDrop', ImageDrop);
-
-
+import storyStyles from './ProjectEditStory.module.css'
 
 function ProjectEditStory({ project }) {
 
@@ -72,9 +72,9 @@ function ProjectEditStory({ project }) {
     // let quillObj;
 
     return (
-        <div>
+        <div className={storyStyles.storyContainer}>
             <div>
-                <h1>Enter your story</h1>
+                <div className={storyStyles.title}>Enter your story</div>
             </div>
             {/* <ReactQuill /> */}
             <ReactQuill
@@ -124,7 +124,12 @@ function ProjectEditStory({ project }) {
                 id="txtDescription"
             /> */}
             {/* <textarea></textarea> */}
-            <button onClick={handleStorySubmit}>Save Story</button>
+            <div className={storyStyles.saveStoryButtonWrapper}>
+                <button
+                    className={storyStyles.saveStoryButton}
+                    onClick={handleStorySubmit}>Save Story
+                </button>
+            </div>
         </div>
     )
 }

@@ -23,8 +23,10 @@ function Form2({ changeStageButton, subTitle, setSubTitle, setShowProjectAddModa
             to='/' exact
             className={styles.logo}
             onClick={() => setShowProjectAddModal(false)}
-          >QUICKSTARTER</NavLink>
-          <div className={styles.userIcon}></div>
+            >QUICKSTARTER</NavLink>
+          <div
+          onClick={() => setShowProjectAddModal(false)}
+          className={styles.closeButton}><span><i className="fas fa-long-arrow-alt-left"></i></span></div>
         </div>
         <div className={styles.pageNumber}>2 of 3</div>
         <form className={styles.form}>

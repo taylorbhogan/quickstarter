@@ -9,7 +9,7 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
   const [div3True, setDiv3True] = useState(false)
   const [div4True, setDiv4True] = useState(false)
   const [lastClicked, setLastClicked] = useState(0)
-  const [countryName, setCountryName] = useState('')
+  const [countryName, setCountryName] = useState('my country')
 
   const handleClick = (int) => {
     if (int === 1) {
@@ -53,8 +53,10 @@ function Form3({ changeStageButton, handleSubmit, country, countries, setCountry
             to='/' exact
             className={styles.logo}
             onClick={() => setShowProjectAddModal(false)}
-          >QUICKSTARTER</NavLink>
-          <div className={styles.userIcon}></div>
+            >QUICKSTARTER</NavLink>
+          <div
+          onClick={() => setShowProjectAddModal(false)}
+          className={styles.closeButton}><span><i className="fas fa-long-arrow-alt-left"></i></span></div>
         </div>
         <div className={styles.pageNumber}>3 of 3</div>
         <form

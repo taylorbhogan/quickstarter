@@ -1,6 +1,18 @@
+import { useEffect, useState } from 'react'
 import styles from './ProjectTopView.module.css'
 
 function ProjectTopView({project, numberOfBackers, categories}){
+  const [countries, setCountries] = useState([])
+  // const [stateDeadline, setStateDeadline] = useState('stateDeadline')
+
+  useEffect(() => {
+    (async () => {
+      const countryRes = await fetch(`/api/countries`);
+      const countriesResponse = await countryRes.json()
+      console.log('---------------------851---------------------',countriesResponse.countries);
+      setCountries(countriesResponse.countries)
+    })();
+  }, [])
 
   const currentFundingFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -16,12 +28,59 @@ function ProjectTopView({project, numberOfBackers, categories}){
     return `${percentage.toFixed()}%`;
   }
 
+  const daysToGo = (Math.floor((new Date(project.created_at).getTime() + project.campaign_duration*86400000 - new Date().getTime())/86400000)).toString()
+  // const deadline = new Date(
+  //   (new Date(project.created_at).getTime() + project.campaign_duration*86400000)
+  //   ).toString()
+
+  const formatDeadline = () => {
+    let newOldDeadline = 'its concluding date'
+
+    if (project.campaign_duration){
+      const oldDeadline = (new Date(project.created_at).getTime() + project.campaign_duration*86400000)
+      const newOldDeadline = new Intl.DateTimeFormat('en-US', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZoneName: 'short'
+      }).format(oldDeadline)
+
+      console.log(newOldDeadline);
+    }
+
+    return newOldDeadline
+  }
+
+  // useEffect(() => {
+  //   if (project.campaign_duration){
+
+  //     const oldDeadline = (new Date(project.created_at).getTime() + project.campaign_duration*86400000)
+  //     const newOldDeadline = new Intl.DateTimeFormat('en-US', {
+  //       weekday: 'short',
+  //       day: 'numeric',
+  //       month: 'long',
+  //       year: 'numeric',
+  //       hour: 'numeric',
+  //       minute: '2-digit',
+  //       timeZoneName: 'short'
+  //     }).format(oldDeadline)
+
+  //     setStateDeadline(newOldDeadline)
+  //   } else {
+  //     setStateDeadline('newStateDeadline')
+  //   }
+
+  // },[])
+
   return (
     <div className={styles.allProjectTopViewContentWrapper}>
     <div className={styles.allProjectTopViewContent}>
         <div className={styles.headerWrapper}>
-          <h1>{project.title}</h1>
-          <h2>{project.sub_title}</h2>
+          <div className={styles.titleDiv}>{project.title?.toUpperCase()}</div>
+          <div className={styles.subTitleDiv}>{project.sub_title}</div>
         </div>
         <div className={styles.topFlexContainer}>
           <div className={styles.mediaShowcaseContainer}>
@@ -31,17 +90,17 @@ function ProjectTopView({project, numberOfBackers, categories}){
               </div>
             </div>
             <div className={styles.belowShowCaseDiv}>
-              <div>
+              {/* <div>
                 <span className={styles.belowShowCaseIcon}></span>
                 <span className={styles.belowShowCaseText}>Project we love</span>
-              </div>
+              </div> */}
               <div>
                 <span className={styles.belowShowCaseIcon}><i className="far fa-compass"></i></span>
-                <span className={styles.belowShowCaseText}>{categories[project.category_id]?.name}</span>
+                <span className={styles.belowShowCaseText}> {categories[project.category_id]?.name}</span>
               </div>
               <div>
                 <span className={styles.belowShowCaseIcon}></span>
-                <span className={styles.belowShowCaseText}>{project.country}</span>
+                <span className={styles.belowShowCaseText}>{countries[project.country_id]?.name}</span>
               </div>
             </div>
           </div>
@@ -65,12 +124,17 @@ function ProjectTopView({project, numberOfBackers, categories}){
                     <div className={styles.subtext}>backers</div>
                   </div>
                   <div className={styles.projectInfoFlexColumnRow}>
-                    <div className={styles.bigGrey}>****</div>
+                    {/* <div className={styles.bigGrey}>****</div> */}
+                    {/* <div className={styles.bigGrey}>{project.created_at}</div>
+                    <div className={styles.bigGrey}>{new Date().toString()}</div> */}
+                    <div className={styles.bigGrey}>{daysToGo}</div>
                     <div className={styles.subtext}>days to go</div>
                   </div>
                 </div>
                 <button className={styles.btn}>Back this project</button>
-                <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by **insert deadline here**.</div>
+                {/* <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {deadline}.</div> */}
+                <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {formatDeadline()}.</div>
+                {/* <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {stateDeadline}.</div> */}
               </section>
           </div>
           </div>

@@ -1,0 +1,85 @@
+.pageContainer{
+  margin-bottom: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  padding: 0 72px;
+
+}
+
+.profileInfo{
+  width: 40%;
+}
+
+.profileContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.title {
+  font-size: 28px;
+  font-weight: 300;
+  color: rgb(40, 40, 40);
+  margin-top: 70px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.subTitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: #656969;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.mainInputHeader{
+  font-size: 18px;
+  color: #282828;
+  font-weight: 300;
+
+}
+
+.mainInputSubHeader{
+  font-size: 14px;
+  color: #656969;
+  line-height: 24px;
+  margin-top: 6px;
+}
+
+
+
+
+.profileRectangle{
+  width: 50%;
+  /* height: 280px; */
+  border: 1px solid rgb(210 210 210);
+  padding: 24px;
+  margin: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  padding: 12px 18px;
+  width: 100%;
+  height: 44px;
+  background: none;
+  color: inherit;
+  border: none;
+  outline: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: black;
+  color: white;
+  margin: 12px;
+}
