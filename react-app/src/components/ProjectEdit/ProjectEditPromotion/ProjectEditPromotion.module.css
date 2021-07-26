@@ -1,6 +1,10 @@
+.pageContainer{
+  margin-bottom: 80px;
+}
+
 .title {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 300;
   color: rgb(40, 40, 40);
   margin-top: 70px;
   margin-bottom: 25px;
@@ -8,7 +12,7 @@
 }
 .subTitle {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   color: #656969;
   text-align: center;
   margin-bottom: 70px;

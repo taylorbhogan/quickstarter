@@ -2,7 +2,7 @@ import promotionStyles from './ProjectEditPromotion.module.css'
 
 function ProjectEditPromotion() {
   return (
-    <div>
+    <div className={promotionStyles.pageContainer}>
       <div>
         <div className={promotionStyles.title}>Prepare for launch</div>
         <div className={promotionStyles.subTitle}>Get ready to promote your project.</div>
