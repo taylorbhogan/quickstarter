@@ -94,8 +94,10 @@ function ProjectBuyReward({
               </div>
             </div>
             <div>
-              <div className={styles.littleHeader}>SHIPS TO</div>
-              <div className={styles.shipsTo}>Anywhere in the world</div>
+              {/* <div className={styles.littleHeader}>SHIPS TO</div>
+              <div className={styles.shipsTo}>Anywhere in the world</div> */}
+              <div className={styles.littleHeader}>QUANTITY</div>
+              <div className={styles.shipsTo}>{reward.quantity}</div>
             </div>
           </div>
         </div>
