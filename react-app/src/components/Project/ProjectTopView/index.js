@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import styles from './ProjectTopView.module.css'
+import { useSelector } from 'react-redux'
 
 function ProjectTopView({project, numberOfBackers, categories}){
   const [countries, setCountries] = useState([])
   // const [stateDeadline, setStateDeadline] = useState('stateDeadline')
+  const user = useSelector(state => state.session.user);
+
+
 
   useEffect(() => {
     (async () => {
@@ -132,6 +136,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
                   </div>
                 </div>
                 <button className={styles.btn}>Back this project</button>
+                {/* {((project.user_id === user.id) && <button className={styles.btn}>Back this project</button>)} */}
                 {/* <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {deadline}.</div> */}
                 <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {formatDeadline()}.</div>
                 {/* <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {stateDeadline}.</div> */}
