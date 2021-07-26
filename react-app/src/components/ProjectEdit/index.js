@@ -66,7 +66,7 @@ function Project({ everyProject }) {
         (async () => {
             const response = await fetch(`/api/projects/${projectId}`);
             const project = await response.json();
-            console.log("THIS IS WHAT YOU GOT:", project)
+            // console.log("THIS IS WHAT YOU GOT:", project)
 
 
             // await setProject(project)
@@ -386,7 +386,8 @@ function Project({ everyProject }) {
                                     <input
                                         className={styles.formInput}
                                         value={goal}
-                                        type="text"
+                                        // type="text"
+                                        type="number"
                                         placeholder={'$50,000'}
                                         onChange={(e) => setGoal(e.target.value)}
                                     ></input>
@@ -404,7 +405,8 @@ function Project({ everyProject }) {
                                     <input
                                         className={styles.formInput}
                                         value={campaignDuration}
-                                        type="text"
+                                        // type="text"
+                                        type="number"
                                         placeholder={'30'}
                                         // onChange={(e) => setCampaignDuration(e.target.value)}
                                         onChange={handlingChangingCampaignDuration}

@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.forms import CreateProjectForm, UpdateProjectForm, CreateProjectRewardForm
 from app.models import db, Project, Reward
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 project_routes = Blueprint('projects', __name__)
@@ -27,6 +27,39 @@ def get_projects():
     retrieves all projects from db
     """
     allProjects = Project.query.all()
+
+    # todaysDate = datetime.now().strftime("%Y-%m")
+
+    def liveFilter(project):
+        todaysDate = datetime.now().strftime("%Y-%m-%d")
+        if not project['campaign_duration']:
+            return False
+        else:
+            if project['is_live'] is True:
+                end_date = datetime.now() + timedelta(days=project['campaign_duration'])
+                if datetime.now().strftime("%Y-%m-%d") >= end_date.strftime("%Y-%m-%d"):
+                    return False
+                else:
+                    return True
+
+
+
+
+    projz = [project.to_dict() for project in allProjects]
+
+
+    # date_1 = datetime.datetime.strptime(start_date, "%m/%d/%y")
+
+    # print("___________________", datetime.now().strftime("%Y-%m-%d"), projz[0]['created_at'].strftime("%Y-%m"), end_date.strftime("%Y-%m-%d"))
+
+    # this is how you check if they are the same day
+    # end_date =datetime.now() + timedelta(days=30)
+    # print("___________________", datetime.now().strftime("%Y-%m-%d") == end_date.strftime("%Y-%m-%d"))
+
+    currentlyActive = list(filter(liveFilter, projz))
+    # print("CHECK THESE FOR LIVENESS", len(currentlyActive))
+
+
     if allProjects:
         return {'projects': [project.to_dict() for project in allProjects]}
     else:
