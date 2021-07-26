@@ -30,6 +30,7 @@ function Project({ everyProject }) {
     const [imageUrl, setImageUrl] = useState(project.project_image_url)
     const [campaignDuration, setCampaignDuration] = useState(project.campaign_duration)
     const [saveProjectButtonText, setSaveProjectButtonText] = useState('Save')
+    const [deleteProjectButtonText, setDeleteProjectButtonText] = useState('Delete')
 
     const [currentSelectedTab, setCurrentSelectedTab] = useState('basics')
 
@@ -267,6 +268,7 @@ function Project({ everyProject }) {
                                             onChange={(e) => setTitle(e.target.value)}
                                         ></input>
                                     </div>
+                                    <br/>
                                     <div>
                                         <div>
                                             <label className={styles.label}>Subtitle</label>
@@ -295,6 +297,8 @@ function Project({ everyProject }) {
                                     <div className={styles.mainInputSubHeader}>You’ll be able to change the category and subcategory even after your project is live.</div>
                                 </div>
                                 <div className={styles.blockRight}>
+                                    <div>
+                                    <div className={styles.inputLabels}><label>Select a Category</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={categoryId}
@@ -306,6 +310,9 @@ function Project({ everyProject }) {
                                                 key={category.id}>{category.name}</option>
                                         )}
                                     </select>
+                                    </div>
+                                    <br/>
+                                    <div className={styles.inputLabels}><label>Select a Sub-Category</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={subCategory}
@@ -331,6 +338,7 @@ function Project({ everyProject }) {
                                     <div className={styles.mainInputSubHeader}>Enter the location that best describes where your project is based.</div>
                                 </div>
                                 <div className={styles.blockRight}>
+                                <div className={styles.inputLabels}><label>Select a Location</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={countryId}
@@ -355,6 +363,7 @@ function Project({ everyProject }) {
                                     <div className={styles.mainInputSubHeader}>Avoid images with banners, badges, or text—they are illegible at smaller sizes, can be penalized by the Facebook algorithm, and decrease your chances of getting Quickstarter homepage and newsletter features.</div>
                                 </div>
                                 <div className={styles.blockRight}>
+                                    <div className={styles.inputLabels}><label>Image</label></div>
                                     <input
                                         className={styles.formInput}
                                         value={imageUrl}
@@ -415,7 +424,7 @@ function Project({ everyProject }) {
                             onClick={() => handleDelete(projectId)}
                             className={styles.bottomDeleteButton}
                         >
-                            Delete
+                            {deleteProjectButtonText}
                         </button>
                     </div>
                 </div>

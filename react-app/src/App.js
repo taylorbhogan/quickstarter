@@ -94,6 +94,9 @@ function App() {
           <ProjectEdit everyProject={everyProject} />
           <Footer />
         </ProtectedRoute>
+        <Route path='/404/' exact={true}>
+          <PageNotFound />
+        </Route>
         <Route>
           <PageNotFound />
         </Route>

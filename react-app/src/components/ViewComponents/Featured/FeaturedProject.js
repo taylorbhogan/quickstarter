@@ -40,7 +40,7 @@ const FeaturedProject = ({ projects }) => {
           >{featured?.title}
           </h3>
           <p className={styles.projectSubTitle}>{featured?.sub_title}</p>
-          <p className={styles.projectCreator}>{`By ${featured?.user_id}`}</p>
+          <p className={styles.projectCreator}>{`By ${featured?.creator}`}</p>
         </div>
       </NavLink>
     </div>

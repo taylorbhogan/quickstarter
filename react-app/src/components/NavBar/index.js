@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
-import SectionsNavBar from '../SectionsNavBar';
 import DropdownOpenButton from './Dropdown/DropdownOpenButton';
 import { login } from '../../store/session';
 import styles from './NavBar.module.css'
