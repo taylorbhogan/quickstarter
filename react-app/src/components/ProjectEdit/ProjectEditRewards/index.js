@@ -36,7 +36,7 @@ function ProjectEditRewards({ project }) {
 
   const rewardsForProject = useSelector(state => state.rewards)
 
-  console.log("REWARDSFORPROJE", rewardsForProject)
+  // console.log("REWARDSFORPROJE", rewardsForProject)
 
   useEffect(() => {
     const getTodaysDate = () => {
