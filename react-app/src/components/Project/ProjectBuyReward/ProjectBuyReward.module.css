@@ -35,7 +35,8 @@
 
 .littleHeader{
   font-size: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  margin-right: 8px;
 }
 
 
@@ -55,9 +56,11 @@
 
 .estimatedDelivery{
   font-size: 12px;
+  margin-bottom: 8px;
 }
 .shipsTo{
   font-size: 12px;
+  /* margin-bottom: 8px; */
 }
 
 .btn:hover {
