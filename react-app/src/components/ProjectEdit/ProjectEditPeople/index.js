@@ -22,8 +22,8 @@ function ProjectEditPeople() {
           <div className={peopleStyles.profileRectangle}>
             <SmallUserImage />
             <div>
-              <div className={styles.userNameDiv}></div>
-              <div className={styles.userNameDiv}>Project creator</div>
+              <div className={peopleStyles.userNameDiv}>{user.username}</div>
+              <div className={peopleStyles.userNameDiv}>Project creator</div>
             </div>
             <div>
               <NavLink

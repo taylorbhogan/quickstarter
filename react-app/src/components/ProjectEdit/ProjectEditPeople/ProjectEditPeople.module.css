@@ -56,10 +56,14 @@
 }
 
 
+
+
 .profileRectangle{
-  width: 700px;
-  height: 280px;
+  width: 50%;
+  /* height: 280px; */
   border: 1px solid rgb(210 210 210);
+  padding: 24px;
+  margin: 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,4 +81,5 @@
   font-family: inherit;
   background-color: black;
   color: white;
+  margin: 12px;
 }
