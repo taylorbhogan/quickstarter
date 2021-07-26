@@ -1,4 +1,5 @@
 .rewardForm {
+/* width: 100%; */
 width: 800px;
 display: flex;
 flex-direction: column;
@@ -8,6 +9,7 @@ flex-direction: column;
 .inputField {
 height: 42px;
 width: 735px;
+/* width: 100%; */
 }
 
 .dollahBills{
@@ -127,7 +129,8 @@ margin-right: 8px;
 
 
 .blockWrapper{
-    width: 93.5%;
+    width: 95%;
+    /* width: 93.5%; */
     border-top: 1px solid rgb(209, 209, 209);
     padding: 48px 0;
     display: flex;
@@ -137,7 +140,8 @@ margin-right: 8px;
   }
 .blockWrapperRewards{
     /* width: 98.5%; */
-    width: 1700px;
+    width: 95%;
+    /* width: 940px; */
     border-top: 1px solid rgb(209, 209, 209);
     /* padding: 48px 0; */
     display: flex;
@@ -171,7 +175,8 @@ margin-right: 8px;
   }
 
   .blockWrapperStatus{
-    width: 93.5%;
+    width: 94%;
+    /* width: 93.5%; */
     border-bottom: 1px solid rgb(209, 209, 209);
     margin: 20px;
     /* padding: 35px 0; */

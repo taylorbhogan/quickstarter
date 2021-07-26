@@ -412,16 +412,14 @@ function Project({ everyProject }) {
                         <div>
                             <button className={styles.saveProjectButton}
                                 type="submit"
-                            >{saveProjectButtonText}</button>
-                        </div>
-                    </form>
-                    <div>
-                        <button className={styles.deleteProjectButton}
+                            >{saveProjectButtonText}</button>  <button className={styles.deleteProjectButton}
                             onClick={() => handleDelete(projectId)}
                         >
                             {deleteProjectButtonText}
                         </button>
-                    </div>
+                        </div>
+                    </form>
+                    <br/>
                 </div>
             )
         } else if (currentSelectedTab === 'story') {

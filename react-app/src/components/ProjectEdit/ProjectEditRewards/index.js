@@ -172,7 +172,7 @@ function ProjectEditRewards({ project }) {
 
   return (
     <div>
-      <div className={styles.headerContainer}>
+      <div className={styles.editRewardHeaderContainer}>
         <h1 className={styles.editPageHeader}>Add your rewards</h1>
         <h2>
           Offer simple, meaningful ways to bring backers closer to your project

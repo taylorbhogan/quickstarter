@@ -187,6 +187,7 @@
 }
 
 
+
 /*////\\\\ FOR RESIZING THE WINDOW SCREEN ////\\\\
 //////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
@@ -245,6 +246,7 @@
   margin-top: 12px;
   text-align: center;
 }
+
 .subtitle {
   font-size: 18px;
   font-weight: 400;
@@ -259,6 +261,7 @@
 .contentContainer{
   padding: 0 72px;
 }
+
 .rewardsMenu{
   display: flex;
   align-items: center;
@@ -272,12 +275,16 @@
 
 .rewardsMenuHeader{
   padding-bottom: 12px;
+  /* margin-left: px; */
 }
 
 .rewardsContainerTopContent{
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  /* margin-left: 10%; */
 }
+
 .rewardsContainerBottomContent{
   display: flex;
 }
@@ -288,10 +295,13 @@
 
 .infoDiv{
   margin: 24px 0;
+
 }
+
 .learnMore{
   margin-top: 18px;
 }
+
 .newRewardButton {
 border: none;
 color: rgb(255, 255, 255);
@@ -303,6 +313,7 @@ text-align: center;
 background-color: rgb(2, 136, 88);
 border: 1px solid rgb(2, 136, 88);
 }
+
 .saveRewardButton {
 border: none;
 color: rgb(255, 255, 255);
@@ -315,7 +326,26 @@ background-color: rgb(2, 136, 88);
 border: 1px solid rgb(2, 136, 88);
 }
 
+.editRewardHeaderContainer{
+  /* display: relative; */
+  /* justify-content: center; */
+  padding: 72px 0px 66px;
+  width: 100%;
 
+}
+
+.editPageHeader {
+ width: 100%;
+ margin-left: 60px;
+}
+
+.editRewardHeaderContainer h2{
+  /* justify-content: center; */
+  padding: 12px 0px 16px;
+  width: 50%;
+  margin-left: 60px;
+
+}
 
 .rewardPreviewRectangleContainer{
   background-color: #FBFBFA;
