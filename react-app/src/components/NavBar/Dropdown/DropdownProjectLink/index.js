@@ -12,7 +12,7 @@ function DropdownProjectLink({project, createdProject}) {
         <img src={project?.project_image_url} className={styles.image} alt='project showcase'/>
       )}
       <NavLink
-        to={`projects/${project?.id}`}
+        to={`/projects/${project?.id}`}
         className={styles.text}>
         {project?.title ? project.title : 'Your new project'}
       </NavLink>

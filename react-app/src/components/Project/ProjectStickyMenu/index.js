@@ -1,8 +1,9 @@
 import styles from './ProjectStickyMenu.module.css'
 
-function ProjectStickyMenu(){
-  return(
+function ProjectStickyMenu() {
+  return (
     <div className={styles.menuWrapper}>
+      <a name='backings' />
       <div className={styles.flexBox}>
         <div className={styles.navComponent}>
           <div className={styles.linkContainer}>

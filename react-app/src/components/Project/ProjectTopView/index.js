@@ -1,6 +1,8 @@
 import styles from './ProjectTopView.module.css'
+import { useHistory } from 'react-router-dom';
 
-function ProjectTopView({project, numberOfBackers, categories}){
+function ProjectTopView({ project, numberOfBackers, categories }) {
+  const history = useHistory();
 
   const currentFundingFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -18,7 +20,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
 
   return (
     <div className={styles.allProjectTopViewContentWrapper}>
-    <div className={styles.allProjectTopViewContent}>
+      <div className={styles.allProjectTopViewContent}>
         <div className={styles.headerWrapper}>
           <h1>{project.title}</h1>
           <h2>{project.sub_title}</h2>
@@ -27,7 +29,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
           <div className={styles.mediaShowcaseContainer}>
             <div className={styles.mediaShowcaseWrapper}>
               <div className={styles.mediaShowcase}>
-                <img src={project?.project_image_url} className={styles.image} alt='the media showcase for this project'/>
+                <img src={project?.project_image_url} className={styles.image} alt='the media showcase for this project' />
               </div>
             </div>
             <div className={styles.belowShowCaseDiv}>
@@ -53,7 +55,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
                     <div
                       className={styles.progress}
                       style={{ width: `${project && calculateProgressLimit(project)}` }}
-                      >
+                    >
                     </div>
                   </div>
                   <div className={styles.projectInfoFlexColumnRow}>
@@ -69,10 +71,14 @@ function ProjectTopView({project, numberOfBackers, categories}){
                     <div className={styles.subtext}>days to go</div>
                   </div>
                 </div>
-                <button className={styles.btn}>Back this project</button>
+                <a href='#backings'>
+                  <button
+                    className={styles.btn}
+                  >Back this project</button>
+                </a>
                 <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by **insert deadline here**.</div>
               </section>
-          </div>
+            </div>
           </div>
         </div>
         <div className={styles.pinkContainer}>
