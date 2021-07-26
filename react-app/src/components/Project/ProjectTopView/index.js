@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react'
 import styles from './ProjectTopView.module.css'
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
 function ProjectTopView({project, numberOfBackers, categories}){
+  const history = useHistory();
   const [countries, setCountries] = useState([])
   // const [stateDeadline, setStateDeadline] = useState('stateDeadline')
   const user = useSelector(state => state.session.user);
-
-
 
   useEffect(() => {
     (async () => {
       const countryRes = await fetch(`/api/countries`);
       const countriesResponse = await countryRes.json()
-      console.log('---------------------851---------------------',countriesResponse.countries);
       setCountries(countriesResponse.countries)
     })();
   }, [])
@@ -81,7 +80,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
 
   return (
     <div className={styles.allProjectTopViewContentWrapper}>
-    <div className={styles.allProjectTopViewContent}>
+      <div className={styles.allProjectTopViewContent}>
         <div className={styles.headerWrapper}>
           <div className={styles.titleDiv}>{project.title?.toUpperCase()}</div>
           <div className={styles.subTitleDiv}>{project.sub_title}</div>
@@ -90,7 +89,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
           <div className={styles.mediaShowcaseContainer}>
             <div className={styles.mediaShowcaseWrapper}>
               <div className={styles.mediaShowcase}>
-                <img src={project?.project_image_url} className={styles.image} alt='the media showcase for this project'/>
+                <img src={project?.project_image_url} className={styles.image} alt='the media showcase for this project' />
               </div>
             </div>
             <div className={styles.belowShowCaseDiv}>
@@ -116,7 +115,7 @@ function ProjectTopView({project, numberOfBackers, categories}){
                     <div
                       className={styles.progress}
                       style={{ width: `${project && calculateProgressLimit(project)}` }}
-                      >
+                    >
                     </div>
                   </div>
                   <div className={styles.projectInfoFlexColumnRow}>
@@ -135,13 +134,16 @@ function ProjectTopView({project, numberOfBackers, categories}){
                     <div className={styles.subtext}>days to go</div>
                   </div>
                 </div>
-                <button className={styles.btn}>Back this project</button>
+
+                <a href='#backings'>
+                  <button className={styles.btn}>Back this project</button>
+                </a>
                 {/* {((project.user_id === user.id) && <button className={styles.btn}>Back this project</button>)} */}
                 {/* <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {deadline}.</div> */}
                 <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {formatDeadline()}.</div>
                 {/* <div className={styles.allOrNothing}>All or nothing. This project will only be funded if it reaches its goal by {stateDeadline}.</div> */}
               </section>
-          </div>
+            </div>
           </div>
         </div>
         <div className={styles.pinkContainer}>

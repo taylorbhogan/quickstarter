@@ -1,9 +1,11 @@
 import styles from './ProjectStickyMenu.module.css'
 import { NavLink } from 'react-router-dom'
 
+
 function ProjectStickyMenu({user, project}){
   return(
     <div className={styles.menuWrapper}>
+      <a name='backings' />
       <div className={styles.flexBox}>
         <div className={styles.navComponent}>
           <div className={styles.linkContainer}>
