@@ -28,7 +28,7 @@ const RecommendedProject = ({ project }) => {
         <p className={styles.recommendedFunded}>
           {project && calculateProgress(project)} funded
         </p>
-        <p className={styles.projectCreator}>{`By ${project?.user_id}`}</p>
+        <p className={styles.projectCreator}>{`By ${project?.creator}`}</p>
       </div>
     </div >
   );

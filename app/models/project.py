@@ -1,6 +1,7 @@
 from .db import db
 from datetime import datetime
 
+
 class Project(db.Model):
     __tablename__ = 'projects'
 
@@ -10,15 +11,19 @@ class Project(db.Model):
     sub_title = db.Column(db.String(135), nullable=False)
     story = db.Column(db.Text, nullable=True)
     funding_goal = db.Column(db.Integer, nullable=True)
-    current_funding = db.Column(db.Integer, nullable=True, default = 0)
+    current_funding = db.Column(db.Integer, nullable=True, default=0)
     project_image_url = db.Column(db.String(2048), nullable=True)
     project_video_url = db.Column(db.String(2048), nullable=True)
     campaign_duration = db.Column(db.Integer, nullable=True)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
-    sub_category_id = db.Column(db.Integer, db.ForeignKey("sub_categories.id"), nullable=True)
-    country_id = db.Column(db.Integer, db.ForeignKey("countries.id"), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey(
+        'categories.id'), nullable=False)
+    sub_category_id = db.Column(db.Integer, db.ForeignKey(
+        "sub_categories.id"), nullable=True)
+    country_id = db.Column(db.Integer, db.ForeignKey(
+        "countries.id"), nullable=False)
     is_live = db.Column(db.Boolean, nullable=False, default=False)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False,
+                           default=datetime.utcnow)
 
     creator = db.relationship("User", back_populates='projects')
     category = db.relationship('Category', back_populates='projects')
@@ -26,7 +31,6 @@ class Project(db.Model):
     country = db.relationship('Country', back_populates='projects')
     rewards = db.relationship('Reward', back_populates='project')
     backers = db.relationship('Backing', back_populates='project')
-
 
     def to_dict(self):
         return {
@@ -45,7 +49,7 @@ class Project(db.Model):
             "country_id": self.country_id,
             "is_live": self.is_live,
             "created_at": self.created_at,
-            # "creator": self.creator.to_dict(),
+            "creator": self.creator.username,
             # "category": self.category.to_dict(),
             # "sub_category": self.sub_category.to_dict(),
             # 'country': self.country.to_dict(),
