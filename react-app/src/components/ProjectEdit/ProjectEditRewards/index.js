@@ -413,7 +413,7 @@ function ProjectEditRewards({ project }) {
                     </div>
                     <div>
                       <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
-                      {rewardQuantity > 0 ? (
+                      {reward.quantity > 0 ? (
                         <div className={prevStyles.shipsTo}>{reward.quantity}</div>
 
                       ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
@@ -469,7 +469,7 @@ function ProjectEditRewards({ project }) {
                     </div>
                     <div>
                       <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
-                      {rewardQuantity > 0 ? (
+                      {reward.quantity > 0 ? (
                         <div className={prevStyles.shipsTo}>{reward.quantity}</div>
 
                       ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
@@ -525,10 +525,10 @@ function ProjectEditRewards({ project }) {
                     </div>
                     <div>
                       <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
-                      {rewardQuantity > 0 ? (
+                      {reward.quantity > 0 ? (
                         <div className={prevStyles.shipsTo}>{reward.quantity}</div>
 
-                      ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}
+                      ) : <div className={prevStyles.shipsTo}>SOLD OUT</div>}
                     </div>
                   </div>
                 </div>
@@ -581,7 +581,7 @@ function ProjectEditRewards({ project }) {
                     </div>
                     <div>
                       <div style={{ marginTop: '15px', marginBottom: "15px" }} className={prevStyles.littleHeader}>Reward Quantity</div>
-                      {rewardQuantity > 0 ? (
+                      {reward.quantity > 0 ? (
                         <div className={prevStyles.shipsTo}>{reward.quantity}</div>
 
                       ) : <div className={prevStyles.shipsTo}>UNLIMITED</div>}

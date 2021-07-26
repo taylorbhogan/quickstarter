@@ -2,6 +2,7 @@ import styles from "./ProjectBuyReward.module.css";
 import { useState } from "react";
 import { createBacking } from "../../../store/backing";
 import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
 function ProjectBuyReward({
   addABacking,
@@ -16,6 +17,7 @@ function ProjectBuyReward({
 }) {
   const [rewardAmount, setRewardAmount] = useState(0);
   const dispatch = useDispatch();
+  const history = useHistory()
   // this object is just an example
   // reward = {
   //   price: '$10',
@@ -35,7 +37,7 @@ function ProjectBuyReward({
   // }
   const formatDate = (dateObj) => {
     let readyDate = new Date(dateObj);
-    const date = new Intl.DateTimeFormat('en-US', {month: "short", year: 'numeric'}).format(readyDate)
+    const date = new Intl.DateTimeFormat('en-US', { month: "short", year: 'numeric' }).format(readyDate)
 
     return date
   };
@@ -62,7 +64,12 @@ function ProjectBuyReward({
       // console.log('***************', backing)
       const data = await dispatch(createBacking(backing));
       // const createdBacking = data.newBacking
+
       setRewardAmount(0);
+      if (data.newBacking) {
+
+        history.go(0)
+      }
 
       // console.log('1234----responseFromStore-------->', data.newBacking);
       // if (createdBacking){
@@ -104,8 +111,8 @@ function ProjectBuyReward({
                 //com
                 value={rewardAmount}
                 onChange={(e) => setRewardAmount(e.target.value)}
-                // onChange={(e) => setRewardAmount(e.target.value)}
-                // onChange={(e) => setAmount(rewardAmount)}
+              // onChange={(e) => setRewardAmount(e.target.value)}
+              // onChange={(e) => setAmount(rewardAmount)}
               ></input>
             </div>
           )}
