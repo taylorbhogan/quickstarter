@@ -2,24 +2,25 @@ import styles from '../ProjectEdit.module.css'
 import peopleStyles from './ProjectEditPeople.module.css'
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-
+import SmallUserImage from '../../User/SmallUserImage';
 
 function ProjectEditPeople() {
   const user = useSelector(state => state.session.user)
 
   return (
-    <div>
+    <div className={peopleStyles.pageContainer}>
       <div>
         <div className={peopleStyles.title}>Introduce yourself</div>
         <div className={peopleStyles.subTitle}>Give backers an idea of who you are, and add collaborators if you work with a team.</div>
       </div>
-      <div className={styles.contentContainer}>
-        <div className={styles.profileContainer}>
-          <div className={styles.profileInfo}>
+      <div className={peopleStyles.contentContainer}>
+        <div className={peopleStyles.profileContainer}>
+          <div className={peopleStyles.profileInfo}>
             <div className={peopleStyles.mainInputHeader}>Your profile</div>
             <div className={peopleStyles.mainInputSubHeader}>This will appear on your project page and must include your name, photo, and biography.</div>
           </div>
-          <div className={styles.profileRectangle}>
+          <div className={peopleStyles.profileRectangle}>
+            <SmallUserImage />
             <div>
               <div className={styles.userNameDiv}></div>
               <div className={styles.userNameDiv}>Project creator</div>
@@ -28,7 +29,9 @@ function ProjectEditPeople() {
               <NavLink
                 to={`/users/${user.id}`}
               >
-                <button>Complete your profile</button>
+                <button
+                  className={peopleStyles.button}
+                >Complete your profile</button>
               </NavLink>
             </div>
           </div>

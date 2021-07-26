@@ -350,10 +350,3 @@ border: 1px solid rgb(2, 136, 88);
   display: flex;
 }
 
-.profileRectangle{
-    /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
-    height: 344px;
-    width: 300px;
-    /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
-    border: 1px solid rgb(232, 232, 232);
-}
