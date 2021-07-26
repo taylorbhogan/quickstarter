@@ -29,7 +29,8 @@ function PageNotFound() {
         </div>
       </div>
       <div className={styles.right}>
-        <div className={styles.imageDiv}></div>
+        {/* <div className={styles.imageDiv}></div> */}
+        <img src="https://media.4-paws.org/3/e/5/6/3e56785d2a08c27be3ca72082c20fd0a4545586d/VIER%20PFOTEN_2015-04-27_010-1927x1333-1920x1328.jpg" alt="Cow" className={styles.cowImage} />
       </div>
     </div>
   )
