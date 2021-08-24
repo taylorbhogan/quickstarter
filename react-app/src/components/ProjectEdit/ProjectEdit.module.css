@@ -92,6 +92,7 @@
   align-items: center;
   justify-content: center;
   width: 200px;
+  font-weight: lighter;
 }
 
 .tabDiv div {
@@ -240,8 +241,7 @@
 }
 
 .deleteProjectButton:hover,
-.saveProjectButton:hover,
-.tabDiv:hover {
+.saveProjectButton:hover {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 255, 0.1);
 }
 

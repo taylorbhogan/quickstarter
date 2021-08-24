@@ -505,6 +505,17 @@ function Project({ everyProject }) {
       return <ProjectEditPromotion project={project} />;
     }
   };
+
+  const tabStyleHandler = (tab) => {
+    if (currentSelectedTab === tab) {
+      return {
+        borderBottom: "3px solid rgb(34, 205, 123)",
+        fontWeight: "normal",
+      };
+    }
+    return { borderBottom: "3px solid white" };
+  };
+
   return (
     <div className={styles.dashBoardContentAndMenu}>
       <div className={styles.wholeMenu}>
@@ -548,6 +559,7 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("basics")}
+              style={tabStyleHandler("basics")}
             >
               <div>✍️</div>
               <div>Basics</div>
@@ -555,6 +567,7 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("rewards")}
+              style={tabStyleHandler("rewards")}
             >
               <div>🎁</div>
               <div>Rewards</div>
@@ -562,6 +575,7 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("story")}
+              style={tabStyleHandler("story")}
             >
               <div>📖</div>
               <div> Story</div>
@@ -569,6 +583,7 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("people")}
+              style={tabStyleHandler("people")}
             >
               <div>👥</div>
               <div>People</div>
@@ -576,6 +591,7 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("payment")}
+              style={tabStyleHandler("payment")}
             >
               <div>💰</div>
               <div>Payment</div>
@@ -583,6 +599,7 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("promotion")}
+              style={tabStyleHandler("promotion")}
             >
               <div>📢</div>
               <div>Promotion</div>
