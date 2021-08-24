@@ -243,6 +243,37 @@ function Project({ everyProject }) {
     }
   };
 
+  const [titleIsFocused, setTitleIsFocused] = useState(false);
+  const [subTitleIsFocused, setSubTitleIsFocused] = useState(false);
+
+  const wordCountHandler = (input, short, mid, long) => {
+    let text = "";
+
+    if (input !== null) {
+      if (input.length < short) {
+        text = "";
+      } else if (input.length >= short && input.length < mid) {
+        text = "Short and sweet.";
+      } else if (input.length >= mid && input.length < long) {
+        text = "Not too short, not too long.";
+      } else {
+        text = "You've hit the limit.";
+      }
+    }
+
+    return (
+      <>
+        <div>
+          <div>{text}</div>
+        </div>
+        <div>
+          <span>{!input ? "0" : input.length}</span>
+          <span>/{long}</span>
+        </div>
+      </>
+    );
+  };
+
   const dashBoardContent = () => {
     if (currentSelectedTab === "basics") {
       return (
@@ -277,8 +308,14 @@ function Project({ everyProject }) {
                       value={title}
                       type="text"
                       placeholder={"The Community Microscope Kit"}
+                      maxLength="60"
                       onChange={(e) => setTitle(e.target.value)}
+                      onFocus={() => setTitleIsFocused(true)}
+                      onBlur={() => setTitleIsFocused(false)}
                     ></input>
+                    <div className={styles.wordCountContainer}>
+                      {titleIsFocused && wordCountHandler(title, 4, 31, 60)}
+                    </div>
                   </div>
                   <br />
                   <div>
@@ -290,8 +327,15 @@ function Project({ everyProject }) {
                         placeholder={
                           "Explore the invisible microscopic world around you with an affordable microscope kit you construct yourself."
                         }
+                        maxLength="135"
                         onChange={(e) => setSubTitle(e.target.value)}
+                        onFocus={() => setSubTitleIsFocused(true)}
+                        onBlur={() => setSubTitleIsFocused(false)}
                       ></textarea>
+                      <div className={styles.wordCountContainer}>
+                        {subTitleIsFocused &&
+                          wordCountHandler(subTitle, 4, 81, 135)}
+                      </div>
                     </div>
                   </div>
                   <div className={styles.impression}>

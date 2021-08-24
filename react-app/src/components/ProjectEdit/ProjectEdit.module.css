@@ -162,10 +162,37 @@
 }
 
 .formInput {
+  box-sizing: border-box;
   width: 100%;
   padding: 12px;
   border: none;
   border: 1px solid rgb(232, 232, 232);
+  outline: none;
+  transition: border 200ms;
+}
+
+.formInput:hover {
+  border: 1px solid rgb(22, 157, 117);
+}
+
+.formInput:focus {
+  border: 1px solid rgb(22, 157, 117);
+}
+
+.formInput::placeholder {
+  color: rgb(182, 182, 182);
+  font-weight: lighter;
+}
+
+.wordCountContainer {
+  height: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding-top: 8px;
+  font-weight: lighter;
+  color: rgb(22, 157, 117);
 }
 
 .inputLabels {
