@@ -1,29 +1,30 @@
-
-
-.menuWrapper{
+.menuWrapper {
   border-top: 1px solid rgb(209, 209, 209);
   border-bottom: 1px solid rgb(209, 209, 209);
   padding: 0 60px;
+  display: flex;
+  justify-content: center;
 }
 
-
-.flexBox{
+.flexBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1246px;
+  width: 100%;
 }
 
-.linkContainer{
+.linkContainer {
   display: flex;
 }
 
-.stickyMenuLink{
+.stickyMenuLink {
   padding: 20px 5px;
   margin: 0px 18px;
   cursor: not-allowed;
 }
 
-.stickyMenuLink:hover{
+.stickyMenuLink:hover {
   text-decoration: underline;
   color: #028858;
 }
