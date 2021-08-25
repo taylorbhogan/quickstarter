@@ -21,9 +21,11 @@ const NavBar = () => {
           <div className={styles.experimentToAlignLinks}>
             <DiscoverModal />
             {/* <NavLink to='/discover' exact={true} className={styles.headerLink}>Discover</NavLink> */}
-            <NavLink to="/learn" className={styles.headerLink}>
-              Start a project
-            </NavLink>
+            <div>
+              <NavLink to="/learn" className={styles.headerLink}>
+                Start a project
+              </NavLink>
+            </div>
           </div>
         </section>
         <section className={styles.navBarCenter}>
