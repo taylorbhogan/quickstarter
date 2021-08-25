@@ -2,7 +2,7 @@ import styles from "./ProjectBuyReward.module.css";
 import { useState } from "react";
 import { createBacking } from "../../../store/backing";
 import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function ProjectBuyReward({
   addABacking,
@@ -17,7 +17,7 @@ function ProjectBuyReward({
 }) {
   const [rewardAmount, setRewardAmount] = useState(0);
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   // this object is just an example
   // reward = {
   //   price: '$10',
@@ -37,9 +37,12 @@ function ProjectBuyReward({
   // }
   const formatDate = (dateObj) => {
     let readyDate = new Date(dateObj);
-    const date = new Intl.DateTimeFormat('en-US', { month: "short", year: 'numeric' }).format(readyDate)
+    const date = new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      year: "numeric",
+    }).format(readyDate);
 
-    return date
+    return date;
   };
 
   const addARewardBacking = async (e) => {
@@ -67,8 +70,7 @@ function ProjectBuyReward({
 
       setRewardAmount(0);
       if (data.newBacking) {
-
-        history.go(0)
+        history.go(0);
       }
 
       // console.log('1234----responseFromStore-------->', data.newBacking);
@@ -79,7 +81,12 @@ function ProjectBuyReward({
   };
 
   return (
-    <div>
+    <div className={styles.container}>
+      {disable && (
+        <div className={styles.overlay}>
+          <div className={styles.overlayText}>Select this reward</div>
+        </div>
+      )}
       <form className={styles.rewardForm}>
         <div className={styles.flexboxColumn}>
           <div className={styles.price}>Pledge {reward.price} or more</div>
@@ -113,8 +120,8 @@ function ProjectBuyReward({
                 //com
                 value={rewardAmount}
                 onChange={(e) => setRewardAmount(e.target.value)}
-              // onChange={(e) => setRewardAmount(e.target.value)}
-              // onChange={(e) => setAmount(rewardAmount)}
+                // onChange={(e) => setRewardAmount(e.target.value)}
+                // onChange={(e) => setAmount(rewardAmount)}
               ></input>
             </div>
           )}
