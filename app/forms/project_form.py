@@ -81,4 +81,3 @@ class CreateProjectRewardForm(FlaskForm):
     description = StringField('description', validators= [DataRequired('Description cannot be empty'), Length(max=1000, message='Description cannot be longer than 1000 characters')])
     title = StringField('title', validators= [DataRequired('Title cannot be empty'), Length(max=60, message='Title cannot be longer than 60 characters')])
     quantity = IntegerField("quantity", validators = [quantity_validator])
-
