@@ -1,10 +1,11 @@
-@import '../../vars.css';
+@import "../../vars.css";
 
 .navBar {
   border: 1px solid var(--borderColor);
   display: flex;
   flex-wrap: nowrap;
-  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   font-size: 14px;
   height: 65px;
   justify-content: space-between;
@@ -42,13 +43,13 @@
   width: 500px;
 }
 
-.experimentToAlignLinks{
+.experimentToAlignLinks {
   display: flex;
   align-items: flex-start;
   padding-top: 11px;
 }
 
-.headerLink:hover{
+.headerLink:hover {
   color: green;
 }
 
@@ -64,7 +65,7 @@
   font-size: 27px;
   letter-spacing: 1px;
   font-weight: bold;
-  font-family: 'Modak', cursive;
+  font-family: "Modak", cursive;
   color: rgb(84, 212, 137);
 }
 
@@ -106,11 +107,17 @@
   margin-left: 18px;
 }
 
+.aboutUsLink {
+  margin-right: 18px;
+  color: inherit;
+}
+
 .discoverButton:hover,
 .projectLink:hover,
 .searchBtn:hover,
 .logInLink:hover,
-.demoBtn:hover {
+.demoBtn:hover,
+.aboutUsLink:hover {
   color: var(--navBarHoverColor);
 }
 
@@ -120,5 +127,5 @@
   font-size: 14px;
   padding: 0;
   margin-bottom: 1px;
-  color: var(--navBarFontColor)
+  color: var(--navBarFontColor);
 }

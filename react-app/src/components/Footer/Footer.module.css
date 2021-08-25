@@ -1,45 +1,45 @@
-.sectionsNavBar{
+.sectionsNavBar {
   display: flex;
   padding-left: 60px;
 }
 
-.sectionLink{
+.sectionLink {
   padding-right: 20px;
 }
 
-.categoriesMenu{
+.categoriesMenu {
   border-top: 1px solid rgb(40, 40, 40);
   border-bottom: 1px solid rgb(220, 222, 221);
   padding: 24px 0;
   margin-bottom: 48px;
 }
 
-.littleWider{
+.littleWider {
   width: 20%;
-
 }
 
-.wider{
+.wider {
   width: 30%;
 }
 
-.linksContainer{
+.linksContainer {
   display: flex;
   justify-content: center;
-  padding: 0 60px
+  padding: 0 60px;
 }
 
-.linkSection{
+.linkSection {
   width: 20%;
 }
-.linksHeader{
+.linksHeader {
   margin-bottom: 12px;
   font-size: 13px;
   color: #282828;
   font-weight: 600;
+  margin-right: 50px;
 }
 
-.links{
+.links {
   font-size: 14px;
   margin-bottom: 7px;
   color: #282828;
@@ -47,19 +47,19 @@
   user-select: none;
 }
 
-.links:hover{
+.links:hover {
   color: green;
   text-decoration: underline;
 }
 
-.graphicLinksContainer{
+.graphicLinksContainer {
   border-bottom: 2px solid rgb(220, 222, 221);
   padding: 48px 60px 48px 60px;
   display: flex;
   justify-content: space-between;
 }
 
-.graphicRight{
+.graphicRight {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -67,20 +67,72 @@
   min-width: 600px;
 }
 
-.logo{
+.logo {
   height: 18px;
   width: 18px;
 }
 
-.bottomLinksWrapper{
+.bottomLinksWrapper {
   padding: 24px 0;
 }
 
-.bottomLinks{
+.bottomLinks {
   display: flex;
   justify-content: space-between;
   padding-left: 60px;
   width: 70%;
   color: #282828;
   font-size: 13px;
+}
+
+.aboutUsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profiles {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.profile {
+  display: flex;
+}
+
+.image {
+  width: 65px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  text-transform: uppercase;
+  color: #282828;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.aboutUsLinks {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.aboutUsLink {
+  font-size: 30px;
+  margin-right: 10px;
+  transition: color 200ms;
+}
+
+.aboutUsLink:hover {
+  color: green;
 }
