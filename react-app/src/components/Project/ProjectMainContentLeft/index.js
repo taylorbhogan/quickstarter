@@ -1,11 +1,11 @@
-import styles from './ProjectMainContentLeft.module.css'
+import styles from "./ProjectMainContentLeft.module.css";
 
-function ProjectMainContentLeft({project}) {
+function ProjectMainContentLeft({ project }) {
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.story}>STORY</div>
     </div>
-  )
+  );
 }
 
-export default ProjectMainContentLeft
+export default ProjectMainContentLeft;

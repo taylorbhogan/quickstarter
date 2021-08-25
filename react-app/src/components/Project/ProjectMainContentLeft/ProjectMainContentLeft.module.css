@@ -1,4 +1,8 @@
-.story{
+.container {
+  width: 8%;
+}
+
+.story {
   padding-bottom: 18px;
   font-size: 13px;
   color: rgb(0, 158, 116);

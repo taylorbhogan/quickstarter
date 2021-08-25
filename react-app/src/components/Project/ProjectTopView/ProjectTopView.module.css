@@ -143,14 +143,14 @@
 .pinkContainerContent {
   max-width: 1246px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .pinkContainerDiv {
   width: 30%;
 }
 .pinkContainerText {
-  width: 80%;
+  width: 100%;
   font-size: 18px;
   font-weight: lighter;
   line-height: 24px;

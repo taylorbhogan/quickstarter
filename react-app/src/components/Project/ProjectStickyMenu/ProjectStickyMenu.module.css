@@ -4,6 +4,10 @@
   padding: 0 60px;
   display: flex;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
 }
 
 .flexBox {
@@ -19,8 +23,8 @@
 }
 
 .stickyMenuLink {
-  padding: 20px 5px;
-  margin: 0px 18px;
+  padding: 20px 0;
+  margin-right: 52px;
   cursor: not-allowed;
 }
 

@@ -1,47 +1,53 @@
 @import "../../../vars.css";
 
-
-.outside{
-  width: 20%;
+.outside {
+  position: sticky;
+  width: 26%;
+  max-height: 90vh;
+  overflow-y: auto;
+  top: 100px;
+  align-self: flex-start;
 }
 
-.support{
+.supportTitle {
   font-size: 21px;
   margin-bottom: 42px;
 }
 
-.noRewardForm{
-  border: 1px solid rgb(155 158 158);
+.noRewardForm {
+  border: 1px solid rgb(217, 219, 218);
   padding: 18px;
   margin-bottom: 20px;
+  margin-right: 20px;
 }
 
-.flexbox{
+.flexbox {
   display: flex;
   flex-direction: column;
 }
 
-.pledge{
+.pledge {
   font-size: 18px;
   color: #282828;
   margin-bottom: 16px;
 }
 
-.inputDiv{
+.inputDiv {
   position: relative;
   margin-bottom: 16px;
 }
 
-.dollahBillsRapper{
+.dollahBillsRapper {
   position: absolute;
   top: 0;
   border-right: 1px solid rgb(220, 222, 221);
   height: 100%;
   width: 40px;
   margin: auto;
+  transition: border-right 200ms;
 }
 
-.dollahBills{
+.dollahBills {
   font-size: 12px;
   color: rgb(110 110 110);
   top: 12px;
@@ -50,28 +56,47 @@
   width: 40px;
 }
 
-.amountInput{
+.amountInput {
   padding: 10px 10px 10px 54px;
   border: 1px solid rgb(220, 222, 221);
-  width: 80%;
+  width: calc(100% - 64px);
+  outline: none;
+  transition: border 200ms;
 }
 
-.believe{
-  background-color: rgb(227	232	248);
-  padding: 18px;
+.amountInput:focus {
+  border: 1px solid green;
+}
+
+.amountInput:hover {
+  border: 1px solid green;
+}
+
+.believe {
+  background: rgb(220, 232, 254);
+  background: linear-gradient(
+    180deg,
+    rgba(220, 232, 254, 1) 0%,
+    rgba(255, 242, 236, 1) 100%
+  );
+  border: 1px solid rgb(220, 232, 254);
+  padding: 24px 18px;
   margin-bottom: 16px;
 }
 
-.backIt{
+.backIt {
   font-size: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: #222222;
+  font-weight: bold;
 }
 
-.support{
+.support {
   font-size: 14px;
   color: #222222;
-
+  line-height: 20px;
+  margin-bottom: 0;
+  font-weight: lighter;
 }
 
 .btn {
