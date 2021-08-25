@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom';
-import { createBacking } from '../../store/backing'
-import { getProjects } from '../../store/project';
-import ProjectTopView from './ProjectTopView';
-import ProjectStickyMenu from './ProjectStickyMenu';
-import ProjectMainContentCenter from './ProjectMainContentCenter';
-import ProjectBottomContent from './ProjectBottomContent';
-import ProjectMainContentLeft from './ProjectMainContentLeft';
-import ProjectMainContentRight from './ProjectMainContentRight';
-import styles from './Project.module.css'
-
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+import { createBacking } from "../../store/backing";
+import { getProjects } from "../../store/project";
+import ProjectTopView from "./ProjectTopView";
+import ProjectStickyMenu from "./ProjectStickyMenu";
+import ProjectMainContentCenter from "./ProjectMainContentCenter";
+import ProjectBottomContent from "./ProjectBottomContent";
+import ProjectMainContentLeft from "./ProjectMainContentLeft";
+import ProjectMainContentRight from "./ProjectMainContentRight";
+import styles from "./Project.module.css";
 
 function Project({ everyProject }) {
   const [project, setProject] = useState({});
@@ -21,11 +20,10 @@ function Project({ everyProject }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const user = useSelector(state => state.session.user);
-
+  const user = useSelector((state) => state.session.user);
 
   if (!everyProject[projectId]) {
-    history.push('/')
+    history.push("/");
   }
   useEffect(() => {
     (async () => {
@@ -35,16 +33,13 @@ function Project({ everyProject }) {
 
       const categoryResponse = await fetch(`/api/categories`);
       const categoryData = await categoryResponse.json();
-      setCategories(categoryData.categories)
-
+      setCategories(categoryData.categories);
     })();
-  }, [projectId])
-
+  }, [projectId]);
 
   useEffect(() => {
-    dispatch(getProjects())
-
-  }, [dispatch])
+    dispatch(getProjects());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!projectId) {
@@ -59,36 +54,34 @@ function Project({ everyProject }) {
   }, [projectId, amount]);
 
   if (!project) {
-    return null
+    return null;
   }
 
   const addABacking = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (amount <= 0) {
-      setAmount(0)
-
+      setAmount(0);
     } else {
-
-      console.log("PROJ ID", projectId)
-      console.log("PROJ ID +", +projectId)
+      console.log("PROJ ID", projectId);
+      console.log("PROJ ID +", +projectId);
       const backing = {
         amount: +amount,
         user_id: user.id,
         project_id: +projectId,
         // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
-        reward_id: e.target.id === '' ? null : +e.target.id
-      }
+        reward_id: e.target.id === "" ? null : +e.target.id,
+      };
 
-      const data = await dispatch(createBacking(backing))
-      const createdBacking = data.newBacking
-      setAmount(0)
+      const data = await dispatch(createBacking(backing));
+      const createdBacking = data.newBacking;
+      setAmount(0);
       // console.log('1234----responseFromStore-------->', createdBacking);
       // if (createdBacking){
       //   do stuff
       // }
     }
-  }
+  };
 
   return (
     <div>
@@ -97,10 +90,7 @@ function Project({ everyProject }) {
         numberOfBackers={numberOfBackers}
         categories={categories}
       />
-      <ProjectStickyMenu
-        user={user}
-        project={project}
-      />
+      <ProjectStickyMenu user={user} project={project} />
       <div className={styles.projectMainContent}>
         <ProjectMainContentLeft project={project} />
         <ProjectMainContentCenter project={project} />
@@ -111,7 +101,6 @@ function Project({ everyProject }) {
           project={project}
           user={user}
           projectId={projectId}
-
         />
       </div>
       <ProjectBottomContent />

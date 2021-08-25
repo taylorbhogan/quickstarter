@@ -1,34 +1,33 @@
 @import "../../../vars.css";
 
-
-.titleDiv{
+.titleDiv {
   font-size: 24px;
   color: #282828;
   margin-bottom: 6px;
   text-align: center;
 }
 
-.subTitleDiv{
+.subTitleDiv {
   font-size: 18px;
   padding-top: 14px;
   padding-bottom: 6px;
   text-align: center;
 }
 
-
-.headerWrapper{
+.headerWrapper {
   margin: 36px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.allProjectTopViewContentWrapper{
+.allProjectTopViewContentWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(251, 251, 251);
 }
-.allProjectTopViewContent{
+.allProjectTopViewContent {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,39 +35,36 @@
   max-width: 1246px;
 }
 
-.topFlexContainer{
+.topFlexContainer {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-.mediaShowcaseContainer{
+.mediaShowcaseContainer {
   width: 50%;
-
 }
-.mediaShowcaseWrapper{
+.mediaShowcaseWrapper {
   padding: 0 18px;
 }
 
-.mediaShowcase{
+.mediaShowcase {
   width: 800px;
 }
 
-
-.image{
+.image {
   width: 100%;
 }
-.projectInfoWrapper{
+.projectInfoWrapper {
   padding: 0 18px;
   width: 30%;
-
 }
 
-.projectInfoFlexColumn{
+.projectInfoFlexColumn {
   margin-bottom: 30px;
 }
 
-.progressBar{
+.progressBar {
   height: 6px;
   width: 100%;
   background-color: rgb(214, 214, 214);
@@ -80,22 +76,21 @@
   background-color: green;
 }
 
-.projectInfoFlexColumnRow{
+.projectInfoFlexColumnRow {
   margin-bottom: 24px;
 }
 
-.currentFunding{
+.currentFunding {
   color: rgb(0, 158, 116);
   font-size: 28px;
-
 }
 
-.bigGrey{
+.bigGrey {
   font-size: 28px;
-  color: rgb(101, 105, 105)
+  color: rgb(101, 105, 105);
 }
 
-.subtext{
+.subtext {
   color: rgb(101, 105, 105);
   font-size: 14px;
 }
@@ -117,12 +112,12 @@
   background-color: var(--primaryButtonColorHover);
 }
 
-.allOrNothing{
+.allOrNothing {
   color: rgb(40, 40, 40);
   font-size: 12px;
 }
 
-.belowShowCaseDiv{
+.belowShowCaseDiv {
   display: flex;
   align-items: center;
   padding: 5px 0;
@@ -130,24 +125,33 @@
   margin-left: 20px;
 }
 
-.belowShowCaseText{
+.belowShowCaseText {
   color: rgb(40, 40, 40);
   font-size: 12px;
   margin-right: 7px;
 }
 
-.pinkContainer{
-  display: flex;
-  justify-content: space-evenly;
-  background-color: rgb(255, 242, 236);
+.pinkContainer {
+  background-color: rgb(246, 242, 236);
   margin-top: 36px;
   padding-top: 36px;
   padding-bottom: 72px;
+  display: flex;
+  justify-content: center;
 }
 
-.pinkContainerDiv{
+.pinkContainerContent {
+  max-width: 1246px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pinkContainerDiv {
   width: 30%;
 }
-.pinkContainerText{
-  width: 80%;
+.pinkContainerText {
+  width: 100%;
+  font-size: 18px;
+  font-weight: lighter;
+  line-height: 24px;
 }

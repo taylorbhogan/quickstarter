@@ -1,23 +1,23 @@
-.label{
+.label {
   font-size: 14px;
   font-weight: 350;
   color: #282828;
   line-height: 24px;
 }
 
-.dashBoardContentAndMenu{
+.dashBoardContentAndMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.wholeMenu{
+.wholeMenu {
   width: 100%;
   position: relative;
 }
 
-.topMenu{
+.topMenu {
   top: -55px;
   height: 55px;
   position: absolute;
@@ -27,7 +27,7 @@
   background-color: white;
 }
 
-.topLeft{
+.topLeft {
   display: flex;
   align-items: center;
 }
@@ -36,31 +36,40 @@
   margin-left: 25px;
   text-decoration: none;
   font-size: 26px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   font-weight: bold;
-  font-family: 'Modak', cursive;
+  font-family: "Modak", cursive;
   color: rgb(84, 212, 137);
 }
 
-.backButton{
+.backButton {
   background: none;
   color: inherit;
   border: none;
   padding: 0;
   margin-left: 25px;
   outline: inherit;
-  font-size: inherit;
-  color: rgb(101, 105, 105);
+  color: rgb(40, 40, 40);
   font-size: 14px;
+  cursor: pointer;
 }
 
-.topRight{
+.backButton:hover {
+  color: rgb(16, 115, 98);
+  text-decoration: underline;
+}
+
+.backButtonIcon {
+  margin-right: 5px;
+}
+
+.topRight {
   display: flex;
   justify-content: space-between;
   width: 21%;
 }
 
-.tabMenuWrapper{
+.tabMenuWrapper {
   display: flex;
   justify-content: center;
   /* padding: 30px; */
@@ -69,64 +78,64 @@
   width: 100%;
 }
 
-.tabMenu{
+.tabMenu {
   display: flex;
   justify-content: space-evenly;
   width: 60%;
   height: 85px;
 }
 
-.tabDiv{
+.tabDiv {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 200px;
+  font-weight: lighter;
 }
 
 .tabDiv div {
   padding-top: 6px;
 }
 
-.oneHundred{
+.oneHundred {
   width: 100%;
 }
 
-.blockWrapper{
+.blockWrapper {
   width: 100%;
   border-top: 1px solid rgb(209, 209, 209);
   padding: 48px 0;
   display: flex;
   justify-content: center;
-
 }
 
-.block{
+.block {
   width: 74%;
   /* margin-top: 20px; */
   display: flex;
   justify-content: space-between;
 }
 
-.blockLeft{
+.blockLeft {
   width: 25%;
 }
 
-.mainInputHeader{
+.mainInputHeader {
   font-size: 18px;
   color: #282828;
   font-weight: 300;
 }
 
-.mainInputSubHeader{
+.mainInputSubHeader {
   font-size: 14px;
   color: #656969;
   line-height: 24px;
   margin-top: 6px;
 }
 
-.blockRightTitle{
+.blockRightTitle {
   width: 57%;
   height: 250px;
   display: flex;
@@ -134,7 +143,7 @@
   justify-content: space-between;
 }
 
-.blockRight{
+.blockRight {
   width: 57%;
   height: 250px;
   display: flex;
@@ -142,33 +151,60 @@
   /* justify-content: space-between; */
 }
 
-.impression{
+.impression {
   color: #037362;
   font-size: 13px;
   cursor: not-allowed;
 }
 
-.learnMore{
+.learnMore {
   text-decoration: underline;
 }
 
-.formInput{
+.formInput {
+  box-sizing: border-box;
   width: 100%;
   padding: 12px;
   border: none;
   border: 1px solid rgb(232, 232, 232);
+  outline: none;
+  transition: border 200ms;
 }
 
-.inputLabels{
+.formInput:hover {
+  border: 1px solid rgb(22, 157, 117);
+}
+
+.formInput:focus {
+  border: 1px solid rgb(22, 157, 117);
+}
+
+.formInput::placeholder {
+  color: rgb(182, 182, 182);
+  font-weight: lighter;
+}
+
+.wordCountContainer {
+  height: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding-top: 8px;
+  font-weight: lighter;
+  color: rgb(22, 157, 117);
+}
+
+.inputLabels {
   margin-bottom: 10px;
 }
 
-.buttonDiv{
+.buttonDiv {
   width: 48%;
   height: 100%;
 }
 
-.saveButton{
+.saveButton {
   border: none;
   color: rgb(255, 255, 255);
   padding: 13px 18px 13px 18px;
@@ -179,9 +215,15 @@
   background-color: rgb(2, 136, 88);
   border: 1px solid rgb(2, 136, 88);
   width: 100%;
+  cursor: pointer;
 }
 
-.cancelButton{
+.saveButton:hover {
+  background-color: rgb(1, 104, 68);
+  border: 1px solid rgb(1, 104, 68);
+}
+
+.cancelButton {
   border: none;
   color: rgb(34, 34, 34);
   padding: 13px 18px 13px 18px;
@@ -192,7 +234,12 @@
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(209, 209, 209);
   width: 100%;
- }
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  border: 1px solid rgb(34, 34, 34);
+}
 
 .saveProjectButton {
   border: none;
@@ -220,22 +267,20 @@
   width: 100px;
 }
 
-.deleteProjectButton:hover, .saveProjectButton:hover,
-.saveButton:hover, .cancelButton:hover, .tabDiv:hover {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 255, .1);
-
+.deleteProjectButton:hover,
+.saveProjectButton:hover {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 255, 0.1);
 }
 
 .projectEditH3 {
   margin-bottom: 5px;
 }
 
-
-.bottomSaveButtonWrapper{
+.bottomSaveButtonWrapper {
   position: relative;
 }
 
-.bottomSaveButton{
+.bottomSaveButton {
   position: absolute;
   left: 83%;
   top: -30px;
@@ -249,7 +294,7 @@
   background-color: rgb(2, 136, 88);
   border: 1px solid rgb(2, 136, 88);
 }
-.bottomDeleteButtonWrapper{
+.bottomDeleteButtonWrapper {
   margin-bottom: 80px;
   position: relative;
 }
@@ -257,7 +302,6 @@
 //////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 @media screen and (max-width: 750px) {
-
   /* .dashBoardContentAndMenu{
     background-color: aliceblue;
   } */
@@ -267,11 +311,11 @@
   } */
 
   .tabDiv {
-   /* background-color: aliceblue; */
+    /* background-color: aliceblue; */
     padding: 10px;
   }
 
-  .cancelButton{
+  .cancelButton {
     font-size: 14px;
     font-weight: 200;
     width: 100%;
@@ -282,21 +326,20 @@
     padding: 0 20px 0 20px;
   }
 
-  .saveButton, .cancelButton{
+  .saveButton,
+  .cancelButton {
     margin-right: 10px;
     font-size: 10px;
     width: 80px;
   }
 
-
-  .projectImageDiv{
+  .projectImageDiv {
     overflow-y: scroll;
     border: 1px solid black;
   }
-
 }
 
-.bottomDeleteButton{
+.bottomDeleteButton {
   border: none;
   position: absolute;
   left: 75%;
@@ -331,73 +374,71 @@
   margin-bottom: 70px;
 }
 
-.headerContainer{
+.headerContainer {
   padding: 72px 0px 66px;
 }
 
-.contentContainer{
+.contentContainer {
   padding: 0 72px;
 }
-.rewardsMenu{
+.rewardsMenu {
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(220, 222, 221);
   margin-bottom: 20px;
 }
 
-.addOnsDiv{
+.addOnsDiv {
   display: flex;
 }
 
-.rewardsMenuHeader{
+.rewardsMenuHeader {
   padding-bottom: 12px;
 }
 
-.rewardsContainerTopContent{
+.rewardsContainerTopContent {
   display: flex;
   justify-content: space-between;
 }
-.rewardsContainerBottomContent{
+.rewardsContainerBottomContent {
   display: flex;
 }
 
-.textDivs{
+.textDivs {
   width: 60%;
 }
 
-.infoDiv{
+.infoDiv {
   margin: 24px 0;
 }
-.learnMore{
+.learnMore {
   margin-top: 18px;
 }
 .newRewardButton {
-border: none;
-color: rgb(255, 255, 255);
-padding: 10.5px 18px;
-box-sizing: border-box;
-font-size: 14px;
-font-weight: 400;
-text-align: center;
-background-color: rgb(2, 136, 88);
-border: 1px solid rgb(2, 136, 88);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10.5px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  background-color: rgb(2, 136, 88);
+  border: 1px solid rgb(2, 136, 88);
 }
 .saveRewardButton {
-border: none;
-color: rgb(255, 255, 255);
-padding: 10.5px 18px;
-box-sizing: border-box;
-font-size: 14px;
-font-weight: 400;
-text-align: center;
-background-color: rgb(2, 136, 88);
-border: 1px solid rgb(2, 136, 88);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10.5px 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  background-color: rgb(2, 136, 88);
+  border: 1px solid rgb(2, 136, 88);
 }
 
-
-
-.rewardPreviewRectangleContainer{
-  background-color: #FBFBFA;
+.rewardPreviewRectangleContainer {
+  background-color: #fbfbfa;
   /* REMOVE THESE HEIGHTS AND WIDTHS WHEN YOU'RE DONE BUILDING */
   height: 344px;
   width: 300px;
@@ -405,29 +446,29 @@ border: 1px solid rgb(2, 136, 88);
   padding: 24px;
 }
 
-.rewardAmountPreview{
+.rewardAmountPreview {
   font-size: 18px;
   margin-bottom: 24px;
 }
-.rewardsTitlePreview{
+.rewardsTitlePreview {
   font-size: 16px;
   margin-bottom: 6px;
 }
-.rewardsDescriptionPreview{
+.rewardsDescriptionPreview {
   font-size: 14px;
   margin-bottom: 24px;
 }
 
-.rewardsPreviewHeader{
+.rewardsPreviewHeader {
   font-size: 10px;
 }
 
-.rewardsPreviewDisplay{
+.rewardsPreviewDisplay {
   margin-bottom: 24px;
 }
 
 /* ///////////////////        PEOPLE               /////////////////////////////////////////// */
 
-.profileContainer{
+.profileContainer {
   display: flex;
 }

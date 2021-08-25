@@ -1,29 +1,34 @@
-
-
-.menuWrapper{
+.menuWrapper {
   border-top: 1px solid rgb(209, 209, 209);
   border-bottom: 1px solid rgb(209, 209, 209);
   padding: 0 60px;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
 }
 
-
-.flexBox{
+.flexBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1246px;
+  width: 100%;
 }
 
-.linkContainer{
+.linkContainer {
   display: flex;
 }
 
-.stickyMenuLink{
-  padding: 20px 5px;
-  margin: 0px 18px;
+.stickyMenuLink {
+  padding: 20px 0;
+  margin-right: 52px;
   cursor: not-allowed;
 }
 
-.stickyMenuLink:hover{
+.stickyMenuLink:hover {
   text-decoration: underline;
   color: #028858;
 }
