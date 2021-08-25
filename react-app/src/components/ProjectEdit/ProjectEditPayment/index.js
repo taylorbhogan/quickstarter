@@ -1,6 +1,16 @@
+import {useSelector} from 'react-redux';
 import paymentStyles from './ProjectEditPayment.module.css'
 
 function ProjectEditPayment() {
+
+  const user = useSelector(state => state.session.user)
+  const email = user.email;
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('Thanks for clicking that button. Eventually we will use it to send emails. Not yet though.');
+  }
+
   return (
     <div className={paymentStyles.pageContainer}>
       <div>
@@ -11,9 +21,20 @@ function ProjectEditPayment() {
         <div className={paymentStyles.blockWrapper}>
           <section className={paymentStyles.block}>
             <div className={paymentStyles.infoContainer}>
-              <div>Contact Email</div>
+              <div className={paymentStyles.mainInputHeader}>Contact Email</div>
+              <div className={paymentStyles.mainInputSubHeader}>Confirm the email address we should use for correspondence about this project.</div>
+              <div className={paymentStyles.mainInputSubHeader}>If the incorrect email is shown here, update it on your account.</div>
             </div>
-            <div className={paymentStyles.standIn}></div>
+            <div>
+              <form
+                onSubmit={handleSubmit}
+                className={paymentStyles.form}>
+                <input
+                  value={email}
+                  className={paymentStyles.input}></input>
+                <button className={paymentStyles.button}>Send verification email</button>
+              </form>
+            </div>
           </section>
         </div>
         <div className={paymentStyles.blockWrapper}>
