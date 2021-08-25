@@ -28,10 +28,6 @@
   color: white;
 }
 
-/* .overlayText {
-  visibility: hidden;
-} */
-
 .flexboxColumn {
   display: flex;
   flex-direction: column;
