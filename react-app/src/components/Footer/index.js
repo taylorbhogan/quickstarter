@@ -6,26 +6,26 @@ import { sections } from "../Section/sectionsData";
 const profiles = [
   {
     name: "Cody Brown",
-    image: "cody.jpeg",
+    image: "/cody.jpeg",
     github: "https://github.com/Code-E-Brown",
     linkedin: "https://www.linkedin.com/in/cody-brown-95b77b1aa/",
   },
   {
     name: "Taylor Hogan",
-    image: "taylor.jpeg",
+    image: "/taylor.jpeg",
     github: "https://github.com/taylorbhogan",
     linkedin: "https://www.linkedin.com/in/taylorbhogan/",
     angellist: "https://angel.co/u/taylor-hogan",
   },
   {
     name: "Torrell Kennedy",
-    image: "torrell.png",
+    image: "/torrell.jpeg",
     github: "https://github.com/tkenned2020",
     linkedin: "https://www.linkedin.com/in/torrell-kennedy-5813b3121/",
   },
   {
     name: "John Michihara",
-    image: "john.jpeg",
+    image: "/john.jpeg",
     github: "https://github.com/john-michihara",
     linkedin: "https://www.linkedin.com/in/john-michihara-305316167/",
   },
