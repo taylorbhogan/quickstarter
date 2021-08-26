@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import onClickOutside from 'react-onclickoutside';
-import styles from './Dropdown.module.css';
+import React, { useState } from "react";
+import onClickOutside from "react-onclickoutside";
+import styles from "./Dropdown.module.css";
 
 function Dropdown({
   placeholder,
@@ -8,7 +8,6 @@ function Dropdown({
   // setFunction
 }) {
   const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState();
   const toggle = () => setOpen(!open);
   Dropdown.handleClickOutside = () => setOpen(false);
 
@@ -29,10 +28,10 @@ function Dropdown({
       <div
         className={styles.header}
         onClick={() => toggle(!open)}
-        style={open ? { border: '1px solid black' } : null}
+        style={open ? { border: "1px solid black" } : null}
       >
         <div>
-          <p>{!selection ? placeholder : selection.name}</p>
+          <p>{placeholder}</p>
         </div>
         <div>
           <i className="fas fa-caret-down"></i>
@@ -59,7 +58,7 @@ function Dropdown({
           </div>
         )
       } */}
-    </div >
+    </div>
   );
 }
 
