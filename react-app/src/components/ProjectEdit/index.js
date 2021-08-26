@@ -27,6 +27,7 @@ function Project({ everyProject }) {
   const [title, setTitle] = useState(project.title);
   const [goal, setGoal] = useState(project.funding_goal);
   const [imageUrl, setImageUrl] = useState(project.project_image_url);
+  const [awsUrl, setAwsUrl] = useState('')
   const [campaignDuration, setCampaignDuration] = useState(
     project.campaign_duration
   );
@@ -132,6 +133,27 @@ function Project({ everyProject }) {
   };
 
   useEffect(() => {
+    // console.log('IF THIS IS', project.project_image_url)
+    if (imageUrl != project.project_image_url) {
+      const formData = new FormData();
+      formData.append("image", imageUrl)
+      console.log(formData.get('image'));
+      (async () => {
+
+        const response = await fetch('/api/images', {
+          method: 'POST',
+          body: formData
+        })
+        const url = await response.json()
+        console.log(url, 'HERE IS YOUR URL!!!!!')
+        setAwsUrl(url.url)
+      })()
+    }
+
+
+  }, [imageUrl])
+
+  useEffect(() => {
     (async () => {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
@@ -193,8 +215,9 @@ function Project({ everyProject }) {
     e.preventDefault();
 
     // const errors = [];
-    // console.log("HERE IS YOUR DODO", subCategory)
-
+    // const formData = new FormData();
+    // formData.append("image", imageUrl);
+    // console.log(formData.get('image'), "!!!!!!!!!!************$$$$$$$$$$$$$$$$")
     const newProject = {
       ...project,
       user_id: user.id,
@@ -203,11 +226,12 @@ function Project({ everyProject }) {
       category_id: +categoryId,
       sub_category_id: subCategory === "" ? null : +subCategory,
       country_id: countryId,
-      project_image_url: imageUrl,
+      project_image_url: awsUrl ? awsUrl : imageUrl,
+      // project_image_url: awsUrl,
       campaign_duration:
         campaignDuration === "" ||
-        campaignDuration === null ||
-        campaignDuration < 0
+          campaignDuration === null ||
+          campaignDuration < 0
           ? null
           : +campaignDuration,
       funding_goal: goal === "" || goal === null || goal <= 0 ? 0 : +goal,
@@ -219,6 +243,9 @@ function Project({ everyProject }) {
     // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', subCategory)
     // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
     // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
+
+
+
     let editedProject = await dispatch(editProject(newProject));
     if (editedProject) {
       setErrors(editedProject);
@@ -243,6 +270,11 @@ function Project({ everyProject }) {
     }
   };
 
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImageUrl(file);
+  }
+
   const [titleIsFocused, setTitleIsFocused] = useState(false);
   const [subTitleIsFocused, setSubTitleIsFocused] = useState(false);
 
@@ -261,10 +293,7 @@ function Project({ everyProject }) {
       }
     }
 
-    const updateImage = (e) => {
-      const file = e.target.files[0];
-      setImage(file);
-  }
+
 
     return (
       <>
