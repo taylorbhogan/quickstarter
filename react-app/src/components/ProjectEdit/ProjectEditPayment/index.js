@@ -99,9 +99,9 @@ function ProjectEditPayment() {
               <div className={paymentStyles.greenText}>
                 <span><i class="fas fa-lightbulb"></i></span>
                 <span>
-                  {" "}
+                  {' '}
                   Confirming your identity and meeting eligibility requirements help keep Kickstarter safe.
-                  {" "}
+                  {' '}
                 </span>
                 <span className={paymentStyles.learnMore}>Learn more...</span>
               </div>
