@@ -25,6 +25,14 @@
 
 }
 
+.mainInputSubHeaderAllow{
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 310;
+  color: black;
+  line-height: 24px;
+}
+
 .mainInputSubHeader{
   font-size: 14px;
   color: #656969;
@@ -36,7 +44,7 @@
 .blockWrapper{
   width: 100%;
   border-top: 1px solid rgb(209, 209, 209);
-  padding: 48px 0;
+  padding: 55px 0;
   display: flex;
   justify-content: center;
 
@@ -47,10 +55,100 @@
   justify-content: space-between;
 }
 
-.standIn{
+.locked{
+  width: 700px;
+  background-color: #FBFBFA;
+  border: 1px solid rgb(232, 232, 232);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 24px;
+}
+
+.lock{
+  padding-bottom: 18px;
+  font-size: 12px;
+}
+
+.unlock{
+  font-size: 18px;
+  font-weight: 320;
+  color: rgb(40, 40, 40);
+  line-height: 24px;
+
+}
+
+.lockedContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.greenText{
+  color: #037362;
+  font-size: 13px;
+  font-weight: 300;
+  cursor: not-allowed;
+  margin-top: 10px;
+  margin-left: 7px;
+  width: 100%;
+}
+
+.greenLink{
+  color: rgb(0, 158, 116);
+  font-weight: 300;
+}
+.greenLink:hover{
+  color: black;
+}
+.applicableLink{
+  color: rgb(0, 158, 116);
+  font-weight: 300;
+  cursor: not-allowed;
+}
+.applicableLink:hover{
+  color: black;
+}
+
+.learnMore{
+  text-decoration: underline;
+}
+
+.form{
   width: 700px;
   height: 120px;
-  background-color: rgb(210 210 210);
+  display: flex;
+  flex-direction: column;
+}
+
+.input{
+  padding: 12px;
+  background-color: rgb(251, 251, 250);
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: none;
+  line-height: 21px;
+  cursor: not-allowed;
+  text-emphasis-color: red;
+
+}
+
+input:focus{
+  outline: none;
+}
+
+.button{
+  line-height: 21px;
+  padding: 10.5px 18px;
+  color: rgb(34, 34, 34);
+  cursor: pointer;
+  border: none;
+  border-radius: none;
+  background-color: #D1D1D1;
+}
+
+.button:hover{
+  background-color: rgb(105, 105, 105);
+  color: rgb(255, 255, 255);
 }
 
 .infoContainer{
