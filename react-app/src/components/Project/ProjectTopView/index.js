@@ -130,7 +130,8 @@ function ProjectTopView({project, numberOfBackers, categories}){
                     {/* <div className={styles.bigGrey}>****</div> */}
                     {/* <div className={styles.bigGrey}>{project.created_at}</div>
                     <div className={styles.bigGrey}>{new Date().toString()}</div> */}
-                    <div className={styles.bigGrey}>{daysToGo}</div>
+                    {/* <div className={styles.bigGrey}>{daysToGo}</div> */}
+                    <div className={styles.bigGrey}>{project.campaign_duration}</div>
                     <div className={styles.subtext}>days to go</div>
                   </div>
                 </div>

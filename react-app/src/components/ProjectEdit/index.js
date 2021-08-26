@@ -131,6 +131,14 @@ function Project({ everyProject }) {
 
     }
 
+    const handleChangingGoal = (e) => {
+        if (+e.target.value < 1) {
+            e.target.value = project.funding_goal
+        }
+
+        setGoal(e.target.value)
+    }
+
 
     useEffect(() => {
         (async () => {
@@ -268,7 +276,7 @@ function Project({ everyProject }) {
                                             onChange={(e) => setTitle(e.target.value)}
                                         ></input>
                                     </div>
-                                    <br/>
+                                    <br />
                                     <div>
                                         <div>
                                             <label className={styles.label}>Subtitle</label>
@@ -298,20 +306,20 @@ function Project({ everyProject }) {
                                 </div>
                                 <div className={styles.blockRight}>
                                     <div>
-                                    <div className={styles.inputLabels}><label>Select a Category</label></div>
-                                    <select
-                                        className={styles.formInput}
-                                        value={categoryId}
-                                        onChange={(e) => setCategoryId(e.target.value)}
-                                    >
-                                        {categories.map(category =>
-                                            <option
-                                                value={category.id}
-                                                key={category.id}>{category.name}</option>
-                                        )}
-                                    </select>
+                                        <div className={styles.inputLabels}><label>Select a Category</label></div>
+                                        <select
+                                            className={styles.formInput}
+                                            value={categoryId}
+                                            onChange={(e) => setCategoryId(e.target.value)}
+                                        >
+                                            {categories.map(category =>
+                                                <option
+                                                    value={category.id}
+                                                    key={category.id}>{category.name}</option>
+                                            )}
+                                        </select>
                                     </div>
-                                    <br/>
+                                    <br />
                                     <div className={styles.inputLabels}><label>Select a Sub-Category</label></div>
                                     <select
                                         className={styles.formInput}
@@ -338,7 +346,7 @@ function Project({ everyProject }) {
                                     <div className={styles.mainInputSubHeader}>Enter the location that best describes where your project is based.</div>
                                 </div>
                                 <div className={styles.blockRight}>
-                                <div className={styles.inputLabels}><label>Select a Location</label></div>
+                                    <div className={styles.inputLabels}><label>Select a Location</label></div>
                                     <select
                                         className={styles.formInput}
                                         value={countryId}
@@ -389,7 +397,8 @@ function Project({ everyProject }) {
                                         // type="text"
                                         type="number"
                                         placeholder={'$50,000'}
-                                        onChange={(e) => setGoal(e.target.value)}
+                                        // onChange={(e) => setGoal(e.target.value)}
+                                        onChange={handleChangingGoal}
                                     ></input>
                                 </div>
                             </div>

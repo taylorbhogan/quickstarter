@@ -78,6 +78,7 @@ function ProjectEditStory({ project }) {
             </div>
             {/* <ReactQuill /> */}
             <ReactQuill
+                className={storyStyles.quill}
                 // ref=((el)) => {
                 // quillObj = el;
                 // }
