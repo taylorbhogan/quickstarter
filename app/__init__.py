@@ -15,6 +15,7 @@ from .api.sub_category_routes import sub_category_routes
 from .api.country_routes import country_routes
 from .api.backing_routes import backing_routes
 from .api.reward_routes import reward_routes
+from .api.image_routes import image_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -43,6 +44,7 @@ app.register_blueprint(reward_routes, url_prefix='/api/rewards')
 app.register_blueprint(sub_category_routes, url_prefix='/api/subcategories')
 app.register_blueprint(country_routes, url_prefix='/api/countries')
 app.register_blueprint(backing_routes, url_prefix='/api/backings')
+app.register_blueprint(image_routes, url_prefix='/api/images')
 db.init_app(app)
 Migrate(app, db)
 
@@ -81,4 +83,12 @@ def inject_csrf_token(response):
 def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
+    if path == 'cody.jpeg':
+        return app.send_static_file('cody.jpeg')
+    if path == 'john.jpeg':
+        return app.send_static_file('john.jpeg')
+    if path == 'taylor.jpeg':
+        return app.send_static_file('taylor.jpeg')
+    if path == 'torrell.jpeg':
+        return app.send_static_file('torrell.jpeg')
     return app.send_static_file('index.html')

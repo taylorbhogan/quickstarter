@@ -1,45 +1,70 @@
 @import "../../../vars.css";
 
-.rewardForm{
-  border: 1px solid rgb(155 158 158);
-  padding: 18px;
-  margin-bottom: 20px;
+.container {
+  position: relative;
 }
 
-.flexboxColumn{
+.rewardForm {
+  border: 1px solid rgb(217, 219, 218);
+  padding: 18px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.overlay {
+  position: absolute;
+  width: calc(100% - 20px);
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+  transition: background-color 300ms, color 300ms;
+}
+
+.overlay:hover {
+  background-color: rgba(2, 136, 89, 0.9);
+  color: white;
+}
+
+.flexboxColumn {
   display: flex;
   flex-direction: column;
 }
-.flexbox{
+
+.flexbox {
   display: flex;
 }
 
-.price{
+.price {
   font-size: 18px;
   color: #282828;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.title{
-  font-size: 14px;
-  margin-bottom: 12px;
+.title {
+  font-size: 16px;
+  margin-bottom: 10px;
   color: #222222;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.description{
+.description {
   font-size: 14px;
-  color: #222222;
-  margin-bottom: 12px;
-
+  color: rgb(101, 105, 105);
+  margin-bottom: 20px;
+  line-height: 18px;
 }
 
-.littleHeader{
+.littleHeader {
   font-size: 10px;
   margin-bottom: 10px;
   margin-right: 8px;
+  color: rgb(101, 105, 105);
+  letter-spacing: 0.5px;
 }
-
-
 
 .btn {
   background-color: rgb(2, 136, 88);
@@ -54,11 +79,11 @@
   margin-top: 20px;
 }
 
-.estimatedDelivery{
+.estimatedDelivery {
   font-size: 12px;
   margin-bottom: 8px;
 }
-.shipsTo{
+.shipsTo {
   font-size: 12px;
   /* margin-bottom: 8px; */
 }

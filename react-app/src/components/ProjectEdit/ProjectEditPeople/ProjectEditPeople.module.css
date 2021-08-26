@@ -9,19 +9,21 @@
 .contentContainer{
   display: flex;
   flex-direction: row;
-  align-items: space-between;
+  /* justify-content: space-between; */
   padding: 0 72px;
-
+  width: 100%;
 }
 
 .profileInfo{
-  width: 40%;
+  width: 60%;
+  /* padding-right: 40%; */
 }
 
 .profileContainer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 74%;
 }
 
 
@@ -55,31 +57,70 @@
   margin-top: 6px;
 }
 
+.imageDiv{
+  position: absolute;
+  top: -36px;
+}
 
 
-
-.profileRectangle{
-  width: 50%;
-  /* height: 280px; */
-  border: 1px solid rgb(210 210 210);
-  padding: 24px;
-  margin: 0 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.buttonDiv{
+  width: 100%;
 }
 
 .button {
-  padding: 12px 18px;
+  padding: 10.5px 18px;
   width: 100%;
   height: 44px;
   background: none;
   color: inherit;
   border: none;
   outline: inherit;
-  font-size: inherit;
+  font-size: 14px;
   font-family: inherit;
+  background-color: rgb(70, 70, 70);
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.button:hover{
   background-color: black;
-  color: white;
-  margin: 12px;
+}
+
+.blockWrapper {
+  width: 100%;
+  border-top: 1px solid rgb(209, 209, 209);
+  padding: 48px 0;
+}
+
+.profileRectangle{
+  width: 100%;
+  /* height: 280px; */
+  border: 1px solid rgb(210 210 210);
+  padding: 0 30px 30px 30px;
+  margin: 0 24px 0 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.usernameContainer{
+  width: 100%;
+  padding: 0 0 30px;
+  margin: 76px 0 30px;
+  line-height: 24px;
+  border-bottom: 1px solid rgb(232, 232, 232);
+  color: #282828;
+}
+
+.usernameDiv{
+  width: 100%;
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.projectCreator{
+  width: 100%;
+  font-size: 14px;
+  color: rgb(101, 105, 105);
 }

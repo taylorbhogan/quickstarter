@@ -1,23 +1,92 @@
-import styles from './Footer.module.css'
-import { NavLink } from 'react-router-dom';
-import Dropdown from './Dropdown';
-import { sections } from '../Section/sectionsData'
+import styles from "./Footer.module.css";
+import { NavLink } from "react-router-dom";
+import Dropdown from "./Dropdown";
+import { sections } from "../Section/sectionsData";
+
+const profiles = [
+  {
+    name: "Cody Brown",
+    image: "/cody.jpeg",
+    github: "https://github.com/Code-E-Brown",
+    linkedin: "https://www.linkedin.com/in/cody-brown-95b77b1aa/",
+  },
+  {
+    name: "Taylor Hogan",
+    image: "/taylor.jpeg",
+    github: "https://github.com/taylorbhogan",
+    linkedin: "https://www.linkedin.com/in/taylorbhogan/",
+    angellist: "https://angel.co/u/taylor-hogan",
+  },
+  {
+    name: "Torrell Kennedy",
+    image: "/torrell.jpeg",
+    github: "https://github.com/tkenned2020",
+    linkedin: "https://www.linkedin.com/in/torrell-kennedy-5813b3121/",
+  },
+  {
+    name: "John Michihara",
+    image: "/john.jpeg",
+    github: "https://github.com/john-michihara",
+    linkedin: "https://www.linkedin.com/in/john-michihara-305316167/",
+  },
+];
 
 function Footer() {
-
-  return(
+  return (
     <div>
       <div className={styles.categoriesMenu}>
         <ul className={styles.sectionsNavBar}>
-        {sections.map(section => (
-        <li>
-          <NavLink to={`/sections/${section.id}`} className={styles.sectionLink}>{section.name}</NavLink>
-        </li>
-      ))}
+          {sections.map((section) => (
+            <li>
+              <NavLink
+                to={`/sections/${section.id}`}
+                className={styles.sectionLink}
+              >
+                {section.name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
+      <a name="about-us" />
       <div>
-        <div className={styles.linksContainer}>
+        <div className={styles.aboutUsContainer}>
+          <div className={styles.profiles}>
+            {profiles.map((profile) => (
+              <div className={styles.profile}>
+                <div className={styles.content}>
+                  <div className={styles.name}>{profile.name}</div>
+                  <div className={styles.aboutUsLinks}>
+                    <a
+                      href={profile.github}
+                      className={styles.aboutUsLink}
+                      target="_blank"
+                    >
+                      <i className="fab fa-github-square" />
+                    </a>
+                    <a
+                      href={profile.linkedin}
+                      className={styles.aboutUsLink}
+                      target="_blank"
+                    >
+                      <i className="fab fa-linkedin" />
+                    </a>
+                    <a
+                      href={profile.linkedin}
+                      className={styles.aboutUsLink}
+                      target="_blank"
+                    >
+                      <i className="fab fa-angellist" />
+                    </a>
+                  </div>
+                </div>
+                <img src={profile.image} className={styles.image} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* <div className={styles.linksContainer}>
           <div className={styles.linkSection}>
             <div className={styles.linksHeader}>ABOUT</div>
             <div className={styles.links}>About us</div>
@@ -42,48 +111,44 @@ function Footer() {
             <div className={styles.links}>Mobile apps</div>
             <div className={styles.links}>Research</div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className={styles.graphicLinksContainer}>
         <div className={styles.graphicLeft}>Quickstarter, TYVM © 2021</div>
         <div className={styles.graphicRight}>
           <div className={styles.fassbook}>
             <img
-                alt='fassbook-logo'
-                className={styles.logo}
-                src='https://www.citypng.com/public/uploads/preview/-11595326936asbkomoamd.png'
-                />
+              alt="fassbook-logo"
+              className={styles.logo}
+              src="https://www.citypng.com/public/uploads/preview/-11595326936asbkomoamd.png"
+            />
           </div>
           <div className={styles.instergram}>
             <img
-                alt='instergram-logo'
-                className={styles.logo}
-                src='https://freeiconshop.com/wp-content/uploads/edd/instagram-new-outline.png'
-                />
+              alt="instergram-logo"
+              className={styles.logo}
+              src="https://freeiconshop.com/wp-content/uploads/edd/instagram-new-outline.png"
+            />
           </div>
           <div className={styles.titter}>
             <img
-              alt='titter-logo'
+              alt="titter-logo"
               className={styles.logo}
-              src='https://icon-library.com/images/twitter-bird-vector-icon/twitter-bird-vector-icon-6.jpg'
-              />
+              src="https://icon-library.com/images/twitter-bird-vector-icon/twitter-bird-vector-icon-6.jpg"
+            />
           </div>
           <div className={styles.yewtoob}>
             <img
-                alt='yewtoob-logo'
-                className={styles.logo}
-                src='https://freeiconshop.com/wp-content/uploads/edd/youtube-solid.png'
-                />
+              alt="yewtoob-logo"
+              className={styles.logo}
+              src="https://freeiconshop.com/wp-content/uploads/edd/youtube-solid.png"
+            />
           </div>
           <div className={styles.littleWider}>
-            <Dropdown
-              placeholder={'English'}
-              />
+            <Dropdown placeholder={"English"} />
           </div>
           <div className={styles.wider}>
-            <Dropdown
-              placeholder={'$ US Dollar (USD) '}
-            />
+            <Dropdown placeholder={"$ US Dollar (USD) "} />
           </div>
         </div>
       </div>
@@ -98,7 +163,7 @@ function Footer() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
