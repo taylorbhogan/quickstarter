@@ -87,6 +87,6 @@ def react_root(path):
         return app.send_static_file('john.jpeg')
     if path == 'taylor.jpeg':
         return app.send_static_file('taylor.jpeg')
-    if path == 'torrell.png':
-        return app.send_static_file('torrell.png')
+    if path == 'torrell.jpeg':
+        return app.send_static_file('torrell.jpeg')
     return app.send_static_file('index.html')
