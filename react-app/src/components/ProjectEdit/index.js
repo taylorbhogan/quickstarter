@@ -261,6 +261,11 @@ function Project({ everyProject }) {
       }
     }
 
+    const updateImage = (e) => {
+      const file = e.target.files[0];
+      setImage(file);
+  }
+
     return (
       <>
         <div>
@@ -458,13 +463,14 @@ function Project({ everyProject }) {
                   <div className={styles.inputLabels}>
                     <label>Image</label>
                   </div>
-                  <input
+                  {/* <input
                     className={styles.formInput}
                     value={imageUrl}
                     type="text"
                     placeholder={"enter your image url here"}
                     onChange={(e) => setImageUrl(e.target.value)}
-                  ></input>
+                  ></input> */}
+                  <input type="file" accept="image/*" onChange={updateImage} />
                 </div>
               </div>
             </div>
