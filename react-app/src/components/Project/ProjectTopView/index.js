@@ -31,12 +31,21 @@ function ProjectTopView({ project, numberOfBackers, categories }) {
     return `${percentage.toFixed()}%`;
   };
 
+  // const daysToGo = Math.ceil(
+  //   (new Date(project.created_at).getTime() +
+  //     project.campaign_duration * 86400000 -
+  //     new Date().getTime()) /
+  //     86400000
+  // ).toString();
+
   const daysToGo = Math.floor(
     (new Date(project.created_at).getTime() +
       project.campaign_duration * 86400000 -
       new Date().getTime()) /
       86400000
   ).toString();
+
+
   // const deadline = new Date(
   //   (new Date(project.created_at).getTime() + project.campaign_duration*86400000)
   //   ).toString()
