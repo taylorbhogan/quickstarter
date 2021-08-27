@@ -38,7 +38,7 @@ def get_projects():
             if project['is_live'] is True:
                 # end_date = datetime.now() + timedelta(days=project['campaign_duration'])
                 end_date = project['created_at'] + timedelta(days=project['campaign_duration'])
-                print(end_date)
+                # print(end_date)
                 # print("TEST createdAt", project['created_at'] + timedelta(days=project['campaign_duration']))
                 if datetime.now().strftime("%Y-%m-%d") > end_date.strftime("%Y-%m-%d"):
                     return False
@@ -60,7 +60,7 @@ def get_projects():
     # print("___________________", datetime.now().strftime("%Y-%m-%d") == end_date.strftime("%Y-%m-%d"))
 
     currentlyActive = list(filter(liveFilter, projz))
-    print(currentlyActive)
+    # print(currentlyActive)
     # print("CHECK THESE FOR LIVENESS", len(currentlyActive))
 
 
@@ -78,29 +78,58 @@ def get_project(id):
     #     todaysDate = datetime.now().strftime("%Y-%m-%d")
     #     end_date = datetime.now() + timedelta(days=project['campaign_duration'])
 
-    def durationManager(project):
-        todaysDate = datetime.now().strftime("%Y-%m-%d")
-        if not project.campaign_duration:
-            project.is_live = False
-            project.campaign_duration = 0
-            db.session.add(project)
-            db.session.commit()
-        else:
-            if project.is_live is True:
-                end_date = project.created_at + timedelta(days=project.campaign_duration)
-                if datetime.now().strftime("%Y-%m-%d") < end_date.strftime("%Y-%m-%d"):
-                    project.campaign_duration = abs(datetime.now() - end_date).days
-                    db.session.add(project)
-                    db.session.commit()
-                    # return False
-                else:
-                    project.is_live = False
-                    project.campaign_duration = 0
-                    db.session.add(project)
-                    db.session.commit()
+    # ***********************
+
+    # def durationManager(project):
+    #     todaysDate = datetime.now().strftime("%Y-%m-%d")
+    #     if not project.campaign_duration:
+    #         project.is_live = False
+    #         project.campaign_duration = 0
+    #         db.session.add(project)
+    #         db.session.commit()
+    #     else:
+    #         if project.is_live is True:
+    #             end_date = project.created_at + timedelta(days=project.campaign_duration)
+    #             if datetime.now().strftime("%Y-%m-%d") < end_date.strftime("%Y-%m-%d"):
+    #                 # print(abs(datetime.now() - end_date).days, project.campaign_duration, todaysDate == project.created_at.strftime("%Y-%m-%d"),   'YIP YIP *****************************************')
+    #                 # if (todaysDate == project.created_at.strftime("%Y-%m-%d")):
+    #                 #     return
+    #                     # project.campaign_duration = abs(datetime.now() - end_date).days
 
 
-    durationManager(project)
+    #                     # db.session.add(project)
+    #                     # db.session.commit()
+
+    #                 # if todaysDate == project.created_at.strftime("%Y-%m-%d"):
+
+
+    #                 if (abs(datetime.now() - end_date).days != project.campaign_duration):
+    #                     daysGoneBy = (datetime.now() - project.created_at).days
+
+    #                     date1 = project.created_at + timedelta((end_date - timedelta(days=daysGoneBy) - project.created_at).days)
+    #                     date1Format = date1.strftime("%Y-%m-%d")
+    #                     date2 = end_date - timedelta(days=daysGoneBy)
+    #                     date2Format = date2.strftime("%Y-%m-%d")
+
+    #                     print("!*******************************************", end_date.strftime("%Y-%m-%d") , date1Format, date1Format == date2Format, date1Format != date2Format)
+
+    #                     if end_date.strftime("%Y-%m-%d") != date1Format:
+    #                         project.campaign_duration = project.campaign_duration - daysGoneBy
+
+
+    #                         db.session.add(project)
+    #                         db.session.commit()
+    #                 # return False
+    #             else:
+    #                 project.is_live = False
+    #                 project.campaign_duration = 0
+    #                 db.session.add(project)
+    #                 db.session.commit()
+
+
+    # durationManager(project)
+    # **********************************
+
     # print('**********', project.campaign_duration)
 
     if project:
