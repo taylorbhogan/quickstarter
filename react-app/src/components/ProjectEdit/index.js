@@ -105,6 +105,7 @@ function Project({ everyProject }) {
         let projectToGoLive = {
           ...project,
           is_live: true,
+          created_at: new Date()
         };
         let projectAfterGoLive = await dispatch(editProject(projectToGoLive));
         // console.log("*DID THIS GO LIVE? SHOULD BE YES*", projectAfterGoLive)
@@ -274,7 +275,8 @@ function Project({ everyProject }) {
   const handleDelete = async (projectId) => {
     const deletedProject = await dispatch(deleteProject(projectId));
     if (deletedProject) {
-      history.push(`/ discover`);
+      history.push(`/`);
+      window.scroll(0,0)
     }
   };
 

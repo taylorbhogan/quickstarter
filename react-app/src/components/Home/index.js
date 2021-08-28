@@ -10,6 +10,7 @@ import styles from './Home.module.css';
 const Home = () => {
   const dispatch = useDispatch();
   const projects = useSelector(state => Object.values(state.projects));
+  // const projects = useSelector(state => Object.values(state.projects).filter(project => project.is_live)); USE THIS INSTEAD OF ABOVE IF YOU WANT TO SHOW ONLY LIVE PROJECTS
 
   useEffect(() => {
     dispatch(getProjects())

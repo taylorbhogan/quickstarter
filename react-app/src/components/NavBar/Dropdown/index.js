@@ -13,7 +13,7 @@ function Dropdown() {
   const user = useSelector(state => state.session.user)
   const userId = user.id
   const userProjects = user.projects
-  console.log('userProjects',userProjects)
+  // console.log('userProjects',userProjects)
 
   useEffect(() => {
     if (!userId) {

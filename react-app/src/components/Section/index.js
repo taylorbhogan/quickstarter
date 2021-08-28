@@ -17,8 +17,10 @@ const Section = () => {
   const [section] = sections.filter(section => {
     return section.id === parseInt(id);
   });
+
   const filteredProjects = filterProjectsBySection(parseInt(id), projects);
-  console.log(filteredProjects)
+  // const filteredProjects = filterProjectsBySection(parseInt(id), projects).filter(project => project.is_live); USE THIS INSTEAD OF ABOVE IF YOU WANT TO SHOW ONLY LIVE PROJECTS
+  // console.log(filteredProjects)
 
   useEffect(() => {
     dispatch(getProjects())

@@ -236,6 +236,7 @@ def update_project(id):
         project.title = form['title'].data
         project.story = form['story'].data
         project.is_live = request.json['is_live']
+        project.created_at = request.json['created_at']
         # print('******** AFTER!!!!!!!!!!!!!!!!!!!!', project.to_dict())
 
         db.session.add(project)
