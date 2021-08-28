@@ -168,6 +168,7 @@ function Project({ everyProject }) {
       await dispatch(getCategories());
       await dispatch(getSubCategories());
       await dispatch(getProjectRewards(project));
+      if (project.is_live) setCurrentSelectedTab('rewards')
       await setTitle(project.title);
       await setGoal(project.funding_goal);
       await setImageUrl(project.project_image_url);
@@ -276,7 +277,7 @@ function Project({ everyProject }) {
     const deletedProject = await dispatch(deleteProject(projectId));
     if (deletedProject) {
       history.push(`/`);
-      window.scroll(0,0)
+      window.scroll(0, 0)
     }
   };
 
@@ -648,6 +649,8 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("basics")}
+              // onClick={(e) => setCurrentSelectedTab(!project.is_live ? "basics" : "rewards")} EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
+
               style={tabStyleHandler("basics")}
             >
               <div>✍️</div>
@@ -664,6 +667,9 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               onClick={(e) => setCurrentSelectedTab("story")}
+              // onClick={(e) => setCurrentSelectedTab(!project.is_live ? "story" : "rewards")} EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
+
+
               style={tabStyleHandler("story")}
             >
               <div>📖</div>
