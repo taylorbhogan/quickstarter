@@ -634,7 +634,7 @@ function Project({ everyProject }) {
                 onClick={handleGoLiveButton}
                 className={styles.saveButton}
               >
-                Save
+                Go Live
               </button>
             </div>
           </div>
