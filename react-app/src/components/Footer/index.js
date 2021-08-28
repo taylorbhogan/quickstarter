@@ -37,7 +37,7 @@ function Footer() {
       <div className={styles.categoriesMenu}>
         <ul className={styles.sectionsNavBar}>
           {sections.map((section) => (
-            <li>
+            <li key={section.id}>
               <NavLink
                 to={`/sections/${section.id}`}
                 className={styles.sectionLink}
@@ -53,7 +53,7 @@ function Footer() {
         <div className={styles.aboutUsContainer}>
           <div className={styles.profiles}>
             {profiles.map((profile) => (
-              <div className={styles.profile}>
+              <div key={profile.name} className={styles.profile}>
                 <div className={styles.content}>
                   <div className={styles.name}>{profile.name}</div>
                   <div className={styles.aboutUsLinks}>
