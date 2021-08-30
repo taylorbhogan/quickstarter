@@ -1,0 +1,57 @@
+.background {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.inputsContainer {
+  width: 100%;
+  max-width: 1246px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.inputsContainer span {
+  color: rgb(40, 40, 40);
+  font-size: 21px;
+  margin: 0 10px;
+}
+
+.keywordInput {
+  color: rgb(101, 105, 105);
+  outline: none;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 6px 0px;
+  font-size: 18px;
+  width: fit-content;
+  padding: 10px 15px 10px 18px;
+  text-align: center;
+}
+
+.resultsContainer {
+  width: 100%;
+  max-width: 1246px;
+  margin: 0 auto;
+}
+
+.explore {
+  color: rgb(40, 40, 40);
+  font-size: 22px;
+  margin: 60px 0 30px 0;
+}
+
+.exploreLength {
+  color: rgb(0, 158, 116);
+  font-weight: bold;
+}
+
+.projectsContainer {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 36px;
+  row-gap: 30px;
+}
