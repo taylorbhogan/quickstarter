@@ -18,7 +18,7 @@ const Mission = () => {
               <div className={styles.imageContainer}>
                 <img
                   src="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                  alt="Mission picture"
+                  alt="mission"
                   className={styles.image}
                 />
               </div>

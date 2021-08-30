@@ -11,7 +11,7 @@ function ProjectMainContentRight({
   setAmount,
   project,
 }) {
-  const [rewards, setRewards] = useState([]);
+  // const [rewards, setRewards] = useState([]);
   const [activeRewards, setActiveRewards] = useState([]);
   const [expiredRewards, setExpiredRewards] = useState([]);
   const [futureRewards, setFutureRewards] = useState([]);
@@ -23,8 +23,7 @@ function ProjectMainContentRight({
         `/api/projects/${project.id}/rewards`
       );
       const rewardsData = await rewardsResponse.json();
-      // console.log('rewardsData------------------>', rewardsData);
-      setRewards(rewardsData.rewards);
+      // setRewards(rewardsData.rewards);
       setActiveRewards(rewardsData.activeRewards);
       setExpiredRewards(rewardsData.expiredRewards);
       setFutureRewards(rewardsData.futureRewards);

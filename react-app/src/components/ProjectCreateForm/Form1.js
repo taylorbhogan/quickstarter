@@ -1,8 +1,13 @@
-import { NavLink } from 'react-router-dom';
-import Dropdown from '../Dropdown';
-import styles from './ProjectCreateForm.module.css';
+import Dropdown from "../Dropdown";
+import styles from "./ProjectCreateForm.module.css";
 
-function Form1({ changeStageButton, category, categories, setCategory, setShowProjectAddModal }) {
+function Form1({
+  changeStageButton,
+  category,
+  categories,
+  setCategory,
+setShowProjectAddModal,
+}) {
   return (
     <div>
       <div className={styles.formContainer}>
@@ -11,18 +16,28 @@ function Form1({ changeStageButton, category, categories, setCategory, setShowPr
           <span
             className={styles.logo}
             onClick={() => setShowProjectAddModal(false)}
-            >QUICKSTARTER</span>
+          >
+            QUICKSTARTER
+          </span>
           <div
-          onClick={() => setShowProjectAddModal(false)}
-          className={styles.closeButton}><span><i className="fas fa-long-arrow-alt-left"></i></span></div>
+            onClick={() => setShowProjectAddModal(false)}
+            className={styles.closeButton}
+          >
+            <span>
+              <i className="fas fa-long-arrow-alt-left"></i>
+            </span>
+          </div>
         </div>
         <div className={styles.pageNumber}>1 of 3</div>
         <form className={styles.form}>
           <div className={styles.formContents}>
             <h2>First, let’s get you set up.</h2>
-            <h3>Pick a project category to connect with a specific community. You can always update this later.</h3>
+            <h3>
+              Pick a project category to connect with a specific community. You
+              can always update this later.
+            </h3>
             <Dropdown
-              placeholder='Select a category'
+              placeholder="Select a category"
               items={categories}
               setFunction={setCategory}
             />
@@ -42,30 +57,32 @@ function Form1({ changeStageButton, category, categories, setCategory, setShowPr
               <button
                 // this id is used in changeStageButton in ProjectCreateForm/index.js. to change it, change that function's logic
                 className={styles.next}
-                disabled={category === ''}
+                disabled={category === ""}
                 id={"next"}
                 onClick={changeStageButton}
-              >Next: Project idea</button>
+              >
+                Next: Project idea
+              </button>
             </div>
           </div>
-          <div
-            className={styles.littleTextHolder}
-          >
-            <div
-              className={styles.littleText}
-            >
-              You're required to provide your location, age, national ID, banking and tax information, email, and mailing address to launch a project. By doing so, you also certify that the details you provide are complete and correct. This information is necessary to prevent fraud, comply with the law, and to deliver funds if you reach your funding goal.
+          <div className={styles.littleTextHolder}>
+            <div className={styles.littleText}>
+              You're required to provide your location, age, national ID,
+              banking and tax information, email, and mailing address to launch
+              a project. By doing so, you also certify that the details you
+              provide are complete and correct. This information is necessary to
+              prevent fraud, comply with the law, and to deliver funds if you
+              reach your funding goal.
             </div>
-            <div
-              className={styles.littleText}
-            >
-              Please note: Your ability to edit, hide, or delete a project is limited after you launch a project.
+            <div className={styles.littleText}>
+              Please note: Your ability to edit, hide, or delete a project is
+              limited after you launch a project.
             </div>
           </div>
         </form>
       </div>
-    </div >
-  )
+    </div>
+  );
 }
 
-export default Form1
+export default Form1;

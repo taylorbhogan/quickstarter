@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
 import styles from "./ProjectTopView.module.css";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function ProjectTopView({ project, numberOfBackers, categories }) {
-  const history = useHistory();
   const [countries, setCountries] = useState([]);
   // const [stateDeadline, setStateDeadline] = useState('stateDeadline')
-  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     (async () => {

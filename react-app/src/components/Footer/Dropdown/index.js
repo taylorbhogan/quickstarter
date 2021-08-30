@@ -48,7 +48,7 @@ function Dropdown({
                     <span>{item.name}</span>
                     <span className={styles.checkbox}>{isItemSelected(item) && (
                       <span>
-                        <i class="fas fa-check-circle"></i>
+                        <i className="fas fa-check-circle"/>
                       </span>
                     )}</span>
                   </button>

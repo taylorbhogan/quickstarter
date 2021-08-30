@@ -48,8 +48,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <a name="about-us" />
-      <div>
+      <div id={"about-us"}>
         <div className={styles.aboutUsContainer}>
           <div className={styles.profiles}>
             {profiles.map((profile) => (
@@ -61,6 +60,7 @@ function Footer() {
                       href={profile.github}
                       className={styles.aboutUsLink}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-github-square" />
                     </a>
@@ -68,6 +68,7 @@ function Footer() {
                       href={profile.linkedin}
                       className={styles.aboutUsLink}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-linkedin" />
                     </a>
@@ -75,12 +76,17 @@ function Footer() {
                       href={profile.linkedin}
                       className={styles.aboutUsLink}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-angellist" />
                     </a>
                   </div>
                 </div>
-                <img src={profile.image} className={styles.image} />
+                <img
+                  src={profile.image}
+                  className={styles.image}
+                  alt="avatar"
+                />
               </div>
             ))}
           </div>
