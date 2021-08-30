@@ -15,7 +15,9 @@ function ProjectStickyMenu({ user, project }) {
         </div>
         {project.user_id === user.id && (
           <NavLink to={`/projects/${project.id}/edit`} exact={true}>
-            <button className={styles.btn}>Edit project</button>
+            <button className={styles.btn} onClick={() => {
+              window.scroll(0, 0)
+            }}>Edit project</button>
           </NavLink>
         )}
         {/* <button className={styles.btn}>Back this project</button> */}
