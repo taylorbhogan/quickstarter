@@ -1,10 +1,15 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import RecommendedProject from './RecommendedProject';
-import styles from './Featured.module.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import RecommendedProject from "./RecommendedProject";
+import styles from "./Featured.module.css";
 
-const Recommended3 = ({ projects, openThird, setOpenFirst, setOpenSecond, setOpenThird }) => {
-
+const Recommended3 = ({
+  projects,
+  openThird,
+  setOpenFirst,
+  setOpenSecond,
+  setOpenThird,
+}) => {
   const getRandomNum = (max) => {
     return Math.floor(Math.random() * max);
   };
@@ -24,30 +29,47 @@ const Recommended3 = ({ projects, openThird, setOpenFirst, setOpenSecond, setOpe
 
   return (
     <>
-      {openThird &&
-        (<div className={styles.right}>
+      {openThird && (
+        <div className={styles.right}>
           <h3 className={styles.title}>RECOMMENDED FOR YOU</h3>
           <div className={styles.recommendedContainer}>
-            {projects.length > 0 && getRecommendedProjects(projects, 3).map(project => (
-              <NavLink className={styles.linkWrapper} to={`/projects/${project.id}`}>
-                <RecommendedProject project={project} />
-              </NavLink>
-            ))}
+            {projects.length > 0 &&
+              getRecommendedProjects(projects, 3).map((project) => (
+                <NavLink
+                  className={styles.linkWrapper}
+                  to={`/projects/${project.id}`}
+                >
+                  <RecommendedProject project={project} />
+                </NavLink>
+              ))}
             <div className={styles.pageButtonsContainer}>
-              <span className={styles.pageArrow} onClick={() => handleClick(setOpenSecond, setOpenThird)}>
-                <i class="fas fa-chevron-left"></i>
-              </span>
-              <span className={styles.pageButton} onClick={() => handleClick(setOpenFirst, setOpenThird)}>1</span>
               <span
-                className={styles.pageButton} onClick={() => handleClick(setOpenSecond, setOpenThird)}> 2</span>
+                className={styles.pageArrow}
+                onClick={() => handleClick(setOpenSecond, setOpenThird)}
+              >
+                <i className="fas fa-chevron-left" />
+              </span>
+              <span
+                className={styles.pageButton}
+                onClick={() => handleClick(setOpenFirst, setOpenThird)}
+              >
+                1
+              </span>
+              <span
+                className={styles.pageButton}
+                onClick={() => handleClick(setOpenSecond, setOpenThird)}
+              >
+                {" "}
+                2
+              </span>
               <span className={styles.pageButtonSelected}>3</span>
               <span className={styles.pageArrowOff}>
-                <i class="fas fa-chevron-right"></i>
+                <i className="fas fa-chevron-right" />
               </span>
             </div>
           </div>
-        </div>)
-      }
+        </div>
+      )}
     </>
   );
 };

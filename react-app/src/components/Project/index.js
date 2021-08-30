@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { createBacking } from "../../store/backing";
 import { getProjects } from "../../store/project";
 import ProjectTopView from "./ProjectTopView";
 import ProjectStickyMenu from "./ProjectStickyMenu";
@@ -63,18 +62,16 @@ function Project({ everyProject }) {
     if (amount <= 0) {
       setAmount(0);
     } else {
-      console.log("PROJ ID", projectId);
-      console.log("PROJ ID +", +projectId);
-      const backing = {
-        amount: +amount,
-        user_id: user.id,
-        project_id: +projectId,
-        // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
-        reward_id: e.target.id === "" ? null : +e.target.id,
-      };
+      // const backing = {
+      //   amount: +amount,
+      //   user_id: user.id,
+      //   project_id: +projectId,
+      //   // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
+      //   reward_id: e.target.id === "" ? null : +e.target.id,
+      // };
 
-      const data = await dispatch(createBacking(backing));
-      const createdBacking = data.newBacking;
+      // const data = await dispatch(createBacking(backing));
+      // const createdBacking = data.newBacking;
       setAmount(0);
       // console.log('1234----responseFromStore-------->', createdBacking);
       // if (createdBacking){

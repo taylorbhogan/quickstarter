@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import onClickOutside from 'react-onclickoutside';
-import styles from './Dropdown.module.css';
+import React, { useState } from "react";
+import onClickOutside from "react-onclickoutside";
+import styles from "./Dropdown.module.css";
 
 function Dropdown({ placeholder, items, setFunction, otherSetFunction }) {
   const [open, setOpen] = useState(false);
@@ -11,8 +11,8 @@ function Dropdown({ placeholder, items, setFunction, otherSetFunction }) {
   function handleOnClick(item) {
     setSelection(item);
     setFunction(item.id);
-    if (otherSetFunction !== undefined){
-      otherSetFunction(item.name)
+    if (otherSetFunction !== undefined) {
+      otherSetFunction(item.name);
     }
     toggle();
   }
@@ -28,7 +28,7 @@ function Dropdown({ placeholder, items, setFunction, otherSetFunction }) {
       <div
         className={styles.header}
         onClick={() => toggle(!open)}
-        style={open ? { border: '1px solid black' } : null}
+        style={open ? { border: "1px solid black" } : null}
       >
         <div>
           <p>{!selection ? placeholder : selection.name}</p>
@@ -38,27 +38,27 @@ function Dropdown({ placeholder, items, setFunction, otherSetFunction }) {
         </div>
       </div>
 
-      {
-        open && (
-          <div className={styles.optionsContainer}>
-            <ul className={styles.list}>
-              {items.map(item => (
-                <li key={item.id}>
-                  <button type="button" onClick={() => handleOnClick(item)}>
-                    <span>{item.name}</span>
-                    <span className={styles.checkbox}>{isItemSelected(item) && (
+      {open && (
+        <div className={styles.optionsContainer}>
+          <ul className={styles.list}>
+            {items.map((item) => (
+              <li key={item.id}>
+                <button type="button" onClick={() => handleOnClick(item)}>
+                  <span>{item.name}</span>
+                  <span className={styles.checkbox}>
+                    {isItemSelected(item) && (
                       <span>
-                        <i class="fas fa-check-circle"></i>
+                        <i className="fas fa-check-circle" />
                       </span>
-                    )}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-    </div >
+                    )}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
 
