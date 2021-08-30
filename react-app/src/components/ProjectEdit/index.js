@@ -177,7 +177,8 @@ function Project({ everyProject }) {
       await dispatch(getCategories());
       await dispatch(getSubCategories());
       await dispatch(getProjectRewards(project));
-      // if (project.is_live) setCurrentSelectedTab('rewards') ** USE THIS WHEN IMPLEMENTING GO LIVE LOCKS
+      if (project.is_live) setCurrentSelectedTab('rewards')
+      // ** USE THIS WHEN IMPLEMENTING GO LIVE LOCKS
       await setTitle(project.title);
       await setGoal(project.funding_goal);
       await setImageUrl(project.project_image_url);
@@ -692,8 +693,9 @@ function Project({ everyProject }) {
           <div className={styles.tabMenu}>
             <div
               className={styles.tabDiv}
-              onClick={(e) => setCurrentSelectedTab("basics")}
-              // onClick={(e) => setCurrentSelectedTab(!project.is_live ? "basics" : "rewards")} EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
+              // onClick={(e) => setCurrentSelectedTab("basics")}
+              onClick={(e) => setCurrentSelectedTab(!project.is_live ? "basics" : "rewards")}
+              // EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
 
               style={tabStyleHandler("basics")}
             >
@@ -710,8 +712,9 @@ function Project({ everyProject }) {
             </div>
             <div
               className={styles.tabDiv}
-              onClick={(e) => setCurrentSelectedTab("story")}
-              // onClick={(e) => setCurrentSelectedTab(!project.is_live ? "story" : "rewards")} EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
+              // onClick={(e) => setCurrentSelectedTab("story")}
+              onClick={(e) => setCurrentSelectedTab(!project.is_live ? "story" : "rewards")}
+              // EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
 
 
               style={tabStyleHandler("story")}

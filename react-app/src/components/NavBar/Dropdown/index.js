@@ -14,7 +14,7 @@ function Dropdown() {
 
   const user = useSelector(state => state.session.user)
   const userId = user.id
-  const [userProjects, setUserProjects] = useState(user.projects)
+  const [userProjects, setUserProjects] = useState([])
   // const userProjects = user.projects
   // console.log('userProjects',userProjects)
 
@@ -24,13 +24,13 @@ function Dropdown() {
     }
     (async () => {
       const backingsResponse = await fetch(`/api/backings/users/${userId}`)
-      let quickFixProjectFetch = await fetch('api/projects')
+      let quickFixProjectFetch = await fetch('/api/projects')
       let res = await quickFixProjectFetch.json()
       setUserProjects(res.projects.filter(project => project.user_id === userId))
       const backingsData = await backingsResponse.json();
       setBackings(backingsData.user_backed_projects)
     })();
-  }, [userId]);
+  }, [userId, userProjects]);
 
 
   const newProjectTime = () => {
