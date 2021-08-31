@@ -56,12 +56,12 @@ const Search = () => {
         <div className={styles.explore}>
           Explore{" "}
           <span className={styles.exploreLength}>
-            {projects?.length} projects
+            {projects?.length} {projects?.length !== 1 ? "projects" : "project"}
           </span>
         </div>
         <div className={styles.projectsContainer}>
           {projects?.map((project) => (
-            <div>
+            <div key={project.id}>
               <SearchProject
                 project={project}
                 categories={categories}

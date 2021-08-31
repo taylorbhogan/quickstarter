@@ -28,6 +28,10 @@
   line-height: 24px;
 }
 
+.title:hover {
+  text-decoration: underline;
+}
+
 .subTitleContainer {
   height: 54px;
   overflow: hidden;

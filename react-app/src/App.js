@@ -85,11 +85,6 @@ function App() {
           <Search />
           <Footer />
         </ProtectedRoute>
-        <ProtectedRoute path="/search/:keyword" exact={true}>
-          <NavBar />
-          <Search />
-          <Footer />
-        </ProtectedRoute>
         <Route path="/discover" exact={true}>
           <NavBar />
           <Discover />

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import styles from "./SearchProject.module.css";
 
@@ -42,11 +43,15 @@ const SearchProject = ({ project, categories, subCategories }) => {
 
   return (
     <div className={styles.project}>
-      <img src={project.project_image_url}></img>
+      <NavLink to={`/projects/${project.id}`}>
+        <img src={project.project_image_url} alt="project" />
+      </NavLink>
       <div className={styles.projectDetails}>
         <div className={styles.heightLimit}>
           <div className={styles.titleContainer}>
-            <div className={styles.title}>{project.title}</div>
+            <NavLink to={`/projects/${project.id}`}>
+              <div className={styles.title}>{project.title}</div>
+            </NavLink>
           </div>
           <div className={styles.subTitleContainer}>
             <div className={styles.subTitle}>{project.sub_title}</div>
