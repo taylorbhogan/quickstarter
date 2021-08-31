@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from app.forms import CreateProjectForm, UpdateProjectForm, CreateProjectRewardForm
 from app.models import db, Project, Reward
 from datetime import datetime, timedelta
+import random
 
 
 project_routes = Blueprint('projects', __name__)
@@ -132,8 +133,12 @@ def get_project(id):
                     #         db.session.commit()
                     # # return False
                 else:
-                    project.is_live = False
-                    # project.campaign_duration = 0
+                    # project.is_live = False
+
+                    # project.campaign_duration = 15
+                    project.campaign_duration = random.randrange(30, 60)
+                    project.created_at = datetime.now()
+
                     db.session.add(project)
                     db.session.commit()
 
