@@ -79,7 +79,7 @@
 
 .searchBtn {
   background: none;
-  color: inherit;
+  color: rgb(40, 40, 40);
   border: none;
   padding: 0;
   outline: inherit;
@@ -87,14 +87,10 @@
   font-family: inherit;
   height: 21px;
   margin-right: 20px;
-}
-
-.searchText {
   cursor: pointer;
 }
 
 .searchIcon {
-  cursor: pointer;
   margin-left: 6px;
 }
 

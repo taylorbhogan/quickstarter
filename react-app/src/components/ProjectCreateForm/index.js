@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { createProject } from '../../store/project'
 
 import Form1 from './Form1';
 import Form2 from './Form2';
 import Form3 from './Form3';
-import styles from './ProjectCreateForm.module.css'
 
 function ProjectCreateForm({ setShowProjectAddModal }) {
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
   // TODO: implement error display (see SignUpForm errors.map)
   const [currentStage, setCurrentStage] = useState(1)
   const [country, setCountry] = useState('')

@@ -1,0 +1,82 @@
+.project {
+  border: 1px solid rgb(220, 220, 220);
+}
+
+.project img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.projectDetails {
+  padding: 24px 18px;
+}
+
+.heightLimit {
+  height: 180px;
+}
+
+.titleContainer {
+  overflow: hidden;
+  max-height: 52px;
+}
+
+.title {
+  color: rgb(40, 40, 40);
+  font-size: 18px;
+  margin-bottom: 10px;
+  line-height: 24px;
+}
+
+.title:hover {
+  text-decoration: underline;
+}
+
+.subTitleContainer {
+  height: 54px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.subTitle {
+  color: rgb(105, 105, 105);
+  font-size: 14px;
+  line-height: 26px;
+  text-overflow: ellipsis;
+}
+
+.creator {
+  font-size: 13px;
+  color: rgb(40, 40, 40);
+  margin-bottom: 40px;
+}
+
+.progressBar {
+  height: 3px;
+  width: 100%;
+  background-color: rgb(232, 232, 232);
+  margin-bottom: 20px;
+}
+
+.progress {
+  background-color: rgb(16, 155, 98);
+  height: 100%;
+  width: 100%;
+}
+
+.campaignDetails {
+  font-size: 13px;
+  font-weight: lighter;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+
+.pledge {
+  color: rgb(3, 115, 98);
+}
+
+.category {
+  color: rgb(40, 40, 40);
+  font-size: 13px;
+  font-weight: lighter;
+}

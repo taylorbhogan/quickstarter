@@ -20,7 +20,6 @@ const NavBar = () => {
         <section className={styles.navBarLeft}>
           <div className={styles.experimentToAlignLinks}>
             <DiscoverModal />
-            {/* <NavLink to='/discover' exact={true} className={styles.headerLink}>Discover</NavLink> */}
             <div>
               <NavLink to="/learn" className={styles.headerLink}>
                 Start a project
@@ -34,15 +33,18 @@ const NavBar = () => {
           </NavLink>
         </section>
         <section className={styles.navBarRight}>
+          <NavLink to="/search" className={styles.search}>
+            <button className={styles.searchBtn}>
+              <span className={styles.searchText}>Search</span>
+              <span className={styles.searchIcon}>
+                <i className="fas fa-search" />
+              </span>
+            </button>
+          </NavLink>
           <a href="#about-us" className={styles.aboutUsLink}>
             About us
           </a>
-          {/* <button className={styles.searchBtn}>
-            <span className={styles.searchText}>Search</span>
-            <span className={styles.searchIcon}>
-              <i className="fas fa-search" />
-            </span>
-          </button> */}
+
           {user ? (
             <DropdownOpenButton />
           ) : (
@@ -61,7 +63,6 @@ const NavBar = () => {
           )}
         </section>
       </nav>
-      {/* <SectionsNavBar /> */}
     </>
   );
 };

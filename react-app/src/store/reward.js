@@ -1,58 +1,54 @@
-const SET_REWARDS = 'rewards/SET_REWARDS'
-const REMOVE_ONE_REWARD = 'rewards/REMOVE_ONE_REWARD'
-const ADD_REWARD = 'rewards/ADD_REWARD'
-
+const SET_REWARDS = "rewards/SET_REWARDS";
+const REMOVE_ONE_REWARD = "rewards/REMOVE_ONE_REWARD";
+const ADD_REWARD = "rewards/ADD_REWARD";
 
 const setSingleProjectRewardsInStore = (rewards) => ({
   type: SET_REWARDS,
-  rewards
+  rewards,
 });
 
 const deleteRewardFromStore = (rewardId) => ({
   type: REMOVE_ONE_REWARD,
-  rewardId
-})
-
+  rewardId,
+});
 
 const addRewardToStore = (reward) => ({
   type: ADD_REWARD,
-  reward
-})
+  reward,
+});
 
 const initialState = {};
 
 export const getProjectRewards = (project) => async (dispatch) => {
   // console.log("********you made it here******", project)
-  const response = await fetch(`/api/projects/${project.id}/rewards`)
+  const response = await fetch(`/api/projects/${project.id}/rewards`);
 
   if (response.ok) {
-    const data = await response.json()
+    const data = await response.json();
     // console.log("******this is data*******", data)
-    const rewardsArray = data.rewards
-    dispatch(setSingleProjectRewardsInStore(rewardsArray))
+    const rewardsArray = data.rewards;
+    dispatch(setSingleProjectRewardsInStore(rewardsArray));
   }
-}
-
+};
 
 export const createProjectReward = (project, newReward) => async (dispatch) => {
   // console.log(project, newReward, "****")
   const response = await fetch(`/api/projects/${project.id}/rewards`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      newReward
+      newReward,
     }),
   });
 
-
   const data = await response.json();
   if (data.description) {
-    dispatch(addRewardToStore(data))
+    dispatch(addRewardToStore(data));
   }
 
-  return data
+  return data;
 
   //   const newProjectReward = data.newProject
 
@@ -66,49 +62,48 @@ export const createProjectReward = (project, newReward) => async (dispatch) => {
   // } else {
   //   return ['An error occurred. Please try again.']
   // }
-}
+};
 
 export const deleteProjectReward = (rewardId) => async (dispatch) => {
   const response = await fetch(`/api/rewards/${rewardId}`, {
-    method: 'DELETE'
-  })
+    method: "DELETE",
+  });
 
   if (response.ok) {
-    const data = await response.json()
-    dispatch(deleteRewardFromStore(rewardId))
+    // const data = await response.json();
+    dispatch(deleteRewardFromStore(rewardId));
   }
-}
-
+};
 
 export default function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_REWARDS:
-      newState = {}
+      newState = {};
       action.rewards.forEach((reward) => {
-        newState[reward.id] = reward
-      })
+        newState[reward.id] = reward;
+      });
       return {
         ...state,
-        ...newState
-      }
+        ...newState,
+      };
     case REMOVE_ONE_REWARD:
-      newState = Object.assign({}, state)
-      delete newState[action.rewardId]
+      newState = Object.assign({}, state);
+      delete newState[action.rewardId];
       return {
-        ...newState
-      }
+        ...newState,
+      };
     case ADD_REWARD:
-      newState = {}
-      console.log("HERE IS YOUR ACTION.REWARD.ID", action.reward.id)
-      newState[action.reward.id] = action.reward
-      console.log(newState[action.reward.id])
-      console.log(newState)
-      console.log(state)
+      newState = {};
+      console.log("HERE IS YOUR ACTION.REWARD.ID", action.reward.id);
+      newState[action.reward.id] = action.reward;
+      console.log(newState[action.reward.id]);
+      console.log(newState);
+      console.log(state);
       return {
         ...state,
-        ...newState
-      }
+        ...newState,
+      };
     default:
       return state;
   }

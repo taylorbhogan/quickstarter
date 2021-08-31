@@ -37,7 +37,7 @@ function Footer() {
       <div className={styles.categoriesMenu}>
         <ul className={styles.sectionsNavBar}>
           {sections.map((section) => (
-            <li>
+            <li key={section.id}>
               <NavLink
                 to={`/sections/${section.id}`}
                 className={styles.sectionLink}
@@ -48,12 +48,11 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <a name="about-us" />
-      <div>
+      <div id={"about-us"}>
         <div className={styles.aboutUsContainer}>
           <div className={styles.profiles}>
             {profiles.map((profile) => (
-              <div className={styles.profile}>
+              <div key={profile.name} className={styles.profile}>
                 <div className={styles.content}>
                   <div className={styles.name}>{profile.name}</div>
                   <div className={styles.aboutUsLinks}>
@@ -61,6 +60,7 @@ function Footer() {
                       href={profile.github}
                       className={styles.aboutUsLink}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-github-square" />
                     </a>
@@ -68,6 +68,7 @@ function Footer() {
                       href={profile.linkedin}
                       className={styles.aboutUsLink}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-linkedin" />
                     </a>
@@ -75,12 +76,17 @@ function Footer() {
                       href={profile.linkedin}
                       className={styles.aboutUsLink}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-angellist" />
                     </a>
                   </div>
                 </div>
-                <img src={profile.image} className={styles.image} />
+                <img
+                  src={profile.image}
+                  className={styles.image}
+                  alt="avatar"
+                />
               </div>
             ))}
           </div>

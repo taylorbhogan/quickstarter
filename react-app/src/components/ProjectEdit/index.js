@@ -28,7 +28,7 @@ function Project({ everyProject }) {
   const [title, setTitle] = useState(project.title);
   const [goal, setGoal] = useState(project.funding_goal);
   const [imageUrl, setImageUrl] = useState(project.project_image_url);
-  const [awsUrl, setAwsUrl] = useState('')
+  const [awsUrl, setAwsUrl] = useState("");
   const [campaignDuration, setCampaignDuration] = useState(
     project.campaign_duration
   );
@@ -147,8 +147,8 @@ function Project({ everyProject }) {
     // console.log('IF THIS IS', project.project_image_url)
     if (imageUrl != project.project_image_url) {
       const formData = new FormData();
-      formData.append("image", imageUrl)
-      console.log(formData.get('image'));
+      formData.append("image", imageUrl);
+      console.log(formData.get("image"));
       (async () => {
 
         const response = await fetch('/api/images', {
@@ -159,9 +159,7 @@ function Project({ everyProject }) {
         setAwsUrl(url.url)
       })()
     }
-
-
-  }, [imageUrl])
+  }, [imageUrl]);
 
   useEffect(() => {
     (async () => {
@@ -242,8 +240,8 @@ function Project({ everyProject }) {
       // project_image_url: awsUrl,
       campaign_duration:
         campaignDuration === "" ||
-          campaignDuration === null ||
-          campaignDuration < 0
+        campaignDuration === null ||
+        campaignDuration < 0
           ? null
           : +campaignDuration,
       funding_goal: goal === "" || goal === null || goal <= 0 ? 0 : +goal,
@@ -255,8 +253,6 @@ function Project({ everyProject }) {
     // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', subCategory)
     // console.log('THIS IS THE THING YOU"RE SENDING BACK **************', newProject)
     // TODO: implement the API route to handle the fetch request from editProject in the store in project.js
-
-
 
     let editedProject = await dispatch(editProject(newProject));
     if (editedProject) {
@@ -301,7 +297,7 @@ function Project({ everyProject }) {
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImageUrl(file);
-  }
+  };
 
   const [titleIsFocused, setTitleIsFocused] = useState(false);
   const [subTitleIsFocused, setSubTitleIsFocused] = useState(false);
@@ -320,8 +316,6 @@ function Project({ everyProject }) {
         text = "You've hit the limit.";
       }
     }
-
-
 
     return (
       <>
@@ -402,7 +396,7 @@ function Project({ everyProject }) {
                   </div>
                   <div className={styles.impression}>
                     <span>
-                      <i class="fas fa-lightbulb"></i>
+                      <i className="fas fa-lightbulb" />
                     </span>
                     <span>
                       {" "}

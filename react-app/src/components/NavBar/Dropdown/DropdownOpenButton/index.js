@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import styles from './DropdownOpenButton.module.css'
+import styles from "./DropdownOpenButton.module.css";
 import Dropdown from "..";
 import SmallUserImage from "../../../User/SmallUserImage";
 
 function DropdownOpenButton() {
-
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -19,9 +18,9 @@ function DropdownOpenButton() {
       setShowMenu(false);
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
 
-    return () => document.removeEventListener('click', closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   return (
@@ -29,13 +28,9 @@ function DropdownOpenButton() {
       <button className={styles.accountButton} onClick={openMenu}>
         <SmallUserImage />
       </button>
-      {showMenu && (
-        <Dropdown />
-      )}
+      {showMenu && <Dropdown />}
     </div>
-  )
-
-
-};
+  );
+}
 
 export default DropdownOpenButton;
