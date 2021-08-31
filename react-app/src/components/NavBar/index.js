@@ -19,12 +19,20 @@ const NavBar = () => {
       <nav className={styles.navBar}>
         <section className={styles.navBarLeft}>
           <div className={styles.experimentToAlignLinks}>
-            <DiscoverModal />
+            {/* <DiscoverModal /> */}
             <div>
               <NavLink to="/learn" className={styles.headerLink}>
                 Start a project
               </NavLink>
             </div>
+            <NavLink to="/search" className={styles.search}>
+              <button className={styles.searchBtn}>
+                <span className={styles.searchText}>Search</span>
+                <span className={styles.searchIcon}>
+                  <i className="fas fa-search" />
+                </span>
+              </button>
+            </NavLink>
           </div>
         </section>
         <section className={styles.navBarCenter}>
@@ -33,14 +41,6 @@ const NavBar = () => {
           </NavLink>
         </section>
         <section className={styles.navBarRight}>
-          <NavLink to="/search" className={styles.search}>
-            <button className={styles.searchBtn}>
-              <span className={styles.searchText}>Search</span>
-              <span className={styles.searchIcon}>
-                <i className="fas fa-search" />
-              </span>
-            </button>
-          </NavLink>
           <a href="#about-us" className={styles.aboutUsLink}>
             About us
           </a>

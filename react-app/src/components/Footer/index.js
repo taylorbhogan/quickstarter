@@ -9,6 +9,7 @@ const profiles = [
     image: "/cody.jpeg",
     github: "https://github.com/Code-E-Brown",
     linkedin: "https://www.linkedin.com/in/cody-brown-95b77b1aa/",
+    angellist: "https://angel.co/u/cody-brown-10",
   },
   {
     name: "Taylor Hogan",
@@ -28,6 +29,7 @@ const profiles = [
     image: "/john.jpeg",
     github: "https://github.com/john-michihara",
     linkedin: "https://www.linkedin.com/in/john-michihara-305316167/",
+    angellist: "https://angel.co/u/john-michihara",
   },
 ];
 
@@ -72,14 +74,16 @@ function Footer() {
                     >
                       <i className="fab fa-linkedin" />
                     </a>
-                    <a
-                      href={profile.linkedin}
-                      className={styles.aboutUsLink}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <i className="fab fa-angellist" />
-                    </a>
+                    {profile.angellist !== undefined && (
+                      <a
+                        href={profile.angellist}
+                        className={styles.aboutUsLink}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="fab fa-angellist" />
+                      </a>
+                    )}
                   </div>
                 </div>
                 <img

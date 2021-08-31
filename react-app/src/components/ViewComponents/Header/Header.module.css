@@ -39,5 +39,5 @@
 }
 
 .link:hover {
-  cursor: pointer;
+  cursor: not-allowed;
 }

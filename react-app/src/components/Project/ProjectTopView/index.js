@@ -41,7 +41,6 @@ function ProjectTopView({ project, numberOfBackers, categories }) {
       86400000
   ).toString();
 
-
   // const deadline = new Date(
   //   (new Date(project.created_at).getTime() + project.campaign_duration*86400000)
   //   ).toString()
@@ -128,7 +127,7 @@ function ProjectTopView({ project, numberOfBackers, categories }) {
                 <div>
                   <span className={styles.belowShowCaseIcon}></span>
                   <span className={styles.belowShowCaseText}>
-                    {countries[project.country_id]?.name}
+                    {countries[project.country_id - 1]?.name}
                   </span>
                 </div>
               </div>
@@ -167,9 +166,9 @@ function ProjectTopView({ project, numberOfBackers, categories }) {
                       {/* <div className={styles.bigGrey}>****</div> */}
                       {/* <div className={styles.bigGrey}>{project.created_at}</div>
                     <div className={styles.bigGrey}>{new Date().toString()}</div> */}
-                    <div className={styles.bigGrey}>{daysToGo}</div>
-                    {/* <div className={styles.bigGrey}>{project.campaign_duration}</div> */}
-                    <div className={styles.subtext}>days to go</div>
+                      <div className={styles.bigGrey}>{daysToGo}</div>
+                      {/* <div className={styles.bigGrey}>{project.campaign_duration}</div> */}
+                      <div className={styles.subtext}>days to go</div>
                     </div>
                   </div>
 

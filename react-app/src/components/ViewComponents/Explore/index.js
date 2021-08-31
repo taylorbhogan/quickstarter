@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import ExploreProject from "./ExploreProject";
 import styles from "./Explore.module.css";
 
 // Not functional, but looks like it is!
 
 const Explore = ({ projects, section }) => {
+  const [selected, setSelected] = useState(section.categories[0]);
+
   const randomProject = () => {
     return projects[Math.floor(Math.random() * projects.length)];
   };
@@ -15,7 +17,13 @@ const Explore = ({ projects, section }) => {
       <div className={styles.projectsContainer}>
         <div>
           {section.categories.map((category) => (
-            <div key={category} className={styles.button}>
+            <div
+              key={category}
+              className={`${styles.button} ${
+                category === selected && styles.selected
+              }`}
+              onClick={() => setSelected(category)}
+            >
               {category}
             </div>
           ))}
