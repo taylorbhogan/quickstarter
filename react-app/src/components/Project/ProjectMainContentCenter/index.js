@@ -6,8 +6,8 @@ function ProjectMainContentCenter({ project }) {
       <div className={styles.storyDiv}>
         <div className={styles.storyHeader}>Story</div>
         {/* <div>{project.story}</div> */}
-        {/* <div dangerouslySetInnerHTML={{ __html: project.story }}></div> */}
-        <div style={{fontSize: '40px'}}>
+        <div dangerouslySetInnerHTML={{ __html: project.story }}></div>
+        {/* <div style={{fontSize: '40px'}}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis
           sem vehicula elit dapibus maximus. In lobortis tellus ante, vitae
           scelerisque nibh venenatis sit amet. Nunc congue euismod scelerisque.
@@ -62,7 +62,7 @@ function ProjectMainContentCenter({ project }) {
           mattis metus. Nam odio neque, finibus sit amet urna ut, pretium dictum
           odio. Proin risus magna, aliquam at elit suscipit, luctus finibus ex.
           Maecenas nec sem velit.
-        </div>
+        </div> */}
       </div>
     </div>
   );
