@@ -147,6 +147,7 @@ function Project() {
         if (deletedProject) {
             history.push(`/discover`);
         }
+
     }
 
     return (

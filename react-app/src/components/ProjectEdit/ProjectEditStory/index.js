@@ -57,6 +57,43 @@ function ProjectEditStory({ project }) {
       // }, 2000)
       history.push(`/projects/${editedProject.id}`);
     }
+<<<<<<< HEAD
+    // let formats = [
+    //     'bold', 'italic', 'underline', 'strike', 'blockquote',
+    //     'list', 'bullet', 'indent',
+    //     'link', 'image',
+    // ];
+    // let quillObj;
+
+    return (
+        <div className={storyStyles.storyContainer}>
+            <div>
+                <div className={storyStyles.title}>Enter your story</div>
+            </div>
+            {/* <ReactQuill /> */}
+            <ReactQuill
+                className={storyStyles.quill}
+                // ref=((el)) => {
+                // quillObj = el;
+                // }
+                modules={{
+                    toolbar: [
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                        [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+                        ['link', 'image'],
+                        ['clean'],
+                    ],
+                    // imageDrop: true,
+                }}
+                value={storyInnerHTML}
+                onChange={e => setStoryInnerHTML(e)}
+                formats={['bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent', 'link', 'image', "header"]}
+                placeholder="Write about your project like you're explaining it to a friend..."
+            />
+
+            {/* <ReactQuill
+=======
     history.go(0);
   };
   // let formats = [
@@ -110,6 +147,7 @@ function ProjectEditStory({ project }) {
       />
 
       {/* <ReactQuill
+>>>>>>> main
                 ref={(el) => {
                     quillObj = el;
                 }}

@@ -27,12 +27,21 @@ function ProjectTopView({ project, numberOfBackers, categories }) {
     return `${percentage.toFixed()}%`;
   };
 
+  // const daysToGo = Math.ceil(
+  //   (new Date(project.created_at).getTime() +
+  //     project.campaign_duration * 86400000 -
+  //     new Date().getTime()) /
+  //     86400000
+  // ).toString();
+
   const daysToGo = Math.floor(
     (new Date(project.created_at).getTime() +
       project.campaign_duration * 86400000 -
       new Date().getTime()) /
       86400000
   ).toString();
+
+
   // const deadline = new Date(
   //   (new Date(project.created_at).getTime() + project.campaign_duration*86400000)
   //   ).toString()
@@ -158,8 +167,9 @@ function ProjectTopView({ project, numberOfBackers, categories }) {
                       {/* <div className={styles.bigGrey}>****</div> */}
                       {/* <div className={styles.bigGrey}>{project.created_at}</div>
                     <div className={styles.bigGrey}>{new Date().toString()}</div> */}
-                      <div className={styles.bigGrey}>{daysToGo}</div>
-                      <div className={styles.subtext}>days to go</div>
+                    <div className={styles.bigGrey}>{daysToGo}</div>
+                    {/* <div className={styles.bigGrey}>{project.campaign_duration}</div> */}
+                    <div className={styles.subtext}>days to go</div>
                     </div>
                   </div>
 

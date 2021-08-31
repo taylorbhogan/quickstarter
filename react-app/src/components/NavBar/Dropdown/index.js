@@ -1,28 +1,36 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useHistory, NavLink } from "react-router-dom";
-import LogoutButton from "../../auth/LogoutButton";
-import styles from "./Dropdown.module.css";
-import DropdownProjectLink from "./DropdownProjectLink";
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux'
+import { useHistory, NavLink } from 'react-router-dom';
+import LogoutButton from '../../auth/LogoutButton';
+import styles from './Dropdown.module.css'
+import DropdownProjectLink from './DropdownProjectLink';
+
 
 function Dropdown() {
   const history = useHistory();
-  const [backings, setBackings] = useState([]);
+  const [backings, setBackings] = useState([])
 
-  const user = useSelector((state) => state.session.user);
-  const userId = user.id;
-  const userProjects = user.projects;
+
+
+  const user = useSelector(state => state.session.user)
+  const userId = user.id
+  const [userProjects, setUserProjects] = useState([])
+  // const userProjects = user.projects
+  // console.log('userProjects',userProjects)
 
   useEffect(() => {
     if (!userId) {
       return;
     }
     (async () => {
-      const backingsResponse = await fetch(`/api/backings/users/${userId}`);
+      const backingsResponse = await fetch(`/api/backings/users/${userId}`)
+      let quickFixProjectFetch = await fetch('/api/projects')
+      let res = await quickFixProjectFetch.json()
+      setUserProjects(res.projects.filter(project => project.user_id === userId))
       const backingsData = await backingsResponse.json();
       setBackings(backingsData.user_backed_projects);
     })();
-  }, [userId]);
+  }, [userId, userProjects]);
 
   const newProjectTime = () => {
     history.push("/learn");
@@ -83,11 +91,11 @@ function Dropdown() {
             </div>
           </button>
         </section>
-      </div>
+      </div >
       <section className={styles.bottom}>
         <LogoutButton />
       </section>
-    </div>
+    </div >
   );
 }
 

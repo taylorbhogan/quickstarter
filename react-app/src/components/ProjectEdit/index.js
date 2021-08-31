@@ -18,6 +18,7 @@ function Project({ everyProject }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
+  const [confirmGoLive, setConfirmGoLive] = useState('')
 
   const [project, setProject] = useState("");
   const [subTitle, setSubTitle] = useState(project.sub_title);
@@ -33,7 +34,7 @@ function Project({ everyProject }) {
   );
   const [saveProjectButtonText, setSaveProjectButtonText] = useState("Save");
   const [deleteProjectButtonText, setDeleteProjectButtonText] =
-    useState("Delete");
+    useState("Delete Project");
 
   const [currentSelectedTab, setCurrentSelectedTab] = useState("basics");
 
@@ -102,13 +103,23 @@ function Project({ everyProject }) {
       if (errors.length) {
         setGoLiveErrors(errors);
       } else {
-        let projectToGoLive = {
-          ...project,
-          is_live: true,
-        };
-        let projectAfterGoLive = await dispatch(editProject(projectToGoLive));
-        // console.log("*DID THIS GO LIVE? SHOULD BE YES*", projectAfterGoLive)
-        history.push(`/projects/${projectToGoLive.id}`);
+
+        if (confirmGoLive === 'Confirm') {
+
+          let projectToGoLive = {
+            ...project,
+            is_live: true,
+            created_at: new Date()
+          };
+          let projectAfterGoLive = await dispatch(editProject(projectToGoLive));
+          // console.log("*DID THIS GO LIVE? SHOULD BE YES*", projectAfterGoLive)
+          history.push(`/projects/${projectToGoLive.id}`);
+        } else {
+          setConfirmGoLive('Confirm')
+          setTimeout(() => {
+            setConfirmGoLive('')
+          }, 10000)
+        }
       }
     })();
   };
@@ -139,14 +150,14 @@ function Project({ everyProject }) {
       formData.append("image", imageUrl);
       console.log(formData.get("image"));
       (async () => {
-        const response = await fetch("/api/images", {
-          method: "POST",
-          body: formData,
-        });
-        const url = await response.json();
-        console.log(url, "HERE IS YOUR URL!!!!!");
-        setAwsUrl(url.url);
-      })();
+
+        const response = await fetch('/api/images', {
+          method: 'POST',
+          body: formData
+        })
+        const url = await response.json()
+        setAwsUrl(url.url)
+      })()
     }
   }, [imageUrl]);
 
@@ -164,6 +175,8 @@ function Project({ everyProject }) {
       await dispatch(getCategories());
       await dispatch(getSubCategories());
       await dispatch(getProjectRewards(project));
+      if (project.is_live) setCurrentSelectedTab('rewards')
+      // ** USE THIS WHEN IMPLEMENTING GO LIVE LOCKS
       await setTitle(project.title);
       await setGoal(project.funding_goal);
       await setImageUrl(project.project_image_url);
@@ -258,10 +271,26 @@ function Project({ everyProject }) {
     }
   };
 
+  const handleChangingGoal = (e) => {
+    if (+e.target.value < 1) {
+      e.target.value = project.funding_goal
+    }
+
+    setGoal(e.target.value)
+  }
+
   const handleDelete = async (projectId) => {
-    const deletedProject = await dispatch(deleteProject(projectId));
-    if (deletedProject) {
-      history.push(`/ discover`);
+    if (deleteProjectButtonText === 'Confirm') {
+      const deletedProject = await dispatch(deleteProject(projectId));
+      if (deletedProject) {
+        history.push(`/`);
+        window.scroll(0, 0)
+      }
+    } else {
+      setDeleteProjectButtonText('Confirm')
+      setTimeout(() => {
+        setDeleteProjectButtonText('Delete Project')
+      }, 10000)
     }
   };
 
@@ -517,7 +546,7 @@ function Project({ everyProject }) {
                     // type="text"
                     type="number"
                     placeholder={"$50,000"}
-                    onChange={(e) => setGoal(e.target.value)}
+                    onChange={handleChangingGoal}
                   ></input>
                 </div>
               </div>
@@ -554,12 +583,12 @@ function Project({ everyProject }) {
             </div>
           </form>
           <div className={styles.bottomDeleteButtonWrapper}>
-            <button
+            {/* <button
               onClick={() => handleDelete(projectId)}
               className={styles.bottomDeleteButton}
             >
               {deleteProjectButtonText}
-            </button>
+            </button> */}
           </div>
         </div>
       );
@@ -605,21 +634,49 @@ function Project({ everyProject }) {
               </button>
             </div>
           </div>
-          <div className={styles.topRight}>
-            <div className={styles.buttonDiv}>
-              <Link to="/">
-                <button className={styles.cancelButton}>Cancel</button>
-              </Link>
-            </div>
+          <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
 
-            <div className={styles.buttonDiv}>
-              <button
-                onClick={handleGoLiveButton}
-                className={styles.saveButton}
-              >
-                Save
-              </button>
+
+            {deleteProjectButtonText === 'Confirm' &&
+              <div className={styles.impression} style={{ marginBottom: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span>
+                  <i class="fas fa-lightbulb"></i>
+                </span>
+                <span style={{ marginLeft: '3px' }}>
+                  {" "}
+                  Are you sure? This action will permanently delete your project. Click to confirm. {" "}
+                </span>
+              </div>
+            }
+            {confirmGoLive === "Confirm" &&
+              <div className={styles.impression} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span>
+                  <i class="fas fa-lightbulb"></i>
+                </span>
+                <span style={{ marginLeft: '3px' }}>
+                  {" "}
+                  Ready to go live? You will no longer be able to edit project Basics/Story. You will maintain access to Rewards. Click to confirm! {" "}
+                </span>
+              </div>
+            }
+          </div>
+          <div className={styles.topRight}>
+            <div className={styles.buttonDiv} style={project.is_live ? { width: '100%' } : null}>
+              {/* <Link to="/"> */}
+              <button className={styles.cancelButton}
+                onClick={() => handleDelete(projectId)}>{deleteProjectButtonText}</button>
+              {/* </Link> */}
             </div>
+            {!project?.is_live &&
+              <div className={styles.buttonDiv}>
+                <button
+                  onClick={handleGoLiveButton}
+                  className={styles.saveButton}
+                >
+                  {confirmGoLive ? 'Confirm' : "Go Live"}
+                </button>
+              </div>
+            }
           </div>
         </div>
         <div>
@@ -630,7 +687,10 @@ function Project({ everyProject }) {
           <div className={styles.tabMenu}>
             <div
               className={styles.tabDiv}
-              onClick={(e) => setCurrentSelectedTab("basics")}
+              // onClick={(e) => setCurrentSelectedTab("basics")}
+              onClick={(e) => setCurrentSelectedTab(!project.is_live ? "basics" : "rewards")}
+              // EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
+
               style={tabStyleHandler("basics")}
             >
               <div>✍️</div>
@@ -646,7 +706,11 @@ function Project({ everyProject }) {
             </div>
             <div
               className={styles.tabDiv}
-              onClick={(e) => setCurrentSelectedTab("story")}
+              // onClick={(e) => setCurrentSelectedTab("story")}
+              onClick={(e) => setCurrentSelectedTab(!project.is_live ? "story" : "rewards")}
+              // EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
+
+
               style={tabStyleHandler("story")}
             >
               <div>📖</div>
@@ -678,6 +742,20 @@ function Project({ everyProject }) {
             </div>
           </div>
         </div>
+        {!project?.is_live &&
+          <div className={styles.noteSection}>
+
+            <div className={styles.impression}>
+              <span>
+                <i class="fas fa-lightbulb"></i>
+              </span>
+              <span>
+                {" "}
+                Note: Your project is not yet live. Your project will not be displayed publicly. {" "}
+              </span>
+            </div>
+          </div>
+        }
       </div>
       {dashBoardContent()}
     </div>
