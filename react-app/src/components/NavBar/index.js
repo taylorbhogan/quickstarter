@@ -33,6 +33,14 @@ const NavBar = () => {
           </NavLink>
         </section>
         <section className={styles.navBarRight}>
+          <NavLink to="/search" className={styles.search}>
+            <button className={styles.searchBtn}>
+              <span className={styles.searchText}>Search</span>
+              <span className={styles.searchIcon}>
+                <i className="fas fa-search" />
+              </span>
+            </button>
+          </NavLink>
           <a href="#about-us" className={styles.aboutUsLink}>
             About us
           </a>

@@ -16,6 +16,7 @@ from .api.country_routes import country_routes
 from .api.backing_routes import backing_routes
 from .api.reward_routes import reward_routes
 from .api.image_routes import image_routes
+from .api.search_routes import search_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -45,6 +46,7 @@ app.register_blueprint(sub_category_routes, url_prefix='/api/subcategories')
 app.register_blueprint(country_routes, url_prefix='/api/countries')
 app.register_blueprint(backing_routes, url_prefix='/api/backings')
 app.register_blueprint(image_routes, url_prefix='/api/images')
+app.register_blueprint(search_routes, url_prefix='/api/search')
 db.init_app(app)
 Migrate(app, db)
 

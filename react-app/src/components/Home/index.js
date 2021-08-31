@@ -4,7 +4,7 @@ import { getProjects } from "../../store/project";
 import Featured from "../ViewComponents/Featured";
 import Mission from "../ViewComponents/Mission";
 import Slides from "../ViewComponents/Slides";
-import Subscribe from "../ViewComponents/Subscribe";
+// import Subscribe from "../ViewComponents/Subscribe";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,10 +19,10 @@ const Home = () => {
       <Featured projects={projects} />
       <Mission />
       <Slides projects={projects} title="FRESH FAVORITES" />
-      <Subscribe
+      {/* <Subscribe
         title="Discover the best and brightest projects on Quickstarter."
         subtitle="Sign up to receive our weekly Projects We Love newsletter."
-      />
+      /> */}
     </>
   );
 };

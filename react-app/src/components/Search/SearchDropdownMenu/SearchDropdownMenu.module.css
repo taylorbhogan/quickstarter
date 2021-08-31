@@ -1,0 +1,21 @@
+.menu {
+  position: absolute;
+  width: 270px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: white;
+  top: 60px;
+  border: 1px solid rgb(40, 40, 40);
+}
+
+.itemContainer {
+  font-size: 14px;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.itemContainer:hover {
+  color: rgb(0, 158, 116);
+}
