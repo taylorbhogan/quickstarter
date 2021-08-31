@@ -48,8 +48,9 @@ function Project({ everyProject }) {
     (async () => {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
-      if (!project.is_live && project.user_id != user.id) return history.push('/')
-      if (!project.is_live && project.user_id === user.id) return history.push(`/projects/${projectId}/edit`)
+      // console.log("*****", !project.is_live)
+      // if (!project.is_live && project.user_id != user.id) return history.push('/')
+      // if (!project.is_live && project.user_id === user.id) return history.push(`/projects/${projectId}/edit`)
 
       setProject(project);
     })();
