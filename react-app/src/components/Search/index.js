@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import SearchDropdown from "./SearchDropdown";
 import SearchProject from "./SearchProject";
 import { getProjectsByKeyword } from "../../store/search";
 import { getCategories } from "../../store/category";
@@ -10,8 +10,6 @@ import styles from "./Search.module.css";
 
 const Search = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { keyword } = useParams();
 
   const projects = useSelector((state) => Object.values(state.search));
   const categories = useSelector((state) => Object.values(state.categories));
@@ -19,17 +17,17 @@ const Search = () => {
     Object.values(state.subCategories)
   );
 
-  const [inputKeyword, setInputKeyword] = useState("" || keyword);
+  const [inputKeyword, setInputKeyword] = useState("");
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
   useEffect(() => {
-    dispatch(getProjectsByKeyword(keyword));
     dispatch(getCategories());
     dispatch(getSubCategories());
-  }, [dispatch, keyword]);
+  }, [dispatch]);
 
   useEffect(() => {
-    history.push(`/search/${inputKeyword}`);
-  }, [inputKeyword]);
+    dispatch(getProjectsByKeyword(inputKeyword, +selectedCategoryId));
+  }, [dispatch, inputKeyword, selectedCategoryId]);
 
   return (
     <>
@@ -41,12 +39,17 @@ const Search = () => {
             value={inputKeyword}
             onChange={(e) => setInputKeyword(e.target.value)}
             className={styles.keywordInput}
-            le
-            style={{ width: inputKeyword.length + "ch" }}
+            style={{
+              width: inputKeyword ? inputKeyword.length + 3 + "ch" : "4ch",
+            }}
             autoFocus
           />
           <span>projects in</span>
-          <input type="select" />
+          <SearchDropdown
+            categories={categories}
+            selectedCategoryId={selectedCategoryId}
+            setSelectedCategoryId={setSelectedCategoryId}
+          />
         </div>
       </div>
       <div className={styles.resultsContainer}>

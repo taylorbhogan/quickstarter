@@ -80,6 +80,11 @@ function App() {
           <Learn />
           <Footer />
         </ProtectedRoute>
+        <ProtectedRoute path="/search" exact={true}>
+          <NavBar />
+          <Search />
+          <Footer />
+        </ProtectedRoute>
         <ProtectedRoute path="/search/:keyword" exact={true}>
           <NavBar />
           <Search />

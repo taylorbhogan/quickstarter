@@ -7,28 +7,29 @@ const setProjects = (projects) => ({
 
 const initialState = {};
 
-export const getProjectsByKeyword = (searchQuery) => async (dispatch) => {
-  const response = await fetch("/api/search", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ searchQuery }),
-  });
+export const getProjectsByKeyword =
+  (searchQuery, categoryId) => async (dispatch) => {
+    const response = await fetch("/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ searchQuery, categoryId }),
+    });
 
-  if (response.ok) {
-    const { filtered_projects } = await response.json();
-    dispatch(setProjects(filtered_projects));
-    return null;
-  } else if (response.status < 500) {
-    const { errors } = await response.json();
-    if (errors) {
-      return errors;
+    if (response.ok) {
+      const { filtered_projects } = await response.json();
+      dispatch(setProjects(filtered_projects));
+      return null;
+    } else if (response.status < 500) {
+      const { errors } = await response.json();
+      if (errors) {
+        return errors;
+      }
+    } else {
+      return ["An error occurred. Please try again."];
     }
-  } else {
-    return ["An error occurred. Please try again."];
-  }
-};
+  };
 
 export default function reducer(state = initialState, action) {
   let newState;

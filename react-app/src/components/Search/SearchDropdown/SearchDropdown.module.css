@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+}
+
+.button {
+  background-color: white;
+  border: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 6px 0px;
+  font-size: 18px;
+  padding: 10px 15px 10px 18px;
+  text-align: center;
+  cursor: pointer;
+  color: rgb(101, 105, 105);
+  position: relative;
+  border: 1px solid white;
+}
+
+.addBorder {
+  border: 1px solid rgb(40, 40, 40);
+  box-shadow: none;
+}
+
+.text {
+  margin-right: 15px;
+}
+
+.icon {
+  color: rgb(40, 40, 40);
+}
