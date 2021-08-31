@@ -18,7 +18,7 @@ function Project({ everyProject }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const [confirmGoLive, setConfirmGoLive] = useState('')
+  const [confirmGoLive, setConfirmGoLive] = useState("");
 
   const [project, setProject] = useState("");
   const [subTitle, setSubTitle] = useState(project.sub_title);
@@ -103,22 +103,20 @@ function Project({ everyProject }) {
       if (errors.length) {
         setGoLiveErrors(errors);
       } else {
-
-        if (confirmGoLive === 'Confirm') {
-
+        if (confirmGoLive === "Confirm") {
           let projectToGoLive = {
             ...project,
             is_live: true,
-            created_at: new Date()
+            created_at: new Date(),
           };
           let projectAfterGoLive = await dispatch(editProject(projectToGoLive));
           // console.log("*DID THIS GO LIVE? SHOULD BE YES*", projectAfterGoLive)
           history.push(`/projects/${projectToGoLive.id}`);
         } else {
-          setConfirmGoLive('Confirm')
+          setConfirmGoLive("Confirm");
           setTimeout(() => {
-            setConfirmGoLive('')
-          }, 10000)
+            setConfirmGoLive("");
+          }, 10000);
         }
       }
     })();
@@ -150,14 +148,13 @@ function Project({ everyProject }) {
       formData.append("image", imageUrl);
       console.log(formData.get("image"));
       (async () => {
-
-        const response = await fetch('/api/images', {
-          method: 'POST',
-          body: formData
-        })
-        const url = await response.json()
-        setAwsUrl(url.url)
-      })()
+        const response = await fetch("/api/images", {
+          method: "POST",
+          body: formData,
+        });
+        const url = await response.json();
+        setAwsUrl(url.url);
+      })();
     }
   }, [imageUrl]);
 
@@ -175,7 +172,7 @@ function Project({ everyProject }) {
       await dispatch(getCategories());
       await dispatch(getSubCategories());
       await dispatch(getProjectRewards(project));
-      if (project.is_live) setCurrentSelectedTab('rewards')
+      if (project.is_live) setCurrentSelectedTab("rewards");
       // ** USE THIS WHEN IMPLEMENTING GO LIVE LOCKS
       await setTitle(project.title);
       await setGoal(project.funding_goal);
@@ -273,24 +270,24 @@ function Project({ everyProject }) {
 
   const handleChangingGoal = (e) => {
     if (+e.target.value < 1) {
-      e.target.value = project.funding_goal
+      e.target.value = project.funding_goal;
     }
 
-    setGoal(e.target.value)
-  }
+    setGoal(e.target.value);
+  };
 
   const handleDelete = async (projectId) => {
-    if (deleteProjectButtonText === 'Confirm') {
+    if (deleteProjectButtonText === "Confirm") {
       const deletedProject = await dispatch(deleteProject(projectId));
       if (deletedProject) {
         history.push(`/`);
-        window.scroll(0, 0)
+        window.scroll(0, 0);
       }
     } else {
-      setDeleteProjectButtonText('Confirm')
+      setDeleteProjectButtonText("Confirm");
       setTimeout(() => {
-        setDeleteProjectButtonText('Delete Project')
-      }, 10000)
+        setDeleteProjectButtonText("Delete Project");
+      }, 10000);
     }
   };
 
@@ -625,58 +622,93 @@ function Project({ everyProject }) {
             <Link to="/">
               <div className={styles.logoDiv}>QUICKSTARTER</div>
             </Link>
-            <div className={styles.backButtonDiv}>
-              <button className={styles.backButton}>
-                <span className={styles.backButtonIcon}>
-                  <i className="fas fa-long-arrow-alt-left" />
-                </span>
-                Category
-              </button>
-            </div>
+            {project.is_live && (
+              <div className={styles.backButtonDiv}>
+                <Link
+                  to={`/projects/${projectId}`}
+                  className={styles.backButton}
+                >
+                  <span className={styles.backButtonIcon}>
+                    <i className="fas fa-long-arrow-alt-left" />
+                  </span>
+                  View Project
+                </Link>
+              </div>
+            )}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
-
-
-            {deleteProjectButtonText === 'Confirm' &&
-              <div className={styles.impression} style={{ marginBottom: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            {deleteProjectButtonText === "Confirm" && (
+              <div
+                className={styles.impression}
+                style={{
+                  marginBottom: "7px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <span>
                   <i class="fas fa-lightbulb"></i>
                 </span>
-                <span style={{ marginLeft: '3px' }}>
+                <span style={{ marginLeft: "3px" }}>
                   {" "}
-                  Are you sure? This action will permanently delete your project. Click to confirm. {" "}
+                  Are you sure? This action will permanently delete your
+                  project. Click to confirm.{" "}
                 </span>
               </div>
-            }
-            {confirmGoLive === "Confirm" &&
-              <div className={styles.impression} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            )}
+            {confirmGoLive === "Confirm" && (
+              <div
+                className={styles.impression}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <span>
                   <i class="fas fa-lightbulb"></i>
                 </span>
-                <span style={{ marginLeft: '3px' }}>
+                <span style={{ marginLeft: "3px" }}>
                   {" "}
-                  Ready to go live? You will no longer be able to edit project Basics/Story. You will maintain access to Rewards. Click to confirm! {" "}
+                  Ready to go live? You will no longer be able to edit project
+                  Basics/Story. You will maintain access to Rewards. Click to
+                  confirm!{" "}
                 </span>
               </div>
-            }
+            )}
           </div>
           <div className={styles.topRight}>
-            <div className={styles.buttonDiv} style={project.is_live ? { width: '100%' } : null}>
+            <div
+              className={styles.buttonDiv}
+              style={project.is_live ? { width: "100%" } : null}
+            >
               {/* <Link to="/"> */}
-              <button className={styles.cancelButton}
-                onClick={() => handleDelete(projectId)}>{deleteProjectButtonText}</button>
+              <button
+                className={styles.cancelButton}
+                onClick={() => handleDelete(projectId)}
+              >
+                {deleteProjectButtonText}
+              </button>
               {/* </Link> */}
             </div>
-            {!project?.is_live &&
+            {!project?.is_live && (
               <div className={styles.buttonDiv}>
                 <button
                   onClick={handleGoLiveButton}
                   className={styles.saveButton}
                 >
-                  {confirmGoLive ? 'Confirm' : "Go Live"}
+                  {confirmGoLive ? "Confirm" : "Go Live"}
                 </button>
               </div>
-            }
+            )}
           </div>
         </div>
         <div>
@@ -688,7 +720,9 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               // onClick={(e) => setCurrentSelectedTab("basics")}
-              onClick={(e) => setCurrentSelectedTab(!project.is_live ? "basics" : "rewards")}
+              onClick={(e) =>
+                setCurrentSelectedTab(!project.is_live ? "basics" : "rewards")
+              }
               // EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
 
               style={tabStyleHandler("basics")}
@@ -707,9 +741,10 @@ function Project({ everyProject }) {
             <div
               className={styles.tabDiv}
               // onClick={(e) => setCurrentSelectedTab("story")}
-              onClick={(e) => setCurrentSelectedTab(!project.is_live ? "story" : "rewards")}
+              onClick={(e) =>
+                setCurrentSelectedTab(!project.is_live ? "story" : "rewards")
+              }
               // EXAMPLE OF BUTTON LOCK, YOU CAN USE THIS TO STOP EDITS WHEN IS_LIVE
-
 
               style={tabStyleHandler("story")}
             >
@@ -742,20 +777,20 @@ function Project({ everyProject }) {
             </div>
           </div>
         </div>
-        {!project?.is_live &&
+        {!project?.is_live && (
           <div className={styles.noteSection}>
-
             <div className={styles.impression}>
               <span>
                 <i class="fas fa-lightbulb"></i>
               </span>
               <span>
                 {" "}
-                Note: Your project is not yet live. Your project will not be displayed publicly. {" "}
+                Note: Your project is not yet live. Your project will not be
+                displayed publicly.{" "}
               </span>
             </div>
           </div>
-        }
+        )}
       </div>
       {dashBoardContent()}
     </div>
