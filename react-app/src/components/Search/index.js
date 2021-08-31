@@ -4,17 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 
 import SearchProject from "./SearchProject";
 import { getProjectsByKeyword } from "../../store/search";
+import { getCategories } from "../../store/category";
+import { getSubCategories } from "../../store/subCategory";
 import styles from "./Search.module.css";
 
 const Search = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { keyword } = useParams();
+
   const projects = useSelector((state) => Object.values(state.search));
+  const categories = useSelector((state) => Object.values(state.categories));
+  const subCategories = useSelector((state) =>
+    Object.values(state.subCategories)
+  );
+
   const [inputKeyword, setInputKeyword] = useState("" || keyword);
 
   useEffect(() => {
     dispatch(getProjectsByKeyword(keyword));
+    dispatch(getCategories());
+    dispatch(getSubCategories());
   }, [dispatch, keyword]);
 
   useEffect(() => {
@@ -49,7 +59,11 @@ const Search = () => {
         <div className={styles.projectsContainer}>
           {projects?.map((project) => (
             <div>
-              <SearchProject project={project} />
+              <SearchProject
+                project={project}
+                categories={categories}
+                subCategories={subCategories}
+              />
             </div>
           ))}
         </div>

@@ -35,6 +35,7 @@
   width: 100%;
   max-width: 1246px;
   margin: 0 auto;
+  margin-bottom: 60px;
 }
 
 .explore {
@@ -49,7 +50,6 @@
 }
 
 .projectsContainer {
-  width: fit-content;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 36px;
