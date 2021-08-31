@@ -95,12 +95,7 @@ export const deleteProject = (projectId) => async (dispatch) => {
 
   if (response.ok) {
     const projectDeleteSuccessMessage = await response.json();
-<<<<<<< HEAD
-    
-    dispatch(deleteProjectFromStore(projectId))
-=======
     dispatch(deleteProjectFromStore(projectId));
->>>>>>> main
 
     return projectDeleteSuccessMessage;
   }
