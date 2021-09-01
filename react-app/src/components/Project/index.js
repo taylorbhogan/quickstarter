@@ -9,6 +9,7 @@ import ProjectBottomContent from "./ProjectBottomContent";
 import ProjectMainContentLeft from "./ProjectMainContentLeft";
 import ProjectMainContentRight from "./ProjectMainContentRight";
 import styles from "./Project.module.css";
+import { createBacking } from "../../store/backing";
 
 function Project({ everyProject }) {
   const [project, setProject] = useState({});
@@ -48,8 +49,8 @@ function Project({ everyProject }) {
       const response = await fetch(`/api/projects/${projectId}`);
       const project = await response.json();
       // console.log("*****", !project.is_live)
-      // if (!project.is_live && project.user_id != user.id) return history.push('/')
-      // if (!project.is_live && project.user_id === user.id) return history.push(`/projects/${projectId}/edit`)
+      if (!project.is_live && project.user_id != user.id) return history.push('/')
+      if (!project.is_live && project.user_id === user.id) return history.push(`/projects/${projectId}/edit`)
 
       setProject(project);
     })();
@@ -65,16 +66,19 @@ function Project({ everyProject }) {
     if (amount <= 0) {
       setAmount(0);
     } else {
-      // const backing = {
-      //   amount: +amount,
-      //   user_id: user.id,
-      //   project_id: +projectId,
-      //   // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
-      //   reward_id: e.target.id === "" ? null : +e.target.id,
-      // };
+      const backing = {
+        amount: +amount,
+        user_id: user.id,
+        project_id: +projectId,
+        // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
+        reward_id: e.target.id === "" ? null : +e.target.id,
+      };
 
-      // const data = await dispatch(createBacking(backing));
-      // const createdBacking = data.newBacking;
+      const data = await dispatch(createBacking(backing));
+      console.log("YAYAYAYAYAYAYYAYA", data)
+      if (data.newBacking) {
+        history.go(0);
+      }
       setAmount(0);
       // console.log('1234----responseFromStore-------->', createdBacking);
       // if (createdBacking){

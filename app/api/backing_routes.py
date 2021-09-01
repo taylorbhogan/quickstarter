@@ -32,8 +32,22 @@ def get_user_backings(id):
     user_backings = Backing.query.filter((Backing.user_id == id)).all()
     projects = Project.query.all()
 
+    def getBackedProjects(userBackings):
+        finalList = []
+        userBackings = [backing.to_dict() for backing in user_backings]
+        for backing in userBackings:
+            singleProj = Project.query.get(backing['project_id'])
+            finalList.append(singleProj.to_dict())
+        # print("HELLO!??!?!?!??!?!?!?!*************************************************************************************************", finalList)
+        return finalList
+
+    # print("**************FIXING", getBackedProjects(user_backings))
+    # print("**************FIXING", [projects[backing.project_id].to_dict() for backing in user_backings])
+
     return {
-        'user_backed_projects': [projects[backing.project_id].to_dict() for backing in user_backings]
+        # None
+        # 'user_backed_projects': [projects[backing.project_id].to_dict() for backing in user_backings]
+        'user_backed_projects': getBackedProjects(user_backings)
         }
 
 
@@ -105,7 +119,9 @@ def add_backing():
                     amount = form['amount'].data,
                 )
                 if form['reward_id'].data:
-                    if particularReward.quantity > 0:
+                    if particularReward.quantity is None:
+                        pass
+                    elif particularReward.quantity > 0:
                         particularReward.quantity -= 1
                         db.session.add(particularReward)
                         db.session.commit()
