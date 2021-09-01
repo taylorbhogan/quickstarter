@@ -120,8 +120,8 @@ function ProjectBuyReward({
                 //com
                 value={rewardAmount}
                 onChange={(e) => setRewardAmount(e.target.value)}
-                // onChange={(e) => setRewardAmount(e.target.value)}
-                // onChange={(e) => setAmount(rewardAmount)}
+              // onChange={(e) => setRewardAmount(e.target.value)}
+              // onChange={(e) => setAmount(rewardAmount)}
               ></input>
             </div>
           )}

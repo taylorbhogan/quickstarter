@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, redirect
 # from flask.helpers import url_for
 from flask_login import login_required, current_user
 from app.forms import CreateProjectForm, UpdateProjectForm, CreateProjectRewardForm
-from app.models import db, Project, Reward
+from app.models import db, Project, Reward, Backing
 from datetime import datetime, timedelta
 import random
 
@@ -31,25 +31,25 @@ def get_projects():
 
     # todaysDate = datetime.now().strftime("%Y-%m")
 
-    def liveFilter(project):
-        todaysDate = datetime.now().strftime("%Y-%m-%d")
-        if not project['campaign_duration']:
-            return False
-        else:
-            if project['is_live'] is True:
-                # end_date = datetime.now() + timedelta(days=project['campaign_duration'])
-                end_date = project['created_at'] + timedelta(days=project['campaign_duration'])
-                # print(end_date)
-                # print("TEST createdAt", project['created_at'] + timedelta(days=project['campaign_duration']))
-                if datetime.now().strftime("%Y-%m-%d") > end_date.strftime("%Y-%m-%d"):
-                    return False
-                else:
-                    return True
+    # def liveFilter(project):
+    #     todaysDate = datetime.now().strftime("%Y-%m-%d")
+    #     if not project['campaign_duration']:
+    #         return False
+    #     else:
+    #         if project['is_live'] is True:
+    #             # end_date = datetime.now() + timedelta(days=project['campaign_duration'])
+    #             end_date = project['created_at'] + timedelta(days=project['campaign_duration'])
+    #             # print(end_date)
+    #             # print("TEST createdAt", project['created_at'] + timedelta(days=project['campaign_duration']))
+    #             if datetime.now().strftime("%Y-%m-%d") > end_date.strftime("%Y-%m-%d"):
+    #                 return False
+    #             else:
+    #                 return True
 
 
 
 
-    projz = [project.to_dict() for project in allProjects]
+    # projz = [project.to_dict() for project in allProjects]
 
 
     # date_1 = datetime.datetime.strptime(start_date, "%m/%d/%y")
@@ -60,13 +60,53 @@ def get_projects():
     # end_date =datetime.now() + timedelta(days=30)
     # print("___________________", datetime.now().strftime("%Y-%m-%d") == end_date.strftime("%Y-%m-%d"))
 
-    currentlyActive = list(filter(liveFilter, projz))
+    # currentlyActive = list(filter(liveFilter, projz))
+
+    def durManager(listOfAllProjects):
+        todaysDate = datetime.now().strftime("%Y-%m-%d")
+        for project in listOfAllProjects:
+            if not project.campaign_duration:
+                project.is_live = False
+                # project.campaign_duration = 0
+                db.session.add(project)
+                db.session.commit()
+            else:
+                if project.is_live is True:
+                    end_date = project.created_at + timedelta(days=project.campaign_duration)
+
+                    # if you want to go false at 0 use option 1
+                    # option 1
+                    # dateTimeNow = datetime.now()+ timedelta(days=1)
+                    # -------------------------------------------------
+                    # if you want to go false AFTER 0 (meaning basically -1, but the user won't see -1 on the front end daysToGo) use option 2
+                    # option 2
+                    dateTimeNow = datetime.now()
+                    # -------------------------------------------------
+                    # print("*************************", dateTimeNow,end_date.strftime("%Y-%m-%d"))
+                    if dateTimeNow.strftime("%Y-%m-%d") < end_date.strftime("%Y-%m-%d"):
+                        continue
+
+                    else:
+                        # project.is_live = False
+
+                        # project.campaign_duration = 15
+                        project.campaign_duration = random.randrange(30, 60)
+                        project.created_at = datetime.now()
+
+                        db.session.add(project)
+                        db.session.commit()
+        allProjs = Project.query.all()
+        updatedProjs = [project.to_dict() for project in allProjs]
+        return updatedProjs
     # print(currentlyActive)
     # print("CHECK THESE FOR LIVENESS", len(currentlyActive))
 
 
+
     if allProjects:
-        return {'projects': [project.to_dict() for project in allProjects]}
+        # return {'projects': [project.to_dict() for project in allProjects]} ************** THIS IS THE ORIGINAL
+        return {'projects': durManager(allProjects)} # THIS IS TO MAINTAIN UPDATED CAMPAIGN DURATIONS AND KEEP DATA SHOWING FOR DEMO PURPOSES
+
     else:
         return {'something went wrong in when getting projects from the database'}
 
@@ -160,6 +200,13 @@ def delete_project(id):
     Destroys a project in the database
     """
     project = Project.query.get(id)
+    projectsRewards = Reward.query.filter(Reward.project_id == id).all()
+    projectBackings = Backing.query.filter(Backing.project_id == id).all()
+    for proj in list(projectsRewards):
+        db.session.delete(proj)
+    for back in list(projectBackings):
+        db.session.delete(back)
+    # print("**************************************************", projectsRewards)
     db.session.delete(project)
     db.session.commit()
     # TODO: implement a better return statement here
