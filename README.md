@@ -59,10 +59,10 @@ Users who are inspired by a project can show their support either by pledging an
 # Wiki
 
 For more details, please see our Wiki pages:
-* [API Documentation]
-* [Database Schema]
-* [MVP Features List]
-* [User Stories]
+* [API Documentation](https://github.com/taylorbhogan/quickstarter/wiki/API-Documentation)
+* [Database Schema](https://github.com/taylorbhogan/quickstarter/wiki/Database-Schema)
+* [MVP Features List](https://github.com/taylorbhogan/quickstarter/wiki/MVP-Features-List)
+* [User Stories](https://github.com/taylorbhogan/quickstarter/wiki/User-Stories)
 
 # To-Dos
 * Re-seed database with a greater variety of projects
