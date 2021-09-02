@@ -4,6 +4,8 @@ Quickstarter is a web application that imitates Kickstarter's funding platform w
 
 ## Check out the live site here: [Quickstarter](https://quickstarter-app.herokuapp.com/)
 
+<img width="1677" alt="Quickstarter-home" src="https://user-images.githubusercontent.com/79616733/131910162-bbfe97de-43a2-4cc1-8841-d942acbcc179.png">
+
 # Technologies Used
 
 ## Back end 
