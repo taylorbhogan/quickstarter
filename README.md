@@ -10,11 +10,11 @@ Quickstarter is a web application that imitates Kickstarter's funding platform w
 
 ## Back end 
 
-The back end was built using Python and Flask, and connects to a postgreSQL database via SQLAlchemy. 
+The back end was built using Python and Flask, and connects to a postgreSQL database via SQLAlchemy and Alembic. 
 
 ## Front end
 
-The front end was built using JavaScript, React, and Redux. The rich text editor used to create a project is powered by [React Quill](https://www.npmjs.com/package/react-quill).
+The front end was built with React and Redux, powered by JavaScript and Express. The rich text editor used to create a project is powered by [React Quill](https://www.npmjs.com/package/react-quill). Project image upload is handled by Amazon Web Services S3.
 
 ## Deployment
 
@@ -37,3 +37,12 @@ Quickstarter users are able to:
 User passwords are hashed using [Werkzeug](https://pypi.org/project/Werkzeug/) before being stored in the database. Logging in and out is managed by [Flask-Login](https://flask-login.readthedocs.io/en/latest/). 
 
 ## Viewing Projects
+
+Users can begin exploring **new projects** right from the home page. They can also search for projects by keyword or by a number of filters.
+
+A user can view and follow links to projects they have **backed** both in the User Account dropdown menu and on their Profile page.
+
+A user can view and follow links to projects they have **created** in the User Account dropdown menu.
+
+## Creating Projects
+
