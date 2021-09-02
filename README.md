@@ -46,3 +46,26 @@ A user can view and follow links to projects they have **created** in the User A
 
 ## Creating Projects
 
+A lot goes into creating a successful Kickstarter project. While **Quickstarter** does not utilize human moderation teams or payment processing, we sought to emulate the Kickstarter look and feel as much as possible.
+
+After entering some basic qualifying info, a user is brought to a robust editing suite, where they can enter important project info, upload a project image, and draft the central story using a rich text editor which also supports images. 
+
+Once ready, the user can click a "Go Live" button to publish their project for other users to view and back. 
+
+## Backing Projects
+
+Users who are inspired by a project can show their support either by pledging an arbitrary amount of "money" or by selecting a reward from the options provided by the project creator.
+
+# Wiki
+
+For more details, please see our Wiki pages:
+* [API Documentation]
+* [Database Schema]
+* [MVP Features List]
+* [User Stories]
+
+# To-Dos
+* Re-seed database with a greater variety of projects
+* Expand and improve the Search functionality
+* Implement user profile image upload
+* Implement segmented loading for Search page
