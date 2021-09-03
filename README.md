@@ -32,7 +32,7 @@ Quickstarter users are able to:
 
 # Key Components
 
-# User Authentication
+## User Authentication
 
 User passwords are hashed using [Werkzeug](https://pypi.org/project/Werkzeug/) before being stored in the database. Logging in and out is managed by [Flask-Login](https://flask-login.readthedocs.io/en/latest/). 
 
