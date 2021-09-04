@@ -81,27 +81,30 @@ function Project({ everyProject }) {
       // await setProject(project)
       let errors = [];
       if (!project.title) {
-        errors.push("Project must have a title to go live");
+        errors.push("* Project must have a title to go live (Basics)");
       }
       if (!project.sub_title) {
-        errors.push("Project must have a sub title to go live");
+        errors.push("* Project must have a sub title to go live (Basics)");
       }
       if (!project.story) {
-        errors.push("Project must have a story to go live");
+        errors.push("* Project must have a story to go live (Story)");
       }
 
       if (!project.funding_goal) {
-        errors.push("Project must have a funding goal to go live");
+        errors.push("* Project must have a funding goal to go live (Basics)");
       }
       if (!project.project_image_url) {
-        errors.push("Project must have an image to go live");
+        errors.push("* Project must have an image to go live (Basics)");
       }
       if (!project.campaign_duration) {
-        errors.push("Project must have a valid campaign duration to go live");
+        errors.push("* Project must have a valid campaign duration to go live (Basics)");
       }
 
       if (errors.length) {
         setGoLiveErrors(errors);
+        setTimeout(() => {
+          setGoLiveErrors([]);
+        }, 20000)
       } else {
         if (confirmGoLive === "Confirm") {
           let projectToGoLive = {
@@ -237,8 +240,8 @@ function Project({ everyProject }) {
       // project_image_url: awsUrl,
       campaign_duration:
         campaignDuration === "" ||
-        campaignDuration === null ||
-        campaignDuration < 0
+          campaignDuration === null ||
+          campaignDuration < 0
           ? null
           : +campaignDuration,
       funding_goal: goal === "" || goal === null || goal <= 0 ? 0 : +goal,
@@ -254,6 +257,7 @@ function Project({ everyProject }) {
     let editedProject = await dispatch(editProject(newProject));
     if (editedProject) {
       setErrors(editedProject);
+      window.scroll(0, 0);
     }
     // console.log("************", editedProject)
     if (!editedProject) {
@@ -336,6 +340,12 @@ function Project({ everyProject }) {
             <h2 className={styles.subtitle}>
               Make it easy for people to learn about your project.
             </h2>
+            {errors &&
+              errors.map((error, ind) => (
+                <div style={{ color: "red", marginTop: '5px', marginBottom: '5px', display: 'flex', justifyContent: 'center' }} key={ind}>
+                  {error}
+                </div>
+              ))}
           </div>
           <form onSubmit={handleSubmit}>
             <div className={styles.blockWrapper}>
@@ -346,12 +356,12 @@ function Project({ everyProject }) {
                     Write a clear, brief title that helps people quickly
                     understand the gist of your project.
                   </div>
-                  {errors &&
+                  {/* {errors &&
                     errors.map((error, ind) => (
                       <div style={{ color: "red" }} key={ind}>
                         {error}
                       </div>
-                    ))}
+                    ))} */}
                 </div>
                 <div className={styles.blockRightTitle}>
                   <div>
@@ -587,7 +597,7 @@ function Project({ everyProject }) {
               {deleteProjectButtonText}
             </button> */}
           </div>
-        </div>
+        </div >
       );
     } else if (currentSelectedTab === "story") {
       return <ProjectEditStory project={project} />;
@@ -711,10 +721,10 @@ function Project({ everyProject }) {
             )}
           </div>
         </div>
-        <div>
+        {/* <div>
           {goLiveErrors &&
-            goLiveErrors.map((error) => <div key={error}>{error}</div>)}
-        </div>
+            goLiveErrors.map((error) => <div style={{ color: "red", marginTop: '5px', marginBottom: '5px', display: 'flex', justifyContent: 'center' }} key={error}>{error}</div>)}
+        </div> */}
         <div className={styles.tabMenuWrapper}>
           <div className={styles.tabMenu}>
             <div
@@ -779,15 +789,19 @@ function Project({ everyProject }) {
         </div>
         {!project?.is_live && (
           <div className={styles.noteSection}>
-            <div className={styles.impression}>
+            <div style={{ marginBottom: '5px' }} className={styles.impression}>
               <span>
                 <i class="fas fa-lightbulb"></i>
               </span>
               <span>
                 {" "}
-                Note: Your project is not yet live. Your project will not be
+                Note: Your project is not yet live. Project will not be
                 displayed publicly.{" "}
               </span>
+            </div>
+            <div>
+              {goLiveErrors &&
+                goLiveErrors.map((error) => <div style={{ color: "red", marginTop: '5px', marginBottom: '5px', display: 'flex', justifyContent: 'center' }} key={error}>{error}</div>)}
             </div>
           </div>
         )}

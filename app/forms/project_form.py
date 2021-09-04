@@ -16,13 +16,17 @@ def campaign_duration_validator(form, field):
 
 def funding_goal_validator(form, field):
     funding_goal = field.data
-    print("CURENTLY CHECKING^^^^^^^^^^^^^^^^^^^^^^^^^^^^", funding_goal)
+    # print("CURENTLY CHECKING^^^^^^^^^^^^^^^^^^^^^^^^^^^^", funding_goal)
     if funding_goal is None:
         return
     if funding_goal <= 0:
         # funding_goal = None
         raise ValidationError(
             'Funding goal must be greater than or equal to $1'
+        )
+    elif funding_goal > 999999999:
+        raise ValidationError(
+            'Funding goal must be less than $999999999'
         )
 
 # not yet in use
