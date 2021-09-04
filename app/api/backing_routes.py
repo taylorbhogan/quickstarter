@@ -143,6 +143,6 @@ def add_backing():
 
                 return {'newBacking': newBacking}
             else:
-                return {'Backing failed': "Backing amount must be greater than or equal to the reward price."}
+                return {'Backing_failed': "Backing amount must be greater than or equal to the reward price."}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

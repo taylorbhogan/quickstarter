@@ -16,6 +16,7 @@ function ProjectBuyReward({
   stylesFromParent,
 }) {
   const [rewardAmount, setRewardAmount] = useState(0);
+  const [backingError, setBackingError] = useState([])
   const dispatch = useDispatch();
   const history = useHistory();
   // this object is just an example
@@ -66,11 +67,17 @@ function ProjectBuyReward({
 
       // console.log('***************', backing)
       const data = await dispatch(createBacking(backing));
-      // const createdBacking = data.newBacking
+      if (data.Backing_failed) {
+        setBackingError([data.Backing_failed])
 
-      setRewardAmount(0);
-      if (data.newBacking) {
+        setRewardAmount(0);
+        setTimeout(() => {
+          setBackingError([])
+        }, 10000)
+
+      } else if (data.newBacking) {
         history.go(0);
+        setRewardAmount(0);
       }
 
       // console.log('1234----responseFromStore-------->', data.newBacking);
@@ -83,8 +90,11 @@ function ProjectBuyReward({
   return (
     <div className={styles.container}>
       {disable && (
+        // <div className={styles.overlay}>
+        //   <div className={styles.overlayText}>Select this reward</div>
+        // </div>
         <div className={styles.overlay}>
-          <div className={styles.overlayText}>Select this reward</div>
+          <div className={styles.overlayText}>Not Available or Expired</div>
         </div>
       )}
       <form className={styles.rewardForm}>
@@ -114,6 +124,7 @@ function ProjectBuyReward({
               <div className={stylesFromParent.dollahBillsRapper}>
                 <div className={stylesFromParent.dollahBills}>$</div>
               </div>
+
               <input
                 className={stylesFromParent.amountInput}
                 type="number"
@@ -123,9 +134,15 @@ function ProjectBuyReward({
               // onChange={(e) => setRewardAmount(e.target.value)}
               // onChange={(e) => setAmount(rewardAmount)}
               ></input>
+
             </div>
           )}
         </div>
+        {backingError && backingError.map((error, ind) => (
+          <div style={{ color: "red", marginTop: '5px', marginBottom: '5px', display: 'flex', justifyContent: 'center' }} key={ind}>
+            {error}
+          </div>
+        ))}
         {!disable && (
           <button
             type="submit"

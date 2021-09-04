@@ -10,7 +10,7 @@
 /* ------ DEFINE THUNK ACTION CREATORS ------ */
 
 export const createBacking = (backing) => async (dispatch) => {
-  console.log('I AM THE STORE HERE IS YOUR BACKING', backing);
+  // console.log('I AM THE STORE HERE IS YOUR BACKING', backing);
   const response = await fetch('/api/backings', {
     method: 'POST',
     headers: {
