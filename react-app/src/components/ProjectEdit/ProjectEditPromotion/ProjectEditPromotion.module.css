@@ -1,5 +1,6 @@
 .pageContainer{
   margin-bottom: 80px;
+  width: 100%;
 }
 
 .title {
@@ -34,7 +35,7 @@
 .blockWrapper{
   width: 100%;
   border-top: 1px solid rgb(209, 209, 209);
-  padding: 48px 0;
+  padding: 55px 0;
   display: flex;
   justify-content: center;
 
@@ -47,8 +48,25 @@
 
 .locked{
   width: 700px;
-  height: 120px;
-  background-color: rgb(210 210 210);
+  background-color: #FBFBFA;
+  border: 1px solid rgb(232, 232, 232);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 24px;
+}
+
+.lock{
+  padding-bottom: 18px;
+  font-size: 12px;
+}
+
+.unlock{
+  font-size: 18px;
+  font-weight: 320;
+  color: rgb(40, 40, 40);
+  line-height: 24px;
+
 }
 
 .infoContainer{

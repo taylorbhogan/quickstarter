@@ -56,7 +56,9 @@
 }
 
 .locked{
-  width: 700px;
+  /* width: 700px; */
+  width: 42vw;
+  box-sizing: border-box;
   background-color: #FBFBFA;
   border: 1px solid rgb(232, 232, 232);
   display: flex;
@@ -115,10 +117,11 @@
 }
 
 .form{
-  width: 700px;
+  width: 42vw;
   height: 120px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .input{
