@@ -14,10 +14,18 @@ function ProjectEditPromotion() {
               <div className={promotionStyles.mainInputHeader}>Project URL</div>
               <div className={promotionStyles.mainInputSubHeader}>We'll use your current project title to generate a URL. Even if you change the title later, the URL will stay the same. Your project page won't go live until you launch.</div>
             </div>
-            <div className={promotionStyles.locked}></div>
+            <div className={promotionStyles.locked}>
+              <div className={promotionStyles.lock}>
+                <span>
+                  <i className="fas fa-lock" />
+                </span>
+              </div>
+              <div className={promotionStyles.unlock}>
+                You can’t generate your URL until you’ve submitted for review.                </div>
+            </div>
           </section>
         </div>
-        <div className={promotionStyles.blockWrapper}>
+        {/* <div className={promotionStyles.blockWrapper}>
           <section className={promotionStyles.block}>
             <div className={promotionStyles.infoContainer}>
               <div className={promotionStyles.mainInputHeader}>Pre-launch page</div>
@@ -34,10 +42,10 @@ function ProjectEditPromotion() {
             </div>
             <div className={promotionStyles.locked}></div>
           </section>
-        </div>
+        </div> */}
       </div>
     </div>
-    )
+  )
 }
 
 export default ProjectEditPromotion
