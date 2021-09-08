@@ -38,7 +38,7 @@ User passwords are hashed using [Werkzeug](https://pypi.org/project/Werkzeug/) b
 
 ## Viewing Projects
 
-Users can begin exploring **new projects** right from the home page. They can also search for projects by keyword or by a number of filters.
+Users can begin exploring **new projects** right from the home page. They can also search for projects by keyword or by a number of filters. On a project's page, users can learn about the project and its rewards and decide whether to show their support by backing the project.
 
 A user can view and follow links to projects they have **backed** both in the User Account dropdown menu and on their Profile page.
 
