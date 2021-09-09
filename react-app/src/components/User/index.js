@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import SlideProject from "../ViewComponents/Slides/SlideProject";
 import styles from "./User.module.css";
@@ -6,6 +7,8 @@ import LargeUserImage from "./LargeUserImage";
 import { editUser } from "../../store/session";
 
 function User() {
+  const dispatch = useDispatch()
+
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const [showBackedProjects, setShowBackedProjects] = useState(true);
@@ -43,7 +46,10 @@ function User() {
       body: formData,
     });
     if (res.ok) {
-      await res.json();
+      const url = await res.json();
+      user.user_image_url = url.url
+      console.log('this is the user------------->',user);
+      await dispatch(editUser(user))
       setImageLoading(false);
     } else {
       setImageLoading(false);
