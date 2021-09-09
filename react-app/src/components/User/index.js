@@ -78,7 +78,9 @@ function User() {
         </div>
         <div className={styles.userInfoDiv}>
           <div className={styles.usernameDiv}>{user.username}</div>
-          <form onSubmit={handleSubmit}>
+          <form
+            className={styles.form}
+            onSubmit={handleSubmit}>
             <input
               type='file'
               accept='image/*'

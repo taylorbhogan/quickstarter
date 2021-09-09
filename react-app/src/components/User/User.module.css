@@ -48,6 +48,12 @@
   margin-bottom: 12px;
 }
 
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .userInfo{
   font: 13px;
   color: #80809E;

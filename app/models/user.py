@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     biography = db.Column(db.String(300), nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    user_image_url = db.Column(db.String(2048), nullable=True)
 
     projects = db.relationship("Project", back_populates='creator')
     websites = db.relationship('Website', back_populates='user')
@@ -34,5 +35,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'biography': self.biography,
             "projects": [project.to_dict() for project in self.projects],
-            "websites": [website.to_dict() for website in self.websites]
+            "websites": [website.to_dict() for website in self.websites],
+            "user_image_url": self.user_image_url,
         }
