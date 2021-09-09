@@ -57,7 +57,7 @@ function User() {
   }
 
   const handleSave = async (e) => {
-    console.log('handleSave user-------------------->',user);
+    console.log('handleSave user-------------------->', user);
     await dispatch(editUser(user))
 
   }
@@ -90,10 +90,10 @@ function User() {
               alt='user profile'
               src={user.user_image_url}
               className={styles.userImage}
-              ></img>
+            ></img>
             :
             <LargeUserImage />
-        }
+          }
         </div>
         <div className={styles.userInfoDiv}>
           <div className={styles.usernameDiv}>{user.username}</div>

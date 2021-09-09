@@ -7,9 +7,11 @@ function DropdownProjectLink({project, createdProject}) {
   return (
     <div className={styles.projectContainer}>
       {(
-        createdProject ?
-        <PlaceholderImage /> :
+        project?.project_image_url
+        ?
         <img src={project?.project_image_url} className={styles.image} alt='project showcase'/>
+        :
+        <PlaceholderImage />
       )}
       <NavLink
         to={`/projects/${project?.id}`}
