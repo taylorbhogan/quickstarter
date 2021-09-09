@@ -146,7 +146,7 @@ function Project({ everyProject }) {
 
   useEffect(() => {
     // console.log('IF THIS IS', project.project_image_url)
-    if (imageUrl != project.project_image_url) {
+    if (imageUrl !== project.project_image_url) {
       const formData = new FormData();
       formData.append("image", imageUrl);
       console.log(formData.get("image"));
