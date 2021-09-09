@@ -84,8 +84,13 @@ function User() {
           <button className={styles.btn}>Manage your privacy settings</button>
         </div>
         <div className={styles.userImageDiv}>
-          {user.user_image_url ?
-            <img alt='user profile' src={user.user_image_url}></img>
+          {user.user_image_url
+            ?
+            <img
+              alt='user profile'
+              src={user.user_image_url}
+              className={styles.userImage}
+              ></img>
             :
             <LargeUserImage />
         }
