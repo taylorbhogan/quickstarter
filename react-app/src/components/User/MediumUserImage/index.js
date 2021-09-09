@@ -1,10 +1,20 @@
+import { useSelector } from 'react-redux'
 import styles from './MediumUserImage.module.css'
 
 
 function MediumUserImage() {
+  const user = useSelector(state => state.session.user)
+
 
   return (
-      <div className={styles.rectangleHolderWrapper}>
+    <>
+      {user.user_image_url ?
+            <img
+            alt='user profile'
+            src={user.user_image_url}
+            className={styles.userImage}
+            ></img>        :
+        <div className={styles.rectangleHolderWrapper}>
         <div className={styles.rectangleHolder}>
           <div className={styles.rectRow}>
             <div className={`${styles.rect1} ${styles.rect}`}></div>
@@ -31,7 +41,8 @@ function MediumUserImage() {
             <div className={`${styles.rect16} ${styles.rect}`}></div>
           </div>
         </div>
-      </div>
+      </div>}
+      </>
   )
 }
 
