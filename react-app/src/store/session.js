@@ -107,6 +107,28 @@ export const signUp = (username, email, password, repeat_password) => async (dis
   }
 }
 
+export const editUser = (editedUser) => async (dispatch) => {
+  const res = await fetch(`/api/users/${editedUser.id}`, {
+    method: "PATCH",
+    body: JSON.stringify(editedUser),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (res.ok){
+    const editedUserData = await res.json();
+    dispatch(setUser(editedUserData))
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+}
+
 
 /* ------ DEFINE & EXPORT REDUCER ------ */
 
