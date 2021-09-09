@@ -108,6 +108,8 @@ export const signUp = (username, email, password, repeat_password) => async (dis
 }
 
 export const editUser = (editedUser) => async (dispatch) => {
+  console.log('--------inside editUser-----');
+  console.log('--------editedUser-----',editedUser);
   const res = await fetch(`/api/users/${editedUser.id}`, {
     method: "PATCH",
     body: JSON.stringify(editedUser),

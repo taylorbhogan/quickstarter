@@ -48,13 +48,18 @@ function User() {
     if (res.ok) {
       const url = await res.json();
       user.user_image_url = url.url
-      console.log('this is the user------------->',user);
-      await dispatch(editUser(user))
+      setUser(user)
       setImageLoading(false);
     } else {
       setImageLoading(false);
       console.log("error");
     }
+  }
+
+  const handleSave = async (e) => {
+    console.log('handleSave user-------------------->',user);
+    await dispatch(editUser(user))
+
   }
 
   const updateImage = (e) => {
@@ -95,9 +100,12 @@ function User() {
               accept='image/*'
               onChange={updateImage}
             />
-            <button type='submit'>Submit</button>
+            <button type='submit'>Upload</button>
             {(imageLoading) && <p>Loading...</p>}
           </form>
+          <button
+            onClick={handleSave}
+          >Save image</button>
           <div className={styles.userInfo}>
             {backings.length === 1 && (
               <span>Backed {backings.length} project · Joined Jul 2021</span>

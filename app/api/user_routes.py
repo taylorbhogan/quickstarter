@@ -39,13 +39,16 @@ def update_user(id):
     """
     form = UpdateUserForm()
 
+    form['csrf_token'].data = request.cookies['csrf_token']
     form['user_image_url'].data = request.json['user_image_url']
 
     if form.validate_on_submit():
         user = User.query.get(id)
-        user.user_image_url = form['user_image_url']
-
+        user.user_image_url = form['user_image_url'].data
+        print('-------------------------------user',user)
+        print('-------------------------------user_image_url',user.user_image_url)
         db.session.add(user)
         db.session.commit()
         return user.to_dict()
+    print('----------------form.errors',form.errors)
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
