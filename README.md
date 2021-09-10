@@ -36,6 +36,8 @@ Quickstarter users are able to:
 
 User passwords are hashed using [Werkzeug](https://pypi.org/project/Werkzeug/) before being stored in the database. Logging in and out is managed by [Flask-Login](https://flask-login.readthedocs.io/en/latest/). 
 
+![quickstarter-signup](https://user-images.githubusercontent.com/79616733/132924872-c891ffbe-f08e-4293-8d9f-e2043f644ab1.gif)
+
 ## Viewing Projects
 
 Users can begin exploring **new projects** right from the home page. They can also search for projects by keyword or by a number of filters. On a project's page, users can learn about the project and its rewards and decide whether to show their support by backing the project.
