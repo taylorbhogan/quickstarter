@@ -15,6 +15,10 @@ function User() {
   const [backings, setBackings] = useState([]);
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
+  const [showEditImage, setShowEditImage] = useState(false)
+  const [showSaveImage, setShowSaveImage] = useState(false)
+  const [saveChangesText, setSaveChangesText] = useState('Save changes')
+  const [formErrors, setFormErrors] = useState([])
 
   const projects = user.projects;
   console.log(projects);
@@ -49,6 +53,7 @@ function User() {
       const url = await res.json();
       user.user_image_url = url.url
       setUser(user)
+      setShowSaveImage(true)
       setImageLoading(false);
     } else {
       setImageLoading(false);
@@ -57,9 +62,16 @@ function User() {
   }
 
   const handleSave = async (e) => {
-    console.log('handleSave user-------------------->', user);
-    await dispatch(editUser(user))
+    const errors = await dispatch(editUser(user))
 
+    if (errors) {
+      setFormErrors(errors)
+    } else {
+      setSaveChangesText('Image saved!');
+      setTimeout(() => {
+        setSaveChangesText('Save changes')
+      }, 7000)
+    }
   }
 
   const updateImage = (e) => {
@@ -81,7 +93,9 @@ function User() {
             </span>{" "}
             This profile page is visible only to you.
           </div>
+          <div className={styles.privacyDiv}>
           <button className={styles.btn}>Manage your privacy settings</button>
+          </div>
         </div>
         <div className={styles.userImageDiv}>
           {user.user_image_url
@@ -96,21 +110,50 @@ function User() {
           }
         </div>
         <div className={styles.userInfoDiv}>
+        {formErrors &&
+              formErrors.map((error, ind) => (
+                <div style={{ color: "red", marginTop: '5px', marginBottom: '5px', display: 'flex', justifyContent: 'center' }} key={ind}>
+                  {error}
+                </div>
+              ))}
           <div className={styles.usernameDiv}>{user.username}</div>
-          <form
-            className={styles.form}
-            onSubmit={handleSubmit}>
-            <input
-              type='file'
-              accept='image/*'
-              onChange={updateImage}
-            />
-            <button type='submit'>Upload</button>
-            {(imageLoading) && <p>Loading...</p>}
-          </form>
-          <button
-            onClick={handleSave}
-          >Save image</button>
+          {
+            showEditImage
+            ?
+            <form
+              className={styles.form}
+              onSubmit={handleSubmit}>
+              <input
+                type='file'
+                id={'imageFile'}
+                accept='image/*'
+                onChange={updateImage}
+              />
+              <label
+                htmlFor={'imageFile'}
+              >{image ? 'Select different image file' : 'Select image file'}</label>
+              {!showSaveImage &&
+              <button
+              className={styles.btn}
+              type='submit'>Upload</button>}
+              {(imageLoading) && <div className={styles.loading}>Loading...</div>}
+            </form>
+            :
+            <button
+              className={styles.btn}
+              onClick={() => setShowEditImage(!showEditImage)}
+            >Edit Profile Image</button>
+          }
+          {
+            showSaveImage
+            ?
+            <button
+              onClick={handleSave}
+              className={styles.btn}
+            >{saveChangesText}</button>
+            :
+            null
+          }
           <div className={styles.userInfo}>
             {backings.length === 1 && (
               <span>Backed {backings.length} project · Joined Jul 2021</span>
