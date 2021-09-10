@@ -72,6 +72,9 @@ function ProjectEditStory({ project }) {
         <div className={storyStyles.title}>Enter your story</div>
       </div>
       {/* <ReactQuill /> */}
+      <div className={storyStyles.width}>
+
+
       <ReactQuill
         // ref=((el)) => {
         // quillObj = el;
@@ -108,6 +111,7 @@ function ProjectEditStory({ project }) {
         ]}
         placeholder="Write about your project like you're explaining it to a friend..."
       />
+          </div>
 
       {/* <ReactQuill
                 ref={(el) => {
