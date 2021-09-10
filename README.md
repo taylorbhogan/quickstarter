@@ -25,7 +25,7 @@ This app was deployed to Heroku using the Heroku CLI.
 Quickstarter users are able to:
 * Create an account
 * Log in and log out
-* Search for or browse projects using a variety of filters
+* Search for and browse projects by keyword or using a variety of filters
 * Back a project just because they believe in it
 * Back a project while selecting a reward to receive if the project is funded
 * Create a project and its rewards entering text, rich text, and an image upload to AWS
