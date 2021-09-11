@@ -187,3 +187,19 @@ box-sizing: border-box;
   flex-direction: column;
   justify-content: center;
 }
+
+.link{
+  cursor: not-allowed;
+  text-decoration: underline;
+}
+
+.learnMore{
+  color: rgb(0, 158, 116);
+  text-decoration: underline;
+  margin-top: 18px;
+  font-weight: 300;
+  cursor: not-allowed;
+}
+.learnMore:hover{
+  color: black;
+}

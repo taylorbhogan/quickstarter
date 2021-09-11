@@ -170,7 +170,7 @@ function ProjectEditRewards({ project }) {
           and celebrate it coming to life.
         </div>
       </div>
-      <div className={styles.contentContainer}>
+      <div >
         <div className={styles.rewardsContainer}>
           <nav className={styles.rewardsMenu}>
             <div className={styles.rewardsTiersDiv}>
@@ -182,18 +182,13 @@ function ProjectEditRewards({ project }) {
             <div className={styles.textDivs}>
               <div>
                 Most creators offer 3-10 rewards, which can be physical items or
-                special experiences. Make sure to set reasonable backer
-                expectations.
+                special experiences. Make sure to {' '}
+                <span className={rewardStyles.link}>
+                  set reasonable backer expectations.
+                </span>
               </div>
-              <div className={styles.learnMore}>
+              <div className={rewardStyles.learnMore}>
                 Learn about creating and managing rewards
-              </div>
-              <div className={styles.infoDiv}>
-                <div>Add a reward</div>
-                <div>
-                  Offer tangible or intangible things that bring backers closer
-                  to your project
-                </div>
               </div>
             </div>
             <div className={styles.newRewardButtonDiv}>
