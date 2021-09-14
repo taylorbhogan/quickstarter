@@ -255,7 +255,7 @@ def update_project(id):
     Updates a project in the database
     """
     form = UpdateProjectForm()
-    print('**********', request.json)
+    # print('**********', request.json)
 
     if (request.json['sub_category_id'] == 0):
         request.json['sub_category_id'] = None;

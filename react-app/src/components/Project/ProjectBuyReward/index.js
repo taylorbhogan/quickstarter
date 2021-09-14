@@ -19,23 +19,7 @@ function ProjectBuyReward({
   const [backingError, setBackingError] = useState([])
   const dispatch = useDispatch();
   const history = useHistory();
-  // this object is just an example
-  // reward = {
-  //   price: '$10',
-  //   title: 'Smokey Skull w nostrils',
-  //   description: 'Want to impress your frinds or customers? This is the one you want! Get just enough smoke in your glass for flavor and watch as the skull exhales.',
-  //   id: 1,
-  //   estimated_delivery: 'Oct 2021'
-  // }
 
-  // console.log(amount, user, projectId)
-
-  // const handleOnClick = async e => {
-  //   e.preventDefault()
-  //   setRewardAmount(e.target.value)
-  //   setAmount(rewardAmount)
-
-  // }
   const formatDate = (dateObj) => {
     let readyDate = new Date(dateObj);
     const date = new Intl.DateTimeFormat("en-US", {
@@ -49,23 +33,21 @@ function ProjectBuyReward({
   const addARewardBacking = async (e) => {
     e.preventDefault();
 
-    // setRewardAmount(e.target.value)
-    // setAmount(rewardAmount)
-
     if (rewardAmount <= 0) {
+      setBackingError(['Please enter a positive number! :)'])
       setRewardAmount(0);
+      setTimeout(() => {
+        setBackingError([])
+      }, 5000)
     } else {
-      // console.log("PROJ ID", projectId)
-      // console.log("PROJ ID +", +projectId)
       const backing = {
         amount: +rewardAmount,
         user_id: user.id,
         project_id: +projectId,
-        // DEFAULT BACKING DOES NOT GET AN ID; WE USE THE ID FROM REAL REWARDS TO ADD THEM TO THE DB
+        // default backing does not get an id; we use the id from real rewards to add them to the db
         reward_id: e.target.id === "" ? null : +e.target.id,
       };
 
-      // console.log('***************', backing)
       const data = await dispatch(createBacking(backing));
       if (data.Backing_failed) {
         setBackingError([data.Backing_failed])
@@ -79,20 +61,12 @@ function ProjectBuyReward({
         history.go(0);
         setRewardAmount(0);
       }
-
-      // console.log('1234----responseFromStore-------->', data.newBacking);
-      // if (createdBacking){
-      //   do stuff
-      // }
     }
   };
 
   return (
     <div className={styles.container}>
       {disable && (
-        // <div className={styles.overlay}>
-        //   <div className={styles.overlayText}>Select this reward</div>
-        // </div>
         <div className={styles.overlay}>
           <div className={styles.overlayText}>Not Available or Expired</div>
         </div>
@@ -105,7 +79,6 @@ function ProjectBuyReward({
           <div className={styles.flexbox}>
             <div>
               <div className={styles.littleHeader}>ESTIMATED DELIVERY</div>
-              {/* <div className={styles.estimatedDelivery}>{reward.estimated_delivery}</div> */}
               <div className={styles.estimatedDelivery}>
                 {formatDate(reward.estimated_delivery)}
               </div>
@@ -124,17 +97,13 @@ function ProjectBuyReward({
               <div className={stylesFromParent.dollahBillsRapper}>
                 <div className={stylesFromParent.dollahBills}>$</div>
               </div>
-
               <input
                 className={stylesFromParent.amountInput}
                 type="number"
-                //com
                 value={rewardAmount}
                 onChange={(e) => setRewardAmount(e.target.value)}
-              // onChange={(e) => setRewardAmount(e.target.value)}
-              // onChange={(e) => setAmount(rewardAmount)}
+                onFocus={() => setBackingError([])}
               ></input>
-
             </div>
           )}
         </div>
@@ -148,9 +117,6 @@ function ProjectBuyReward({
             type="submit"
             className={styles.btn}
             id={reward.id}
-            // onClick={handleOnClick}
-            // onClick={addABacking}
-            // onChange={addABacking}
             onClick={addARewardBacking}
           >
             Continue

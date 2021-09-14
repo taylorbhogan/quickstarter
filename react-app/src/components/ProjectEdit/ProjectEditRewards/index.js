@@ -170,7 +170,7 @@ function ProjectEditRewards({ project }) {
           and celebrate it coming to life.
         </div>
       </div>
-      <div className={styles.contentContainer}>
+      <div >
         <div className={styles.rewardsContainer}>
           <nav className={styles.rewardsMenu}>
             <div className={styles.rewardsTiersDiv}>
@@ -182,18 +182,13 @@ function ProjectEditRewards({ project }) {
             <div className={styles.textDivs}>
               <div>
                 Most creators offer 3-10 rewards, which can be physical items or
-                special experiences. Make sure to set reasonable backer
-                expectations.
+                special experiences. Make sure to {' '}
+                <span className={rewardStyles.link}>
+                  set reasonable backer expectations.
+                </span>
               </div>
-              <div className={styles.learnMore}>
+              <div className={rewardStyles.learnMore}>
                 Learn about creating and managing rewards
-              </div>
-              <div className={styles.infoDiv}>
-                <div>Add a reward</div>
-                <div>
-                  Offer tangible or intangible things that bring backers closer
-                  to your project
-                </div>
               </div>
             </div>
             <div className={styles.newRewardButtonDiv}>
@@ -218,7 +213,7 @@ function ProjectEditRewards({ project }) {
                   <form className={rewardStyles.rewardForm}>
                     <div>
                       <div className={rewardStyles.blockWrapper}>
-                        <div>
+                        <div  className={rewardStyles.labelDiv}>
                           <label>Title</label>
                         </div>
                         <input
@@ -230,7 +225,7 @@ function ProjectEditRewards({ project }) {
                       </div>
                     </div>
                     <div className={rewardStyles.blockWrapper}>
-                      <div>
+                      <div className={rewardStyles.labelDiv}>
                         <label>Amount</label>
                       </div>
                       <div className={rewardStyles.inputDiv}>
@@ -250,7 +245,7 @@ function ProjectEditRewards({ project }) {
                     </div>
 
                     <div className={rewardStyles.blockWrapper}>
-                      <div>
+                      <div className={rewardStyles.labelDiv}>
                         <label>Description</label>
                       </div>
                       <textarea
@@ -261,7 +256,8 @@ function ProjectEditRewards({ project }) {
                       ></textarea>
                     </div>
                     <div className={rewardStyles.blockWrapper}>
-                      <div>
+                      <div className={rewardStyles.labelDiv}>
+                      <div  className={rewardStyles.labelDiv}>
                         <label>Estimated delivery</label>
                       </div>
                       <div>
@@ -269,6 +265,8 @@ function ProjectEditRewards({ project }) {
                           Give yourself plenty of time. It's better to deliver
                           to backers ahead of schedule than behind.
                         </small>
+                      </div>
+
                       </div>
                       <input
                         className={rewardStyles.dateInputField}
@@ -285,7 +283,7 @@ function ProjectEditRewards({ project }) {
                     </div> */}
                     <div>
                       <div className={rewardStyles.blockWrapper}>
-                        <div>
+                        <div className={rewardStyles.labelDiv}>
                           <label>Reward quantity</label>
                         </div>
                         <input
@@ -298,7 +296,9 @@ function ProjectEditRewards({ project }) {
                       </div>
                     </div>
                     <div>
-                      <label>Time limit</label>
+                      <div className={rewardStyles.labelDiv}>
+                        <label>Time limit</label>
+                      </div>
                       <div>
                         <div className={rewardStyles.optionSelectorContainer}>
                           <input
@@ -371,16 +371,16 @@ function ProjectEditRewards({ project }) {
                   </form>
                 </div>
 
-                <div className={styles.previewDiv}>
-                  <div>Reward preview</div>
-                  <div>
+                <div className={rewardStyles.previewDiv}>
+                  <div className={rewardStyles.previewDivHeader}>Reward preview</div>
+                  <div className={rewardStyles.previewDivText}>
                     Get a glimpse of how this reward will look on your project
                     page.
                   </div>
                   <div style={{ position: "sticky", top: "20px" }}>
                     <form
                       style={{ backgroundColor: "#FBFBFA" }}
-                      className={prevStyles.rewardForm}
+                      className={rewardStyles.rewardPreview}
                     >
                       <div className={rewardStyles.flexbox}>
                         <div className={prevStyles.price}>
@@ -826,6 +826,7 @@ function ProjectEditRewards({ project }) {
           ))}
         </div>
       </div>
+      <div className={rewardStyles.spacer}></div>
     </div>
   );
 }

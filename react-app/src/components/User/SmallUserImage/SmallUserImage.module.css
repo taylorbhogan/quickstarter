@@ -73,3 +73,10 @@
 .rect16{
   background-color: rgb(54	93	113	);
 }
+
+.userImage{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}

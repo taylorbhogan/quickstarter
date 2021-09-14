@@ -21,19 +21,39 @@
   box-shadow: 0 4px 10px 0 rgba(22,22,22,0.08);
 }
 
+.privacyDiv{
+  width: 20%;
+  min-width: 230px;
+}
+
 .btn {
   background-color: rgb(2, 136, 88);
   border: none;
   color: white;
   cursor: pointer;
   padding: 14px 18px;
-  width: 20%;
+  font-size: 14px;
+  width: 100%;
   min-width: 230px;
   transition: background-color 200ms;
 }
 
 .btn:hover {
   background-color: var(--primaryButtonColorHover);
+}
+
+.loading{
+  text-align: center;
+  margin-top: 12px;
+}
+
+.userImage{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 50px 0 15px;
+  object-fit: cover;
+
 }
 
 .userInfoDiv{
@@ -48,12 +68,50 @@
   margin-bottom: 12px;
 }
 
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+[type='file']{
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+[type='file'] + label {
+  /* background-color: white; */
+  border: none;
+  border: 1px solid rgb(209, 209, 209);
+  color: #222222;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  text-align: center;
+  min-width: 230px;
+  transition: background-color 200ms;
+}
+[type='file'] + label:hover {
+  /* background-color: var(--primaryButtonColorHover); */
+  border: 1px solid rgb(34, 34, 34);
+  box-shadow: 0px 2px 5px rgb(22 22 22 / 16%);
+}
+
+
+
 .userInfo{
   font: 13px;
   color: #80809E;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6px;
+  margin: 24px 0 6px;
 }
 
 .bottomColumnFlex{

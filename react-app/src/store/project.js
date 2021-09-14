@@ -64,7 +64,7 @@ export const createProject = (project) => async (dispatch) => {
 };
 //TODO: build the API route to handle this fetch request
 export const editProject = (newProject) => async (dispatch) => {
-  console.log(newProject);
+  // console.log(newProject);
   const response = await fetch(`/api/projects/${newProject.id}/edit`, {
     method: "PATCH",
     body: JSON.stringify(newProject),

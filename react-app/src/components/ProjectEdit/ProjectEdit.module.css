@@ -400,6 +400,7 @@
 .rewardsContainerTopContent {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
 }
 .rewardsContainerBottomContent {
   display: flex;
@@ -407,6 +408,7 @@
 
 .textDivs {
   width: 60%;
+  line-height: 1.3rem;
 }
 
 .infoDiv {

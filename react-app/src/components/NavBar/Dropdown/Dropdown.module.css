@@ -1,16 +1,11 @@
 .dropdown{
   z-index: 100;
-  /* width: 30%; */
-  /* NO WIDTH!!!!!!! because it needs to be filled with things dynamically */
-  /* height: 600px; */
-  /* NO HEIGHT!!!!!!! because it needs to be filled with things dynamically */
   background-color: white;
   border: 1px solid rgb(155, 158, 158);
   position: absolute;
   top: 78px;
   right: 20px;
   color: rgb(40, 40, 40);
-  /* padding: 5px 10px 10px 10px; */
 }
 
 .topFlex{
@@ -49,6 +44,8 @@
 
 .createdProjectsList{
   padding: 36px 0px 18px;
+  overflow-y: scroll;
+  height: 25vh;
 }
 
 .newDivWrapper{
