@@ -1,13 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import DropdownOpenButton from "./Dropdown/DropdownOpenButton";
 import { login } from "../../store/session";
 import styles from "./NavBar.module.css";
-import DiscoverModal from "../DiscoverModal";
+// import DiscoverModal from "../DiscoverModal";
 
 const NavBar = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const user = useSelector((state) => state.session.user);
 
   const handleDemoLogin = async (email, password) => {
@@ -44,11 +45,10 @@ const NavBar = () => {
           <a href="#about-us" className={styles.aboutUsLink}>
             About us
           </a>
-
-          {user ? (
-            <DropdownOpenButton />
-          ) : (
-            <>
+          {user ?
+            (<DropdownOpenButton />)
+            :
+            (<>
               <button
                 type="button"
                 className={styles.demoBtn}
@@ -56,11 +56,15 @@ const NavBar = () => {
               >
                 Demo
               </button>
-              <NavLink to="/login" className={styles.logInLink}>
-                Log in
-              </NavLink>
-            </>
-          )}
+              {location.pathname !== '/login' &&
+                <NavLink to="/login" className={styles.logInLink}>
+                  Log in
+                </NavLink>}
+              {location.pathname !== '/sign-up' &&
+                <NavLink to="/sign-up" className={styles.logInLink}>
+                  Sign up
+                </NavLink>}
+            </>)}
         </section>
       </nav>
     </>
