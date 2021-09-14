@@ -528,7 +528,9 @@ function Project({ everyProject }) {
                     placeholder={"enter your image url here"}
                     onChange={(e) => setImageUrl(e.target.value)}
                   ></input> */}
-                  <input type="file" accept="image/*" onChange={updateImage} />
+                  <input id={'imageFile'}type="file" accept="image/*" onChange={updateImage} />
+                  <label htmlFor={'imageFile'}>Select image file</label>
+                  {imageUrl && <p className={styles.mainInputSubHeader}>Your image will be uploaded when you click save below.</p>}
                 </div>
               </div>
             </div>
