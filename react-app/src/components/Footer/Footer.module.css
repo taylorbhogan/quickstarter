@@ -70,6 +70,7 @@
 .logo {
   height: 18px;
   width: 18px;
+  cursor: not-allowed;
 }
 
 .bottomLinksWrapper {
