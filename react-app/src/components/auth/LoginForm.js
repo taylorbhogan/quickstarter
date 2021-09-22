@@ -43,7 +43,7 @@ const LoginForm = () => {
           <h2 className={styles.loginTitle}>Log in</h2>
           {errors.length > 0 && (
             <div className={styles.errorsContainer}>
-              {errors.length > 0 && 'The email address and password you entered do not match.'}
+              {errors.length > 0 && 'The email address and password you entered do not match our records.'}
               {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))} */}
