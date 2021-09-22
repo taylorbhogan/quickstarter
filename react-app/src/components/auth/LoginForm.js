@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import styles from './AuthForms.module.css'
-// import LoginErrorModal from './LoginErrorModal';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -14,6 +13,7 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setErrors([]);
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -43,7 +43,7 @@ const LoginForm = () => {
           <h2 className={styles.loginTitle}>Log in</h2>
           {errors.length > 0 && (
             <div className={styles.errorsContainer}>
-              {errors.length > 0 && 'The email address and password you entered do not match.'}
+              {errors.length > 0 && 'The email address and password you entered do not match our records.'}
               {/* {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))} */}
