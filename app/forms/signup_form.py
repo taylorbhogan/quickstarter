@@ -21,9 +21,16 @@ def user_email_exists(form, field):
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired()])
-    email = StringField('email', validators=[DataRequired(), Email(
-        message='Please provide a valid email.', check_deliverability=True), user_email_exists])
+    username = StringField('username', validators=[
+        DataRequired(),
+        Length(max=40, message='Username is too long (maximum is 40 characters)'),
+        ])
+    email = StringField('email', validators=[
+        DataRequired(),
+        Email(message='Please provide a valid email.', check_deliverability=True),
+        Length(max=255, message='Email is too long (maximum is 255 characters)'),
+        user_email_exists,
+        ])
     password = StringField('password', validators=[
             InputRequired(),
             EqualTo('repeat_password', message='Password confirmation doesn\'t match Password'),
