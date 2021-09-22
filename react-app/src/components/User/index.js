@@ -100,7 +100,7 @@ function User() {
             This profile page is visible only to you.
           </div>
           <div className={styles.privacyDiv}>
-          <button className={styles.btn}>Manage your privacy settings</button>
+          <button style={{'cursor': 'not-allowed'}} className={styles.btn}>Manage your privacy settings</button>
           </div>
         </div>
         <div className={styles.userImageDiv}>
