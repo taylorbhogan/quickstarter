@@ -65,7 +65,7 @@ function App() {
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-          <NavBar />
+          <NavBar />  
           <User />
           <Footer />
         </ProtectedRoute>

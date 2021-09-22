@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import SlideProject from "../ViewComponents/Slides/SlideProject";
 import styles from "./User.module.css";
 import LargeUserImage from "./LargeUserImage";
+import PageNotFound from '../PageNotFound'
 import { editUser } from "../../store/session";
 
 function User() {
   const dispatch = useDispatch()
 
+  const sessionUser = useSelector(state => state.session.user)
   const [user, setUser] = useState({});
   const { userId } = useParams();
   const [showBackedProjects, setShowBackedProjects] = useState(true);
@@ -81,6 +83,10 @@ function User() {
 
   if (!user) {
     return null;
+  }
+
+  if (sessionUser.id !== +userId) {
+    return <PageNotFound />;
   }
 
   return (
