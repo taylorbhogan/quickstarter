@@ -38,6 +38,10 @@ function Project({ everyProject }) {
   }, [projectId]);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [projectId])
+
+  useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
 
