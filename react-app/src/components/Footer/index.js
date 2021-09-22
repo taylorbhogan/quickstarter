@@ -10,6 +10,7 @@ const profiles = [
     github: "https://github.com/Code-E-Brown",
     linkedin: "https://www.linkedin.com/in/cody-brown-95b77b1aa/",
     angellist: "https://angel.co/u/cody-brown-10",
+    portfolio: "https://codybrown.dev/",
   },
   {
     name: "Taylor Hogan",
@@ -17,12 +18,14 @@ const profiles = [
     github: "https://github.com/taylorbhogan",
     linkedin: "https://www.linkedin.com/in/taylorbhogan/",
     angellist: "https://angel.co/u/taylor-hogan",
+    portfolio: "http://taylorbhogan.me/",
   },
   {
     name: "Torrell Kennedy",
     image: "/torrell.jpeg",
     github: "https://github.com/tkenned2020",
     linkedin: "https://www.linkedin.com/in/torrell-kennedy-5813b3121/",
+    portfolio: "https://tkenned2020.github.io/",
   },
   {
     name: "John Michihara",
@@ -30,6 +33,7 @@ const profiles = [
     github: "https://github.com/john-michihara",
     linkedin: "https://www.linkedin.com/in/john-michihara-305316167/",
     angellist: "https://angel.co/u/john-michihara",
+    portfolio: "https://john-michihara.github.io/",
   },
 ];
 
@@ -86,11 +90,17 @@ function Footer() {
                     )}
                   </div>
                 </div>
-                <img
-                  src={profile.image}
-                  className={styles.image}
-                  alt="avatar"
-                />
+                <a
+                  href={profile.portfolio}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={profile.image}
+                    className={styles.image}
+                    alt="avatar"
+                  />
+                </a>
               </div>
             ))}
           </div>
