@@ -18,7 +18,7 @@ const profiles = [
     github: "https://github.com/taylorbhogan",
     linkedin: "https://www.linkedin.com/in/taylorbhogan/",
     angellist: "https://angel.co/u/taylor-hogan",
-    portfolio: "http://taylorbhogan.me/",
+    portfolio: "http://taylorbhogan.dev/",
   },
   {
     name: "Torrell Kennedy",
